@@ -3,9 +3,21 @@
 import { Calendar } from "lucide-react";
 import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
 
+function Image({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="relative max-w-7xl mx-auto">
+      <img
+        src={src}
+        alt={alt}
+        className="w-full object-cover [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%),linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)] mask-intersect"
+      />
+    </div>
+  );
+}
+
 export default function Hero() {
   return (
-    <div className="mt-20 ">
+    <div className="mt-20">
       <div className="text-center">
         <h1 className="text-6xl font-bold text-dark-brown">
           Fresh and Easy <br /> Laundry Service
@@ -17,7 +29,7 @@ export default function Hero() {
       </div>
 
       <div className="flex gap-[20px] mt-[40px] justify-center">
-        <OrangeGradientButton className="flex items-center gap-[10px]">
+        <OrangeGradientButton className="flex items-center gap-[10px] px-6 py-3 rounded-[26px]">
           <Calendar />
           Schedule a Pickup
         </OrangeGradientButton>
@@ -26,9 +38,10 @@ export default function Hero() {
           Learn More
         </button>
       </div>
+
+      <div className="mt-[10px]">
+        <Image src="/images/hero/bg.png" alt="Hero Image" />
+      </div>
     </div>
   );
 }
-// background: linear-gradient(270deg, #FF7700 0%, #FE922E 51.92%, #F8BB7A 100%);
-// box-shadow: 2px 2px 12.4px -2px #FD7801;
-// border-radius: 26px;
