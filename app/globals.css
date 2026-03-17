@@ -3,6 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --brown: #91786c;
+  --dark-brown: #645853;
+  --orange: #f1a486;
+  --dark-blue: #002959;
 }
 
 @theme inline {
@@ -10,6 +15,23 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Typography scale – Major Third (1.25), base 16px */
+  --text-xs: 0.8rem;
+  --text-sm: 0.9rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.563rem;
+  --text-2xl: 1.953rem;
+  --text-3xl: 2.441rem;
+  --text-4xl: 3.052rem;
+
+  /* Colors */
+  --color-brown: var(--brown);
+  --color-dark-brown: var(--dark-brown);
+  --color-orange: var(--orange);
+  --color-dark-blue: var(--dark-blue);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +42,7 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  /* background: var(--background); */
+  /* color: var(--foreground); */
   font-family: Arial, Helvetica, sans-serif;
 }
