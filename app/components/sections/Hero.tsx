@@ -2,8 +2,9 @@
 
 import { Calendar } from "lucide-react";
 import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
+import Container from "../layout/Container";
 
-function Image({ src, alt }: { src: string; alt: string }) {
+function FadedImage({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="relative max-w-7xl mx-auto">
       <img
@@ -17,8 +18,8 @@ function Image({ src, alt }: { src: string; alt: string }) {
 
 export default function Hero() {
   return (
-    <div className="mt-20">
-      <div className="text-center">
+    <Container isMaxWidth={true} className="mt-20">
+      <div className="text-center border border-mauve-400">
         <h1 className="text-6xl font-bold text-dark-brown">
           Fresh and Easy <br /> Laundry Service
         </h1>
@@ -39,9 +40,9 @@ export default function Hero() {
         </button>
       </div>
 
-      <div className="mt-[10px]">
-        <Image src="/images/hero/bg.png" alt="Hero Image" />
+      <div className="mt-[10px] border border-mauve-400">
+        <FadedImage src="/images/hero/bg.png" alt="Hero Image" />
       </div>
-    </div>
+    </Container>
   );
 }

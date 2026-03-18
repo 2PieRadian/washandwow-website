@@ -4,8 +4,12 @@
   --background: #ffffff;
   --foreground: #171717;
 
+  /* Colors */
   --brown: #91786c;
   --dark-brown: #645853;
+  --step-heading: #6b605e;
+  --step-text: #857670;
+
   --orange: #f1a486;
   --dark-blue: #002959;
 }
@@ -30,7 +34,11 @@
   /* Colors */
   --color-brown: var(--brown);
   --color-dark-brown: var(--dark-brown);
+  --color-step-heading: var(--step-heading);
+  --color-step-text: var(--step-text);
+
   --color-orange: var(--orange);
+
   --color-dark-blue: var(--dark-blue);
 }
 
