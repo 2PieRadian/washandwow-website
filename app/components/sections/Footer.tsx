@@ -66,7 +66,7 @@ export default function Footer() {
   return (
     <>
       {/* Background Div */}
-      <div className="bg-[#FBF6F2] py-[40px] sm:py-[60px] md:py-[80px] px-[20px]">
+      <div className="bg-[#FBF6F2] py-[80px] sm:py-[60px] md:py-[80px] px-[20px]">
         {/* Container Div - Desktop Layout (900px+) */}
         <div className="hidden min-[900px]:flex w-full max-w-[1200px] mx-auto items-start justify-between gap-[20px]">
           {/* Left Content */}
