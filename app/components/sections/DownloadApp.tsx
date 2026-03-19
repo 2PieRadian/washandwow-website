@@ -59,8 +59,8 @@ function Phone() {
   useEffect(() => {
     const handleOrientation = (event: DeviceOrientationEvent) => {
       if (event.beta !== null && event.gamma !== null) {
-        const x = Math.max(-20, Math.min(20, (event.beta - 45) * 0.3));
-        const y = Math.max(-20, Math.min(20, event.gamma * 0.3));
+        const x = Math.max(-25, Math.min(25, (event.beta - 45) * 0.5));
+        const y = Math.max(-25, Math.min(25, -event.gamma * 0.6));
         setRotation({ x, y });
       }
     };
