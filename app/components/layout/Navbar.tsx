@@ -6,13 +6,10 @@ import { Download } from "lucide-react";
 import Container from "./Container";
 
 export default function Navbar() {
-  const buttonStyles =
-    "bg-gradient-to-l from-[#FF7700] via-[#FE922E] to-[#F8BB7A] shadow-[2px_2px_12.4px_-2px_#FD7801] rounded-[26px] px-6 py-3 text-white font-medium cursor-pointer";
-
   return (
     <Container
       isMaxWidth={true}
-      className="flex justify-between items-center py-[15px] "
+      className="flex justify-between items-center py-[15px] px-[20px]"
     >
       <div className="flex items-center justify-between w-full">
         <h1

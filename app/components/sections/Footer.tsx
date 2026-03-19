@@ -59,7 +59,7 @@ export default function Footer() {
   return (
     <>
       {/* Background Div */}
-      <div className="bg-[#FBF6F2] py-[80px]">
+      <div className="bg-[#FBF6F2] py-[80px] px-[20px]">
         {/* Container Div */}
         <div className="w-full max-w-[1200px] mx-auto flex items-start justify-between">
           {/* Left Content */}
@@ -110,7 +110,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright  */}
-      <div className="bg-[#F3EDE8] border-t border-[#DDD2C8] text-[#5E5450]">
+      <div className="bg-[#F3EDE8] border-t border-[#DDD2C8] text-[#5E5450] px-[20px]">
         <div className="w-full max-w-[1200px] mx-auto flex items-center justify-between py-[30px]">
           <p>© 2026 Wash and Wow. All Rights Reserved</p>
           <p>

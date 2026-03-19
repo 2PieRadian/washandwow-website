@@ -19,7 +19,7 @@ function FadedImage({ src, alt }: { src: string; alt: string }) {
 
 export default function Hero() {
   return (
-    <Container isMaxWidth={true} className="mt-20">
+    <Container isMaxWidth={true} className="mt-20 px-[20px]">
       <div className="text-center ">
         <h1
           className={`text-6xl font-bold text-dark-brown ${WixMadeForDisplayFont.className}`}

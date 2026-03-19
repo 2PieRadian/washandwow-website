@@ -24,13 +24,13 @@ function Step({
       </h1>
       <p className="text-step-text">{description}</p>
       <button
-        className={`rounded-[28px] shadow-[2px_2px_5px_rgba(0,0,0,0.06),_inset_2px_2px_4.3px_rgba(255,255,255,0.4)] px-[15px] py-[5px] w-fit cursor-pointer`}
+        className={`relative rounded-[28px] shadow-[2px_2px_5px_rgba(0,0,0,0.06),_inset_2px_2px_4.3px_rgba(255,255,255,0.4)] hover:shadow-[4px_4px_12px_rgba(0,0,0,0.15),_inset_2px_2px_4.3px_rgba(255,255,255,0.4)] px-[15px] py-[5px] w-fit cursor-pointer overflow-hidden hover:scale-[1.02] transition-[transform,box-shadow] duration-[400ms] before:absolute before:inset-0 before:rounded-[28px] before:opacity-0 before:transition-opacity before:duration-[400ms] hover:before:opacity-100`}
         style={{
           backgroundColor: buttonBgColor,
           color: textColor,
         }}
       >
-        {button}
+        <span className="relative z-10">{button}</span>
       </button>
     </div>
   );
@@ -39,7 +39,7 @@ function Step({
 export default function HowItWorks() {
   return (
     <Container
-      className="bg-gradient-to-b from-[#FFFBF6] to-[#E6DACD] mt-[80px] py-[100px]"
+      className="bg-gradient-to-b from-[#FFFBF6] to-[#E6DACD] mt-[80px] py-[100px] px-[20px]"
       isMaxWidth={false}
     >
       <div className="text-center flex flex-col gap-[5px]">
