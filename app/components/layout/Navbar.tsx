@@ -93,24 +93,43 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         <div
-          className={`absolute top-full left-0 right-0 bg-white shadow-lg rounded-b-[20px] overflow-hidden transition-all duration-300 ease-in-out md:hidden z-50 ${
-            isMenuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+          className={`absolute top-full left-0 right-0 bg-gradient-to-b from-white to-[#fdfbf9] shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-b-[24px] overflow-hidden transition-all duration-400 ease-out md:hidden z-50 ${
+            isMenuOpen ? "max-h-[450px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <ul className="flex flex-col text-dark-blue font-medium text-base p-[20px] gap-[10px]">
-            {navItems.map((item) => (
+          <ul className="flex flex-col text-dark-blue font-medium text-base p-[24px] gap-[8px]">
+            {navItems.map((item, index) => (
               <li
                 key={item.name}
-                className="cursor-pointer px-4 py-3 rounded-xl hover:bg-orange/10 hover:text-orange hover:translate-x-2 active:scale-[0.98] active:bg-orange/20 transition-all duration-200 border-b border-[#f0ebe6] last:border-b-0 hover:border-transparent hover:shadow-sm"
+                className="group relative cursor-pointer px-5 py-4 rounded-2xl bg-white/60 backdrop-blur-sm border border-transparent hover:border-orange/20 active:scale-[0.97] active:bg-gradient-to-r active:from-orange/15 active:to-orange/5 transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_16px_rgba(255,148,49,0.15)] overflow-hidden"
                 onClick={() => scrollToSection(item.href)}
+                style={{ animationDelay: `${index * 50}ms` }}
               >
-                {item.name}
+                <div className="absolute inset-0 bg-gradient-to-r from-orange/0 via-orange/5 to-orange/0 translate-x-[-100%] group-active:translate-x-[100%] transition-transform duration-500"></div>
+                <div className="flex items-center justify-between relative z-10">
+                  <span className="group-active:text-orange transition-colors duration-200">
+                    {item.name}
+                  </span>
+                  <svg
+                    className="w-4 h-4 text-[#ccc] group-active:text-orange group-active:translate-x-1 transition-all duration-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
               </li>
             ))}
 
-            <li className="pt-[10px]">
+            <li className="pt-[12px]">
               <OrangeGradientButton
-                className="rounded-[20px] px-4 py-3 flex justify-center items-center gap-[5px] w-full"
+                className="rounded-2xl px-5 py-4 flex justify-center items-center gap-[8px] w-full text-base font-semibold shadow-[0_4px_20px_rgba(255,148,49,0.3)] active:shadow-[0_2px_10px_rgba(255,148,49,0.4)] active:scale-[0.98] transition-all duration-200"
                 onClick={() => scrollToSection("#download-app")}
               >
                 <Download size={20} />

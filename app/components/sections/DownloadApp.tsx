@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import AppleIcon from "../icons/AppleIcon";
 import GooglePlayIcon from "../icons/GooglePlayIcon";
@@ -50,10 +53,34 @@ function LeftContent() {
 }
 
 function Phone() {
+  const [rotation, setRotation] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleOrientation = (event: DeviceOrientationEvent) => {
+      const x = event.beta ? Math.max(-15, Math.min(15, event.beta - 45)) : 0;
+      const y = event.gamma ? Math.max(-15, Math.min(15, event.gamma)) : 0;
+      setRotation({ x: x * 0.5, y: y * 0.5 });
+    };
+
+    if (typeof window !== "undefined" && window.DeviceOrientationEvent) {
+      window.addEventListener("deviceorientation", handleOrientation);
+    }
+
+    return () => {
+      window.removeEventListener("deviceorientation", handleOrientation);
+    };
+  }, []);
+
   return (
-    <div className="group relative">
+    <div className="group relative" style={{ perspective: "1000px" }}>
       {/* Floating animation wrapper */}
-      <div className="animate-[float_6s_ease-in-out_infinite]">
+      <div
+        className="animate-[float_6s_ease-in-out_infinite] transition-transform duration-100 ease-out"
+        style={{
+          transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+          transformStyle: "preserve-3d",
+        }}
+      >
         {/* Glow effect behind phone */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#FF9431]/20 to-transparent blur-3xl scale-150 opacity-0 md:group-hover:opacity-100 transition-opacity duration-700"></div>
 
