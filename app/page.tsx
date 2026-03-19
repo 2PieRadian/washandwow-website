@@ -11,7 +11,7 @@ import Footer from "./components/sections/Footer";
 export default function Home() {
   return (
     <div
-      className={`${SatoshiFont.variable}`}
+      className={`${SatoshiFont.variable} overflow-x-hidden`}
       style={{ fontFamily: "var(--font-satoshi)" }}
     >
       <Navbar />
