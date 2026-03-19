@@ -59,7 +59,7 @@ function Phone() {
   useEffect(() => {
     const handleOrientation = (event: DeviceOrientationEvent) => {
       if (event.beta !== null && event.gamma !== null) {
-        const x = Math.max(-25, Math.min(25, (event.beta - 45) * 0.5));
+        const x = Math.max(-25, Math.min(25, -(event.beta - 45) * 0.5));
         const y = Math.max(-25, Math.min(25, -event.gamma * 0.6));
         setRotation({ x, y });
       }
@@ -117,8 +117,8 @@ function Phone() {
     const handleMouseMove = (e: MouseEvent) => {
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
-      const x = ((e.clientY - centerY) / centerY) * 40;
-      const y = ((e.clientX - centerX) / centerX) * 100;
+      const x = ((e.clientY - centerY) / centerY) * 30;
+      const y = ((e.clientX - centerX) / centerX) * 30;
       setRotation({ x, y });
     };
 
