@@ -12,18 +12,18 @@ export default function Navbar() {
   return (
     <Container
       isMaxWidth={true}
-      className="flex justify-between items-center py-[15px] border border-mauve-400"
+      className="flex justify-between items-center py-[15px] "
     >
       <div className="flex items-center justify-between w-full">
         <h1
-          className={`${WixMadeForDisplayFont.className} text-lg font-bold text-brown`}
+          className={`text-lg font-bold text-brown ${WixMadeForDisplayFont.className}`}
           style={{ fontFamily: "var(--font-wix-made-for-display)" }}
         >
           Wash & <span className="text-orange">Wow</span>
         </h1>
 
         <ul
-          className={`flex gap-[30px] text-dark-blue font-medium text-sm items-center border border-mauve-400`}
+          className={`flex gap-[30px] text-dark-blue font-medium text-sm items-center `}
         >
           <li>Home</li>
           <li>How It Works</li>

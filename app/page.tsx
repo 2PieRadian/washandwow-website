@@ -1,9 +1,12 @@
 "use client";
 
 import Navbar from "./components/layout/Navbar";
+import DownloadApp from "./components/sections/DownloadApp";
 import Hero from "./components/sections/Hero";
 import HowItWorks from "./components/sections/HowItWorks";
+import Services from "./components/sections/Services";
 import { SatoshiFont } from "./fonts";
+import Footer from "./components/sections/Footer";
 
 export default function Home() {
   return (
@@ -14,6 +17,9 @@ export default function Home() {
       <Navbar />
       <Hero />
       <HowItWorks />
+      <Services />
+      <DownloadApp />
+      <Footer />
     </div>
   );
 }
