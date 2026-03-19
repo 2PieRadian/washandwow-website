@@ -1,5 +1,3 @@
-"use client";
-
 import { Calendar } from "lucide-react";
 import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
 import Container from "../layout/Container";

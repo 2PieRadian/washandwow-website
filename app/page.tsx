@@ -1,5 +1,3 @@
-"use client";
-
 import Navbar from "./components/layout/Navbar";
 import DownloadApp from "./components/sections/DownloadApp";
 import Hero from "./components/sections/Hero";
@@ -15,6 +13,7 @@ export default function Home() {
       style={{ fontFamily: "var(--font-satoshi)" }}
     >
       <Navbar />
+
       <div className="pt-[60px]">
         <Hero />
         <HowItWorks />
