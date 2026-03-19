@@ -100,15 +100,15 @@ export default function Services() {
         className="flex flex-col md:flex-row items-center justify-center max-w-[1200px] gap-[30px] md:gap-0"
         isMaxWidth={true}
       >
-        <div className="w-full md:w-auto flex items-center justify-center relative order-1 md:order-1">
+        <div className="w-full md:w-auto flex items-center justify-center relative order-2 md:order-1">
           <img
             src="/images/services/racks.png"
             alt="Laundry racks"
-            className="w-full max-w-[350px] sm:max-w-[350px] md:max-w-[500px] lg:max-w-[600px] md:pr-[60px] lg:pr-[110px] rounded-[20px]"
+            className="w-full max-w-[350px] sm:max-w-[350px] md:max-w-[500px] lg:max-w-[600px] md:pr-[60px] lg:pr-[110px] rounded-[20px] -ml-[55px] md:ml-0"
           />
         </div>
 
-        <div className="text-center md:text-right self-center md:self-start md:mt-[20px] flex flex-col justify-center max-w-[500px] md:max-w-[400px] order-2 md:order-2">
+        <div className="text-center md:text-right self-center md:self-start flex flex-col justify-center max-w-[500px] md:max-w-[400px] order-1 md:order-2">
           <span
             className="text-orange-services font-medium"
             style={{ fontSize: "clamp(1rem, 0.5rem + 2vw, 1.563rem)" }}
