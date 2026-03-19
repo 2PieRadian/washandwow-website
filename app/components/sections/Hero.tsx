@@ -5,11 +5,11 @@ import { WixMadeForDisplayFont } from "@/app/fonts";
 
 function FadedImage({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative max-w-7xl mx-auto">
+    <div className="relative md:max-w-7xl mx-auto overflow-hidden -mx-[20px] md:mx-auto">
       <img
         src={src}
         alt={alt}
-        className="w-full object-cover [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%),linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)] mask-intersect"
+        className="w-full object-cover [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%),linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)] mask-intersect md:scale-100 h-[350px] sm:h-[400px] md:h-auto"
       />
     </div>
   );

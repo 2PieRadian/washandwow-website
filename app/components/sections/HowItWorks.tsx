@@ -65,7 +65,7 @@ export default function HowItWorks() {
   return (
     <section id="how-it-works">
       <Container
-        className="bg-gradient-to-b from-[#FFFBF6] to-[#E6DACD] mt-[40px] sm:mt-[60px] md:mt-[80px] py-[50px] sm:py-[70px] md:py-[100px] px-[20px]"
+        className="bg-gradient-to-b from-[#FFFBF6] to-[#E6DACD]  py-[50px] sm:py-[70px] md:py-[100px] px-[20px]"
         isMaxWidth={false}
       >
         <div className="text-center flex flex-col gap-[5px]">
