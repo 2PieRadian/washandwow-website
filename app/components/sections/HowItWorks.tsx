@@ -7,30 +7,55 @@ function Step({
   button,
   buttonBgColor,
   textColor = "#ffffff",
+  stepNumber,
 }: {
   title: string;
   description: string;
   button: string;
   buttonBgColor: string;
   textColor?: string;
+  stepNumber: number;
 }) {
   return (
-    <div className="flex flex-col gap-[5px]">
-      <h1
-        className={`text-xl font-medium text-step-heading ${WixMadeForDisplayFont.className}`}
-        style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-      >
-        {title}
-      </h1>
-      <p className="text-step-text">{description}</p>
+    <div className="group flex flex-col gap-[5px] p-[20px] rounded-[20px] hover:bg-white/50 hover:shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-all duration-400 cursor-default">
+      <div className="flex items-center gap-[10px]">
+        <span
+          className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold group-hover:scale-110 transition-transform duration-300"
+          style={{ backgroundColor: buttonBgColor }}
+        >
+          {stepNumber}
+        </span>
+        <h1
+          className={`text-xl font-medium text-step-heading group-hover:text-[#584E46] transition-colors duration-300 ${WixMadeForDisplayFont.className}`}
+          style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
+        >
+          {title}
+        </h1>
+      </div>
+      <p className="text-step-text ml-[42px] group-hover:text-[#6B635C] transition-colors duration-300">
+        {description}
+      </p>
       <button
-        className={`relative rounded-[28px] shadow-[2px_2px_5px_rgba(0,0,0,0.06),_inset_2px_2px_4.3px_rgba(255,255,255,0.4)] hover:shadow-[4px_4px_12px_rgba(0,0,0,0.15),_inset_2px_2px_4.3px_rgba(255,255,255,0.4)] px-[15px] py-[5px] w-fit cursor-pointer overflow-hidden hover:scale-[1.02] transition-[transform,box-shadow] duration-[400ms] before:absolute before:inset-0 before:rounded-[28px] before:opacity-0 before:transition-opacity before:duration-[400ms] hover:before:opacity-100`}
+        className={`group/btn relative rounded-[28px] shadow-[2px_2px_5px_rgba(0,0,0,0.06),_inset_2px_2px_4.3px_rgba(255,255,255,0.4)] hover:shadow-[4px_4px_12px_rgba(0,0,0,0.15),_inset_2px_2px_4.3px_rgba(255,255,255,0.4)] px-[15px] py-[5px] w-fit cursor-pointer overflow-hidden hover:scale-[1.05] active:scale-[0.98] transition-all duration-300 ml-[42px] mt-[5px] flex items-center gap-[8px]`}
         style={{
           backgroundColor: buttonBgColor,
           color: textColor,
         }}
       >
         <span className="relative z-10">{button}</span>
+        <svg
+          className="w-4 h-4 relative z-10 group-hover/btn:translate-x-1 transition-transform duration-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
       </button>
     </div>
   );
@@ -38,10 +63,11 @@ function Step({
 
 export default function HowItWorks() {
   return (
-    <Container
-      className="bg-gradient-to-b from-[#FFFBF6] to-[#E6DACD] mt-[80px] py-[100px] px-[20px]"
-      isMaxWidth={false}
-    >
+    <section id="how-it-works">
+      <Container
+        className="bg-gradient-to-b from-[#FFFBF6] to-[#E6DACD] mt-[80px] py-[100px] px-[20px]"
+        isMaxWidth={false}
+      >
       <div className="text-center flex flex-col gap-[5px]">
         <p className="text-xl">Simple Steps</p>
         <h1
@@ -59,20 +85,21 @@ export default function HowItWorks() {
         isMaxWidth={true}
         className="mt-[60px] flex items-center gap-[100px] justify-center"
       >
-        <div className="">
+        <div className="group">
           <img
             src="/images/how-it-works/washing-machine.png"
             alt="How It Works"
-            className="w-[400px]"
+            className="w-[400px] group-hover:scale-[1.02] transition-transform duration-500 drop-shadow-lg hover:drop-shadow-2xl"
           />
         </div>
 
-        <div className="flex flex-col gap-[30px] max-w-[400px] ">
+        <div className="flex flex-col gap-[15px] max-w-[450px]">
           <Step
             title="Choose Your Service"
             description="Select the service that fits your needs."
             button="Continue to Schedule"
             buttonBgColor="#FF9431"
+            stepNumber={1}
           />
 
           <Step
@@ -80,6 +107,7 @@ export default function HowItWorks() {
             description="Select your preferred pickup date and time slot."
             button="Add Pickup Details"
             buttonBgColor="#BA9D91"
+            stepNumber={2}
           />
 
           <Step
@@ -87,6 +115,7 @@ export default function HowItWorks() {
             description="Tell us where to collect your laundry. Add delivery instructions if needed"
             button="Review Order"
             buttonBgColor="#FF9431"
+            stepNumber={3}
           />
 
           <Step
@@ -94,9 +123,11 @@ export default function HowItWorks() {
             description="Double-check your service, schedule, and total amount. Once confirmed, we’ll take it from there."
             button="Confirm Pickup"
             buttonBgColor="#BA9D91"
+            stepNumber={4}
           />
         </div>
       </Container>
-    </Container>
+      </Container>
+    </section>
   );
 }

@@ -6,17 +6,21 @@ import Link from "next/link";
 
 function ContactItem({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div className="flex items-center gap-[10px] text-brown-footer-contact-icon">
-      {icon}
-      <p className="text-md text-brown-footer-contact-text">{text}</p>
+    <div className="group flex items-center gap-[10px] text-brown-footer-contact-icon cursor-pointer hover:text-orange transition-colors duration-300">
+      <span className="group-hover:scale-110 transition-transform duration-300">
+        {icon}
+      </span>
+      <p className="text-md text-brown-footer-contact-text group-hover:text-[#584E46] transition-colors duration-300">
+        {text}
+      </p>
     </div>
   );
 }
 
 function AppleDownloadButton() {
   return (
-    <div className="flex items-center justify-center gap-[10px] px-[15px] py-[8px] rounded-[10px] bg-brown-footer-download-apple-bg text-white w-fit shadow-lg cursor-pointer">
-      <AppleIcon className="w-[40px]" />
+    <div className="group flex items-center justify-center gap-[10px] px-[15px] py-[8px] rounded-[10px] bg-brown-footer-download-apple-bg text-white w-fit shadow-lg cursor-pointer hover:scale-[1.05] hover:shadow-xl active:scale-[0.98] transition-all duration-300">
+      <AppleIcon className="w-[40px] group-hover:scale-110 transition-transform duration-300" />
 
       <div>
         <p className="text-xs">Download on the</p>
@@ -28,8 +32,8 @@ function AppleDownloadButton() {
 
 function GoogleDownloadButton() {
   return (
-    <div className="flex items-center justify-center gap-[10px] bg-brown-footer-download-google-bg shadow-lg text-white px-[15px] py-[8px] rounded-[10px] w-fit cursor-pointer">
-      <GooglePlayIcon className="w-[40px]" />
+    <div className="group flex items-center justify-center gap-[10px] bg-brown-footer-download-google-bg shadow-lg text-white px-[15px] py-[8px] rounded-[10px] w-fit cursor-pointer hover:scale-[1.05] hover:shadow-xl active:scale-[0.98] transition-all duration-300">
+      <GooglePlayIcon className="w-[40px] group-hover:scale-110 transition-transform duration-300" />
 
       <div>
         <p className="text-[#746159] text-xs">Get it on</p>
@@ -44,9 +48,12 @@ function LinkItem({ title, links }: { title: string; links: string[] }) {
     <div>
       <h1 className="text-[#91776C] font-bold text-lg">{title}</h1>
 
-      <div className="mt-[10px]">
+      <div className="mt-[10px] flex flex-col gap-[5px]">
         {links.map((link) => (
-          <p key={link} className="text-brown-footer-contact-text text-md">
+          <p
+            key={link}
+            className="text-brown-footer-contact-text text-md cursor-pointer hover:text-orange hover:translate-x-1 transition-all duration-300"
+          >
             {link}
           </p>
         ))}
@@ -67,12 +74,23 @@ export default function Footer() {
             {/* Logo and Description */}
             <div>
               <h1
-                className={`text-xl font-bold text-brown ${WixMadeForDisplayFont.className}`}
+                className={`text-xl font-bold ${WixMadeForDisplayFont.className} cursor-pointer hover:scale-[1.05] transition-transform duration-300`}
                 style={{ fontFamily: "var(--font-wix-made-for-display)" }}
               >
-                Wash & <span className="text-orange">Wow</span>
+                <span className="text-brown hover:text-dark-brown transition-colors duration-300">
+                  Wash
+                </span>
+                <span className="text-brown hover:text-dark-brown transition-colors duration-300">
+                  {" "}
+                  &
+                </span>{" "}
+                <span className="text-orange hover:text-[#FF7700] transition-colors duration-300">
+                  Wow
+                </span>
               </h1>
-              <p>Wash, dry, fold - freshness delivered</p>
+              <p className="text-[#5E5450]">
+                Wash, dry, fold - freshness delivered
+              </p>
             </div>
 
             {/* Contact Items */}
@@ -114,8 +132,19 @@ export default function Footer() {
         <div className="w-full max-w-[1200px] mx-auto flex items-center justify-between py-[30px]">
           <p>© 2026 Wash and Wow. All Rights Reserved</p>
           <p>
-            <Link href="/privacy-policy">Privacy Policy</Link> |{" "}
-            <Link href="/terms-and-conditions">Terms and Conditions </Link>
+            <Link
+              href="/privacy-policy"
+              className="hover:text-orange hover:underline transition-all duration-300"
+            >
+              Privacy Policy
+            </Link>{" "}
+            |{" "}
+            <Link
+              href="/terms-and-conditions"
+              className="hover:text-orange hover:underline transition-all duration-300"
+            >
+              Terms and Conditions
+            </Link>
           </p>
         </div>
       </div>

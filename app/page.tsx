@@ -15,11 +15,13 @@ export default function Home() {
       style={{ fontFamily: "var(--font-satoshi)" }}
     >
       <Navbar />
-      <Hero />
-      <HowItWorks />
-      <Services />
-      <DownloadApp />
-      <Footer />
+      <div className="pt-[60px]">
+        <Hero />
+        <HowItWorks />
+        <Services />
+        <DownloadApp />
+        <Footer />
+      </div>
     </div>
   );
 }

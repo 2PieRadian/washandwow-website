@@ -20,7 +20,7 @@
 
   --yellow-seamless: #ffdab6;
 
-  --dark-blue: #002959;
+  --dark-blue: #1a314b;
 }
 
 @theme inline {
@@ -68,13 +68,34 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   /* background: var(--background); */
   /* color: var(--foreground); */
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Cutom Styles */
+/* Custom Styles */
 .ellipse {
   clip-path: path("M 0,0 L 1,0 L 1,0.75 Q 0.5,1.1 0,0.85 Z");
+}
+
+/* Floating animation for phone */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-12px) rotate(-1deg);
+  }
 }
