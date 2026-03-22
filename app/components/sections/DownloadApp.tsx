@@ -47,16 +47,23 @@ function LeftContent() {
 function Phone({
   times,
   battery,
+  rotation,
 }: {
   times: LiveTimes;
   battery: DeviceBattery;
+  rotation: { x: number; y: number };
 }) {
   const clientMounted = useClientMounted();
-  const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [permissionGranted, setPermissionGranted] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [hasShownHint, setHasShownHint] = useState(false);
+  const [gyroRotation, setGyroRotation] = useState({ x: 0, y: 0 });
   const phoneRef = useRef<HTMLDivElement>(null);
+
+  const finalRotation = {
+    x: rotation.x || gyroRotation.x,
+    y: rotation.y || gyroRotation.y,
+  };
 
   useEffect(() => {
     if (!phoneRef.current || hasShownHint) return;
@@ -86,7 +93,7 @@ function Phone({
       if (event.beta !== null && event.gamma !== null) {
         const x = Math.max(-25, Math.min(25, -(event.beta - 45) * 0.5));
         const y = Math.max(-25, Math.min(25, -event.gamma * 0.6));
-        setRotation({ x, y });
+        setGyroRotation({ x, y });
       }
     };
 
@@ -137,39 +144,6 @@ function Phone({
     };
   }, [permissionGranted]);
 
-  // Mouse tracking for desktop - only within the phone container
-  useEffect(() => {
-    const phoneElement = phoneRef.current;
-    if (!phoneElement) return;
-
-    const isTouchDevice = "ontouchstart" in window;
-    if (isTouchDevice) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = phoneElement.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      const x = ((e.clientY - centerY) / (rect.height / 2)) * 20;
-      const y = ((e.clientX - centerX) / (rect.width / 2)) * 20;
-      setRotation({
-        x: Math.max(-25, Math.min(25, x)),
-        y: Math.max(-25, Math.min(25, y)),
-      });
-    };
-
-    const handleMouseLeave = () => {
-      setRotation({ x: 0, y: 0 });
-    };
-
-    phoneElement.addEventListener("mousemove", handleMouseMove);
-    phoneElement.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      phoneElement.removeEventListener("mousemove", handleMouseMove);
-      phoneElement.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, []);
-
   return (
     <div
       ref={phoneRef}
@@ -180,7 +154,7 @@ function Phone({
       <div
         className="transition-transform duration-150 ease-out"
         style={{
-          transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+          transform: `rotateX(${finalRotation.x}deg) rotateY(${finalRotation.y}deg)`,
           transformStyle: "preserve-3d",
         }}
       >
@@ -357,6 +331,39 @@ export default function DownloadApp() {
   const sectionRef = useRef<HTMLElement>(null);
   const times = useLiveTimes();
   const battery = useDeviceBattery();
+  const [rotation, setRotation] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const sectionElement = sectionRef.current;
+    if (!sectionElement) return;
+
+    const isTouchDevice = "ontouchstart" in window;
+    if (isTouchDevice) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = sectionElement.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const x = ((e.clientY - centerY) / (rect.height / 2)) * 15;
+      const y = ((e.clientX - centerX) / (rect.width / 2)) * 15;
+      setRotation({
+        x: Math.max(-20, Math.min(20, x)),
+        y: Math.max(-20, Math.min(20, y)),
+      });
+    };
+
+    const handleMouseLeave = () => {
+      setRotation({ x: 0, y: 0 });
+    };
+
+    sectionElement.addEventListener("mousemove", handleMouseMove);
+    sectionElement.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      sectionElement.removeEventListener("mousemove", handleMouseMove);
+      sectionElement.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
 
   useEffect(() => {
     if (prefersReducedMotion()) return;
@@ -377,7 +384,7 @@ export default function DownloadApp() {
             start: "top 75%",
             once: true,
           },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -393,7 +400,7 @@ export default function DownloadApp() {
             start: "top 75%",
             once: true,
           },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -409,7 +416,7 @@ export default function DownloadApp() {
             start: "top 75%",
             once: true,
           },
-        }
+        },
       );
     }, sectionRef);
 
@@ -444,7 +451,7 @@ export default function DownloadApp() {
             <LeftContent />
           </div>
           <div className="download-phone gsap-animate min-[900px]:block opacity-0">
-            <Phone times={times} battery={battery} />
+            <Phone times={times} battery={battery} rotation={rotation} />
           </div>
         </div>
       </div>
