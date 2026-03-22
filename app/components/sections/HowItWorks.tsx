@@ -36,7 +36,7 @@ function Step({
         {description}
       </p>
       <button
-        className={`group/btn relative rounded-[28px] shadow-[2px_2px_5px_rgba(0,0,0,0.06),_inset_2px_2px_4.3px_rgba(255,255,255,0.4)] md:hover:shadow-[4px_4px_12px_rgba(0,0,0,0.15),_inset_2px_2px_4.3px_rgba(255,255,255,0.4)] px-[12px] sm:px-[15px] py-[5px] w-fit cursor-pointer overflow-hidden md:hover:scale-[1.05] active:scale-[0.98] transition-all duration-300 ml-[52px] sm:ml-[57px] mt-[5px] flex items-center gap-[8px] text-[14px] sm:text-base`}
+        className={`group/btn relative select-none rounded-[28px] shadow-[2px_2px_5px_rgba(0,0,0,0.06),_inset_2px_2px_4.3px_rgba(255,255,255,0.4)] md:hover:shadow-[4px_4px_12px_rgba(0,0,0,0.15),_inset_2px_2px_4.3px_rgba(255,255,255,0.4)] px-[12px] sm:px-[15px] py-[5px] w-fit cursor-pointer overflow-hidden md:hover:scale-[1.05] active:scale-[0.98] transition-all duration-300 ml-[52px] sm:ml-[57px] mt-[5px] flex items-center gap-[8px] text-[14px] sm:text-base`}
         style={{
           backgroundColor: buttonBgColor,
           color: textColor,

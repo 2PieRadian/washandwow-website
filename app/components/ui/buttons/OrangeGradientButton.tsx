@@ -10,7 +10,7 @@ export default function OrangeGradientButton({
   onClick?: () => void;
 }) {
   const buttonStyles =
-    "bg-gradient-to-l from-[#FF7700] via-[#FE922E] to-[#F8BB7A] shadow-[2px_2px_12.4px_-2px_#FD7801] hover:shadow-[4px_4px_20px_0px_rgba(253,120,1,0.5)] text-white font-medium cursor-pointer hover:scale-[1.03] active:scale-[0.98] transition-all duration-300";
+    "select-none bg-gradient-to-l from-[#FF7700] via-[#FE922E] to-[#F8BB7A] shadow-[2px_2px_12.4px_-2px_#FD7801] hover:shadow-[4px_4px_20px_0px_rgba(253,120,1,0.5)] text-white font-medium cursor-pointer hover:scale-[1.03] active:scale-[0.98] transition-all duration-300";
 
   return (
     <button className={`${buttonStyles} ${className}`} onClick={onClick}>

@@ -51,21 +51,19 @@ function ServiceItem({
           {title}
         </h3>
 
-        <p className="text-[#615449] text-sm sm:text-base md:text-lg leading-relaxed max-w-[400px]">
+        <p className="text-[#615449] text-base md:text-lg leading-relaxed max-w-[400px]">
           {description}
         </p>
 
         <div className="flex items-baseline gap-[5px] mt-[5px]">
-          <span className="text-[#6B635C] text-sm sm:text-base">
-            Starting at
-          </span>
+          <span className="text-[#6B635C] text-base">Starting at</span>
           <span className="text-[#584E46] text-xl sm:text-2xl md:text-3xl font-bold">
             ₹{price}
           </span>
-          <span className="text-[#6B635C] text-sm sm:text-base">/{unit}</span>
+          <span className="text-[#6B635C] text-base">/{unit}</span>
         </div>
 
-        <button className="group/btn relative mt-[15px] sm:mt-[20px] w-full sm:w-fit px-[20px] sm:px-[25px] md:px-[30px] py-[12px] sm:py-[14px] md:py-[16px] bg-gradient-to-r from-[#D9C9C3] to-[#C5AEA5] border border-[#C8B1A8] rounded-full shadow-[3px_3px_12px_rgba(134,116,109,0.3),inset_1px_1px_3px_#FFFFFF] hover:shadow-[4px_4px_20px_rgba(134,116,109,0.4),inset_1px_1px_3px_#FFFFFF] text-white font-semibold cursor-pointer overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#C5AEA5] before:to-[#D9C9C3] before:rounded-full before:opacity-0 before:transition-opacity before:duration-[400ms] hover:before:opacity-100 hover:scale-[1.02] active:scale-[0.97] transition-[transform,box-shadow] duration-[200ms] text-sm sm:text-base">
+        <button className="group/btn relative select-none mt-[15px] sm:mt-[20px] w-full sm:w-fit px-[20px] sm:px-[25px] md:px-[30px] py-[12px] sm:py-[14px] md:py-[16px] bg-gradient-to-r from-[#D9C9C3] to-[#C5AEA5] border border-[#C8B1A8] rounded-full shadow-[3px_3px_12px_rgba(134,116,109,0.3),inset_1px_1px_3px_#FFFFFF] hover:shadow-[4px_4px_20px_rgba(134,116,109,0.4),inset_1px_1px_3px_#FFFFFF] text-white font-semibold cursor-pointer overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#C5AEA5] before:to-[#D9C9C3] before:rounded-full before:opacity-0 before:transition-opacity before:duration-[400ms] hover:before:opacity-100 hover:scale-[1.02] active:scale-[0.97] transition-[transform,box-shadow] duration-[200ms] text-sm sm:text-base">
           <span className="relative z-10 flex items-center justify-center gap-[8px]">
             {buttonText}
             <svg
@@ -92,7 +90,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="py-[60px] sm:py-[80px] md:py-[120px] relative px-[15px] sm:px-[20px]"
+      className="py-[60px] sm:py-[80px] md:py-[120px] relative px-[20px]"
     >
       <ServicesSvg />
 

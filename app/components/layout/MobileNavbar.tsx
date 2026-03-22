@@ -76,7 +76,7 @@ export default function MobileNavbar() {
           </h1>
 
           <button
-            className="text-dark-blue p-2 cursor-pointer active:scale-95 transition-transform duration-200"
+            className="text-dark-blue p-2 cursor-pointer select-none active:scale-95 transition-transform duration-200"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -102,7 +102,7 @@ export default function MobileNavbar() {
             <span className="text-orange">Wow</span>
           </h1>
           <button
-            className="text-gray-500 p-2 cursor-pointer hover:text-gray-700 active:scale-95 transition-all duration-200"
+            className="text-gray-500 p-2 cursor-pointer select-none hover:text-gray-700 active:scale-95 transition-all duration-200"
             onClick={() => setIsMenuOpen(false)}
             aria-label="Close menu"
           >
@@ -141,7 +141,7 @@ export default function MobileNavbar() {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-left text-gray-600 text-[14px] hover:text-gray-900 active:text-orange transition-colors duration-200"
+                  className="text-left select-none text-gray-600 text-[14px] hover:text-gray-900 active:text-orange transition-colors duration-200"
                 >
                   {link.name}
                 </button>
@@ -152,7 +152,7 @@ export default function MobileNavbar() {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-left text-gray-600 text-[14px] hover:text-gray-900 active:text-orange transition-colors duration-200"
+                  className="text-left select-none text-gray-600 text-[14px] hover:text-gray-900 active:text-orange transition-colors duration-200"
                 >
                   {link.name}
                 </button>
@@ -170,7 +170,7 @@ export default function MobileNavbar() {
               Download App
             </OrangeGradientButton>
             <button
-              className="w-full py-[14px] text-[16px] font-semibold text-gray-700 border border-gray-200 rounded-[10px] active:scale-[0.98] active:bg-gray-50 transition-all duration-200"
+              className="w-full py-[14px] text-[16px] font-semibold select-none text-gray-700 border border-gray-200 rounded-[10px] active:scale-[0.98] active:bg-gray-50 transition-all duration-200"
               onClick={() => scrollToSection("#contact")}
             >
               Contact Us
