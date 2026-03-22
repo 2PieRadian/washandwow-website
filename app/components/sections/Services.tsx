@@ -1,6 +1,15 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import Container from "../layout/Container";
 import ServicesSvg from "../svg/ServicesSvg";
+import {
+  gsap,
+  prefersReducedMotion,
+  getResponsiveConfig,
+  ANIMATION_CONFIG,
+} from "@/app/lib/animations";
 
 interface ServiceItemProps {
   image: React.ReactNode;
@@ -87,10 +96,75 @@ function ServiceItem({
 }
 
 export default function Services() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+
+    const ctx = gsap.context(() => {
+      const config = getResponsiveConfig();
+
+      gsap.fromTo(
+        ".services-header",
+        { opacity: 0, y: config.distance.medium },
+        {
+          opacity: 1,
+          y: 0,
+          duration: config.duration.normal * 1.3,
+          ease: ANIMATION_CONFIG.ease.default,
+          scrollTrigger: {
+            trigger: ".services-header",
+            start: "top 75%",
+            once: true,
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".services-image",
+        { opacity: 0, x: -30 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: config.duration.slow * 1.3,
+          ease: ANIMATION_CONFIG.ease.smooth,
+          scrollTrigger: {
+            trigger: ".services-image",
+            start: "top 70%",
+            once: true,
+          },
+        },
+      );
+
+      const serviceCards = gsap.utils.toArray(".service-card") as Element[];
+      serviceCards.forEach((card) => {
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: config.distance.medium, scale: 1.08 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: config.duration.normal * 1.3,
+            ease: ANIMATION_CONFIG.ease.smooth,
+            scrollTrigger: {
+              trigger: card,
+              start: "top 78%",
+              once: true,
+            },
+          },
+        );
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       id="services"
-      className="py-[60px] sm:py-[80px] md:py-[120px] relative px-[20px] "
+      ref={sectionRef}
+      className="py-[60px] sm:py-[80px] md:py-[120px] relative px-[20px]"
     >
       <ServicesSvg />
 
@@ -98,7 +172,7 @@ export default function Services() {
         className="flex flex-col md:flex-row items-center justify-center max-w-[1200px] gap-[30px] md:gap-0"
         isMaxWidth={true}
       >
-        <div className="w-full md:w-auto flex items-center justify-center relative order-2 md:order-1">
+        <div className="services-image gsap-animate w-full md:w-auto flex items-center justify-center relative order-2 md:order-1 opacity-0">
           <img
             src="/images/services/racks.png"
             alt="Laundry racks"
@@ -106,7 +180,7 @@ export default function Services() {
           />
         </div>
 
-        <div className="text-center md:text-right self-center md:self-start flex flex-col justify-center max-w-[500px] md:max-w-[450px] order-1 md:order-2">
+        <div className="services-header gsap-animate text-center md:text-right self-center md:self-start flex flex-col justify-center max-w-[500px] md:max-w-[450px] order-1 md:order-2 opacity-0">
           <span
             className="text-orange-services font-medium"
             style={{ fontSize: "clamp(1rem, 0.5rem + 2vw, 1.563rem)" }}
@@ -114,7 +188,7 @@ export default function Services() {
             Our Services
           </span>
           <h2
-            className={`font-semibold text-brown-services mt-[10px]`}
+            className="font-semibold text-brown-services mt-[10px]"
             style={{
               fontFamily: WixMadeForDisplayFont.style.fontFamily,
               fontSize: "clamp(1.8rem,5vw,3rem)",
@@ -132,55 +206,60 @@ export default function Services() {
         </div>
       </Container>
 
-      {/* Service Items */}
-      <div className="flex flex-col gap-[25px] sm:gap-[35px] md:gap-[50px] max-w-[1000px] mx-auto mt-[60px] sm:mt-[80px] md:mt-[80px]">
-        <ServiceItem
-          image={
-            <img
-              src="/images/services/washandfold.png"
-              alt="Wash and Fold"
-              className="w-full h-full object-contain"
-            />
-          }
-          imageDivClassName="h-[200px] sm:h-[250px] md:h-[320px]"
-          title="Wash and Fold"
-          description="Professionally washed, gently dried, and neatly folded. Ideal for weekly laundry and daily essentials."
-          price={79}
-          buttonText="Book Now"
-        />
+      <div className="service-cards flex flex-col gap-[25px] sm:gap-[35px] md:gap-[50px] max-w-[1000px] mx-auto mt-[60px] sm:mt-[80px] md:mt-[80px]">
+        <div className="service-card gsap-animate opacity-0">
+          <ServiceItem
+            image={
+              <img
+                src="/images/services/washandfold.png"
+                alt="Wash and Fold"
+                className="w-full h-full object-contain"
+              />
+            }
+            imageDivClassName="h-[200px] sm:h-[250px] md:h-[320px]"
+            title="Wash and Fold"
+            description="Professionally washed, gently dried, and neatly folded. Ideal for weekly laundry and daily essentials."
+            price={79}
+            buttonText="Book Now"
+          />
+        </div>
 
-        <ServiceItem
-          image={
-            <img
-              src="/images/services/blazer.png"
-              alt="Premium Dry Cleaning"
-              className="w-full h-full object-contain"
-            />
-          }
-          imageDivClassName="h-[300px] sm:h-[350px] md:h-[400px]"
-          title="Premium Dry Cleaning"
-          description="Expert cleaning for suits, dresses, and delicate fabrics. Includes hand finishing for a flawless, pressed look."
-          price={199}
-          buttonText="Schedule Service"
-          reverse={true}
-        />
+        <div className="service-card gsap-animate opacity-0">
+          <ServiceItem
+            image={
+              <img
+                src="/images/services/blazer.png"
+                alt="Premium Dry Cleaning"
+                className="w-full h-full object-contain"
+              />
+            }
+            imageDivClassName="h-[300px] sm:h-[350px] md:h-[400px]"
+            title="Premium Dry Cleaning"
+            description="Expert cleaning for suits, dresses, and delicate fabrics. Includes hand finishing for a flawless, pressed look."
+            price={199}
+            buttonText="Schedule Service"
+            reverse={true}
+          />
+        </div>
 
-        <ServiceItem
-          image={
-            <img
-              src="/images/services/steampress.png"
-              alt="Crisp Steam Press"
-              className="w-full h-full object-contain"
-            />
-          }
-          imageDivClassName="h-[280px] sm:h-[320px] md:h-[380px]"
-          title="Crisp Steam Press"
-          description="Precise steam pressing for crisp, wrinkle-free shirts, pants, and formal garments."
-          price={15}
-          unit="piece"
-          buttonText="Get it Pressed"
-          noScale={true}
-        />
+        <div className="service-card gsap-animate opacity-0">
+          <ServiceItem
+            image={
+              <img
+                src="/images/services/steampress.png"
+                alt="Crisp Steam Press"
+                className="w-full h-full object-contain"
+              />
+            }
+            imageDivClassName="h-[280px] sm:h-[320px] md:h-[380px]"
+            title="Crisp Steam Press"
+            description="Precise steam pressing for crisp, wrinkle-free shirts, pants, and formal garments."
+            price={15}
+            unit="piece"
+            buttonText="Get it Pressed"
+            noScale={true}
+          />
+        </div>
       </div>
 
       {/* Browse All Services Button */}

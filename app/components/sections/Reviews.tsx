@@ -2,6 +2,12 @@
 
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import { useRef, useState, useEffect } from "react";
+import {
+  gsap,
+  prefersReducedMotion,
+  getResponsiveConfig,
+  ANIMATION_CONFIG,
+} from "@/app/lib/animations";
 
 interface Review {
   id: number;
@@ -105,6 +111,7 @@ function ReviewCard({ review }: { review: Review }) {
 }
 
 export default function Reviews() {
+  const sectionRef = useRef<HTMLElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -116,6 +123,49 @@ export default function Reviews() {
   const autoScrollRef = useRef<number | null>(null);
 
   const duplicatedReviews = [...reviews, ...reviews];
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+
+    const ctx = gsap.context(() => {
+      const config = getResponsiveConfig();
+
+      gsap.fromTo(
+        ".reviews-header",
+        { opacity: 0, y: config.distance.medium },
+        {
+          opacity: 1,
+          y: 0,
+          duration: config.duration.normal * 1.3,
+          ease: ANIMATION_CONFIG.ease.default,
+          scrollTrigger: {
+            trigger: ".reviews-header",
+            start: "top 75%",
+            once: true,
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".reviews-carousel",
+        { opacity: 0, y: config.distance.small },
+        {
+          opacity: 1,
+          y: 0,
+          duration: config.duration.normal * 1.3,
+          delay: 0.2,
+          ease: ANIMATION_CONFIG.ease.default,
+          scrollTrigger: {
+            trigger: ".reviews-carousel",
+            start: "top 78%",
+            once: true,
+          },
+        },
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollRef.current) return;
@@ -188,15 +238,15 @@ export default function Reviews() {
   return (
     <section
       id="reviews"
+      ref={sectionRef}
       className="py-[60px] sm:py-[80px] md:py-[120px] bg-[#FDFBF9]"
     >
-      {/* Header */}
-      <div className="text-center max-w-[700px] mx-auto mb-[40px] sm:mb-[50px] px-[20px]">
+      <div className="reviews-header gsap-animate text-center max-w-[700px] mx-auto mb-[40px] sm:mb-[50px] px-[20px] opacity-0">
         <span className="text-[#FF9431] text-lg sm:text-xl">
           Customer Testimonials
         </span>
         <h2
-          className={`text-[#2D2D2D] text-2xl sm:text-3xl font-semibold mt-[8px]`}
+          className="text-[#2D2D2D] text-2xl sm:text-3xl font-semibold mt-[8px]"
           style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
         >
           What Our Customers Are Saying
@@ -207,8 +257,7 @@ export default function Reviews() {
         </p>
       </div>
 
-      {/* Horizontal Scrollable Reviews */}
-      <div className="max-w-[1200px] mx-auto px-[20px] relative">
+      <div className="reviews-carousel gsap-animate max-w-[1200px] mx-auto px-[20px] relative opacity-0">
         {/* Left fade overlay */}
         <div className="absolute left-[20px] top-0 bottom-0 w-[60px] sm:w-[80px] bg-gradient-to-r from-[#FDFBF9] to-transparent z-10 pointer-events-none" />
 

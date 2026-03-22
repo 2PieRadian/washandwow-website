@@ -67,11 +67,11 @@ export default function HowItWorks() {
         {
           opacity: 1,
           y: 0,
-          duration: config.duration.normal,
+          duration: config.duration.normal * 1.3,
           ease: ANIMATION_CONFIG.ease.default,
           scrollTrigger: {
             trigger: ".hiw-header",
-            start: "top 85%",
+            start: "top 75%",
             once: true,
           },
         },
@@ -83,11 +83,11 @@ export default function HowItWorks() {
         {
           opacity: 1,
           scale: 1,
-          duration: config.duration.slow,
+          duration: config.duration.slow * 1.3,
           ease: ANIMATION_CONFIG.ease.smooth,
           scrollTrigger: {
             trigger: ".hiw-image",
-            start: "top 80%",
+            start: "top 70%",
             once: true,
           },
         },
@@ -99,12 +99,12 @@ export default function HowItWorks() {
         {
           opacity: 1,
           y: 0,
-          duration: config.duration.normal,
+          duration: config.duration.normal * 1.3,
           stagger: config.stagger.relaxed,
           ease: ANIMATION_CONFIG.ease.default,
           scrollTrigger: {
             trigger: ".hiw-steps",
-            start: "top 85%",
+            start: "top 75%",
             once: true,
           },
         },

@@ -11,6 +11,12 @@ import {
 import AppStoreButton from "../ui/buttons/AppStoreButton";
 import GooglePlayButton from "../ui/buttons/GooglePlayButton";
 import DownloadAppSvg from "../svg/DownloadAppSvg";
+import {
+  gsap,
+  prefersReducedMotion,
+  getResponsiveConfig,
+  ANIMATION_CONFIG,
+} from "@/app/lib/animations";
 
 type LiveTimes = ReturnType<typeof useLiveTimes>;
 type DeviceBattery = ReturnType<typeof useDeviceBattery>;
@@ -348,12 +354,72 @@ function Phone({
 }
 
 export default function DownloadApp() {
+  const sectionRef = useRef<HTMLElement>(null);
   const times = useLiveTimes();
   const battery = useDeviceBattery();
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+
+    const ctx = gsap.context(() => {
+      const config = getResponsiveConfig();
+
+      gsap.fromTo(
+        ".download-header",
+        { opacity: 0, y: config.distance.medium },
+        {
+          opacity: 1,
+          y: 0,
+          duration: config.duration.normal * 1.3,
+          ease: ANIMATION_CONFIG.ease.default,
+          scrollTrigger: {
+            trigger: ".download-header",
+            start: "top 75%",
+            once: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".download-content",
+        { opacity: 0, y: config.distance.medium },
+        {
+          opacity: 1,
+          y: 0,
+          duration: config.duration.normal * 1.3,
+          ease: ANIMATION_CONFIG.ease.default,
+          scrollTrigger: {
+            trigger: ".download-content",
+            start: "top 75%",
+            once: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".download-phone",
+        { opacity: 0, scale: 1.05 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: config.duration.slow * 1.3,
+          ease: ANIMATION_CONFIG.ease.smooth,
+          scrollTrigger: {
+            trigger: ".download-phone",
+            start: "top 75%",
+            once: true,
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
       id="download-app"
+      ref={sectionRef}
       className="relative bg-gradient-to-b from-[#897B6E] to-[#4A4139] py-[50px]"
     >
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -361,9 +427,9 @@ export default function DownloadApp() {
       </div>
 
       <div className="max-w-[1200px] mx-auto text-white py-[50px] sm:py-[70px] min-[900px]:py-[100px] px-[20px] min-[900px]:px-[40px]">
-        <div className="text-center relative z-10">
+        <div className="download-header gsap-animate text-center relative z-10 opacity-0">
           <h1
-            className={`text-2xl sm:text-3xl font-semibold`}
+            className="text-2xl sm:text-3xl font-semibold"
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
           >
             Download Our App
@@ -374,8 +440,10 @@ export default function DownloadApp() {
         </div>
 
         <div className="flex flex-col min-[900px]:flex-row items-center justify-center mt-[40px] sm:mt-[60px] min-[900px]:mt-[80px] gap-[40px] min-[900px]:gap-[100px]">
-          <LeftContent />
-          <div className="min-[900px]:block">
+          <div className="download-content gsap-animate opacity-0">
+            <LeftContent />
+          </div>
+          <div className="download-phone gsap-animate min-[900px]:block opacity-0">
             <Phone times={times} battery={battery} />
           </div>
         </div>
