@@ -257,9 +257,9 @@ function Phone() {
               {/* Animated shine sweep */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-[2000ms] pointer-events-none"></div>
 
-              {/* Rotate Phone Hint Overlay */}
+              {/* Rotate Phone Hint Overlay - mobile only */}
               <div
-                className={`absolute inset-0 bg-black/70 backdrop-blur-sm rounded-[42px] flex flex-col items-center justify-center z-30 pointer-events-none transition-opacity duration-700 ${
+                className={`absolute inset-0 bg-black/70 backdrop-blur-sm rounded-[42px] flex flex-col items-center justify-center z-30 pointer-events-none transition-opacity duration-700 md:hidden ${
                   showHint ? "opacity-100" : "opacity-0"
                 }`}
               >

@@ -5,6 +5,8 @@ import { X, Smartphone, Maximize2, Minimize2 } from "lucide-react";
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import AppStoreButton from "../buttons/AppStoreButton";
 import GooglePlayButton from "../buttons/GooglePlayButton";
+import gsap from "gsap";
+import { QRCodeSVG } from "qrcode.react";
 
 interface DownloadAppModalProps {
   isOpen: boolean;
@@ -16,6 +18,8 @@ export default function DownloadAppModal({
   onClose,
 }: DownloadAppModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
+  const qrRef = useRef<HTMLDivElement>(null);
+  const qrContainerRef = useRef<HTMLDivElement>(null);
   const [isQrExpanded, setIsQrExpanded] = useState(false);
 
   useEffect(() => {
@@ -43,6 +47,40 @@ export default function DownloadAppModal({
     if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
       onClose();
     }
+  };
+
+  const toggleQrExpand = () => {
+    if (!qrRef.current || !qrContainerRef.current) return;
+
+    const isMobile = window.innerWidth < 640;
+
+    if (!isQrExpanded) {
+      gsap.to(qrRef.current, {
+        width: isMobile ? 280 : 320,
+        height: isMobile ? 280 : 320,
+        duration: 0.4,
+        ease: "back.out(1.2)",
+      });
+      gsap.to(qrContainerRef.current, {
+        flexDirection: "column",
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    } else {
+      gsap.to(qrRef.current, {
+        width: isMobile ? 140 : 160,
+        height: isMobile ? 140 : 160,
+        duration: 0.35,
+        ease: "power2.inOut",
+      });
+      gsap.to(qrContainerRef.current, {
+        flexDirection: "row",
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+
+    setIsQrExpanded(!isQrExpanded);
   };
 
   if (!isOpen) return null;
@@ -90,42 +128,23 @@ export default function DownloadAppModal({
           </div>
 
           {/* QR Code Section */}
-          <div className="bg-white rounded-[20px] p-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.04),inset_0_0_0_1px_rgba(0,0,0,0.04)] mb-[24px]">
-            <div
-              className={`flex items-center gap-[20px] ${isQrExpanded ? "flex-col" : ""}`}
-            >
+          <div className="bg-white rounded-[20px] p-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.04),inset_0_0_0_1px_rgba(0,0,0,0.04)] mb-[24px] overflow-hidden">
+            <div ref={qrContainerRef} className="flex items-center gap-[20px]">
               {/* QR Code */}
               <div className="relative shrink-0">
                 <div
-                  className={`bg-white rounded-[12px] p-[8px] shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 cursor-pointer ${
-                    isQrExpanded
-                      ? "w-[280px] h-[280px] sm:w-[320px] sm:h-[320px]"
-                      : "w-[140px] h-[140px] sm:w-[160px] sm:h-[160px]"
-                  }`}
-                  onClick={() => setIsQrExpanded(!isQrExpanded)}
+                  ref={qrRef}
+                  className="bg-white rounded-[12px] p-[12px] shadow-[0_2px_12px_rgba(0,0,0,0.08)] cursor-pointer w-[140px] h-[140px] sm:w-[160px] sm:h-[160px] flex items-center justify-center"
+                  onClick={toggleQrExpand}
                 >
-                  <div className="w-full h-full bg-[#1a1a1a] rounded-[8px] flex items-center justify-center relative overflow-hidden">
-                    {/* QR Pattern Placeholder */}
-                    <div
-                      className={`grid gap-[3px] p-[8px] ${isQrExpanded ? "grid-cols-11" : "grid-cols-9"}`}
-                    >
-                      {[...Array(isQrExpanded ? 121 : 81)].map((_, i) => {
-                        const showDot = Math.random() > 0.3;
-                        return (
-                          <div
-                            key={i}
-                            className={`rounded-[1px] ${
-                              showDot ? "bg-white" : "bg-transparent"
-                            } ${
-                              isQrExpanded
-                                ? "w-[14px] h-[14px] sm:w-[18px] sm:h-[18px]"
-                                : "w-[8px] h-[8px] sm:w-[10px] sm:h-[10px]"
-                            }`}
-                          />
-                        );
-                      })}
-                    </div>
-                  </div>
+                  <QRCodeSVG
+                    value="https://washandwow.in/download"
+                    size={isQrExpanded ? 280 : 130}
+                    level="M"
+                    bgColor="#ffffff"
+                    fgColor="#1a1a1a"
+                    className="w-full h-full"
+                  />
                   {/* Expand/Collapse icon */}
                   <div className="absolute bottom-[12px] right-[12px] w-[28px] h-[28px] rounded-full bg-[#FF9431] flex items-center justify-center shadow-md">
                     {isQrExpanded ? (

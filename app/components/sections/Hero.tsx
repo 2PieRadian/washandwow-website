@@ -45,13 +45,12 @@ export default function Hero() {
           </p>
         </div>
 
-        <div className="relative z-10 flex flex-col sm:flex-row gap-[15px] sm:gap-[20px] mt-[30px] sm:mt-[40px] justify-center items-center px-[20px] sm:px-0">
+        <div className="relative z-10 flex flex-col sm:flex-row gap-[15px] mt-[30px] sm:mt-[40px] justify-center items-center px-[20px] sm:px-0">
           <OrangeGradientButton
             className="flex items-center justify-center gap-[8px] sm:gap-[10px] px-[24px] sm:px-[30px] py-[12px] sm:py-[15px] rounded-[26px] w-full sm:w-auto text-sm sm:text-base"
             onClick={() => setIsModalOpen(true)}
           >
-            <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
-            Schedule a Pickup
+            Get Started
           </OrangeGradientButton>
 
           <button className="group relative select-none bg-[#faf8f8] border border-[hsl(0,0%,86%)] text-[#6E6E6E] px-[24px] sm:px-[30px] py-[12px] sm:py-[15px] rounded-[26px] font-medium cursor-pointer hover:bg-[#f2f2f2] hover:shadow-[0_4px_15px_rgba(0,0,0,0.1)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 w-full sm:w-auto text-sm sm:text-base overflow-hidden">
