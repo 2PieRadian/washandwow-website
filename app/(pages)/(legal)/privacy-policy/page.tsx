@@ -26,11 +26,11 @@ function PolicySection({
       className="scroll-mt-28 border-t border-[#E8DFD6] pt-8 first:border-0 first:pt-0"
     >
       <h2
-        className="mb-4 flex flex-wrap items-baseline gap-2 sm:gap-3 text-xl font-semibold text-[#33302E] sm:text-2xl"
+        className="mb-4 text-xl font-semibold text-[#33302E] sm:text-2xl"
         style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
       >
         <span className="font-bold tabular-nums text-orange">{number}</span>
-        <span>{title}</span>
+        <span className="ml-2">{title}</span>
       </h2>
       <div className="space-y-4 text-[18px] leading-relaxed text-[#5E5450]">
         {children}
