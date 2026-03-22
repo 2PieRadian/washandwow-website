@@ -106,15 +106,16 @@ export default function Services() {
 
       gsap.fromTo(
         ".services-header",
-        { opacity: 0, y: config.distance.medium },
+        { opacity: 0, y: 60, scale: 1.5 },
         {
           opacity: 1,
           y: 0,
+          scale: 1,
           duration: config.duration.normal * 1.3,
-          ease: ANIMATION_CONFIG.ease.default,
+          ease: ANIMATION_CONFIG.ease.smooth,
           scrollTrigger: {
             trigger: ".services-header",
-            start: "top 75%",
+            start: "top 50%",
             once: true,
           },
         },
@@ -122,15 +123,16 @@ export default function Services() {
 
       gsap.fromTo(
         ".services-image",
-        { opacity: 0, x: -30 },
+        { opacity: 0, y: 60, scale: 1.5 },
         {
           opacity: 1,
-          x: 0,
-          duration: config.duration.slow * 1.3,
+          y: 0,
+          scale: 1,
+          duration: config.duration.slow * 1.4,
           ease: ANIMATION_CONFIG.ease.smooth,
           scrollTrigger: {
             trigger: ".services-image",
-            start: "top 70%",
+            start: "top 50%",
             once: true,
           },
         },
