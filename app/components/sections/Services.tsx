@@ -91,7 +91,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="py-[60px] sm:py-[80px] md:py-[120px] relative px-[20px]"
+      className="py-[60px] sm:py-[80px] md:py-[120px] relative px-[20px] "
     >
       <ServicesSvg />
 
@@ -185,7 +185,7 @@ export default function Services() {
       </div>
 
       {/* Browse All Services Button */}
-      <div className="flex justify-center mt-[40px] sm:mt-[50px] md:mt-[60px]">
+      {/* <div className="flex justify-center mt-[40px] sm:mt-[50px] md:mt-[60px]">
         <OrangeGradientButton className="group rounded-full px-[28px] sm:px-[36px] py-[14px] sm:py-[16px] text-[15px] sm:text-base font-semibold flex items-center gap-[10px]">
           Browse All Services
           <svg
@@ -202,7 +202,7 @@ export default function Services() {
             />
           </svg>
         </OrangeGradientButton>
-      </div>
+      </div> */}
     </section>
   );
 }

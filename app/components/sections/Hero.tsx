@@ -82,6 +82,11 @@ export default function Hero() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
+
+      {/* Section divider */}
+      <div className="max-w-[1200px] mx-auto px-[20px]">
+        <div className="h-[1px] bg-gradient-to-r from-transparent via-[#E5DDD6] to-transparent" />
+      </div>
     </section>
   );
 }

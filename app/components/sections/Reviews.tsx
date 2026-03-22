@@ -189,11 +189,11 @@ export default function Reviews() {
   return (
     <section
       id="reviews"
-      className="py-[60px] sm:py-[80px] md:py-[100px] bg-[#FDFBF9]"
+      className="py-[60px] sm:py-[80px] md:py-[120px] bg-[#FDFBF9]"
     >
       {/* Header */}
       <div className="text-center max-w-[700px] mx-auto mb-[40px] sm:mb-[50px] px-[20px]">
-        <span className="text-[#FF9431] font-medium text-[16px] sm:text-lg">
+        <span className="text-[#FF9431] text-lg sm:text-xl">
           Customer Testimonials
         </span>
         <h2
