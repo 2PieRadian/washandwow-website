@@ -52,9 +52,9 @@ export default function MobileNavbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] min-[900px]:hidden">
+    <nav className="fixed top-0 left-0 right-0 z-[100] min-[900px]:hidden h-[70px]">
       {/* Top Bar */}
-      <div className="bg-white shadow-sm">
+      <div className="bg-white shadow-sm h-[70px]">
         <div className="flex items-center justify-between px-[20px] h-[70px]">
           <Link
             href="/"

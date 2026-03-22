@@ -76,11 +76,6 @@ html.smooth-scroll {
   scroll-behavior: smooth;
 }
 
-nav {
-  opacity: 0;
-  transform: translateY(-70px);
-}
-
 body {
   /* background: var(--background); */
   /* color: var(--foreground); */

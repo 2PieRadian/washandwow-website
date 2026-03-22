@@ -33,7 +33,7 @@ export default function DesktopNavbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 hidden min-[900px]:block ${isScrolled ? "bg-white backdrop-blur-sm shadow-sm" : "bg-white"}`}
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 hidden min-[900px]:block h-[70px] ${isScrolled ? "bg-white backdrop-blur-sm shadow-sm" : "bg-white"}`}
     >
       <Container
         isMaxWidth={true}
@@ -68,7 +68,11 @@ export default function DesktopNavbar() {
                 if (!item.href.startsWith("#")) {
                   return (
                     <li key={item.name} className={liClass}>
-                      <Link href={item.href} scroll={false} className="relative z-10 block">
+                      <Link
+                        href={item.href}
+                        scroll={false}
+                        className="relative z-10 block"
+                      >
                         {item.name}
                       </Link>
                     </li>
@@ -76,11 +80,14 @@ export default function DesktopNavbar() {
                 }
 
                 if (pathname !== "/") {
-                  const href =
-                    item.name === "Home" ? "/" : `/${item.href}`;
+                  const href = item.name === "Home" ? "/" : `/${item.href}`;
                   return (
                     <li key={item.name} className={liClass}>
-                      <Link href={href} scroll={false} className="relative z-10 block">
+                      <Link
+                        href={href}
+                        scroll={false}
+                        className="relative z-10 block"
+                      >
                         {item.name}
                       </Link>
                     </li>

@@ -25,20 +25,15 @@ export function PageHeroAnimation({
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
 
-    const navElements = document.querySelectorAll("nav");
-
-    if (prefersReducedMotion()) {
-      gsap.set(navElements, { opacity: 1, y: 0 });
-      return;
-    }
+    if (prefersReducedMotion()) return;
 
     const config = getResponsiveConfig();
 
-    const tl = gsap.timeline({
-      defaults: { ease: ANIMATION_CONFIG.ease.default },
-    });
-
     const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: { ease: ANIMATION_CONFIG.ease.default },
+      });
+
       if (variant === "split") {
         tl.fromTo(
           ".page-hero-left",
@@ -48,7 +43,7 @@ export function PageHeroAnimation({
           ".page-hero-right",
           { opacity: 0, x: 50 },
           { opacity: 1, x: 0, duration: config.duration.normal * 1.2 },
-          "-=0.8",
+          "<",
         );
       } else if (variant === "centered") {
         tl.fromTo(
@@ -92,20 +87,7 @@ export function PageHeroAnimation({
       }
     }, containerRef);
 
-    tl.to(
-      navElements,
-      {
-        opacity: 1,
-        y: 0,
-        duration: config.duration.normal,
-        ease: ANIMATION_CONFIG.ease.smooth,
-      },
-      0.3,
-    );
-
-    return () => {
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, [pathname, variant]);
 
   return <div ref={containerRef}>{children}</div>;

@@ -20,54 +20,31 @@ export function AboutHeroAnimation({
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
 
-    const navElements = document.querySelectorAll("nav");
-
-    if (prefersReducedMotion()) {
-      gsap.set(navElements, { opacity: 1, y: 0 });
-      return;
-    }
+    if (prefersReducedMotion()) return;
 
     const config = getResponsiveConfig();
 
-    const masterTl = gsap.timeline();
-
-    masterTl.fromTo(
-      navElements,
-      { opacity: 0, y: -70 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: config.duration.normal,
-        ease: ANIMATION_CONFIG.ease.smooth,
-      },
-      0,
-    );
-
     const ctx = gsap.context(() => {
-      masterTl
-        .fromTo(
-          ".about-hero-text",
-          { opacity: 0, x: -40 },
-          { opacity: 1, x: 0, duration: config.duration.normal },
-          0,
-        )
-        .fromTo(
-          ".about-hero-image",
-          { opacity: 0, x: 40 },
-          {
-            opacity: 1,
-            x: 0,
-            duration: config.duration.normal,
-            ease: ANIMATION_CONFIG.ease.smooth,
-          },
-          0,
-        );
+      const tl = gsap.timeline();
+
+      tl.fromTo(
+        ".about-hero-text",
+        { opacity: 0, x: -40 },
+        { opacity: 1, x: 0, duration: config.duration.normal },
+      ).fromTo(
+        ".about-hero-image",
+        { opacity: 0, x: 40 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: config.duration.normal,
+          ease: ANIMATION_CONFIG.ease.smooth,
+        },
+        "<",
+      );
     }, containerRef);
 
-    return () => {
-      ctx.revert();
-      masterTl.kill();
-    };
+    return () => ctx.revert();
   }, [pathname]);
 
   return <div ref={containerRef}>{children}</div>;
