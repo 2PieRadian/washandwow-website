@@ -20,32 +20,54 @@ export function AboutHeroAnimation({
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
 
-    if (prefersReducedMotion()) return;
+    const navElements = document.querySelectorAll("nav");
+
+    if (prefersReducedMotion()) {
+      gsap.set(navElements, { opacity: 1, y: 0 });
+      return;
+    }
+
+    const config = getResponsiveConfig();
+
+    const masterTl = gsap.timeline();
+
+    masterTl.fromTo(
+      navElements,
+      { opacity: 0, y: -70 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: config.duration.normal,
+        ease: ANIMATION_CONFIG.ease.smooth,
+      },
+      0,
+    );
 
     const ctx = gsap.context(() => {
-      const config = getResponsiveConfig();
-      const tl = gsap.timeline({
-        defaults: { ease: ANIMATION_CONFIG.ease.default },
-      });
-
-      tl.fromTo(
-        ".about-hero-text",
-        { opacity: 0, x: -40 },
-        { opacity: 1, x: 0, duration: config.duration.normal },
-      ).fromTo(
-        ".about-hero-image",
-        { opacity: 0, x: 40 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: config.duration.normal,
-          ease: ANIMATION_CONFIG.ease.smooth,
-        },
-        "-=0.6",
-      );
+      masterTl
+        .fromTo(
+          ".about-hero-text",
+          { opacity: 0, x: -40 },
+          { opacity: 1, x: 0, duration: config.duration.normal },
+          0,
+        )
+        .fromTo(
+          ".about-hero-image",
+          { opacity: 0, x: 40 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: config.duration.normal,
+            ease: ANIMATION_CONFIG.ease.smooth,
+          },
+          0,
+        );
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      masterTl.kill();
+    };
   }, [pathname]);
 
   return <div ref={containerRef}>{children}</div>;

@@ -4,6 +4,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import AppleIcon from "../icons/AppleIcon";
 import GooglePlayIcon from "../icons/GooglePlayIcon";
 import Link from "next/link";
+import { FooterAnimation } from "../animations/PageAnimations";
 
 const FOOTER_PHONE_DISPLAY = "9318387705";
 const FOOTER_PHONE_TEL = "tel:+919318387705";
@@ -131,9 +132,9 @@ function HelpColumn() {
 
 export default function Footer() {
   return (
-    <>
+    <FooterAnimation>
       {/* Background Div */}
-      <div className="bg-[#FBF6F2] py-[80px] sm:py-[60px] md:py-[80px] px-[20px]">
+      <div className="footer-main gsap-animate bg-[#FBF6F2] py-[80px] sm:py-[60px] md:py-[80px] px-[20px] opacity-0">
         {/* Container Div - Desktop Layout (900px+) */}
         <div className="hidden min-[900px]:flex w-full max-w-[1200px] mx-auto items-start justify-between gap-[20px]">
           {/* Left Content */}
@@ -270,7 +271,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright  */}
-      <div className="bg-[#F3EDE8] border-t border-[#DDD2C8] text-[#5E5450] px-[20px]">
+      <div className="footer-copyright gsap-animate bg-[#F3EDE8] border-t border-[#DDD2C8] text-[#5E5450] px-[20px] opacity-0">
         <div className="w-full max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-[10px] py-[20px] sm:py-[30px] text-center sm:text-left text-[16px]">
           <p>© 2026 Wash and Wow. All Rights Reserved</p>
           <p>
@@ -297,6 +298,6 @@ export default function Footer() {
           </p>
         </div>
       </div>
-    </>
+    </FooterAnimation>
   );
 }

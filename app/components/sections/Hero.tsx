@@ -34,15 +34,21 @@ export default function Hero() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
-    
-    if (prefersReducedMotion()) return;
+
+    const navElements = document.querySelectorAll("nav");
+
+    if (prefersReducedMotion()) {
+      gsap.set(navElements, { opacity: 1, y: 0 });
+      return;
+    }
+
+    const config = getResponsiveConfig();
+
+    const tl = gsap.timeline({
+      defaults: { ease: ANIMATION_CONFIG.ease.default },
+    });
 
     const ctx = gsap.context(() => {
-      const config = getResponsiveConfig();
-      const tl = gsap.timeline({
-        defaults: { ease: ANIMATION_CONFIG.ease.default },
-      });
-
       tl.fromTo(
         ".hero-headline-1",
         { opacity: 0, y: config.distance.medium },
@@ -79,7 +85,20 @@ export default function Hero() {
         );
     }, sectionRef);
 
-    return () => ctx.revert();
+    tl.to(
+      navElements,
+      {
+        opacity: 1,
+        y: 0,
+        duration: config.duration.normal,
+        ease: ANIMATION_CONFIG.ease.smooth,
+      },
+      0.4,
+    );
+
+    return () => {
+      ctx.revert();
+    };
   }, [pathname]);
 
   return (
