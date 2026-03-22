@@ -3,6 +3,13 @@ import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/sections/Footer";
 import { SatoshiFont, WixMadeForDisplayFont } from "@/app/fonts";
 import { Mail, MapPin, Phone } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | Wash & Wow",
+  description:
+    "How Wash & Wow collects, uses, and protects your data across our website and app.",
+};
 
 const LAST_UPDATED = "March 22, 2026";
 const CONTACT_EMAIL = "support@washandwow.in";
