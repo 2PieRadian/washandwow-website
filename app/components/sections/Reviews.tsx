@@ -79,7 +79,7 @@ function StarRating({ rating }: { rating: number }) {
 
 function ReviewCard({ review }: { review: Review }) {
   return (
-    <div className="bg-[#FFFFFF] rounded-[37px] border border-[#F4EFEE] px-[24px] sm:px-[30px] py-[32px] sm:py-[40px] shadow-[0px_4px_20px_rgba(0,0,0,0.06),inset_4px_4px_22.1px_#FFFFFF] flex flex-col items-center text-center w-full h-[360px] sm:h-[380px] select-none">
+    <div className="bg-gradient-to-b from-[#FFFFFF] to-[#FDFCFB] rounded-[37px] border border-[#F4EFEE] px-[24px] sm:px-[30px] py-[32px] sm:py-[40px] shadow-[0px_4px_20px_rgba(0,0,0,0.06),inset_0_2px_4px_rgba(255,255,255,1),inset_0_-2px_6px_rgba(0,0,0,0.02),inset_0_0_20px_rgba(255,255,255,0.8)] flex flex-col items-center text-center w-full h-[360px] sm:h-[380px] select-none">
       {/* Avatar */}
       <div className="w-[70px] h-[70px] rounded-full bg-gradient-to-b from-[#B8E986] to-[#7EC850] p-[3px] mb-[20px]">
         <div className="w-full h-full rounded-full bg-[#87CEEB] flex items-center justify-center overflow-hidden">
