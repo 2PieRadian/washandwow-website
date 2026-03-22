@@ -1,4 +1,5 @@
 import Navbar from "./components/layout/Navbar";
+import MobileNavbar from "./components/layout/MobileNavbar";
 import DownloadApp from "./components/sections/DownloadApp";
 import Hero from "./components/sections/Hero";
 import HowItWorks from "./components/sections/HowItWorks";
@@ -13,6 +14,7 @@ export default function Home() {
       style={{ fontFamily: "var(--font-satoshi)" }}
     >
       <Navbar />
+      <MobileNavbar />
 
       <div className="pt-[60px]">
         <Hero />

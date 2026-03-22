@@ -127,9 +127,9 @@ export default function Footer() {
         </div>
 
         {/* Container Div - Mobile/Tablet Layout (below 900px) */}
-        <div className="min-[900px]:hidden w-full max-w-[1200px] mx-auto flex flex-col gap-[40px]">
+        <div className="min-[900px]:hidden w-full max-w-[1200px] mx-auto flex flex-col gap-[56px] sm:gap-[48px]">
           {/* Row 1: Branding + Contact + Links */}
-          <div className="flex flex-col sm:flex-row items-start justify-between gap-[20px]">
+          <div className="flex flex-col sm:flex-row items-start justify-between gap-[28px] sm:gap-[20px]">
             {/* Logo and Description */}
             <div className="text-left">
               <h1
@@ -161,7 +161,7 @@ export default function Footer() {
           </div>
 
           {/* Row 2: Services, Company, Help */}
-          <div className="grid grid-cols-3 gap-[20px] text-left">
+          <div className="grid grid-cols-3 gap-x-[12px] gap-y-[28px] sm:gap-[20px] text-left">
             <LinkItem
               title="Services"
               links={["Laundry", "Dry Cleaning", "Pricing"]}
@@ -176,9 +176,9 @@ export default function Footer() {
           </div>
 
           {/* Row 3: Download Buttons */}
-          <div className="flex flex-col items-start gap-[10px]">
+          <div className="flex flex-col items-start gap-4 sm:gap-[10px]">
             <h1 className="text-[#91776C] font-bold text-lg">Get Our App</h1>
-            <div className="flex flex-row gap-[10px]">
+            <div className="flex flex-row gap-3 sm:gap-[10px]">
               <GoogleDownloadButton />
               <AppleDownloadButton />
             </div>
@@ -188,7 +188,7 @@ export default function Footer() {
 
       {/* Copyright  */}
       <div className="bg-[#F3EDE8] border-t border-[#DDD2C8] text-[#5E5450] px-[20px]">
-        <div className="w-full max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-[10px] py-[20px] sm:py-[30px] text-center sm:text-left text-[14px] sm:text-base">
+        <div className="w-full max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-[10px] py-[20px] sm:py-[30px] text-center sm:text-left text-[14px] sm:text-base">
           <p>© 2026 Wash and Wow. All Rights Reserved</p>
           <p>
             <Link
