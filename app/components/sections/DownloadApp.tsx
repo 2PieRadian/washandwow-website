@@ -167,7 +167,7 @@ function Phone({
   return (
     <div
       ref={phoneRef}
-      className="group relative"
+      className="group relative select-none"
       style={{ perspective: "1000px" }}
     >
       {/* Outer div - handles tilt rotation */}
