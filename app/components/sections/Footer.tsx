@@ -77,17 +77,18 @@ function GoogleDownloadButton() {
 const footerLinkClass =
   "text-brown-footer-contact-text text-[16px] cursor-pointer hover:text-orange hover:translate-x-1 transition-all duration-300";
 
-function LinkItem({ title, links }: { title: string; links: string[] }) {
+const footerMutedLineClass =
+  "text-brown-footer-contact-text text-[16px] transition-colors duration-300";
+
+function CompanyColumn() {
   return (
     <div>
-      <h2 className="text-[#91776C] font-bold text-[18px]">{title}</h2>
-
+      <h2 className="text-[#91776C] font-bold text-[18px]">Company</h2>
       <div className="mt-[10px] flex flex-col gap-[5px]">
-        {links.map((link) => (
-          <p key={link} className={footerLinkClass}>
-            {link}
-          </p>
-        ))}
+        <Link href="/about" className={footerLinkClass}>
+          About Us
+        </Link>
+        <p className={footerMutedLineClass}>Our Team</p>
       </div>
     </div>
   );
@@ -181,7 +182,7 @@ export default function Footer() {
 
           {/* Right Content */}
           <div className="flex flex-wrap gap-[40px] lg:gap-[60px] text-left">
-            <LinkItem title="Company" links={["About Us", "Our Team"]} />
+            <CompanyColumn />
 
             <HelpColumn />
 
@@ -248,7 +249,7 @@ export default function Footer() {
 
           {/* Row 2: Company, Help, Legal */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-[12px] gap-y-[28px] sm:gap-[20px] text-left">
-            <LinkItem title="Company" links={["About Us", "Our Team"]} />
+            <CompanyColumn />
 
             <HelpColumn />
 
