@@ -132,7 +132,7 @@ export default function page() {
         isMaxWidth={true}
         className="mt-[70px] px-[20px] pb-6 pt-10 md:pb-8 md:pt-14 min-h-[calc(70svh-70px)] flex items-center justify-center"
       >
-        <div className="max-w-7xl text-center">
+        <div className="max-w-5xl text-center">
           <h1
             className="text-3xl font-semibold text-[#33302E] sm:text-4xl"
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
@@ -152,7 +152,7 @@ export default function page() {
       </Container>
 
       <Container isMaxWidth={true} className="px-[20px] pb-16 md:pb-24">
-        <article className="mx-auto max-w-7xl rounded-2xl border border-[#f6f1ee] bg-white p-6 shadow-sm sm:p-10 md:p-12">
+        <div className="mx-auto max-w-5xl">
           <p className="text-[18px] leading-relaxed text-[#5E5450]">
             Welcome to Wash &amp; Wow (&quot;Company&quot;, &quot;we&quot;,
             &quot;our&quot;, or &quot;us&quot;). This Privacy Policy explains
@@ -424,7 +424,7 @@ export default function page() {
               </p>
             </PolicySection>
           </div>
-        </article>
+        </div>
       </Container>
 
       <Footer />

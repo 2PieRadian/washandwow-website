@@ -133,7 +133,7 @@ export default function page() {
       </Container>
 
       <Container isMaxWidth={true} className="px-[20px] pb-16 md:pb-24">
-        <article className="mx-auto max-w-7xl rounded-2xl border border-[#f6f1ee] bg-white p-6 shadow-sm sm:p-10 md:p-12">
+        <div className="mx-auto max-w-5xl">
           <p className="text-[18px] leading-relaxed text-[#5E5450]">
             Welcome to{" "}
             <strong className="font-semibold text-[#33302E]">
@@ -454,13 +454,7 @@ export default function page() {
               </p>
             </PolicySection>
           </div>
-
-          <p className="mt-12 border-t border-[#E8DFD6] pt-8 text-[14px] leading-relaxed text-[#91776C]">
-            Related topics: laundry service terms India, dry cleaning service
-            conditions, laundry app terms and conditions, pickup delivery
-            laundry terms.
-          </p>
-        </article>
+        </div>
       </Container>
 
       <Footer />
