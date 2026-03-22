@@ -32,7 +32,7 @@ function ServiceItem({
 }: ServiceItemProps) {
   return (
     <div
-      className={`group bg-gradient-to-b from-[#F7F3EF] to-[#FFFFFF] border border-[#D9CDC0] rounded-[24px] sm:rounded-[32px] md:rounded-[40px] shadow-[4px_4px_15px_2px_#F6F2EE,inset_4px_4px_30px_1px_#FFFFFF] hover:shadow-[6px_6px_25px_4px_rgba(217,205,192,0.5),inset_4px_4px_30px_1px_#FFFFFF] flex flex-col ${reverse ? "md:flex-row-reverse" : "md:flex-row"} ${alignTop ? "items-start" : "items-center"} justify-between gap-[15px] sm:gap-[20px] md:gap-[30px] overflow-hidden transition-shadow duration-[400ms] ${className}`}
+      className={`group bg-gradient-to-b from-[#F7F3EF] to-[#FFFFFF] border border-[#e4ddd8] rounded-[24px] sm:rounded-[32px] md:rounded-[40px] shadow-[4px_4px_15px_2px_#F6F2EE,inset_4px_4px_30px_1px_#FFFFFF] hover:shadow-[6px_6px_25px_4px_rgba(217,205,192,0.5),inset_4px_4px_30px_1px_#FFFFFF] flex flex-col ${reverse ? "md:flex-row-reverse" : "md:flex-row"} ${alignTop ? "items-start" : "items-center"} justify-between gap-[15px] sm:gap-[20px] md:gap-[30px] overflow-hidden transition-shadow duration-[400ms] ${className}`}
     >
       <div
         className={`${imageDivClassName} ${reverse ? "md:rounded-r-[40px]" : "md:rounded-l-[40px]"} ${noScale ? "[&>img]:transition-transform [&>img]:duration-[400ms] [&>img]:group-hover:scale-[1.05]" : "[&>img]:scale-[0.7] [&>img]:transition-transform [&>img]:duration-[400ms] [&>img]:group-hover:scale-[0.75]"} w-full md:flex-1 md:max-w-[45%] overflow-hidden rounded-t-[24px] sm:rounded-t-[32px] md:rounded-t-none  `}
