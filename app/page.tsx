@@ -1,4 +1,5 @@
 import Navbar from "./components/layout/Navbar";
+import HomeHashScroll from "./components/HomeHashScroll";
 import DownloadApp from "./components/sections/DownloadApp";
 import Hero from "./components/sections/Hero";
 import HowItWorks from "./components/sections/HowItWorks";
@@ -14,6 +15,7 @@ export default function Home() {
       style={{ fontFamily: SatoshiFont.style.fontFamily }}
     >
       <Navbar />
+      <HomeHashScroll />
 
       <div className="pt-[60px]">
         <Hero />

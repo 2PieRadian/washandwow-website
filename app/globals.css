@@ -165,3 +165,149 @@ img {
     transform: translateY(0) scale(1);
   }
 }
+
+/* About page – process step illustrations */
+@keyframes about-step-glow-breathe {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.88;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes about-step-float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes about-step-card-sway {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  40% {
+    transform: translateY(-5px) rotate(-1.5deg);
+  }
+  70% {
+    transform: translateY(-3px) rotate(1.2deg);
+  }
+}
+
+@keyframes about-droplet-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6px, -14px) scale(1.08);
+  }
+}
+
+@keyframes about-droplet-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-7px, -11px) scale(1.05);
+  }
+}
+
+@keyframes about-shirt-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes about-fold-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes about-package-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(4deg);
+  }
+}
+
+.about-step-anim-glow {
+  animation: about-step-glow-breathe 5.5s ease-in-out infinite;
+}
+
+.about-step-anim-float {
+  animation: about-step-float-soft 3.6s ease-in-out infinite;
+}
+
+.about-step-anim-float-delayed {
+  animation: about-step-float-soft 3.6s ease-in-out 0.45s infinite;
+}
+
+.about-step-anim-card {
+  animation: about-step-card-sway 4s ease-in-out infinite;
+}
+
+.about-step-anim-drop-a {
+  animation: about-droplet-a 2.8s ease-in-out infinite;
+}
+
+.about-step-anim-drop-b {
+  animation: about-droplet-b 3.2s ease-in-out 0.35s infinite;
+}
+
+.about-step-anim-shirt {
+  animation: about-shirt-breathe 2.4s ease-in-out infinite;
+}
+
+.about-step-anim-fold-1 {
+  animation: about-fold-bob 2.2s ease-in-out infinite;
+}
+
+.about-step-anim-fold-2 {
+  animation: about-fold-bob 2.2s ease-in-out 0.2s infinite;
+}
+
+.about-step-anim-fold-3 {
+  animation: about-fold-bob 2.2s ease-in-out 0.4s infinite;
+}
+
+.about-step-anim-package {
+  animation: about-package-bob 3.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-step-anim-glow,
+  .about-step-anim-float,
+  .about-step-anim-float-delayed,
+  .about-step-anim-card,
+  .about-step-anim-drop-a,
+  .about-step-anim-drop-b,
+  .about-step-anim-shirt,
+  .about-step-anim-fold-1,
+  .about-step-anim-fold-2,
+  .about-step-anim-fold-3,
+  .about-step-anim-package {
+    animation: none !important;
+  }
+}

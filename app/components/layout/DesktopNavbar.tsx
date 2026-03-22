@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
 import { Download } from "lucide-react";
@@ -9,6 +10,8 @@ import Container from "./Container";
 import { scrollToSection } from "@/app/utils/scrollToSection";
 
 export default function DesktopNavbar() {
+  const pathname = usePathname();
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
@@ -16,6 +19,7 @@ export default function DesktopNavbar() {
     { name: "How It Works", href: "#how-it-works" },
     { name: "Services", href: "#services" },
     { name: "Reviews", href: "#reviews" },
+    { name: "About", href: "/about" },
   ];
 
   useEffect(() => {
@@ -56,20 +60,50 @@ export default function DesktopNavbar() {
           {/* Desktop Navigation */}
           <ul className="flex text-dark-blue font-medium text-sm items-center gap-[12px]">
             <div className="flex items-center">
-              {navItems.map((item) => (
-                <li
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="group cursor-pointer px-4 py-2 rounded-full hover:text-[#FF7700] active:scale-[0.95] transition-all duration-200 relative overflow-hidden before:absolute before:inset-[2px] before:rounded-full before:bg-gradient-to-b before:from-white/90 before:via-[#fff3ea]/60 before:to-[#ffe8d6]/40 before:scale-0 hover:before:scale-100 before:transition-transform before:duration-300 before:ease-out before:shadow-[inset_0_-2px_4px_rgba(255,148,49,0.15),inset_0_2px_4px_rgba(255,255,255,0.8)] after:absolute after:top-[3px] after:left-[15%] after:w-[70%] after:h-[40%] after:rounded-full after:bg-gradient-to-b after:from-white/80 after:to-transparent after:scale-0 hover:after:scale-100 after:transition-transform after:duration-300 hover:shadow-[0_2px_8px_rgba(255,148,49,0.2)]"
-                >
-                  <span className="relative z-10">{item.name}</span>
-                </li>
-              ))}
+              {navItems.map((item) => {
+                const liClass =
+                  "group cursor-pointer px-4 py-2 rounded-full hover:text-[#FF7700] active:scale-[0.95] transition-all duration-200 relative overflow-hidden before:absolute before:inset-[2px] before:rounded-full before:bg-gradient-to-b before:from-white/90 before:via-[#fff3ea]/60 before:to-[#ffe8d6]/40 before:scale-0 hover:before:scale-100 before:transition-transform before:duration-300 before:ease-out before:shadow-[inset_0_-2px_4px_rgba(255,148,49,0.15),inset_0_2px_4px_rgba(255,255,255,0.8)] after:absolute after:top-[3px] after:left-[15%] after:w-[70%] after:h-[40%] after:rounded-full after:bg-gradient-to-b after:from-white/80 after:to-transparent after:scale-0 hover:after:scale-100 after:transition-transform after:duration-300 hover:shadow-[0_2px_8px_rgba(255,148,49,0.2)]";
+
+                if (!item.href.startsWith("#")) {
+                  return (
+                    <li key={item.name} className={liClass}>
+                      <Link href={item.href} className="relative z-10 block">
+                        {item.name}
+                      </Link>
+                    </li>
+                  );
+                }
+
+                if (pathname !== "/") {
+                  const href =
+                    item.name === "Home" ? "/" : `/${item.href}`;
+                  return (
+                    <li key={item.name} className={liClass}>
+                      <Link href={href} className="relative z-10 block">
+                        {item.name}
+                      </Link>
+                    </li>
+                  );
+                }
+
+                return (
+                  <li
+                    key={item.name}
+                    className={liClass}
+                    onClick={() => scrollToSection(item.href)}
+                  >
+                    <span className="relative z-10">{item.name}</span>
+                  </li>
+                );
+              })}
             </div>
             <li>
               <OrangeGradientButton
                 className="rounded-[20px] px-4 py-2 flex justify-center items-center gap-[5px]"
-                onClick={() => scrollToSection("#download-app")}
+                onClick={() => {
+                  if (pathname === "/") scrollToSection("#download-app");
+                  else router.push("/#download-app");
+                }}
               >
                 <Download size={20} />
                 Download App

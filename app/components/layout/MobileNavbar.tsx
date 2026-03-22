@@ -2,33 +2,36 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
-import { Download, Menu, X, ChevronDown } from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
 import { scrollToSection as scrollToSectionUtil } from "@/app/utils/scrollToSection";
 
 export default function MobileNavbar() {
+  const pathname = usePathname();
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "How It Works", href: "#how-it-works" },
-    { name: "Services", href: "#services", hasDropdown: true },
+    { name: "Services", href: "#services" },
     { name: "Reviews", href: "#reviews" },
+    { name: "About", href: "/about" },
   ];
 
-  const footerLinks = {
-    left: [
-      { name: "About us", href: "#about" },
-      { name: "Contact", href: "#contact" },
-      { name: "Careers", href: "#careers" },
-      { name: "FAQs", href: "#faqs" },
+  /** Matches Footer Help + Legal routes */
+  const menuFooterLinks = {
+    help: [
+      { name: "About", href: "/about" },
+      { name: "FAQs", href: "/faq" },
+      { name: "Contact", href: "/contact" },
     ],
-    right: [
-      { name: "Support", href: "#support" },
-      { name: "App Help", href: "#app-help" },
-      { name: "Sitemap", href: "#sitemap" },
-      { name: "Legal", href: "#legal" },
+    legal: [
+      { name: "Privacy Policy", href: "/privacy-policy" },
+      { name: "Terms and Conditions", href: "/terms-and-conditions" },
+      { name: "Terms of Use", href: "/terms-of-use" },
     ],
   };
 
@@ -104,30 +107,72 @@ export default function MobileNavbar() {
         {/* Navigation Links */}
         <div className="flex-1 overflow-y-auto px-[20px] py-[16px]">
           <ul className="flex flex-col">
-            {navItems.map((item) => (
-              <li
-                key={item.name}
-                className="group cursor-pointer border-b border-gray-100 last:border-b-0"
-                onClick={() => scrollToSection(item.href)}
-              >
-                <div className="flex items-center justify-between py-[16px] text-gray-900 font-medium text-[16px] active:text-orange transition-colors duration-200">
-                  <span>{item.name}</span>
-                  {item.hasDropdown && (
-                    <ChevronDown
-                      size={20}
-                      className="text-gray-400 group-active:rotate-180 transition-transform duration-200"
-                    />
-                  )}
-                </div>
-              </li>
-            ))}
+            {navItems.map((item) => {
+              const rowClass =
+                "flex items-center justify-between py-[16px] text-gray-900 font-medium text-[16px] active:text-orange transition-colors duration-200";
+
+              if (!item.href.startsWith("#")) {
+                return (
+                  <li
+                    key={item.name}
+                    className="group cursor-pointer border-b border-gray-100 last:border-b-0"
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={rowClass}
+                    >
+                      <span>{item.name}</span>
+                    </Link>
+                  </li>
+                );
+              }
+
+              if (pathname !== "/") {
+                const href = item.name === "Home" ? "/" : `/${item.href}`;
+                return (
+                  <li
+                    key={item.name}
+                    className="group cursor-pointer border-b border-gray-100 last:border-b-0"
+                  >
+                    <Link
+                      href={href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={rowClass}
+                    >
+                      <span>{item.name}</span>
+                    </Link>
+                  </li>
+                );
+              }
+
+              return (
+                <li
+                  key={item.name}
+                  className="group cursor-pointer border-b border-gray-100 last:border-b-0"
+                >
+                  <div
+                    className={rowClass}
+                    onClick={() => scrollToSection(item.href)}
+                  >
+                    <span>{item.name}</span>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
 
           {/* Download App Button - right after navlinks */}
           <div className="mt-[20px]">
             <OrangeGradientButton
               className="rounded-[10px] px-5 py-[14px] flex justify-center items-center gap-[8px] w-full text-[16px] font-semibold active:scale-[0.98] transition-all duration-200"
-              onClick={() => scrollToSection("#download-app")}
+              onClick={() => {
+                if (pathname === "/") scrollToSection("#download-app");
+                else {
+                  setIsMenuOpen(false);
+                  router.push("/#download-app");
+                }
+              }}
             >
               <Download size={20} />
               Download App
@@ -135,40 +180,44 @@ export default function MobileNavbar() {
           </div>
         </div>
 
-        {/* Footer Links */}
+        {/* Footer links (same routes as site footer) */}
         <div className="px-[20px] py-[20px] border-t border-gray-100">
-          <div className="grid grid-cols-2 gap-x-[40px] gap-y-[12px] mb-[24px]">
-            <div className="flex flex-col gap-[12px]">
-              {footerLinks.left.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => scrollToSection(link.href)}
-                  className="text-left select-none text-gray-600 text-[14px] hover:text-gray-900 active:text-orange transition-colors duration-200"
-                >
-                  {link.name}
-                </button>
-              ))}
+          <div className="grid grid-cols-2 gap-x-[40px] gap-y-[12px]">
+            <div>
+              <p className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-gray-400">
+                Help
+              </p>
+              <div className="flex flex-col gap-[12px]">
+                {menuFooterLinks.help.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-left text-[14px] text-gray-600 transition-colors duration-200 hover:text-gray-900 active:text-orange"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
             </div>
-            <div className="flex flex-col gap-[12px]">
-              {footerLinks.right.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => scrollToSection(link.href)}
-                  className="text-left select-none text-gray-600 text-[14px] hover:text-gray-900 active:text-orange transition-colors duration-200"
-                >
-                  {link.name}
-                </button>
-              ))}
+            <div>
+              <p className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-gray-400">
+                Legal
+              </p>
+              <div className="flex flex-col gap-[12px]">
+                {menuFooterLinks.legal.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-left text-[14px] text-gray-600 transition-colors duration-200 hover:text-gray-900 active:text-orange"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
-
-          {/* Contact Us Button */}
-          <button
-            className="w-full py-[14px] text-[16px] font-semibold select-none text-gray-700 border border-gray-200 rounded-[10px] active:scale-[0.98] active:bg-gray-50 transition-all duration-200"
-            onClick={() => scrollToSection("#contact")}
-          >
-            Contact Us
-          </button>
         </div>
       </div>
     </nav>
