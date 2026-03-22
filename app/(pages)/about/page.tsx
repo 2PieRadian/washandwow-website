@@ -73,7 +73,10 @@ function ProcessStepCard({
 
 export default function page() {
   return (
-    <div style={{ fontFamily: SatoshiFont.style.fontFamily }}>
+    <div
+      className="overflow-x-hidden"
+      style={{ fontFamily: SatoshiFont.style.fontFamily }}
+    >
       <Navbar />
 
       <AboutHeroAnimation>
