@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
 import Container from "../layout/Container";
 import { WixMadeForDisplayFont } from "@/app/fonts";
@@ -29,11 +30,12 @@ function FadedImage({ src, alt }: { src: string; alt: string }) {
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const hasAnimated = useRef(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (hasAnimated.current || prefersReducedMotion()) return;
-    hasAnimated.current = true;
+    window.scrollTo({ top: 0, behavior: "instant" });
+    
+    if (prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       const config = getResponsiveConfig();
@@ -78,7 +80,7 @@ export default function Hero() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [pathname]);
 
   return (
     <section id="home" ref={sectionRef}>

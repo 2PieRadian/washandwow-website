@@ -58,6 +58,7 @@ export default function MobileNavbar() {
         <div className="flex items-center justify-between px-[20px] h-[70px]">
           <Link
             href="/"
+            scroll={false}
             onClick={() => setIsMenuOpen(false)}
             className={`text-lg font-bold cursor-pointer`}
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
@@ -87,6 +88,7 @@ export default function MobileNavbar() {
         <div className="flex items-center justify-between px-[20px] h-[70px] border-b border-gray-100">
           <Link
             href="/"
+            scroll={false}
             onClick={() => setIsMenuOpen(false)}
             className={`text-lg font-bold`}
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
@@ -119,6 +121,7 @@ export default function MobileNavbar() {
                   >
                     <Link
                       href={item.href}
+                      scroll={false}
                       onClick={() => setIsMenuOpen(false)}
                       className={rowClass}
                     >
@@ -137,6 +140,7 @@ export default function MobileNavbar() {
                   >
                     <Link
                       href={href}
+                      scroll={false}
                       onClick={() => setIsMenuOpen(false)}
                       className={rowClass}
                     >
@@ -192,6 +196,7 @@ export default function MobileNavbar() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    scroll={false}
                     onClick={() => setIsMenuOpen(false)}
                     className="text-left text-[14px] text-gray-600 transition-colors duration-200 hover:text-gray-900 active:text-orange"
                   >
@@ -209,6 +214,7 @@ export default function MobileNavbar() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    scroll={false}
                     onClick={() => setIsMenuOpen(false)}
                     className="text-left text-[14px] text-gray-600 transition-colors duration-200 hover:text-gray-900 active:text-orange"
                   >

@@ -42,6 +42,7 @@ export default function DesktopNavbar() {
         <div className="flex items-center justify-between w-full">
           <Link
             href="/"
+            scroll={false}
             className={`text-lg font-bold cursor-pointer hover:scale-[1.05] transition-transform duration-300 inline-block`}
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
           >
@@ -67,7 +68,7 @@ export default function DesktopNavbar() {
                 if (!item.href.startsWith("#")) {
                   return (
                     <li key={item.name} className={liClass}>
-                      <Link href={item.href} className="relative z-10 block">
+                      <Link href={item.href} scroll={false} className="relative z-10 block">
                         {item.name}
                       </Link>
                     </li>
@@ -79,7 +80,7 @@ export default function DesktopNavbar() {
                     item.name === "Home" ? "/" : `/${item.href}`;
                   return (
                     <li key={item.name} className={liClass}>
-                      <Link href={href} className="relative z-10 block">
+                      <Link href={href} scroll={false} className="relative z-10 block">
                         {item.name}
                       </Link>
                     </li>

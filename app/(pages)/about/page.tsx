@@ -4,6 +4,7 @@ import Footer from "@/app/components/sections/Footer";
 import { SatoshiFont, WixMadeForDisplayFont } from "@/app/fonts";
 import type { Metadata } from "next";
 import { StepVisual } from "./StepVisual";
+import { AboutHeroAnimation, AboutSectionAnimation } from "./AboutAnimations";
 
 export const metadata: Metadata = {
   title: "About Us | Wash & Wow",
@@ -75,37 +76,39 @@ export default function page() {
     <div style={{ fontFamily: SatoshiFont.style.fontFamily }}>
       <Navbar />
 
-      <Container
-        isMaxWidth={true}
-        className="mt-[70px] flex min-h-[calc(70svh-70px)] flex-col items-center justify-center gap-10 px-[20px] pb-6 pt-10 min-[950px]:flex-row min-[950px]:items-center min-[950px]:justify-between min-[950px]:gap-16 md:pb-8 md:pt-14"
-      >
-        <div>
-          <h1
-            className="text-3xl font-semibold text-[#33302E] sm:text-4xl"
-            style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-          >
-            About Us
-          </h1>
+      <AboutHeroAnimation>
+        <Container
+          isMaxWidth={true}
+          className="mt-[70px] flex min-h-[calc(70svh-70px)] flex-col items-center justify-center gap-10 px-[20px] pb-6 pt-10 min-[950px]:flex-row min-[950px]:items-center min-[950px]:justify-between min-[950px]:gap-16 md:pb-8 md:pt-14"
+        >
+          <div className="about-hero-text gsap-animate opacity-0">
+            <h1
+              className="text-3xl font-semibold text-[#33302E] sm:text-4xl"
+              style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
+            >
+              About Us
+            </h1>
 
-          <p className="mt-4 text-[18px] leading-relaxed text-dark-blue">
-            At Wash &amp; Wow, we believe laundry isn&apos;t just a chore —
-            it&apos;s a part of your everyday life that deserves care,
-            precision, and respect.
-          </p>
-        </div>
+            <p className="mt-4 text-[18px] leading-relaxed text-dark-blue">
+              At Wash &amp; Wow, we believe laundry isn&apos;t just a chore —
+              it&apos;s a part of your everyday life that deserves care,
+              precision, and respect.
+            </p>
+          </div>
 
-        <div>
-          <img
-            src="/images/about/about.png"
-            alt="About Wash & Wow"
-            className="w-full max-w-[700px] cursor-default rounded-2xl"
-          />
-        </div>
-      </Container>
+          <div className="about-hero-image gsap-animate opacity-0">
+            <img
+              src="/images/about/about.png"
+              alt="About Wash & Wow"
+              className="w-full max-w-[700px] cursor-default rounded-2xl"
+            />
+          </div>
+        </Container>
+      </AboutHeroAnimation>
 
-      <section className="bg-white px-[20px] py-[60px] sm:py-[80px] md:py-[100px]">
+      <AboutSectionAnimation>
         <Container isMaxWidth={true} className="max-w-[1200px]">
-          <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-16 md:mb-20">
+          <div className="about-section-header gsap-animate mx-auto mb-12 max-w-3xl text-center sm:mb-16 md:mb-20 opacity-0">
             <h2
               className="text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-tight text-[#33302E]"
               style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
@@ -122,23 +125,27 @@ export default function page() {
           </div>
 
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 min-[1030px]:grid-cols-2 min-[1030px]:gap-8">
-            <ProcessStepCard
-              step="Step 01"
-              badgeClass={`border border-[#E49D81] bg-[#FF9421] ${processStepBadgeShadow}`}
-              surfaceClass={`${processStepCardRadius} border border-[#F2E0F2] bg-[#FDF7FD] shadow-[0px_0px_30px_rgba(216,197,199,0.3),inset_0px_0px_9.6px_6px_#FFFFFF]`}
-              title="Schedule Your Wash"
-              description="Choose a convenient pickup slot in seconds. Our team arrives at your doorstep, right on time."
-              visualVariant="schedule"
-            />
-            <ProcessStepCard
-              step="Step 02"
-              badgeClass={`border border-[#B6C8D4] bg-[#98BCD6] ${processStepBadgeShadow}`}
-              surfaceClass={`${processStepCardRadius} border border-[#E6ECF1] bg-[rgba(231,237,240,0.69)] shadow-[0px_0px_42px_rgba(216,197,199,0.6),inset_0px_0px_9.6px_6px_#FFFFFF]`}
-              title="We Care For Every Thread"
-              description="Your clothes are sorted, washed, and treated according to fabric type for safe, effective cleaning."
-              visualVariant="care"
-            />
-            <div className="w-full min-[1030px]:col-span-2">
+            <div className="about-process-card gsap-animate opacity-0">
+              <ProcessStepCard
+                step="Step 01"
+                badgeClass={`border border-[#E49D81] bg-[#FF9421] ${processStepBadgeShadow}`}
+                surfaceClass={`${processStepCardRadius} border border-[#F2E0F2] bg-[#FDF7FD] shadow-[0px_0px_30px_rgba(216,197,199,0.3),inset_0px_0px_9.6px_6px_#FFFFFF]`}
+                title="Schedule Your Wash"
+                description="Choose a convenient pickup slot in seconds. Our team arrives at your doorstep, right on time."
+                visualVariant="schedule"
+              />
+            </div>
+            <div className="about-process-card gsap-animate opacity-0">
+              <ProcessStepCard
+                step="Step 02"
+                badgeClass={`border border-[#B6C8D4] bg-[#98BCD6] ${processStepBadgeShadow}`}
+                surfaceClass={`${processStepCardRadius} border border-[#E6ECF1] bg-[rgba(231,237,240,0.69)] shadow-[0px_0px_42px_rgba(216,197,199,0.6),inset_0px_0px_9.6px_6px_#FFFFFF]`}
+                title="We Care For Every Thread"
+                description="Your clothes are sorted, washed, and treated according to fabric type for safe, effective cleaning."
+                visualVariant="care"
+              />
+            </div>
+            <div className="about-process-card gsap-animate w-full min-[1030px]:col-span-2 opacity-0">
               <ProcessStepCard
                 step="Step 03"
                 badgeClass={`border border-[#DDC5AD] bg-[#E6C29E] ${processStepBadgeShadow}`}
@@ -151,7 +158,7 @@ export default function page() {
             </div>
           </div>
         </Container>
-      </section>
+      </AboutSectionAnimation>
       <Footer />
     </div>
   );
