@@ -28,7 +28,7 @@ export default function Hero() {
       <Container isMaxWidth={true} className="mt-20 px-[20px]">
         <div className="text-center ">
           <div
-            className={`font-bold text-dark-brown ${WixMadeForDisplayFont.className}`}
+            className={`font-bold text-dark-brown`}
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
           >
             <h1 className="flex flex-col `text-[clamp(2.441rem,4vw,7rem)] leading-[45px] sm:leading-[50px] md:leading-[56px] lg:leading-[65px] xl:leading-[70px]">

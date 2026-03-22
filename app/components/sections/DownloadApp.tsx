@@ -10,7 +10,7 @@ function LeftContent() {
   return (
     <div className="max-w-[420px] flex flex-col gap-[10px] text-center min-[900px]:text-left relative z-10">
       <h2
-        className={`text-2xl sm:text-3xl font-bold tracking-wide ${WixMadeForDisplayFont.className}`}
+        className={`text-2xl sm:text-3xl font-bold tracking-wide`}
         style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
       >
         Get the app for a{" "}
@@ -313,7 +313,7 @@ export default function DownloadApp() {
       <div className="max-w-[1200px] mx-auto text-white py-[50px] sm:py-[70px] min-[900px]:py-[100px] px-[20px] min-[900px]:px-[40px]">
         <div className="text-center relative z-10">
           <h1
-            className={`text-2xl sm:text-3xl font-semibold ${WixMadeForDisplayFont.className}`}
+            className={`text-2xl sm:text-3xl font-semibold`}
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
           >
             Download Our App

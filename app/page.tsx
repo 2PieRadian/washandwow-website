@@ -1,5 +1,4 @@
 import Navbar from "./components/layout/Navbar";
-import MobileNavbar from "./components/layout/MobileNavbar";
 import DownloadApp from "./components/sections/DownloadApp";
 import Hero from "./components/sections/Hero";
 import HowItWorks from "./components/sections/HowItWorks";
@@ -11,11 +10,10 @@ import Footer from "./components/sections/Footer";
 export default function Home() {
   return (
     <div
-      className={`${SatoshiFont.variable} overflow-x-hidden`}
-      style={{ fontFamily: "var(--font-satoshi)" }}
+      className={`overflow-x-hidden`}
+      style={{ fontFamily: SatoshiFont.style.fontFamily }}
     >
       <Navbar />
-      <MobileNavbar />
 
       <div className="pt-[60px]">
         <Hero />

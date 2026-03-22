@@ -1,7 +1,6 @@
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import Container from "../layout/Container";
 import ServicesSvg from "../svg/ServicesSvg";
-import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
 
 interface ServiceItemProps {
   image: React.ReactNode;
@@ -46,7 +45,7 @@ function ServiceItem({
         </span>
 
         <h3
-          className={`text-[#584E46] font-semibold text-xl sm:text-2xl md:text-3xl ${WixMadeForDisplayFont.className}`}
+          className={`text-[#584E46] font-semibold text-xl sm:text-2xl md:text-3xl`}
           style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
         >
           {title}
@@ -115,7 +114,7 @@ export default function Services() {
             Our Services
           </span>
           <h2
-            className={`font-semibold text-brown-services mt-[10px] ${WixMadeForDisplayFont.className}`}
+            className={`font-semibold text-brown-services mt-[10px]`}
             style={{
               fontFamily: WixMadeForDisplayFont.style.fontFamily,
               fontSize: "clamp(1.8rem,5vw,3rem)",

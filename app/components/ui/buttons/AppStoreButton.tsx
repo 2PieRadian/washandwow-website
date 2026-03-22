@@ -4,7 +4,9 @@ interface AppStoreButtonProps {
   className?: string;
 }
 
-export default function AppStoreButton({ className = "" }: AppStoreButtonProps) {
+export default function AppStoreButton({
+  className = "",
+}: AppStoreButtonProps) {
   return (
     <button
       type="button"

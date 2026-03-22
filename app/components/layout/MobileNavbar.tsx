@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
 import { Download, Menu, X, ChevronDown } from "lucide-react";
@@ -52,15 +53,16 @@ export default function MobileNavbar() {
       {/* Top Bar */}
       <div className="bg-white shadow-sm">
         <div className="flex items-center justify-between px-[20px] h-[70px]">
-          <h1
-            className={`text-lg font-bold ${WixMadeForDisplayFont.className} cursor-pointer`}
-            style={{ fontFamily: "var(--font-wix-made-for-display)" }}
-            onClick={() => scrollToSection("#home")}
+          <Link
+            href="/"
+            onClick={() => setIsMenuOpen(false)}
+            className={`text-lg font-bold cursor-pointer`}
+            style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
           >
             <span className="text-brown">Wash</span>
             <span className="text-brown"> &</span>{" "}
             <span className="text-orange">Wow</span>
-          </h1>
+          </Link>
 
           <button
             className="text-dark-blue p-2 cursor-pointer select-none active:scale-95 transition-transform duration-200"
@@ -80,14 +82,16 @@ export default function MobileNavbar() {
       >
         {/* Header with Logo and Close */}
         <div className="flex items-center justify-between px-[20px] h-[70px] border-b border-gray-100">
-          <h1
-            className={`text-lg font-bold ${WixMadeForDisplayFont.className}`}
-            style={{ fontFamily: "var(--font-wix-made-for-display)" }}
+          <Link
+            href="/"
+            onClick={() => setIsMenuOpen(false)}
+            className={`text-lg font-bold`}
+            style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
           >
             <span className="text-brown">Wash</span>
             <span className="text-brown"> &</span>{" "}
             <span className="text-orange">Wow</span>
-          </h1>
+          </Link>
           <button
             className="text-gray-500 p-2 cursor-pointer select-none hover:text-gray-700 active:scale-95 transition-all duration-200"
             onClick={() => setIsMenuOpen(false)}

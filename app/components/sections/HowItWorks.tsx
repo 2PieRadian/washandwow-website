@@ -29,7 +29,7 @@ function Step({
       </span>
       <div className="flex flex-col gap-[4px]">
         <h1
-          className={`text-lg sm:text-xl font-medium text-step-heading md:group-hover:text-[#584E46] transition-colors duration-300 ${WixMadeForDisplayFont.className}`}
+          className={`text-lg sm:text-xl font-medium text-step-heading md:group-hover:text-[#584E46] transition-colors duration-300`}
           style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
         >
           {title}
@@ -52,7 +52,7 @@ export default function HowItWorks() {
         <div className="text-center flex flex-col gap-[5px]">
           <p className="text-lg sm:text-xl">Simple Steps</p>
           <h1
-            className={`text-2xl sm:text-3xl font-semibold ${WixMadeForDisplayFont.className}`}
+            className={`text-2xl sm:text-3xl font-semibold`}
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
           >
             How It Works

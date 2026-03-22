@@ -1,7 +1,6 @@
 "use client";
 
 import { WixMadeForDisplayFont } from "@/app/fonts";
-import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
 import { useRef, useState, useEffect } from "react";
 
 interface Review {
@@ -197,7 +196,7 @@ export default function Reviews() {
           Customer Testimonials
         </span>
         <h2
-          className={`text-[#2D2D2D] text-2xl sm:text-3xl font-semibold mt-[8px] ${WixMadeForDisplayFont.className}`}
+          className={`text-[#2D2D2D] text-2xl sm:text-3xl font-semibold mt-[8px]`}
           style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
         >
           What Our Customers Are Saying

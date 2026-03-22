@@ -10,7 +10,7 @@ function ContactItem({ icon, text }: { icon: React.ReactNode; text: string }) {
       <span className="group-hover:scale-110 transition-transform duration-300">
         {icon}
       </span>
-      <p className="text-[16px] sm:text-md text-brown-footer-contact-text group-hover:text-[#584E46] transition-colors duration-300">
+      <p className="text-[16px] text-brown-footer-contact-text group-hover:text-[#584E46] transition-colors duration-300">
         {text}
       </p>
     </div>
@@ -43,20 +43,39 @@ function GoogleDownloadButton() {
   );
 }
 
+const footerLinkClass =
+  "text-brown-footer-contact-text text-[16px] cursor-pointer hover:text-orange hover:translate-x-1 transition-all duration-300";
+
 function LinkItem({ title, links }: { title: string; links: string[] }) {
   return (
     <div>
-      <h1 className="text-[#91776C] font-bold text-lg">{title}</h1>
+      <h2 className="text-[#91776C] font-bold text-[18px]">{title}</h2>
 
       <div className="mt-[10px] flex flex-col gap-[5px]">
         {links.map((link) => (
-          <p
-            key={link}
-            className="text-brown-footer-contact-text text-[16px] sm:text-md cursor-pointer hover:text-orange hover:translate-x-1 transition-all duration-300"
-          >
+          <p key={link} className={footerLinkClass}>
             {link}
           </p>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function LegalColumn() {
+  return (
+    <div>
+      <h2 className="text-[#91776C] font-bold text-[18px]">Legal</h2>
+      <div className="mt-[10px] flex flex-col gap-[5px]">
+        <Link href="/privacy-policy" className={footerLinkClass}>
+          Privacy Policy
+        </Link>
+        <Link href="/terms-and-conditions" className={footerLinkClass}>
+          Terms and Conditions
+        </Link>
+        <Link href="/terms-of-use" className={footerLinkClass}>
+          Terms of Use
+        </Link>
       </div>
     </div>
   );
@@ -74,8 +93,8 @@ export default function Footer() {
             {/* Logo and Description */}
             <div>
               <h1
-                className={`text-xl font-bold ${WixMadeForDisplayFont.className} cursor-pointer hover:scale-[1.05] transition-transform duration-300`}
-                style={{ fontFamily: "var(--font-wix-made-for-display)" }}
+                className={`text-xl font-bold cursor-pointer hover:scale-[1.05] transition-transform duration-300`}
+                style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
               >
                 <span className="text-brown hover:text-dark-brown transition-colors duration-300">
                   Wash
@@ -102,7 +121,7 @@ export default function Footer() {
           </div>
 
           {/* Right Content */}
-          <div className="flex gap-[40px] lg:gap-[80px] text-left">
+          <div className="flex flex-wrap gap-[40px] lg:gap-[60px] text-left">
             <LinkItem
               title="Services"
               links={["Laundry", "Dry Cleaning", "Steam Press"]}
@@ -115,8 +134,12 @@ export default function Footer() {
 
             <LinkItem title="Help" links={["FAQs", "Contact", "App Support"]} />
 
+            <LegalColumn />
+
             <div>
-              <h1 className="text-[#91776C] font-bold text-lg">Get Our App</h1>
+              <h2 className="text-[#91776C] font-bold text-[18px]">
+                Get Our App
+              </h2>
 
               <div className="flex flex-col gap-[10px] mt-[10px] items-start">
                 <GoogleDownloadButton />
@@ -133,8 +156,8 @@ export default function Footer() {
             {/* Logo and Description */}
             <div className="text-left">
               <h1
-                className={`text-xl font-bold ${WixMadeForDisplayFont.className} cursor-pointer hover:scale-[1.05] transition-transform duration-300`}
-                style={{ fontFamily: "var(--font-wix-made-for-display)" }}
+                className={`text-xl font-bold cursor-pointer hover:scale-[1.05] transition-transform duration-300`}
+                style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
               >
                 <span className="text-brown hover:text-dark-brown transition-colors duration-300">
                   Wash
@@ -160,8 +183,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Row 2: Services, Company, Help */}
-          <div className="grid grid-cols-3 gap-x-[12px] gap-y-[28px] sm:gap-[20px] text-left">
+          {/* Row 2: Services, Company, Help, Legal */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-[12px] gap-y-[28px] sm:gap-[20px] text-left">
             <LinkItem
               title="Services"
               links={["Laundry", "Dry Cleaning", "Steam Press"]}
@@ -173,11 +196,15 @@ export default function Footer() {
             />
 
             <LinkItem title="Help" links={["FAQs", "Contact", "App Support"]} />
+
+            <LegalColumn />
           </div>
 
           {/* Row 3: Download Buttons */}
           <div className="flex flex-col items-start gap-4 sm:gap-[10px]">
-            <h1 className="text-[#91776C] font-bold text-lg">Get Our App</h1>
+            <h2 className="text-[#91776C] font-bold text-[18px]">
+              Get Our App
+            </h2>
             <div className="flex flex-row gap-3 sm:gap-[10px]">
               <GoogleDownloadButton />
               <AppleDownloadButton />
@@ -188,7 +215,7 @@ export default function Footer() {
 
       {/* Copyright  */}
       <div className="bg-[#F3EDE8] border-t border-[#DDD2C8] text-[#5E5450] px-[20px]">
-        <div className="w-full max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-[10px] py-[20px] sm:py-[30px] text-center sm:text-left text-[14px] sm:text-base">
+        <div className="w-full max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-[10px] py-[20px] sm:py-[30px] text-center sm:text-left text-[16px]">
           <p>© 2026 Wash and Wow. All Rights Reserved</p>
           <p>
             <Link
@@ -203,6 +230,13 @@ export default function Footer() {
               className="hover:text-orange hover:underline transition-all duration-300"
             >
               Terms and Conditions
+            </Link>{" "}
+            |{" "}
+            <Link
+              href="/terms-of-use"
+              className="hover:text-orange hover:underline transition-all duration-300"
+            >
+              Terms of Use
             </Link>
           </p>
         </div>
