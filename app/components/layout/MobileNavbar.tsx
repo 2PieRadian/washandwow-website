@@ -13,7 +13,6 @@ export default function MobileNavbar() {
     { name: "How It Works", href: "#how-it-works" },
     { name: "Services", href: "#services", hasDropdown: true },
     { name: "Reviews", href: "#reviews" },
-    { name: "Pricing", href: "#pricing" },
   ];
 
   const footerLinks = {

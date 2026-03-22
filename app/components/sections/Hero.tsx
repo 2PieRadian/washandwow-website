@@ -1,7 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import { Calendar } from "lucide-react";
 import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
 import Container from "../layout/Container";
 import { WixMadeForDisplayFont } from "@/app/fonts";
+import DownloadAppModal from "../ui/modals/DownloadAppModal";
 
 function FadedImage({ src, alt }: { src: string; alt: string }) {
   return (
@@ -16,6 +20,8 @@ function FadedImage({ src, alt }: { src: string; alt: string }) {
 }
 
 export default function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section id="home">
       <Container isMaxWidth={true} className="mt-20 px-[20px]">
@@ -40,7 +46,10 @@ export default function Hero() {
         </div>
 
         <div className="relative z-10 flex flex-col sm:flex-row gap-[15px] sm:gap-[20px] mt-[30px] sm:mt-[40px] justify-center items-center px-[20px] sm:px-0">
-          <OrangeGradientButton className="flex items-center justify-center gap-[8px] sm:gap-[10px] px-[24px] sm:px-[30px] py-[12px] sm:py-[15px] rounded-[26px] w-full sm:w-auto text-sm sm:text-base">
+          <OrangeGradientButton
+            className="flex items-center justify-center gap-[8px] sm:gap-[10px] px-[24px] sm:px-[30px] py-[12px] sm:py-[15px] rounded-[26px] w-full sm:w-auto text-sm sm:text-base"
+            onClick={() => setIsModalOpen(true)}
+          >
             <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
             Schedule a Pickup
           </OrangeGradientButton>
@@ -69,6 +78,11 @@ export default function Hero() {
           <FadedImage src="/images/hero/bg.png" alt="Hero Image" />
         </div>
       </Container>
+
+      <DownloadAppModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }

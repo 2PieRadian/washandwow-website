@@ -105,7 +105,7 @@ export default function Footer() {
           <div className="flex gap-[40px] lg:gap-[80px] text-left">
             <LinkItem
               title="Services"
-              links={["Laundry", "Dry Cleaning", "Pricing"]}
+              links={["Laundry", "Dry Cleaning", "Steam Press"]}
             />
 
             <LinkItem
@@ -164,7 +164,7 @@ export default function Footer() {
           <div className="grid grid-cols-3 gap-x-[12px] gap-y-[28px] sm:gap-[20px] text-left">
             <LinkItem
               title="Services"
-              links={["Laundry", "Dry Cleaning", "Pricing"]}
+              links={["Laundry", "Dry Cleaning", "Steam Press"]}
             />
 
             <LinkItem
