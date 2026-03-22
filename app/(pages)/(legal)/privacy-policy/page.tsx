@@ -32,7 +32,7 @@ function PolicySection({
         <span className="font-bold tabular-nums text-orange">{number}</span>
         <span>{title}</span>
       </h2>
-      <div className="space-y-4 text-[15px] leading-relaxed text-[#5E5450] sm:text-[16px] md:text-[18px]">
+      <div className="space-y-4 text-[18px] leading-relaxed text-[#5E5450]">
         {children}
       </div>
     </section>
@@ -54,7 +54,7 @@ function BulletList({ items }: { items: string[] }) {
 
 function Subheading({ label, title }: { label: string; title: string }) {
   return (
-    <h3 className="text-base font-semibold text-[#33302E] sm:text-[17px] md:text-[18px]">
+    <h3 className="text-[18px] font-semibold text-[#33302E]">
       <span className="text-orange">{label}</span> {title}
     </h3>
   );
@@ -78,10 +78,8 @@ function PermissionCard({
         {emoji}
       </span>
       <div>
-        <p className="text-[15px] font-semibold text-[#33302E] sm:text-[16px] md:text-[18px]">
-          {title}
-        </p>
-        <p className="mt-1 text-[15px] leading-relaxed text-[#5E5450] sm:text-[16px] md:text-[18px]">
+        <p className="text-[18px] font-semibold text-[#33302E]">{title}</p>
+        <p className="mt-1 text-[18px] leading-relaxed text-[#5E5450]">
           {description}
         </p>
       </div>
@@ -119,7 +117,7 @@ function ContactRow({
         <p className="text-xs font-medium uppercase tracking-wide text-[#91776C]">
           {label}
         </p>
-        <p className="mt-1 text-[15px] md:text-[18px]">{content}</p>
+        <p className="mt-1 text-[18px]">{content}</p>
       </div>
     </div>
   );
@@ -146,7 +144,7 @@ export default function page() {
             Last updated: {LAST_UPDATED}
           </p>
 
-          <p className="mt-4 text-[16px] leading-relaxed text-dark-blue sm:text-md md:text-[18px]">
+          <p className="mt-4 text-[18px] leading-relaxed text-dark-blue">
             We treat your data with the same care as your clothes — securely and
             responsibly.
           </p>
@@ -155,13 +153,13 @@ export default function page() {
 
       <Container isMaxWidth={true} className="px-[20px] pb-16 md:pb-24">
         <article className="mx-auto max-w-3xl rounded-2xl border border-[#E8DFD6] bg-white p-6 shadow-sm sm:p-10 md:p-12">
-          <p className="text-[15px] leading-relaxed text-[#5E5450] sm:text-[16px] md:text-[18px]">
+          <p className="text-[18px] leading-relaxed text-[#5E5450]">
             Welcome to Wash &amp; Wow (&quot;Company&quot;, &quot;we&quot;,
             &quot;our&quot;, or &quot;us&quot;). This Privacy Policy explains
             how we collect, use, disclose, and protect your information when
             you:
           </p>
-          <ul className="mt-4 space-y-2 text-[15px] text-[#5E5450] sm:text-[16px] md:text-[18px]">
+          <ul className="mt-4 space-y-2 text-[18px] text-[#5E5450]">
             <li className="flex gap-2">
               <span className="font-semibold text-orange">•</span>
               <span>
