@@ -81,6 +81,23 @@ function LegalColumn() {
   );
 }
 
+function HelpColumn() {
+  return (
+    <div>
+      <h2 className="text-[#91776C] font-bold text-[18px]">Help</h2>
+      <div className="mt-[10px] flex flex-col gap-[5px]">
+        <Link href="/faq" className={footerLinkClass}>
+          FAQs
+        </Link>
+        <Link href="/contact" className={footerLinkClass}>
+          Contact
+        </Link>
+        <p className={footerLinkClass}>App Support</p>
+      </div>
+    </div>
+  );
+}
+
 export default function Footer() {
   return (
     <>
@@ -132,7 +149,7 @@ export default function Footer() {
               links={["About Us", "Our Team", "Careers"]}
             />
 
-            <LinkItem title="Help" links={["FAQs", "Contact", "App Support"]} />
+            <HelpColumn />
 
             <LegalColumn />
 
@@ -195,7 +212,7 @@ export default function Footer() {
               links={["About Us", "Our Team", "Careers"]}
             />
 
-            <LinkItem title="Help" links={["FAQs", "Contact", "App Support"]} />
+            <HelpColumn />
 
             <LegalColumn />
           </div>
