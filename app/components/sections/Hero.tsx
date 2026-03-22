@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Calendar } from "lucide-react";
 import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
 import Container from "../layout/Container";
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import DownloadAppModal from "../ui/modals/DownloadAppModal";
+import ChevronRightIcon from "../icons/ChevronRightIcon";
+import { scrollToSection } from "@/app/utils/scrollToSection";
 
 function FadedImage({ src, alt }: { src: string; alt: string }) {
   return (
@@ -53,22 +54,13 @@ export default function Hero() {
             Get Started
           </OrangeGradientButton>
 
-          <button className="group relative select-none bg-[#faf8f8] border border-[hsl(0,0%,86%)] text-[#6E6E6E] px-[24px] sm:px-[30px] py-[12px] sm:py-[15px] rounded-[26px] font-medium cursor-pointer hover:bg-[#f2f2f2] hover:shadow-[0_4px_15px_rgba(0,0,0,0.1)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 w-full sm:w-auto text-sm sm:text-base overflow-hidden">
+          <button
+            className="group relative select-none bg-[#faf8f8] border border-[hsl(0,0%,86%)] text-[#6E6E6E] px-[24px] sm:px-[30px] py-[12px] sm:py-[15px] rounded-[26px] font-medium cursor-pointer hover:bg-[#f2f2f2] hover:shadow-[0_4px_15px_rgba(0,0,0,0.1)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 w-full sm:w-auto text-sm sm:text-base overflow-hidden"
+            onClick={() => scrollToSection("#how-it-works")}
+          >
             <span className="flex items-center justify-center gap-2">
-              <span>Learn More</span>
-              <svg
-                className="w-0 h-4 opacity-0 group-hover:w-4 group-hover:opacity-100 transition-all duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+              <span>See How It Works</span>
+              <ChevronRightIcon className="w-0 h-4 opacity-0 group-hover:w-4 group-hover:opacity-100 transition-all duration-300" />
             </span>
           </button>
         </div>

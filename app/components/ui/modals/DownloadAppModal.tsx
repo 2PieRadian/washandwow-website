@@ -18,7 +18,6 @@ export default function DownloadAppModal({
   onClose,
 }: DownloadAppModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
-  const qrRef = useRef<HTMLDivElement>(null);
   const qrContainerRef = useRef<HTMLDivElement>(null);
   const [isQrExpanded, setIsQrExpanded] = useState(false);
 
@@ -27,6 +26,7 @@ export default function DownloadAppModal({
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
+      setIsQrExpanded(false);
     }
     return () => {
       document.body.style.overflow = "";
@@ -43,6 +43,19 @@ export default function DownloadAppModal({
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isOpen, onClose]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const syncNarrowLayout = () => {
+      if (window.innerWidth < 470 && qrContainerRef.current) {
+        setIsQrExpanded(false);
+        gsap.set(qrContainerRef.current, { clearProps: "flexDirection" });
+      }
+    };
+    syncNarrowLayout();
+    window.addEventListener("resize", syncNarrowLayout);
+    return () => window.removeEventListener("resize", syncNarrowLayout);
+  }, [isOpen]);
+
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
       onClose();
@@ -50,29 +63,15 @@ export default function DownloadAppModal({
   };
 
   const toggleQrExpand = () => {
-    if (!qrRef.current || !qrContainerRef.current) return;
-
-    const isMobile = window.innerWidth < 640;
+    if (window.innerWidth < 470 || !qrContainerRef.current) return;
 
     if (!isQrExpanded) {
-      gsap.to(qrRef.current, {
-        width: isMobile ? 280 : 320,
-        height: isMobile ? 280 : 320,
-        duration: 0.4,
-        ease: "back.out(1.2)",
-      });
       gsap.to(qrContainerRef.current, {
         flexDirection: "column",
         duration: 0.3,
         ease: "power2.out",
       });
     } else {
-      gsap.to(qrRef.current, {
-        width: isMobile ? 140 : 160,
-        height: isMobile ? 140 : 160,
-        duration: 0.35,
-        ease: "power2.inOut",
-      });
       gsap.to(qrContainerRef.current, {
         flexDirection: "row",
         duration: 0.3,
@@ -96,7 +95,7 @@ export default function DownloadAppModal({
       {/* Modal */}
       <div
         ref={modalRef}
-        className="relative bg-gradient-to-b from-[#FFFCFA] to-[#FFF8F3] rounded-[32px] w-full max-w-[520px] max-h-[90vh] overflow-hidden shadow-[0_25px_80px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,148,49,0.1)] animate-[modalSlideUp_0.4s_ease-out]"
+        className="relative bg-gradient-to-b from-[#FFFCFA] to-[#FFF8F3] rounded-[32px] w-full max-w-[600px] max-h-[90vh] overflow-hidden shadow-[0_25px_80px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,148,49,0.1)] animate-[modalSlideUp_0.4s_ease-out]"
       >
         {/* Close button */}
         <button
@@ -129,24 +128,36 @@ export default function DownloadAppModal({
 
           {/* QR Code Section */}
           <div className="bg-white rounded-[20px] p-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.04),inset_0_0_0_1px_rgba(0,0,0,0.04)] mb-[24px] overflow-hidden">
-            <div ref={qrContainerRef} className="flex items-center gap-[20px]">
+            <div
+              ref={qrContainerRef}
+              className="flex flex-col min-[470px]:flex-row items-center gap-[20px] min-w-0"
+            >
               {/* QR Code */}
-              <div className="relative shrink-0">
+              <div
+                className={`relative min-w-0 max-[469px]:w-full ${
+                  isQrExpanded
+                    ? "min-[470px]:w-auto min-[470px]:shrink-0"
+                    : "min-[470px]:shrink-0"
+                }`}
+              >
                 <div
-                  ref={qrRef}
-                  className="bg-white rounded-[12px] p-[12px] shadow-[0_2px_12px_rgba(0,0,0,0.08)] cursor-pointer w-[140px] h-[140px] sm:w-[160px] sm:h-[160px] flex items-center justify-center"
+                  className={`bg-white rounded-[12px] p-[12px] shadow-[0_2px_12px_rgba(0,0,0,0.08)] flex items-center justify-center transition-all duration-500 ease-out max-[469px]:w-full max-[469px]:aspect-square max-[469px]:max-w-full max-[469px]:cursor-default min-[470px]:cursor-pointer ${
+                    isQrExpanded
+                      ? "min-[470px]:w-[280px] min-[470px]:h-[280px] min-[470px]:max-w-[280px]"
+                      : "min-[470px]:w-[140px] min-[470px]:h-[140px] min-[470px]:sm:w-[160px] min-[470px]:sm:h-[160px]"
+                  }`}
                   onClick={toggleQrExpand}
                 >
                   <QRCodeSVG
                     value="https://washandwow.in/download"
-                    size={isQrExpanded ? 280 : 130}
+                    size={384}
                     level="M"
                     bgColor="#ffffff"
                     fgColor="#1a1a1a"
-                    className="w-full h-full"
+                    className="max-h-full max-w-full h-full w-full object-contain"
                   />
-                  {/* Expand/Collapse icon */}
-                  <div className="absolute bottom-[12px] right-[12px] w-[28px] h-[28px] rounded-full bg-[#FF9431] flex items-center justify-center shadow-md">
+                  {/* Expand/Collapse — desktop (≥470px) only */}
+                  <div className="absolute bottom-[12px] right-[12px] hidden min-[470px]:flex w-[28px] h-[28px] rounded-full bg-[#FF9431] items-center justify-center shadow-md pointer-events-none">
                     {isQrExpanded ? (
                       <Minimize2 className="w-[14px] h-[14px] text-white" />
                     ) : (
@@ -159,14 +170,21 @@ export default function DownloadAppModal({
               </div>
 
               {/* Scan text */}
-              <div className={`flex-1 ${isQrExpanded ? "text-center" : ""}`}>
+              <div
+                className={`flex-1 text-center min-[470px]:text-left ${isQrExpanded ? "min-[470px]:text-center" : ""}`}
+              >
                 <div className="text-[#FF9431] text-[16px] md:text-[18px] font-medium mb-[4px]">
                   SCAN TO DOWNLOAD
                 </div>
                 <p className="text-[#4A4139] text-[16px] md:text-[18px] font-medium leading-snug">
-                  {isQrExpanded
-                    ? "Tap the QR code to minimize"
-                    : "Point your camera at the QR code to get the app instantly"}
+                  <span className="inline min-[470px]:hidden">
+                    Point your camera at the QR code to get the app instantly
+                  </span>
+                  <span className="hidden min-[470px]:inline">
+                    {isQrExpanded
+                      ? "Tap the QR code to minimize"
+                      : "Point your camera at the QR code to get the app instantly"}
+                  </span>
                 </p>
               </div>
             </div>
@@ -182,7 +200,7 @@ export default function DownloadAppModal({
           </div>
 
           {/* Download Buttons */}
-          <div className="flex flex-col sm:flex-row gap-[12px]">
+          <div className="flex flex-col min-[470px]:flex-row gap-[12px]">
             <AppStoreButton className="flex-1 justify-center" />
             <GooglePlayButton className="flex-1 justify-center" />
           </div>

@@ -21,9 +21,9 @@ function LeftContent() {
         phone. Available on iOS and Android.
       </p>
 
-      <div className="flex flex-row items-center justify-center min-[900px]:justify-start gap-[10px] sm:gap-[20px] mt-[20px] mb-[50px] min-[900px]:mb-0">
-        <AppStoreButton />
-        <GooglePlayButton />
+      <div className="flex flex-col min-[440px]:flex-row items-center justify-center min-[900px]:justify-start gap-[10px] sm:gap-[20px] mt-[20px] mb-[50px] min-[900px]:mb-0">
+        <AppStoreButton className="w-full min-[440px]:w-auto" />
+        <GooglePlayButton className="w-full min-[440px]:w-auto" />
       </div>
     </div>
   );

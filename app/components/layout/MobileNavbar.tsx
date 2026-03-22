@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
 import { Download, Menu, X, ChevronDown } from "lucide-react";
+import { scrollToSection as scrollToSectionUtil } from "@/app/utils/scrollToSection";
 
 export default function MobileNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,20 +43,7 @@ export default function MobileNavbar() {
   }, [isMenuOpen]);
 
   const scrollToSection = (href: string) => {
-    if (href === "#home") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      const element = document.querySelector(href);
-      if (element) {
-        const navbarHeight = 70;
-        const elementPosition =
-          element.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: elementPosition - navbarHeight,
-          behavior: "smooth",
-        });
-      }
-    }
+    scrollToSectionUtil(href);
     setIsMenuOpen(false);
   };
 

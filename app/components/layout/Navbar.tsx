@@ -5,6 +5,7 @@ import { WixMadeForDisplayFont } from "@/app/fonts";
 import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
 import { Download } from "lucide-react";
 import Container from "./Container";
+import { scrollToSection } from "@/app/utils/scrollToSection";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,23 +25,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const scrollToSection = (href: string) => {
-    if (href === "#home") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      const element = document.querySelector(href);
-      if (element) {
-        const navbarHeight = 70;
-        const elementPosition =
-          element.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: elementPosition - navbarHeight,
-          behavior: "smooth",
-        });
-      }
-    }
-  };
 
   return (
     <nav
