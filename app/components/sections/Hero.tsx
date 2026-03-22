@@ -1,12 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
 import Container from "../layout/Container";
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import DownloadAppModal from "../ui/modals/DownloadAppModal";
 import ChevronRightIcon from "../icons/ChevronRightIcon";
 import { scrollToSection } from "@/app/utils/scrollToSection";
+import {
+  gsap,
+  prefersReducedMotion,
+  getResponsiveConfig,
+  ANIMATION_CONFIG,
+} from "@/app/lib/animations";
 
 function FadedImage({ src, alt }: { src: string; alt: string }) {
   return (
@@ -22,31 +28,82 @@ function FadedImage({ src, alt }: { src: string; alt: string }) {
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    if (hasAnimated.current || prefersReducedMotion()) return;
+    hasAnimated.current = true;
+
+    const ctx = gsap.context(() => {
+      const config = getResponsiveConfig();
+      const tl = gsap.timeline({
+        defaults: { ease: ANIMATION_CONFIG.ease.default },
+      });
+
+      tl.fromTo(
+        ".hero-headline-1",
+        { opacity: 0, y: config.distance.medium },
+        { opacity: 1, y: 0, duration: config.duration.normal },
+      )
+        .fromTo(
+          ".hero-headline-2",
+          { opacity: 0, y: config.distance.medium },
+          { opacity: 1, y: 0, duration: config.duration.normal },
+          "-=0.6",
+        )
+        .fromTo(
+          ".hero-subtitle",
+          { opacity: 0, y: config.distance.small },
+          { opacity: 1, y: 0, duration: config.duration.fast },
+          "-=0.5",
+        )
+        .fromTo(
+          ".hero-buttons",
+          { opacity: 0, y: config.distance.small },
+          { opacity: 1, y: 0, duration: config.duration.fast },
+          "-=0.4",
+        )
+        .fromTo(
+          ".hero-image",
+          { opacity: 0, scale: 1.03 },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: config.duration.slow,
+            ease: ANIMATION_CONFIG.ease.smooth,
+          },
+          "-=0.5",
+        );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section id="home">
+    <section id="home" ref={sectionRef}>
       <Container isMaxWidth={true} className="mt-20 px-[20px]">
-        <div className="text-center ">
+        <div className="text-center">
           <div
-            className={`font-bold text-dark-brown`}
+            className="font-bold text-dark-brown"
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
           >
-            <h1 className="flex flex-col `text-[clamp(2.441rem,4vw,7rem)] leading-[45px] sm:leading-[50px] md:leading-[56px] lg:leading-[65px] xl:leading-[70px]">
-              <span className="text-[clamp(2.441rem,6vw,4rem)]">
+            <h1 className="flex flex-col text-[clamp(2.441rem,4vw,7rem)] leading-[45px] sm:leading-[50px] md:leading-[56px] lg:leading-[65px] xl:leading-[70px]">
+              <span className="hero-headline-1 gsap-animate text-[clamp(2.441rem,6vw,4rem)] opacity-0">
                 Fresh and Easy
               </span>
-              <span className="text-[clamp(2.441rem,6vw,4rem)]">
+              <span className="hero-headline-2 gsap-animate text-[clamp(2.441rem,6vw,4rem)] opacity-0">
                 Laundry Service
               </span>
             </h1>
           </div>
-          <p className="text-brown text-[clamp(1rem,0.8rem+1vw,1.25rem)] mt-[20px] ">
+          <p className="hero-subtitle gsap-animate text-brown text-[clamp(1rem,0.8rem+1vw,1.25rem)] mt-[20px] opacity-0">
             Fast, reliable, and affordable laundry <br /> service at your
             fingertips.
           </p>
         </div>
 
-        <div className="relative z-10 flex flex-col sm:flex-row gap-[15px] mt-[30px] sm:mt-[40px] justify-center items-center px-[20px] sm:px-0">
+        <div className="hero-buttons gsap-animate relative z-10 flex flex-col sm:flex-row gap-[15px] mt-[30px] sm:mt-[40px] justify-center items-center px-[20px] sm:px-0 opacity-0">
           <OrangeGradientButton
             className="flex items-center justify-center gap-[8px] sm:gap-[10px] px-[24px] sm:px-[30px] py-[12px] sm:py-[15px] rounded-[26px] w-full sm:w-auto text-sm sm:text-base"
             onClick={() => setIsModalOpen(true)}
@@ -65,7 +122,7 @@ export default function Hero() {
           </button>
         </div>
 
-        <div className="relative z-0 mt-[10px]">
+        <div className="hero-image gsap-animate relative z-0 mt-[10px] opacity-0">
           <FadedImage src="/images/hero/bg.png" alt="Hero Image" />
         </div>
       </Container>

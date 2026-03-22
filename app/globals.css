@@ -311,3 +311,35 @@ img {
     animation: none !important;
   }
 }
+
+/* GSAP scroll animation utilities */
+.gsap-animate {
+  will-change: transform, opacity;
+}
+
+.gsap-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.gsap-scale-in {
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+.gsap-fade {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gsap-fade-up,
+  .gsap-scale-in,
+  .gsap-fade {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .gsap-animate {
+    will-change: auto;
+  }
+}

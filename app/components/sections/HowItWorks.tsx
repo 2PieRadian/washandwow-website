@@ -1,5 +1,15 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import Container from "../layout/Container";
+import {
+  gsap,
+  ScrollTrigger,
+  prefersReducedMotion,
+  getResponsiveConfig,
+  ANIMATION_CONFIG,
+} from "@/app/lib/animations";
 
 function Step({
   title,
@@ -43,16 +53,77 @@ function Step({
 }
 
 export default function HowItWorks() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+
+    const ctx = gsap.context(() => {
+      const config = getResponsiveConfig();
+
+      gsap.fromTo(
+        ".hiw-header",
+        { opacity: 0, y: config.distance.medium },
+        {
+          opacity: 1,
+          y: 0,
+          duration: config.duration.normal,
+          ease: ANIMATION_CONFIG.ease.default,
+          scrollTrigger: {
+            trigger: ".hiw-header",
+            start: "top 85%",
+            once: true,
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".hiw-image",
+        { opacity: 0, scale: 1.05 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: config.duration.slow,
+          ease: ANIMATION_CONFIG.ease.smooth,
+          scrollTrigger: {
+            trigger: ".hiw-image",
+            start: "top 80%",
+            once: true,
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".hiw-step",
+        { opacity: 0, y: config.distance.large },
+        {
+          opacity: 1,
+          y: 0,
+          duration: config.duration.normal,
+          stagger: config.stagger.relaxed,
+          ease: ANIMATION_CONFIG.ease.default,
+          scrollTrigger: {
+            trigger: ".hiw-steps",
+            start: "top 85%",
+            once: true,
+          },
+        },
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="how-it-works">
+    <section id="how-it-works" ref={sectionRef}>
       <Container
         className="bg-gradient-to-b from-[#FFFBF6] to-[#E6DACD] py-[90px] sm:py-[70px] md:py-[100px] px-[20px]"
         isMaxWidth={false}
       >
-        <div className="text-center flex flex-col gap-[5px]">
+        <div className="hiw-header gsap-animate text-center flex flex-col gap-[5px] opacity-0">
           <p className="text-lg sm:text-xl">Simple Steps</p>
           <h1
-            className={`text-2xl sm:text-3xl font-semibold`}
+            className="text-2xl sm:text-3xl font-semibold"
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
           >
             How It Works
@@ -66,7 +137,7 @@ export default function HowItWorks() {
           isMaxWidth={true}
           className="mt-[40px] sm:mt-[50px] md:mt-[60px] flex flex-col-reverse md:flex-row items-center gap-[40px] md:gap-[60px] lg:gap-[100px] justify-center"
         >
-          <div className="group hidden md:block">
+          <div className="hiw-image gsap-animate group hidden md:block opacity-0">
             <img
               src="/images/how-it-works/washing-machine.png"
               alt="How It Works"
@@ -74,42 +145,50 @@ export default function HowItWorks() {
             />
           </div>
 
-          <div className="flex flex-col gap-[10px] sm:gap-[15px] max-w-[500px] w-full">
-            <Step
-              title="Choose Your Service"
-              description="Browse laundry options easily on our mobile app."
-              gradientFrom="#FFAB5C"
-              gradientTo="#FF7700"
-              shadowColor="rgba(255,119,0,0.35)"
-              stepNumber={1}
-            />
+          <div className="hiw-steps flex flex-col gap-[10px] sm:gap-[15px] max-w-[500px] w-full">
+            <div className="hiw-step gsap-animate opacity-0">
+              <Step
+                title="Choose Your Service"
+                description="Browse laundry options easily on our mobile app."
+                gradientFrom="#FFAB5C"
+                gradientTo="#FF7700"
+                shadowColor="rgba(255,119,0,0.35)"
+                stepNumber={1}
+              />
+            </div>
 
-            <Step
-              title="Schedule Pickup"
-              description="Select a convenient time directly from the app."
-              gradientFrom="#D4B8AD"
-              gradientTo="#A68B7B"
-              shadowColor="rgba(166,139,123,0.35)"
-              stepNumber={2}
-            />
+            <div className="hiw-step gsap-animate opacity-0">
+              <Step
+                title="Schedule Pickup"
+                description="Select a convenient time directly from the app."
+                gradientFrom="#D4B8AD"
+                gradientTo="#A68B7B"
+                shadowColor="rgba(166,139,123,0.35)"
+                stepNumber={2}
+              />
+            </div>
 
-            <Step
-              title="We Pick, Clean & Deliver"
-              description="Sit back while we handle everything."
-              gradientFrom="#FFAB5C"
-              gradientTo="#FF7700"
-              shadowColor="rgba(255,119,0,0.35)"
-              stepNumber={3}
-            />
+            <div className="hiw-step gsap-animate opacity-0">
+              <Step
+                title="We Pick, Clean & Deliver"
+                description="Sit back while we handle everything."
+                gradientFrom="#FFAB5C"
+                gradientTo="#FF7700"
+                shadowColor="rgba(255,119,0,0.35)"
+                stepNumber={3}
+              />
+            </div>
 
-            <Step
-              title="Track & Relax 😌"
-              description="Get real-time updates in the app."
-              gradientFrom="#D4B8AD"
-              gradientTo="#A68B7B"
-              shadowColor="rgba(166,139,123,0.35)"
-              stepNumber={4}
-            />
+            <div className="hiw-step gsap-animate opacity-0">
+              <Step
+                title="Track & Relax 😌"
+                description="Get real-time updates in the app."
+                gradientFrom="#D4B8AD"
+                gradientTo="#A68B7B"
+                shadowColor="rgba(166,139,123,0.35)"
+                stepNumber={4}
+              />
+            </div>
           </div>
         </Container>
       </Container>
