@@ -1,4 +1,5 @@
 import { WixMadeForDisplayFont } from "@/app/fonts";
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/app/lib/store-links";
 import { Mail, MapPin, Phone } from "lucide-react";
 import AppleIcon from "../icons/AppleIcon";
 import GooglePlayIcon from "../icons/GooglePlayIcon";
@@ -19,27 +20,37 @@ function ContactItem({ icon, text }: { icon: React.ReactNode; text: string }) {
 
 function AppleDownloadButton() {
   return (
-    <div className="group flex items-center justify-center gap-[10px] px-[15px] py-[8px] rounded-[10px] bg-brown-footer-download-apple-bg text-white w-fit shadow-lg cursor-pointer hover:scale-[1.05] hover:shadow-xl active:scale-[0.98] transition-all duration-300">
-      <AppleIcon className="w-[40px] group-hover:scale-110 transition-transform duration-300" />
+    <a
+      href={APP_STORE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex w-fit items-center justify-center gap-[10px] rounded-[10px] bg-brown-footer-download-apple-bg px-[15px] py-[8px] text-white shadow-lg transition-all duration-300 hover:scale-[1.05] hover:shadow-xl active:scale-[0.98]"
+    >
+      <AppleIcon className="w-[40px] transition-transform duration-300 group-hover:scale-110" />
 
       <div className="whitespace-nowrap">
         <p className="text-xs">Download on the</p>
         <p className="font-bold">App Store</p>
       </div>
-    </div>
+    </a>
   );
 }
 
 function GoogleDownloadButton() {
   return (
-    <div className="group flex items-center justify-center gap-[10px] bg-brown-footer-download-google-bg shadow-lg text-white px-[15px] py-[8px] rounded-[10px] w-fit cursor-pointer hover:scale-[1.05] hover:shadow-xl active:scale-[0.98] transition-all duration-300">
-      <GooglePlayIcon className="w-[40px] group-hover:scale-110 transition-transform duration-300" />
+    <a
+      href={GOOGLE_PLAY_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex w-fit items-center justify-center gap-[10px] rounded-[10px] bg-brown-footer-download-google-bg px-[15px] py-[8px] text-white shadow-lg transition-all duration-300 hover:scale-[1.05] hover:shadow-xl active:scale-[0.98]"
+    >
+      <GooglePlayIcon className="w-[40px] transition-transform duration-300 group-hover:scale-110" />
 
       <div className="whitespace-nowrap">
         <p className="text-[#746159] text-xs">Get it on</p>
-        <p className="text-[#91776C] font-bold">Google Play</p>
+        <p className="font-bold text-[#91776C]">Google Play</p>
       </div>
-    </div>
+    </a>
   );
 }
 
@@ -92,7 +103,6 @@ function HelpColumn() {
         <Link href="/contact" className={footerLinkClass}>
           Contact
         </Link>
-        <p className={footerLinkClass}>App Support</p>
       </div>
     </div>
   );
@@ -139,15 +149,7 @@ export default function Footer() {
 
           {/* Right Content */}
           <div className="flex flex-wrap gap-[40px] lg:gap-[60px] text-left">
-            <LinkItem
-              title="Services"
-              links={["Laundry", "Dry Cleaning", "Steam Press"]}
-            />
-
-            <LinkItem
-              title="Company"
-              links={["About Us", "Our Team", "Careers"]}
-            />
+            <LinkItem title="Company" links={["About Us", "Our Team"]} />
 
             <HelpColumn />
 
@@ -200,17 +202,9 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Row 2: Services, Company, Help, Legal */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-[12px] gap-y-[28px] sm:gap-[20px] text-left">
-            <LinkItem
-              title="Services"
-              links={["Laundry", "Dry Cleaning", "Steam Press"]}
-            />
-
-            <LinkItem
-              title="Company"
-              links={["About Us", "Our Team", "Careers"]}
-            />
+          {/* Row 2: Company, Help, Legal */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-[12px] gap-y-[28px] sm:gap-[20px] text-left">
+            <LinkItem title="Company" links={["About Us", "Our Team"]} />
 
             <HelpColumn />
 

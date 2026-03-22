@@ -112,7 +112,7 @@ export default function page() {
       </Container>
 
       <Container isMaxWidth={true} className="px-[20px] pb-16 md:pb-24">
-        <div className="mx-auto max-w-5xl space-y-10">
+        <div className="mx-auto max-w-7xl space-y-10">
           <FaqCategory emoji="🧺" title="General Questions">
             <FaqItem n={1} question="What is Wash & Wow?">
               <p>

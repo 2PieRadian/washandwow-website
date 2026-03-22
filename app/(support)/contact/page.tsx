@@ -12,6 +12,10 @@ const BUSINESS_EMAIL = "support@washandwow.in";
 const BUSINESS_ADDRESS = "123, Location Here";
 const SUPPORT_HOURS = "9:00 AM – 8:00 PM, All Days";
 
+/** Swap for your store: Google Maps → Share → Embed a map → copy `src` */
+const GOOGLE_MAPS_EMBED_URL =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.991297957006!2d77.2295097!3d28.6129123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce2bc20625eb5%3A0x216347e08a5657de!2sIndia%20Gate!5e0!3m2!1sen!2sin!4v1708646400000!5m2!1sen!2sin";
+
 export const metadata: Metadata = {
   title: "Contact Us | Wash & Wow",
   description:
@@ -21,16 +25,18 @@ export const metadata: Metadata = {
 function Section({
   emoji,
   title,
+  subtitle,
   children,
 }: {
   emoji: string;
   title: string;
+  subtitle?: string;
   children: React.ReactNode;
 }) {
   return (
     <section className="scroll-mt-28 border-t border-[#E8DFD6] pt-10 first:border-0 first:pt-0">
       <h2
-        className="mb-5 flex flex-wrap items-center gap-2 text-xl font-semibold text-[#33302E] sm:text-2xl"
+        className={`flex flex-wrap items-center gap-2 text-xl font-semibold text-[#33302E] sm:text-2xl ${subtitle ? "mb-2" : "mb-5"}`}
         style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
       >
         <span aria-hidden className="select-none">
@@ -38,6 +44,11 @@ function Section({
         </span>
         {title}
       </h2>
+      {subtitle ? (
+        <p className="mb-5 max-w-3xl text-[17px] leading-relaxed text-[#91776C] sm:text-[18px]">
+          {subtitle}
+        </p>
+      ) : null}
       <div className="space-y-4 text-[18px] leading-relaxed text-[#5E5450]">
         {children}
       </div>
@@ -159,6 +170,23 @@ export default function page() {
                 aria-hidden
               />
               <p className="text-[18px] text-[#5E5450]">{BUSINESS_ADDRESS}</p>
+            </div>
+          </Section>
+
+          <Section
+            emoji="🗺️"
+            title="Locate Us"
+            subtitle="Visit our store or schedule a pickup from your location"
+          >
+            <div className="overflow-hidden rounded-2xl border border-[#E8DFD6] bg-[#F7F4F1] shadow-sm">
+              <iframe
+                title="Wash & Wow location on Google Maps"
+                src={GOOGLE_MAPS_EMBED_URL}
+                className="aspect-[16/10] min-h-[260px] w-full border-0 sm:min-h-[340px] md:min-h-[400px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
             </div>
           </Section>
 
