@@ -80,7 +80,7 @@ function Phone() {
           }, 3000);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     observer.observe(phoneRef.current);
@@ -144,29 +144,45 @@ function Phone() {
     };
   }, [permissionGranted]);
 
-  // Mouse tracking for desktop - tracks across viewport
+  // Mouse tracking for desktop - only within the phone container
   useEffect(() => {
+    const phoneElement = phoneRef.current;
+    if (!phoneElement) return;
+
+    const isTouchDevice = "ontouchstart" in window;
+    if (isTouchDevice) return;
+
     const handleMouseMove = (e: MouseEvent) => {
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      const x = ((e.clientY - centerY) / centerY) * 30;
-      const y = ((e.clientX - centerX) / centerX) * 30;
-      setRotation({ x, y });
+      const rect = phoneElement.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const x = ((e.clientY - centerY) / (rect.height / 2)) * 20;
+      const y = ((e.clientX - centerX) / (rect.width / 2)) * 20;
+      setRotation({
+        x: Math.max(-25, Math.min(25, x)),
+        y: Math.max(-25, Math.min(25, y)),
+      });
     };
 
-    // Only add mouse tracking on desktop (non-touch devices)
-    const isTouchDevice = "ontouchstart" in window;
-    if (!isTouchDevice) {
-      window.addEventListener("mousemove", handleMouseMove);
-    }
+    const handleMouseLeave = () => {
+      setRotation({ x: 0, y: 0 });
+    };
+
+    phoneElement.addEventListener("mousemove", handleMouseMove);
+    phoneElement.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      phoneElement.removeEventListener("mousemove", handleMouseMove);
+      phoneElement.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
   return (
-    <div ref={phoneRef} className="group relative" style={{ perspective: "1000px" }}>
+    <div
+      ref={phoneRef}
+      className="group relative"
+      style={{ perspective: "1000px" }}
+    >
       {/* Outer div - handles tilt rotation */}
       <div
         className="transition-transform duration-150 ease-out"
