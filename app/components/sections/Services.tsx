@@ -140,16 +140,16 @@ export default function Services() {
       serviceCards.forEach((card) => {
         gsap.fromTo(
           card,
-          { opacity: 0, y: config.distance.medium, scale: 1.08 },
+          { opacity: 0, y: 100, scale: 1.5 },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: config.duration.normal * 1.3,
+            duration: config.duration.normal * 1.2,
             ease: ANIMATION_CONFIG.ease.smooth,
             scrollTrigger: {
               trigger: card,
-              start: "top 78%",
+              start: "top 50%",
               once: true,
             },
           },

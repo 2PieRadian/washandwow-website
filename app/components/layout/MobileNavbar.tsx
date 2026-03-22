@@ -198,7 +198,7 @@ export default function MobileNavbar() {
                     href={link.href}
                     scroll={false}
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-left text-[14px] text-gray-600 transition-colors duration-200 hover:text-gray-900 active:text-orange"
+                    className="text-left text-[16px] text-gray-600 transition-colors duration-200 hover:text-gray-900 active:text-orange"
                   >
                     {link.name}
                   </Link>
@@ -216,7 +216,7 @@ export default function MobileNavbar() {
                     href={link.href}
                     scroll={false}
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-left text-[14px] text-gray-600 transition-colors duration-200 hover:text-gray-900 active:text-orange"
+                    className="text-left text-[16px] text-gray-600 transition-colors duration-200 hover:text-gray-900 active:text-orange"
                   >
                     {link.name}
                   </Link>
