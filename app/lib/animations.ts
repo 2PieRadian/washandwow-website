@@ -47,14 +47,14 @@ export function getResponsiveConfig() {
       large: mobile ? 25 : ANIMATION_CONFIG.distance.large,
     },
     duration: {
-      fast: mobile ? 0.8 : ANIMATION_CONFIG.duration.fast,
-      normal: mobile ? 1.0 : ANIMATION_CONFIG.duration.normal,
-      slow: mobile ? 1.4 : ANIMATION_CONFIG.duration.slow,
+      fast: ANIMATION_CONFIG.duration.fast,
+      normal: ANIMATION_CONFIG.duration.normal,
+      slow: ANIMATION_CONFIG.duration.slow,
     },
     stagger: {
-      tight: mobile ? 0.12 : ANIMATION_CONFIG.stagger.tight,
-      normal: mobile ? 0.18 : ANIMATION_CONFIG.stagger.normal,
-      relaxed: mobile ? 0.25 : ANIMATION_CONFIG.stagger.relaxed,
+      tight: ANIMATION_CONFIG.stagger.tight,
+      normal: ANIMATION_CONFIG.stagger.normal,
+      relaxed: ANIMATION_CONFIG.stagger.relaxed,
     },
   };
 }
