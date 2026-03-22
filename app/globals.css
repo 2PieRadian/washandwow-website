@@ -99,3 +99,14 @@ body {
     transform: translateY(-12px) rotate(-1deg);
   }
 }
+
+/* Tilt animation for rotate phone hint */
+@keyframes tilt {
+  0%,
+  100% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+}

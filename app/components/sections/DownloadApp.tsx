@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import AppleIcon from "../icons/AppleIcon";
 import GooglePlayIcon from "../icons/GooglePlayIcon";
@@ -61,6 +61,32 @@ function LeftContent() {
 function Phone() {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [permissionGranted, setPermissionGranted] = useState(false);
+  const [showHint, setShowHint] = useState(false);
+  const [hasShownHint, setHasShownHint] = useState(false);
+  const phoneRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!phoneRef.current || hasShownHint) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting && !hasShownHint) {
+          setShowHint(true);
+          setHasShownHint(true);
+
+          setTimeout(() => {
+            setShowHint(false);
+          }, 3000);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(phoneRef.current);
+
+    return () => observer.disconnect();
+  }, [hasShownHint]);
 
   useEffect(() => {
     const handleOrientation = (event: DeviceOrientationEvent) => {
@@ -140,7 +166,7 @@ function Phone() {
   }, []);
 
   return (
-    <div className="group relative" style={{ perspective: "1000px" }}>
+    <div ref={phoneRef} className="group relative" style={{ perspective: "1000px" }}>
       {/* Outer div - handles tilt rotation */}
       <div
         className="transition-transform duration-150 ease-out"
@@ -243,6 +269,36 @@ function Phone() {
 
               {/* Animated shine sweep */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-[2000ms] pointer-events-none"></div>
+
+              {/* Rotate Phone Hint Overlay */}
+              <div
+                className={`absolute inset-0 bg-black/70 backdrop-blur-sm rounded-[42px] flex flex-col items-center justify-center z-30 pointer-events-none transition-opacity duration-700 ${
+                  showHint ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <div className="animate-[tilt_1.5s_ease-in-out_infinite]">
+                  <svg
+                    width="60"
+                    height="60"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="opacity-90"
+                  >
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                    <line x1="12" y1="18" x2="12" y2="18" />
+                  </svg>
+                </div>
+                <p className="text-white/90 text-[13px] font-medium mt-[12px] text-center px-[20px]">
+                  Tilt your phone
+                </p>
+                <p className="text-white/60 text-[10px] mt-[4px]">
+                  to see the magic
+                </p>
+              </div>
             </div>
 
             {/* Frame shine */}

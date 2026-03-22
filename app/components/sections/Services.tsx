@@ -1,6 +1,7 @@
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import Container from "../layout/Container";
 import ServicesSvg from "../svg/ServicesSvg";
+import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
 
 interface ServiceItemProps {
   image: React.ReactNode;
@@ -106,7 +107,7 @@ export default function Services() {
           />
         </div>
 
-        <div className="text-center md:text-right self-center md:self-start flex flex-col justify-center max-w-[500px] md:max-w-[400px] order-1 md:order-2">
+        <div className="text-center md:text-right self-center md:self-start flex flex-col justify-center max-w-[500px] md:max-w-[450px] order-1 md:order-2">
           <span
             className="text-orange-services font-medium"
             style={{ fontSize: "clamp(1rem, 0.5rem + 2vw, 1.563rem)" }}
@@ -132,7 +133,8 @@ export default function Services() {
         </div>
       </Container>
 
-      <div className="flex flex-col gap-[25px] sm:gap-[35px] md:gap-[50px] max-w-[1000px] mx-auto mt-[60px] sm:mt-[80px] md:mt-[120px]">
+      {/* Service Items */}
+      <div className="flex flex-col gap-[25px] sm:gap-[35px] md:gap-[50px] max-w-[1000px] mx-auto mt-[60px] sm:mt-[80px] md:mt-[80px]">
         <ServiceItem
           image={
             <img
@@ -180,6 +182,26 @@ export default function Services() {
           buttonText="Get it Pressed"
           noScale={true}
         />
+      </div>
+
+      {/* Browse All Services Button */}
+      <div className="flex justify-center mt-[40px] sm:mt-[50px] md:mt-[60px]">
+        <OrangeGradientButton className="group rounded-full px-[28px] sm:px-[36px] py-[14px] sm:py-[16px] text-[15px] sm:text-base font-semibold flex items-center gap-[10px]">
+          Browse All Services
+          <svg
+            className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </OrangeGradientButton>
       </div>
     </section>
   );
