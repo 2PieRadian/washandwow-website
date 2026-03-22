@@ -130,6 +130,17 @@ export default function MobileNavbar() {
               </li>
             ))}
           </ul>
+
+          {/* Download App Button - right after navlinks */}
+          <div className="mt-[20px]">
+            <OrangeGradientButton
+              className="rounded-[10px] px-5 py-[14px] flex justify-center items-center gap-[8px] w-full text-[16px] font-semibold active:scale-[0.98] transition-all duration-200"
+              onClick={() => scrollToSection("#download-app")}
+            >
+              <Download size={20} />
+              Download App
+            </OrangeGradientButton>
+          </div>
         </div>
 
         {/* Footer Links */}
@@ -159,22 +170,13 @@ export default function MobileNavbar() {
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col gap-[12px]">
-            <OrangeGradientButton
-              className="rounded-[10px] px-5 py-[14px] flex justify-center items-center gap-[8px] w-full text-[16px] font-semibold active:scale-[0.98] transition-all duration-200"
-              onClick={() => scrollToSection("#download-app")}
-            >
-              <Download size={20} />
-              Download App
-            </OrangeGradientButton>
-            <button
-              className="w-full py-[14px] text-[16px] font-semibold select-none text-gray-700 border border-gray-200 rounded-[10px] active:scale-[0.98] active:bg-gray-50 transition-all duration-200"
-              onClick={() => scrollToSection("#contact")}
-            >
-              Contact Us
-            </button>
-          </div>
+          {/* Contact Us Button */}
+          <button
+            className="w-full py-[14px] text-[16px] font-semibold select-none text-gray-700 border border-gray-200 rounded-[10px] active:scale-[0.98] active:bg-gray-50 transition-all duration-200"
+            onClick={() => scrollToSection("#contact")}
+          >
+            Contact Us
+          </button>
         </div>
       </div>
     </nav>
