@@ -5,16 +5,36 @@ import AppleIcon from "../icons/AppleIcon";
 import GooglePlayIcon from "../icons/GooglePlayIcon";
 import Link from "next/link";
 
-function ContactItem({ icon, text }: { icon: React.ReactNode; text: string }) {
+const FOOTER_PHONE_DISPLAY = "9318387705";
+const FOOTER_PHONE_TEL = "tel:+919318387705";
+const FOOTER_EMAIL = "support@washandwow.in";
+const FOOTER_EMAIL_MAILTO = `mailto:${FOOTER_EMAIL}`;
+const FOOTER_ADDRESS = "123, Location Here";
+const FOOTER_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(FOOTER_ADDRESS)}`;
+
+function ContactItem({
+  icon,
+  text,
+  href,
+}: {
+  icon: React.ReactNode;
+  text: string;
+  href: string;
+}) {
+  const external = href.startsWith("http");
   return (
-    <div className="group flex items-center gap-[10px] text-brown-footer-contact-icon cursor-pointer hover:text-orange transition-colors duration-300">
-      <span className="group-hover:scale-110 transition-transform duration-300">
+    <a
+      href={href}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className="group flex items-center gap-[10px] text-brown-footer-contact-icon transition-colors duration-300 hover:text-orange"
+    >
+      <span className="transition-transform duration-300 group-hover:scale-110">
         {icon}
       </span>
-      <p className="text-[16px] text-brown-footer-contact-text group-hover:text-[#584E46] transition-colors duration-300">
+      <span className="text-[16px] text-brown-footer-contact-text transition-colors duration-300 group-hover:text-[#584E46]">
         {text}
-      </p>
-    </div>
+      </span>
+    </a>
   );
 }
 
@@ -141,9 +161,21 @@ export default function Footer() {
 
             {/* Contact Items */}
             <div className="mt-[30px] flex flex-col gap-[10px] items-start">
-              <ContactItem icon={<Phone />} text="9318387705" />
-              <ContactItem icon={<Mail />} text="support@washandwow.in" />
-              <ContactItem icon={<MapPin />} text="123, Location Here" />
+              <ContactItem
+                icon={<Phone />}
+                text={FOOTER_PHONE_DISPLAY}
+                href={FOOTER_PHONE_TEL}
+              />
+              <ContactItem
+                icon={<Mail />}
+                text={FOOTER_EMAIL}
+                href={FOOTER_EMAIL_MAILTO}
+              />
+              <ContactItem
+                icon={<MapPin />}
+                text={FOOTER_ADDRESS}
+                href={FOOTER_MAPS_URL}
+              />
             </div>
           </div>
 
@@ -196,9 +228,21 @@ export default function Footer() {
 
             {/* Contact Items */}
             <div className="flex flex-col gap-[8px] items-start sm:items-end">
-              <ContactItem icon={<Phone />} text="9318387705" />
-              <ContactItem icon={<Mail />} text="support@washandwow.in" />
-              <ContactItem icon={<MapPin />} text="123, Location Here" />
+              <ContactItem
+                icon={<Phone />}
+                text={FOOTER_PHONE_DISPLAY}
+                href={FOOTER_PHONE_TEL}
+              />
+              <ContactItem
+                icon={<Mail />}
+                text={FOOTER_EMAIL}
+                href={FOOTER_EMAIL_MAILTO}
+              />
+              <ContactItem
+                icon={<MapPin />}
+                text={FOOTER_ADDRESS}
+                href={FOOTER_MAPS_URL}
+              />
             </div>
           </div>
 
