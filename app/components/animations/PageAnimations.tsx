@@ -12,7 +12,7 @@ import {
 
 interface PageHeroAnimationProps {
   children: React.ReactNode;
-  variant?: "default" | "split" | "centered";
+  variant?: "default" | "split" | "centered" | "none";
 }
 
 export function PageHeroAnimation({
@@ -26,6 +26,9 @@ export function PageHeroAnimation({
     window.scrollTo({ top: 0, behavior: "instant" });
 
     if (prefersReducedMotion()) return;
+
+    // Parent page drives animation (e.g. pricing full-column sequence)
+    if (variant === "none") return;
 
     const config = getResponsiveConfig();
 

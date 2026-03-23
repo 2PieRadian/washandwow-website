@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/sections/Footer";
 import Container from "@/app/components/layout/Container";
@@ -281,7 +281,7 @@ function TabButton({
     <button
       type="button"
       onClick={onClick}
-      className={`group relative isolate flex min-h-[48px] items-center justify-center rounded-full px-5 py-3 text-sm font-semibold sm:min-h-[52px] sm:px-6 sm:py-3.5 sm:text-base ${
+      className={`group relative isolate flex min-h-[48px] cursor-pointer items-center justify-center rounded-full px-5 py-3 text-sm font-semibold sm:min-h-[52px] sm:px-6 sm:py-3.5 sm:text-base ${
         active
           ? "bg-gradient-to-r from-[#FF7700] to-[#FFAB5C] text-white shadow-[inset_0_2px_0_rgba(255,255,255,0.35),0_7px_0_0_#B84700,0_12px_28px_rgba(255,119,0,0.42)] transition-[transform,box-shadow,filter] duration-200 ease-out will-change-transform hover:brightness-[1.03] active:translate-y-1 active:scale-[0.97] active:shadow-[inset_0_3px_8px_rgba(0,0,0,0.18),0_2px_0_0_#8F3600,0_4px_14px_rgba(255,119,0,0.3)] motion-reduce:transition-none motion-reduce:active:translate-y-0 motion-reduce:active:scale-100"
           : "border border-[#E0D5CC] bg-gradient-to-b from-white to-[#FAF7F4] text-[#5E5450] shadow-[inset_0_2px_0_rgba(255,255,255,0.95),0_7px_0_0_#C9BDB2,0_10px_24px_rgba(120,100,90,0.12)] transition-[transform,box-shadow,filter] duration-200 ease-out will-change-transform hover:-translate-y-0.5 hover:shadow-[inset_0_2px_0_rgba(255,255,255,1),0_8px_0_0_#C9BDB2,0_14px_30px_rgba(120,100,90,0.14)] active:translate-y-1.5 active:scale-[0.96] active:shadow-[inset_0_3px_6px_rgba(100,85,75,0.12),0_2px_0_0_#B0A69C,0_4px_12px_rgba(120,100,90,0.1)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:translate-y-0 motion-reduce:active:scale-100"
@@ -530,11 +530,21 @@ function AddOnCard({ service }: { service: (typeof addOnServices)[0] }) {
 
 export default function PricingPage() {
   const [activeTab, setActiveTab] = useState<PricingTab>("laundry");
+  const [hasUserSwitchedTab, setHasUserSwitchedTab] = useState(false);
+
+  const selectTab = useCallback((tab: PricingTab) => {
+    setActiveTab((prev) => {
+      if (prev === tab) return prev;
+      setHasUserSwitchedTab(true);
+      return tab;
+    });
+  }, []);
 
   return (
     <div style={{ fontFamily: SatoshiFont.style.fontFamily }}>
       <Navbar />
 
+      {/* Hero: same classes & timing as Privacy Policy (PageHeroAnimation centered) */}
       <PageHeroAnimation variant="centered">
         <div className="relative overflow-hidden">
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#FFFBF6] via-[#FDF9F5] to-white" />
@@ -543,26 +553,28 @@ export default function PricingPage() {
 
           <Container
             isMaxWidth={true}
-            className="relative mt-[70px] flex min-h-[calc(50svh-70px)] flex-col items-center justify-center px-[20px] pb-8 pt-12 text-center md:pb-12 md:pt-16"
+            className="relative mt-[70px] flex min-h-[calc(55svh-70px)] items-center justify-center px-[20px] pb-8 pt-12 md:pb-12 md:pt-16"
           >
-            <h1
-              className="page-hero-title gsap-animate text-3xl font-bold text-[#33302E] opacity-0 sm:text-4xl md:text-5xl"
-              style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-            >
-              Affordable Laundry &{" "}
-              <span className="text-orange-services">Dry Cleaning</span>
-            </h1>
+            <div className="max-w-3xl text-center">
+              <h1
+                className="page-hero-title gsap-animate text-3xl font-bold text-[#33302E] opacity-0 sm:text-4xl md:text-5xl"
+                style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
+              >
+                Affordable Laundry &{" "}
+                <span className="text-orange-services">Dry Cleaning</span>
+              </h1>
 
-            <p className="page-hero-meta gsap-animate mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-[#5E5450] opacity-0 sm:text-[18px]">
-              Transparent pricing, no hidden charges, free pickup & delivery.
-              Quality cleaning at prices that make sense.
-            </p>
+              <p className="page-hero-meta gsap-animate mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-[#5E5450] opacity-0 sm:text-[18px]">
+                Transparent pricing, no hidden charges, free pickup & delivery.
+                Quality cleaning at prices that make sense.
+              </p>
 
-            <div className="page-hero-meta gsap-animate mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-200/60 bg-gradient-to-r from-emerald-50/80 to-emerald-50/40 px-5 py-2.5 opacity-0">
-              <Truck className="h-4 w-4 text-emerald-600" />
-              <span className="text-sm font-medium text-emerald-700">
-                No Delivery Charges on Orders Above ₹299
-              </span>
+              <div className="page-hero-subtitle gsap-animate mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-emerald-200/60 bg-gradient-to-r from-emerald-50/80 to-emerald-50/40 px-5 py-2.5 opacity-0">
+                <Truck className="h-4 w-4 text-emerald-600" />
+                <span className="text-sm font-medium text-emerald-700">
+                  No Delivery Charges on Orders Above ₹299
+                </span>
+              </div>
             </div>
           </Container>
         </div>
@@ -571,159 +583,219 @@ export default function PricingPage() {
       <PageSectionsAnimation>
         <Container isMaxWidth={true} className="px-[20px] pb-16 md:pb-24">
           <div className="mx-auto max-w-6xl">
-            {/* Pricing Tabs */}
-            <div className="page-section gsap-animate mt-8 flex flex-wrap justify-center gap-3 opacity-0 mb-12 sm:mt-10 sm:mb-14 md:mt-12 md:mb-16">
+            {/* Scroll-in: same as Privacy Policy .page-section (top 80%, duration normal×1.3) */}
+            <div className="page-section gsap-animate mt-8 mb-12 flex flex-wrap justify-center gap-3 opacity-0 sm:mt-10 sm:mb-14 md:mt-12 md:mb-16">
               <TabButton
                 active={activeTab === "laundry"}
-                onClick={() => setActiveTab("laundry")}
+                onClick={() => selectTab("laundry")}
               >
                 Laundry (Per Kg)
               </TabButton>
               <TabButton
                 active={activeTab === "dryCleaning"}
-                onClick={() => setActiveTab("dryCleaning")}
+                onClick={() => selectTab("dryCleaning")}
               >
                 Dry Cleaning
               </TabButton>
               <TabButton
                 active={activeTab === "subscription"}
-                onClick={() => setActiveTab("subscription")}
+                onClick={() => selectTab("subscription")}
               >
                 Subscriptions
               </TabButton>
             </div>
 
-            {/* Laundry Section */}
-            {activeTab === "laundry" && (
-              <div className="tab-content-animate">
-                <div className="mb-8 text-center tab-header-animate">
-                  <h2
-                    className="text-2xl font-semibold text-[#33302E] sm:text-3xl"
-                    style={{
-                      fontFamily: WixMadeForDisplayFont.style.fontFamily,
-                    }}
-                  >
-                    Laundry Services
-                  </h2>
-                  <p className="mt-2 text-[#5E5450]">
-                    Simple per-kg pricing for everyday clothes
-                  </p>
-                </div>
-
-                <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                  {laundryServices.map((service, index) => (
-                    <div
-                      key={service.title}
-                      className="tab-card-animate flex h-full min-h-0"
-                      style={{ animationDelay: `${index * 100}ms` }}
+            <div className="page-section gsap-animate opacity-0">
+              <div
+                className={`mb-8 text-center sm:mb-10 ${
+                  hasUserSwitchedTab ? "tab-header-animate" : ""
+                }`}
+                key={
+                  hasUserSwitchedTab
+                    ? `pricing-tab-header-${activeTab}`
+                    : "pricing-tab-header-initial"
+                }
+              >
+                {activeTab === "laundry" && (
+                  <>
+                    <h2
+                      className="text-2xl font-semibold text-[#33302E] sm:text-3xl"
+                      style={{
+                        fontFamily: WixMadeForDisplayFont.style.fontFamily,
+                      }}
                     >
-                      <LaundryCard service={service} />
-                    </div>
-                  ))}
-                </div>
-
-                <div
-                  className="mt-8 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center tab-card-animate"
-                  style={{ animationDelay: "450ms" }}
-                >
-                  <p className="text-[15px] text-[#5E5450]">
-                    <span className="font-medium text-[#33302E]">
-                      Suitable items:
-                    </span>{" "}
-                    T-shirts, shirts, jeans, trousers, nightwear, gym wear, and
-                    casual clothing.
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {/* Dry Cleaning Section */}
-            {activeTab === "dryCleaning" && (
-              <div className="tab-content-animate">
-                <div className="mb-8 text-center sm:mb-10 tab-header-animate">
-                  <h2
-                    className="text-2xl font-semibold text-[#33302E] sm:text-3xl"
-                    style={{
-                      fontFamily: WixMadeForDisplayFont.style.fontFamily,
-                    }}
-                  >
-                    Dry Cleaning Services
-                  </h2>
-                  <p className="mt-2 text-[#5E5450]">
-                    Professional care for delicate & premium garments
-                  </p>
-                </div>
-
-                <div className="grid auto-rows-fr gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-2">
-                  {dryCleaningCategories.slice(0, 4).map((category, index) => (
-                    <div
-                      key={category.title}
-                      className="tab-card-animate flex h-full min-h-0 items-stretch"
-                      style={{ animationDelay: `${index * 100}ms` }}
+                      Laundry Services
+                    </h2>
+                    <p className="mt-2 text-[#5E5450]">
+                      Simple per-kg pricing for everyday clothes
+                    </p>
+                  </>
+                )}
+                {activeTab === "dryCleaning" && (
+                  <>
+                    <h2
+                      className="text-2xl font-semibold text-[#33302E] sm:text-3xl"
+                      style={{
+                        fontFamily: WixMadeForDisplayFont.style.fontFamily,
+                      }}
                     >
-                      <DryCleaningCategory category={category} />
-                    </div>
-                  ))}
-                </div>
-
-                {/* Home & Bedding - Full width */}
-                <div
-                  className="mt-5 flex min-h-0 sm:mt-6 tab-card-animate"
-                  style={{ animationDelay: "400ms" }}
-                >
-                  <DryCleaningCategory category={dryCleaningCategories[4]} />
-                </div>
-
-                <div
-                  className="mt-8 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center tab-card-animate"
-                  style={{ animationDelay: "500ms" }}
-                >
-                  <p className="text-[15px] text-[#5E5450]">
-                    <span className="font-medium text-[#33302E]">Note:</span>{" "}
-                    Prices may vary based on fabric type, embellishments, and
-                    garment condition.
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {/* Subscription Section */}
-            {activeTab === "subscription" && (
-              <div className="tab-content-animate">
-                <div className="mb-8 text-center tab-header-animate">
-                  <h2
-                    className="text-2xl font-semibold text-[#33302E] sm:text-3xl"
-                    style={{
-                      fontFamily: WixMadeForDisplayFont.style.fontFamily,
-                    }}
-                  >
-                    Monthly Laundry Plans
-                  </h2>
-                  <p className="mt-2 text-[#5E5450]">
-                    Save more with our subscription plans
-                  </p>
-                </div>
-
-                <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                  {subscriptionPlans.map((plan, index) => (
-                    <div
-                      key={plan.title}
-                      className="tab-card-animate flex h-full min-h-0 items-stretch"
-                      style={{ animationDelay: `${index * 100}ms` }}
+                      Dry Cleaning Services
+                    </h2>
+                    <p className="mt-2 text-[#5E5450]">
+                      Professional care for delicate & premium garments
+                    </p>
+                  </>
+                )}
+                {activeTab === "subscription" && (
+                  <>
+                    <h2
+                      className="text-2xl font-semibold text-[#33302E] sm:text-3xl"
+                      style={{
+                        fontFamily: WixMadeForDisplayFont.style.fontFamily,
+                      }}
                     >
-                      <SubscriptionCard plan={plan} />
-                    </div>
-                  ))}
-                </div>
+                      Monthly Laundry Plans
+                    </h2>
+                    <p className="mt-2 text-[#5E5450]">
+                      Save more with our subscription plans
+                    </p>
+                  </>
+                )}
               </div>
-            )}
+
+              <div
+                className={hasUserSwitchedTab ? "tab-content-animate" : ""}
+                key={hasUserSwitchedTab ? activeTab : "initial"}
+              >
+                {activeTab === "laundry" && (
+                  <>
+                    <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                      {laundryServices.map((service, index) => (
+                        <div
+                          key={service.title}
+                          className={`flex h-full min-h-0 ${
+                            hasUserSwitchedTab ? "tab-card-animate" : ""
+                          }`}
+                          style={
+                            hasUserSwitchedTab
+                              ? { animationDelay: `${index * 100}ms` }
+                              : undefined
+                          }
+                        >
+                          <LaundryCard service={service} />
+                        </div>
+                      ))}
+                    </div>
+
+                    <div
+                      className={`mt-8 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center ${
+                        hasUserSwitchedTab ? "tab-card-animate" : ""
+                      }`}
+                      style={
+                        hasUserSwitchedTab
+                          ? { animationDelay: "450ms" }
+                          : undefined
+                      }
+                    >
+                      <p className="text-[15px] text-[#5E5450]">
+                        <span className="font-medium text-[#33302E]">
+                          Suitable items:
+                        </span>{" "}
+                        T-shirts, shirts, jeans, trousers, nightwear, gym wear,
+                        and casual clothing.
+                      </p>
+                    </div>
+                  </>
+                )}
+
+                {activeTab === "dryCleaning" && (
+                  <>
+                    <div className="grid auto-rows-fr gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-2">
+                      {dryCleaningCategories
+                        .slice(0, 4)
+                        .map((category, index) => (
+                          <div
+                            key={category.title}
+                            className={`flex h-full min-h-0 items-stretch ${
+                              hasUserSwitchedTab ? "tab-card-animate" : ""
+                            }`}
+                            style={
+                              hasUserSwitchedTab
+                                ? { animationDelay: `${index * 100}ms` }
+                                : undefined
+                            }
+                          >
+                            <DryCleaningCategory category={category} />
+                          </div>
+                        ))}
+                    </div>
+
+                    <div
+                      className={`mt-5 flex min-h-0 sm:mt-6 ${
+                        hasUserSwitchedTab ? "tab-card-animate" : ""
+                      }`}
+                      style={
+                        hasUserSwitchedTab
+                          ? { animationDelay: "400ms" }
+                          : undefined
+                      }
+                    >
+                      <DryCleaningCategory
+                        category={dryCleaningCategories[4]}
+                      />
+                    </div>
+
+                    <div
+                      className={`mt-8 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center ${
+                        hasUserSwitchedTab ? "tab-card-animate" : ""
+                      }`}
+                      style={
+                        hasUserSwitchedTab
+                          ? { animationDelay: "500ms" }
+                          : undefined
+                      }
+                    >
+                      <p className="text-[15px] text-[#5E5450]">
+                        <span className="font-medium text-[#33302E]">
+                          Note:
+                        </span>{" "}
+                        Prices may vary based on fabric type, embellishments,
+                        and garment condition.
+                      </p>
+                    </div>
+                  </>
+                )}
+
+                {activeTab === "subscription" && (
+                  <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    {subscriptionPlans.map((plan, index) => (
+                      <div
+                        key={plan.title}
+                        className={`flex h-full min-h-0 items-stretch ${
+                          hasUserSwitchedTab ? "tab-card-animate" : ""
+                        }`}
+                        style={
+                          hasUserSwitchedTab
+                            ? { animationDelay: `${index * 100}ms` }
+                            : undefined
+                        }
+                      >
+                        <SubscriptionCard plan={plan} />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
 
             {/* Add-On Services */}
             <div className="page-section gsap-animate mt-16 opacity-0">
               <div className="mb-8 text-center">
                 <h2
                   className="text-2xl font-semibold text-[#33302E] sm:text-3xl"
-                  style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
+                  style={{
+                    fontFamily: WixMadeForDisplayFont.style.fontFamily,
+                  }}
                 >
                   Add-On Services
                 </h2>
