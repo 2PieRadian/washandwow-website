@@ -107,7 +107,10 @@ export default function DownloadAppModal({
         </button>
 
         {/* Scrollable content wrapper */}
-        <div className="overflow-y-auto overflow-x-hidden max-h-[90vh] modal-scrollbar p-[32px] sm:p-[40px]">
+        <div
+          className="overflow-y-auto overflow-x-hidden max-h-[90vh] modal-scrollbar p-[32px] sm:p-[40px]"
+          data-lenis-prevent
+        >
           {/* Header */}
           <div className="text-center mb-[28px]">
             <div className="inline-flex items-center justify-center w-[64px] h-[64px] rounded-full bg-gradient-to-br from-[#FF9431] to-[#FF7700] shadow-[0_8px_24px_rgba(255,148,49,0.35)] mb-[20px]">

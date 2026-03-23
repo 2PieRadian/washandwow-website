@@ -111,7 +111,7 @@ export default function Hero() {
             className="flex items-center justify-center gap-[8px] sm:gap-[10px] px-[24px] sm:px-[30px] py-[12px] sm:py-[15px] rounded-[26px] w-full sm:w-auto text-sm sm:text-base"
             onClick={() => setIsModalOpen(true)}
           >
-            Get Started
+            Order Now
           </OrangeGradientButton>
 
           <button
