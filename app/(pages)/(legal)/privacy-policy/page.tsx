@@ -2,7 +2,28 @@ import Container from "@/app/components/layout/Container";
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/sections/Footer";
 import { SatoshiFont, WixMadeForDisplayFont } from "@/app/fonts";
-import { Mail, MapPin, Phone } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  Shield,
+  Database,
+  Eye,
+  Share2,
+  Smartphone,
+  Cookie,
+  Lock,
+  Clock,
+  UserCheck,
+  Link2,
+  Users,
+  RefreshCw,
+  CheckCircle2,
+  Globe,
+  Shirt,
+  MapPinned,
+  Bell,
+} from "lucide-react";
 import type { Metadata } from "next";
 import {
   PageHeroAnimation,
@@ -20,6 +41,113 @@ const CONTACT_EMAIL = "support@washandwow.in";
 const CONTACT_PHONE = "9318387705";
 const CONTACT_ADDRESS = "123, Location Here";
 
+const sectionIcons: Record<string, React.ReactNode> = {
+  scope: <Eye className="h-5 w-5" />,
+  collect: <Database className="h-5 w-5" />,
+  use: <Shield className="h-5 w-5" />,
+  sharing: <Share2 className="h-5 w-5" />,
+  permissions: <Smartphone className="h-5 w-5" />,
+  cookies: <Cookie className="h-5 w-5" />,
+  security: <Lock className="h-5 w-5" />,
+  retention: <Clock className="h-5 w-5" />,
+  rights: <UserCheck className="h-5 w-5" />,
+  "third-party": <Link2 className="h-5 w-5" />,
+  children: <Users className="h-5 w-5" />,
+  changes: <RefreshCw className="h-5 w-5" />,
+  contact: <Mail className="h-5 w-5" />,
+  consent: <CheckCircle2 className="h-5 w-5" />,
+};
+
+const sectionGradients: Record<
+  string,
+  { from: string; to: string; shadow: string; bg: string }
+> = {
+  scope: {
+    from: "#FFAB5C",
+    to: "#FF7700",
+    shadow: "rgba(255,119,0,0.25)",
+    bg: "rgba(255,171,92,0.08)",
+  },
+  collect: {
+    from: "#98BCD6",
+    to: "#6A9BC3",
+    shadow: "rgba(106,155,195,0.25)",
+    bg: "rgba(152,188,214,0.08)",
+  },
+  use: {
+    from: "#D4B8AD",
+    to: "#A68B7B",
+    shadow: "rgba(166,139,123,0.25)",
+    bg: "rgba(212,184,173,0.08)",
+  },
+  sharing: {
+    from: "#E6C29E",
+    to: "#D4A574",
+    shadow: "rgba(212,165,116,0.25)",
+    bg: "rgba(230,194,158,0.08)",
+  },
+  permissions: {
+    from: "#FFAB5C",
+    to: "#FF7700",
+    shadow: "rgba(255,119,0,0.25)",
+    bg: "rgba(255,171,92,0.08)",
+  },
+  cookies: {
+    from: "#C5AEA5",
+    to: "#A68B7B",
+    shadow: "rgba(166,139,123,0.25)",
+    bg: "rgba(197,174,165,0.08)",
+  },
+  security: {
+    from: "#98BCD6",
+    to: "#6A9BC3",
+    shadow: "rgba(106,155,195,0.25)",
+    bg: "rgba(152,188,214,0.08)",
+  },
+  retention: {
+    from: "#D4B8AD",
+    to: "#A68B7B",
+    shadow: "rgba(166,139,123,0.25)",
+    bg: "rgba(212,184,173,0.08)",
+  },
+  rights: {
+    from: "#FFAB5C",
+    to: "#FF7700",
+    shadow: "rgba(255,119,0,0.25)",
+    bg: "rgba(255,171,92,0.08)",
+  },
+  "third-party": {
+    from: "#E6C29E",
+    to: "#D4A574",
+    shadow: "rgba(212,165,116,0.25)",
+    bg: "rgba(230,194,158,0.08)",
+  },
+  children: {
+    from: "#98BCD6",
+    to: "#6A9BC3",
+    shadow: "rgba(106,155,195,0.25)",
+    bg: "rgba(152,188,214,0.08)",
+  },
+  changes: {
+    from: "#C5AEA5",
+    to: "#A68B7B",
+    shadow: "rgba(166,139,123,0.25)",
+    bg: "rgba(197,174,165,0.08)",
+  },
+  contact: {
+    from: "#FFAB5C",
+    to: "#FF7700",
+    shadow: "rgba(255,119,0,0.25)",
+    bg: "rgba(255,171,92,0.08)",
+  },
+  consent: {
+    from: "#D4B8AD",
+    to: "#A68B7B",
+    shadow: "rgba(166,139,123,0.25)",
+    bg: "rgba(212,184,173,0.08)",
+  },
+};
+
 function PolicySection({
   id,
   number,
@@ -31,20 +159,56 @@ function PolicySection({
   title: string;
   children: React.ReactNode;
 }) {
+  const gradient = sectionGradients[id] || sectionGradients.scope;
+  const icon = sectionIcons[id];
+
   return (
     <section
       id={id}
-      className="page-section gsap-animate scroll-mt-28 border-t border-[#E8DFD6] pt-8 opacity-0 first:border-0 first:pt-0"
+      className="page-section gsap-animate scroll-mt-28 opacity-0"
     >
-      <h2
-        className="mb-4 text-xl font-semibold text-[#33302E] sm:text-2xl"
-        style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
+      <div
+        className="group relative overflow-hidden rounded-[20px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] p-6 shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8),inset_-1px_-1px_2px_rgba(209,199,189,0.15)] transition-all duration-300 hover:shadow-[8px_8px_20px_rgba(209,199,189,0.5),-8px_-8px_20px_rgba(255,255,255,0.95),inset_1px_1px_3px_rgba(255,255,255,0.9),inset_-1px_-1px_3px_rgba(209,199,189,0.2)] sm:rounded-[28px] sm:p-8"
+        style={{ backgroundColor: gradient.bg }}
       >
-        <span className="font-bold tabular-nums text-orange">{number}</span>
-        <span className="ml-2">{title}</span>
-      </h2>
-      <div className="space-y-4 text-[18px] leading-relaxed text-[#5E5450]">
-        {children}
+        <div
+          className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full opacity-30 blur-3xl transition-opacity duration-500 group-hover:opacity-50"
+          style={{
+            background: `linear-gradient(135deg, ${gradient.from}, ${gradient.to})`,
+          }}
+        />
+
+        <div className="relative">
+          <div className="mb-5 flex items-center gap-3">
+            <span
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white shadow-lg sm:h-11 sm:w-11"
+              style={{
+                background: `linear-gradient(135deg, ${gradient.from} 0%, ${gradient.to} 100%)`,
+                boxShadow: `0 4px 14px ${gradient.shadow}, inset 0 1px 1px rgba(255,255,255,0.3)`,
+              }}
+            >
+              {icon}
+            </span>
+            <div>
+              <span
+                className="text-xs font-semibold uppercase tracking-wider sm:text-sm"
+                style={{ color: gradient.to }}
+              >
+                Section {number.replace(".", "")}
+              </span>
+              <h2
+                className="text-lg font-semibold text-[#33302E] sm:text-xl md:text-2xl"
+                style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
+              >
+                {title}
+              </h2>
+            </div>
+          </div>
+
+          <div className="space-y-4 text-[16px] leading-relaxed text-[#5E5450] sm:text-[17px]">
+            {children}
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -52,11 +216,14 @@ function PolicySection({
 
 function BulletList({ items }: { items: string[] }) {
   return (
-    <ul className="ml-1 space-y-2 border-l-2 border-[#E8DFD6] pl-4">
+    <ul className="grid gap-2.5 sm:gap-3">
       {items.map((item) => (
-        <li key={item} className="relative">
-          <span className="absolute -left-[21px] top-2 h-1.5 w-1.5 rounded-full bg-orange" />
-          {item}
+        <li
+          key={item}
+          className="flex items-center gap-3 rounded-xl bg-gradient-to-br from-[#FEFEFE] to-[#F6F3F0] px-4 py-3 shadow-[3px_3px_8px_rgba(209,199,189,0.35),-3px_-3px_8px_rgba(255,255,255,0.85),inset_1px_1px_1px_rgba(255,255,255,0.6)] transition-all duration-200 hover:shadow-[4px_4px_10px_rgba(209,199,189,0.4),-4px_-4px_10px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.7)]"
+        >
+          <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-gradient-to-br from-orange to-[#FF7700] shadow-[0_2px_4px_rgba(255,119,0,0.3)]" />
+          <span>{item}</span>
         </li>
       ))}
     </ul>
@@ -65,32 +232,43 @@ function BulletList({ items }: { items: string[] }) {
 
 function Subheading({ label, title }: { label: string; title: string }) {
   return (
-    <h3 className="text-[18px] font-semibold text-[#33302E]">
-      <span className="text-orange">{label}</span> {title}
+    <h3 className="flex items-center gap-2 text-[16px] font-semibold text-[#33302E] sm:text-[17px]">
+      <span className="flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-orange/20 to-orange/10 text-xs font-bold text-orange">
+        {label.replace(".", "")}
+      </span>
+      <span>{title}</span>
     </h3>
   );
 }
 
 function PermissionCard({
-  emoji,
+  icon,
   title,
   description,
+  gradient,
 }: {
-  emoji: string;
+  icon: React.ReactNode;
   title: string;
   description: string;
+  gradient: { from: string; to: string; shadow: string };
 }) {
   return (
-    <li className="flex gap-3 rounded-xl border border-[#E8DFD6] bg-[#FBF6F2]/80 p-4 transition-colors hover:bg-[#FBF6F2]">
+    <li className="group/card flex gap-4 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-br from-[#FEFEFE] to-[#F6F3F0] p-5 shadow-[5px_5px_12px_rgba(209,199,189,0.4),-5px_-5px_12px_rgba(255,255,255,0.88),inset_1px_1px_2px_rgba(255,255,255,0.7)] transition-all duration-300 hover:shadow-[6px_6px_14px_rgba(209,199,189,0.45),-6px_-6px_14px_rgba(255,255,255,0.92),inset_1px_1px_2px_rgba(255,255,255,0.8)]">
       <span
-        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white text-lg shadow-sm"
+        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white transition-transform duration-300 group-hover/card:scale-110"
+        style={{
+          background: `linear-gradient(135deg, ${gradient.from} 0%, ${gradient.to} 100%)`,
+          boxShadow: `4px_4px_10px ${gradient.shadow}, -2px_-2px_6px rgba(255,255,255,0.6), inset 1px 1px 2px rgba(255,255,255,0.4)`,
+        }}
         aria-hidden
       >
-        {emoji}
+        {icon}
       </span>
       <div>
-        <p className="text-[18px] font-semibold text-[#33302E]">{title}</p>
-        <p className="mt-1 text-[18px] leading-relaxed text-[#5E5450]">
+        <p className="text-[16px] font-semibold text-[#33302E] sm:text-[17px]">
+          {title}
+        </p>
+        <p className="mt-1 text-[15px] leading-relaxed text-[#5E5450] sm:text-[16px]">
           {description}
         </p>
       </div>
@@ -103,32 +281,42 @@ function ContactRow({
   label,
   value,
   href,
+  gradient,
 }: {
   icon: React.ReactNode;
   label: string;
   value: string;
   href?: string;
+  gradient: { from: string; to: string; shadow: string };
 }) {
   const content = href ? (
     <a
       href={href}
-      className="text-[#33302E] underline decoration-[#DDD2C8] underline-offset-2 transition-colors hover:text-orange hover:decoration-orange"
+      className="font-medium text-[#33302E] underline decoration-[#DDD2C8] underline-offset-2 transition-colors hover:text-orange hover:decoration-orange break-all"
     >
       {value}
     </a>
   ) : (
-    <span className="text-[#33302E]">{value}</span>
+    <span className="font-medium text-[#33302E] break-words">{value}</span>
   );
   return (
-    <div className="flex gap-3 rounded-xl border border-[#E8DFD6] bg-white p-4">
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#FBF6F2] text-orange">
+    <div className="group/contact flex gap-3 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-br from-[#FEFEFE] to-[#F6F3F0] p-3 sm:p-4 md:p-5 shadow-[5px_5px_12px_rgba(209,199,189,0.4),-5px_-5px_12px_rgba(255,255,255,0.88),inset_1px_1px_2px_rgba(255,255,255,0.7)] transition-all duration-300 hover:shadow-[6px_6px_14px_rgba(209,199,189,0.45),-6px_-6px_14px_rgba(255,255,255,0.92),inset_1px_1px_2px_rgba(255,255,255,0.8)]">
+      <span
+        className="flex h-9 w-9 sm:h-10 sm:w-10 md:h-12 md:w-12 shrink-0 items-center justify-center rounded-lg sm:rounded-xl text-white transition-transform duration-300 group-hover/contact:scale-110 [&>svg]:h-4 [&>svg]:w-4 sm:[&>svg]:h-4.5 sm:[&>svg]:w-4.5 md:[&>svg]:h-5 md:[&>svg]:w-5"
+        style={{
+          background: `linear-gradient(135deg, ${gradient.from} 0%, ${gradient.to} 100%)`,
+          boxShadow: `4px 4px 10px ${gradient.shadow}, -2px -2px 6px rgba(255,255,255,0.6), inset 1px 1px 2px rgba(255,255,255,0.4)`,
+        }}
+      >
         {icon}
       </span>
-      <div>
-        <p className="text-xs font-medium uppercase tracking-wide text-[#91776C]">
+      <div className="min-w-0 flex-1">
+        <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#91776C]">
           {label}
         </p>
-        <p className="mt-1 text-[18px]">{content}</p>
+        <p className="mt-0.5 sm:mt-1 text-[13px] sm:text-[14px] md:text-[15px]">
+          {content}
+        </p>
       </div>
     </div>
   );
@@ -140,45 +328,59 @@ export default function page() {
       <Navbar />
 
       <PageHeroAnimation variant="centered">
-        <Container
-          isMaxWidth={true}
-          className="mt-[70px] px-[20px] pb-6 pt-10 md:pb-8 md:pt-14 min-h-[calc(70svh-70px)] flex items-center justify-center"
-        >
-          <div className="max-w-5xl text-center">
-            <h1
-              className="page-hero-title gsap-animate text-3xl font-semibold text-[#33302E] opacity-0 sm:text-4xl"
-              style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-            >
-              Privacy Policy
-            </h1>
+        <div className="relative overflow-hidden">
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#FFFBF6] via-[#FDF9F5] to-white" />
+          <div className="pointer-events-none absolute -left-40 top-20 h-80 w-80 rounded-full bg-gradient-to-br from-orange/10 to-transparent blur-3xl" />
+          <div className="pointer-events-none absolute -right-40 top-40 h-96 w-96 rounded-full bg-gradient-to-bl from-[#98BCD6]/10 to-transparent blur-3xl" />
 
-            <p className="page-hero-meta gsap-animate mt-2 text-sm font-medium text-[#91776C] opacity-0">
-              Last updated: {LAST_UPDATED}
-            </p>
+          <Container
+            isMaxWidth={true}
+            className="relative mt-[70px] flex min-h-[calc(55svh-70px)] items-center justify-center px-[20px] pb-8 pt-12 md:pb-12 md:pt-16"
+          >
+            <div className="max-w-3xl text-center">
+              <h1
+                className="page-hero-title gsap-animate text-3xl font-bold text-[#33302E] opacity-0 sm:text-4xl md:text-5xl"
+                style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
+              >
+                Privacy Policy
+              </h1>
 
-            <p className="page-hero-subtitle gsap-animate mt-4 text-[18px] leading-relaxed text-dark-blue opacity-0">
-              We treat your data with the same care as your clothes — securely
-              and responsibly.
-            </p>
-          </div>
-        </Container>
+              <p className="page-hero-meta gsap-animate mx-auto mt-5 max-w-xl text-[17px] leading-relaxed text-[#5E5450] opacity-0 sm:text-[18px]">
+                We treat your data with the same care as your clothes — securely
+                and responsibly.
+              </p>
+
+              <div className="page-hero-subtitle gsap-animate mt-6 flex items-center justify-center gap-2 opacity-0">
+                <Clock className="h-4 w-4 text-[#91776C]" />
+                <span className="text-sm font-medium text-[#91776C]">
+                  Last updated: {LAST_UPDATED}
+                </span>
+              </div>
+            </div>
+          </Container>
+        </div>
       </PageHeroAnimation>
 
       <PageSectionsAnimation>
         <Container isMaxWidth={true} className="px-[20px] pb-16 md:pb-24">
-          <div className="mx-auto max-w-5xl">
-            <div className="page-section gsap-animate opacity-0">
-              <p className="text-[18px] leading-relaxed text-[#5E5450]">
-                Welcome to Wash &amp; Wow (&quot;Company&quot;, &quot;we&quot;,
-                &quot;our&quot;, or &quot;us&quot;). This Privacy Policy
-                explains how we collect, use, disclose, and protect your
-                information when you:
+          <div className="mx-auto max-w-4xl">
+            <div className="page-section gsap-animate mb-10 overflow-hidden rounded-[24px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] p-6 shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8),inset_-1px_-1px_2px_rgba(209,199,189,0.15)] opacity-0 sm:rounded-[28px] sm:p-8">
+              <p className="text-[16px] leading-relaxed text-[#5E5450] sm:text-[17px]">
+                Welcome to{" "}
+                <span className="font-semibold text-[#33302E]">
+                  Wash &amp; Wow
+                </span>{" "}
+                (&quot;Company&quot;, &quot;we&quot;, &quot;our&quot;, or
+                &quot;us&quot;). This Privacy Policy explains how we collect,
+                use, disclose, and protect your information when you:
               </p>
-              <ul className="mt-4 space-y-2 text-[18px] text-[#5E5450]">
-                <li className="flex gap-2">
-                  <span className="font-semibold text-orange">•</span>
-                  <span>
-                    Visit our website{" "}
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                <div className="flex items-center gap-3 rounded-xl bg-gradient-to-br from-[#FEFEFE] to-[#F6F3F0] px-4 py-3 shadow-[3px_3px_8px_rgba(209,199,189,0.35),-3px_-3px_8px_rgba(255,255,255,0.85),inset_1px_1px_1px_rgba(255,255,255,0.6)]">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-orange/20 to-orange/10 shadow-[inset_1px_1px_2px_rgba(255,255,255,0.8)]">
+                    <Globe className="h-4 w-4 text-orange" />
+                  </span>
+                  <span className="text-[15px] text-[#5E5450]">
+                    Visit{" "}
                     <a
                       href="https://washandwow.in"
                       target="_blank"
@@ -188,19 +390,27 @@ export default function page() {
                       washandwow.in
                     </a>
                   </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="font-semibold text-orange">•</span>
-                  <span>Use our mobile application (&quot;App&quot;)</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="font-semibold text-orange">•</span>
-                  <span>Access our laundry and dry-cleaning services</span>
-                </li>
-              </ul>
+                </div>
+                <div className="flex items-center gap-3 rounded-xl bg-gradient-to-br from-[#FEFEFE] to-[#F6F3F0] px-4 py-3 shadow-[3px_3px_8px_rgba(209,199,189,0.35),-3px_-3px_8px_rgba(255,255,255,0.85),inset_1px_1px_1px_rgba(255,255,255,0.6)]">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#98BCD6]/20 to-[#98BCD6]/10 shadow-[inset_1px_1px_2px_rgba(255,255,255,0.8)]">
+                    <Smartphone className="h-4 w-4 text-[#6A9BC3]" />
+                  </span>
+                  <span className="text-[15px] text-[#5E5450]">
+                    Use our mobile app
+                  </span>
+                </div>
+                <div className="flex items-center gap-3 rounded-xl bg-gradient-to-br from-[#FEFEFE] to-[#F6F3F0] px-4 py-3 shadow-[3px_3px_8px_rgba(209,199,189,0.35),-3px_-3px_8px_rgba(255,255,255,0.85),inset_1px_1px_1px_rgba(255,255,255,0.6)]">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#D4B8AD]/30 to-[#D4B8AD]/15 shadow-[inset_1px_1px_2px_rgba(255,255,255,0.8)]">
+                    <Shirt className="h-4 w-4 text-[#A68B7B]" />
+                  </span>
+                  <span className="text-[15px] text-[#5E5450]">
+                    Access our services
+                  </span>
+                </div>
+              </div>
             </div>
 
-            <div className="mt-10 space-y-10">
+            <div className="mt-8 grid gap-6 sm:gap-8">
               <PolicySection
                 id="scope"
                 number="1."
@@ -296,9 +506,14 @@ export default function page() {
                     "Technology service providers",
                   ]}
                 />
-                <p className="rounded-xl border border-orange/25 bg-orange/5 px-4 py-3 font-medium text-[#33302E]">
-                  We do not sell your personal information.
-                </p>
+                <div className="flex items-center gap-3 rounded-2xl border border-emerald-200/60 bg-gradient-to-r from-emerald-50/80 to-emerald-50/40 px-5 py-4 shadow-[0_2px_12px_-4px_rgba(16,185,129,0.1)]">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-500 text-white shadow-[0_4px_12px_rgba(16,185,129,0.3)]">
+                    <Shield className="h-5 w-5" />
+                  </span>
+                  <p className="font-semibold text-emerald-800">
+                    We do not sell your personal information.
+                  </p>
+                </div>
               </PolicySection>
 
               <PolicySection
@@ -309,19 +524,34 @@ export default function page() {
                 <p>Depending on features used, our App may request:</p>
                 <ul className="space-y-3">
                   <PermissionCard
-                    emoji="📍"
+                    icon={<MapPinned className="h-5 w-5" />}
                     title="Location access"
                     description="For pickup and delivery accuracy."
+                    gradient={{
+                      from: "#FFAB5C",
+                      to: "#FF7700",
+                      shadow: "rgba(255,119,0,0.25)",
+                    }}
                   />
                   <PermissionCard
-                    emoji="📞"
+                    icon={<Phone className="h-5 w-5" />}
                     title="Phone access"
                     description="For account verification."
+                    gradient={{
+                      from: "#98BCD6",
+                      to: "#6A9BC3",
+                      shadow: "rgba(106,155,195,0.25)",
+                    }}
                   />
                   <PermissionCard
-                    emoji="🔔"
+                    icon={<Bell className="h-5 w-5" />}
                     title="Notifications"
                     description="For order updates."
+                    gradient={{
+                      from: "#D4B8AD",
+                      to: "#A68B7B",
+                      shadow: "rgba(166,139,123,0.25)",
+                    }}
                   />
                 </ul>
                 <p>
@@ -422,23 +652,38 @@ export default function page() {
               </PolicySection>
 
               <PolicySection id="contact" number="13." title="Contact Us">
-                <div className="grid gap-3 sm:grid-cols-1">
+                <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
                   <ContactRow
                     icon={<Mail className="h-5 w-5" aria-hidden />}
                     label="Email"
                     value={CONTACT_EMAIL}
                     href={`mailto:${CONTACT_EMAIL}`}
+                    gradient={{
+                      from: "#FFAB5C",
+                      to: "#FF7700",
+                      shadow: "rgba(255,119,0,0.25)",
+                    }}
                   />
                   <ContactRow
                     icon={<Phone className="h-5 w-5" aria-hidden />}
                     label="Phone"
                     value={CONTACT_PHONE}
                     href={`tel:${CONTACT_PHONE}`}
+                    gradient={{
+                      from: "#98BCD6",
+                      to: "#6A9BC3",
+                      shadow: "rgba(106,155,195,0.25)",
+                    }}
                   />
                   <ContactRow
                     icon={<MapPin className="h-5 w-5" aria-hidden />}
                     label="Address"
                     value={CONTACT_ADDRESS}
+                    gradient={{
+                      from: "#D4B8AD",
+                      to: "#A68B7B",
+                      shadow: "rgba(166,139,123,0.25)",
+                    }}
                   />
                 </div>
               </PolicySection>
