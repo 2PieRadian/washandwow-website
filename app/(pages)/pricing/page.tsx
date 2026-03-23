@@ -281,7 +281,7 @@ function TabButton({
     <button
       type="button"
       onClick={onClick}
-      className={`group relative isolate flex min-h-[48px] cursor-pointer items-center justify-center rounded-full px-5 py-3 text-sm font-semibold sm:min-h-[52px] sm:px-6 sm:py-3.5 sm:text-base ${
+      className={`group relative isolate flex min-h-[48px] cursor-pointer items-center justify-center rounded-full px-5 text-sm font-semibold sm:min-h-[52px] sm:px-6 sm:text-base ${
         active
           ? "bg-gradient-to-r from-[#FF7700] to-[#FFAB5C] text-white shadow-[inset_0_2px_0_rgba(255,255,255,0.35),0_7px_0_0_#B84700,0_12px_28px_rgba(255,119,0,0.42)] transition-[transform,box-shadow,filter] duration-200 ease-out will-change-transform hover:brightness-[1.03] active:translate-y-1 active:scale-[0.97] active:shadow-[inset_0_3px_8px_rgba(0,0,0,0.18),0_2px_0_0_#8F3600,0_4px_14px_rgba(255,119,0,0.3)] motion-reduce:transition-none motion-reduce:active:translate-y-0 motion-reduce:active:scale-100"
           : "border border-[#E0D5CC] bg-gradient-to-b from-white to-[#FAF7F4] text-[#5E5450] shadow-[inset_0_2px_0_rgba(255,255,255,0.95),0_7px_0_0_#C9BDB2,0_10px_24px_rgba(120,100,90,0.12)] transition-[transform,box-shadow,filter] duration-200 ease-out will-change-transform hover:-translate-y-0.5 hover:shadow-[inset_0_2px_0_rgba(255,255,255,1),0_8px_0_0_#C9BDB2,0_14px_30px_rgba(120,100,90,0.14)] active:translate-y-1.5 active:scale-[0.96] active:shadow-[inset_0_3px_6px_rgba(100,85,75,0.12),0_2px_0_0_#B0A69C,0_4px_12px_rgba(120,100,90,0.1)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:translate-y-0 motion-reduce:active:scale-100"
@@ -569,12 +569,10 @@ export default function PricingPage() {
                 Quality cleaning at prices that make sense.
               </p>
 
-              <div className="page-hero-subtitle gsap-animate mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-emerald-200/60 bg-gradient-to-r from-emerald-50/80 to-emerald-50/40 px-5 py-2.5 opacity-0">
-                <Truck className="h-4 w-4 text-emerald-600" />
-                <span className="text-sm font-medium text-emerald-700">
-                  No Delivery Charges on Orders Above ₹299
-                </span>
-              </div>
+              {/* <div className="page-hero-subtitle gsap-animate mt-6 items-center gap-2 rounded-full border border-emerald-200/60 bg-gradient-to-r from-emerald-50/80 to-emerald-50/40 px-5 py-2.5 opacity-0 text-emerald-600">
+                <Truck className="h-4 w-4" /> No Delivery Charges on Orders
+                Above ₹299
+              </div> */}
             </div>
           </Container>
         </div>
