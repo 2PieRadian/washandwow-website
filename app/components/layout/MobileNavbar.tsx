@@ -17,6 +17,7 @@ export default function MobileNavbar() {
     { name: "Home", href: "#home" },
     { name: "How It Works", href: "#how-it-works" },
     { name: "Services", href: "#services" },
+    { name: "Pricing", href: "/pricing" },
     { name: "Reviews", href: "#reviews" },
     { name: "About", href: "/about" },
   ];

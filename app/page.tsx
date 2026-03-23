@@ -5,6 +5,7 @@ import Hero from "./components/sections/Hero";
 import HowItWorks from "./components/sections/HowItWorks";
 import Services from "./components/sections/Services";
 import Reviews from "./components/sections/Reviews";
+import WhyChooseUs from "./components/sections/WhyChooseUs";
 import { SatoshiFont } from "./fonts";
 import Footer from "./components/sections/Footer";
 
@@ -22,6 +23,7 @@ export default function Home() {
         <HowItWorks />
         <Services />
         <Reviews />
+        <WhyChooseUs />
         <DownloadApp />
         <Footer />
       </div>

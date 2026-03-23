@@ -114,6 +114,22 @@ function LegalColumn() {
   );
 }
 
+function ServicesColumn() {
+  return (
+    <div>
+      <h2 className="text-[#91776C] font-bold text-[18px]">Services</h2>
+      <div className="mt-[10px] flex flex-col gap-[5px]">
+        <Link href="/pricing" className={footerLinkClass}>
+          Pricing
+        </Link>
+        <p className={footerMutedLineClass}>Laundry</p>
+        <p className={footerMutedLineClass}>Dry Cleaning</p>
+        <p className={footerMutedLineClass}>Subscriptions</p>
+      </div>
+    </div>
+  );
+}
+
 function HelpColumn() {
   return (
     <div>
@@ -185,6 +201,8 @@ export default function Footer() {
           <div className="flex flex-wrap gap-[40px] lg:gap-[60px] text-left">
             <CompanyColumn />
 
+            <ServicesColumn />
+
             <HelpColumn />
 
             <LegalColumn />
@@ -248,9 +266,11 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Row 2: Company, Help, Legal */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-[12px] gap-y-[28px] sm:gap-[20px] text-left">
+          {/* Row 2: Company, Services, Help, Legal */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-[12px] gap-y-[28px] sm:gap-[20px] text-left">
             <CompanyColumn />
+
+            <ServicesColumn />
 
             <HelpColumn />
 
