@@ -45,7 +45,6 @@ const laundryServices = [
       "Neatly folded",
       "48-hour delivery",
     ],
-    icon: <Package className="h-6 w-6" />,
     gradient: {
       from: "#D4B8AD",
       to: "#A68B7B",
@@ -63,7 +62,6 @@ const laundryServices = [
       "Wrinkle-free finish",
       "48-hour delivery",
     ],
-    icon: <Wind className="h-6 w-6" />,
     gradient: {
       from: "#98BCD6",
       to: "#6A9BC3",
@@ -81,7 +79,6 @@ const laundryServices = [
       "Premium packaging",
       "48-hour delivery",
     ],
-    icon: <Sparkles className="h-6 w-6" />,
     gradient: { from: "#FFAB5C", to: "#FF7700", shadow: "rgba(255,119,0,0.3)" },
     popular: true,
   },
@@ -96,7 +93,6 @@ const laundryServices = [
       "All premium features",
       "SMS updates",
     ],
-    icon: <Zap className="h-6 w-6" />,
     gradient: {
       from: "#E6C29E",
       to: "#D4A574",
@@ -107,59 +103,57 @@ const laundryServices = [
 
 const dryCleaningCategories = [
   {
-    title: "Upper Wear",
+    title: "Everyday Wear",
+    description: "Regular garments requiring gentle cleaning.",
     icon: <Shirt className="h-5 w-5" />,
     items: [
       { name: "Shirt / T-shirt", price: "₹50" },
-      { name: "Designer Shirt", price: "₹80" },
+      { name: "Jeans / Trouser", price: "₹70" },
       { name: "Kurta / Kurti", price: "₹80–₹120" },
-      { name: "Delicate Tops", price: "₹100–₹150" },
-      { name: "Blouse", price: "₹70–₹120" },
     ],
+    features: ["Fabric-safe cleaning", "Color protection", "Neat finishing"],
+    gradient: { from: "#D4B8AD", to: "#A68B7B" },
   },
   {
-    title: "Bottom Wear",
-    icon: <Shirt className="h-5 w-5" />,
-    items: [
-      { name: "Jeans", price: "₹70" },
-      { name: "Trouser / Pant", price: "₹70–₹100" },
-      { name: "Palazzo", price: "₹100–₹150" },
-      { name: "Leggings", price: "₹60" },
-    ],
-  },
-  {
-    title: "Winter Wear",
-    icon: <Flame className="h-5 w-5" />,
-    items: [
-      { name: "Sweater", price: "₹120–₹180" },
-      { name: "Jacket (Light)", price: "₹180" },
-      { name: "Heavy Jacket", price: "₹250–₹350" },
-      { name: "Coat", price: "₹300–₹400" },
-    ],
-  },
-  {
-    title: "Ethnic Wear",
+    title: "Ethnic & Delicate Wear",
+    description: "Traditional and delicate garments needing special care.",
     icon: <Gem className="h-5 w-5" />,
     items: [
       { name: "Saree (Basic)", price: "₹150" },
       { name: "Saree (Silk / Heavy)", price: "₹250–₹500" },
       { name: "Lehenga", price: "₹400–₹800" },
-      { name: "Sherwani", price: "₹300–₹600" },
       { name: "Dupatta", price: "₹80–₹150" },
     ],
+    features: ["Gentle cleaning", "Hand finishing", "Premium care"],
+    gradient: { from: "#E6C29E", to: "#D4A574" },
+  },
+  {
+    title: "Winter & Heavy Wear",
+    description: "Bulky garments requiring deep cleaning.",
+    icon: <Flame className="h-5 w-5" />,
+    items: [
+      { name: "Sweater", price: "₹120–₹180" },
+      { name: "Jacket", price: "₹180–₹350" },
+      { name: "Coat", price: "₹300–₹400" },
+    ],
+    features: ["Deep cleaning", "Shape retention", "Odor removal"],
+    gradient: { from: "#98BCD6", to: "#6A9BC3" },
   },
   {
     title: "Formal Wear",
+    description: "Structured garments needing professional care.",
     icon: <Crown className="h-5 w-5" />,
     items: [
       { name: "Blazer", price: "₹200–₹300" },
       { name: "Suit (2-piece)", price: "₹300–₹400" },
       { name: "Suit (3-piece)", price: "₹400–₹500" },
-      { name: "Tie", price: "₹50" },
     ],
+    features: ["Structure preservation", "Professional finish"],
+    gradient: { from: "#FFAB5C", to: "#FF7700" },
   },
   {
     title: "Home & Bedding",
+    description: "Large household fabrics.",
     icon: <Package className="h-5 w-5" />,
     items: [
       { name: "Bedsheet (Single)", price: "₹100" },
@@ -168,6 +162,8 @@ const dryCleaningCategories = [
       { name: "Quilt / Razai", price: "₹300–₹600" },
       { name: "Pillow Cover", price: "₹30" },
     ],
+    features: ["Hygienic cleaning", "Deep wash", "Fresh finish"],
+    gradient: { from: "#D4B8AD", to: "#A68B7B" },
   },
 ];
 
@@ -177,11 +173,7 @@ const subscriptionPlans = [
     price: 999,
     period: "month",
     kgLimit: "20 kg",
-    features: [
-      "20 kg laundry",
-      "Free pickup & delivery",
-      "Standard processing",
-    ],
+    features: ["20 kg laundry", "Free pickup & delivery", "Wash & Fold"],
     icon: <Package className="h-6 w-6" />,
     gradient: {
       from: "#D4B8AD",
@@ -197,8 +189,8 @@ const subscriptionPlans = [
     features: [
       "40 kg laundry",
       "Priority service",
-      "Free pickup & delivery",
-      "Better value",
+      "Wash & Iron",
+      "10% savings",
     ],
     icon: <Star className="h-6 w-6" />,
     gradient: { from: "#FFAB5C", to: "#FF7700", shadow: "rgba(255,119,0,0.3)" },
@@ -209,12 +201,7 @@ const subscriptionPlans = [
     price: 3299,
     period: "month",
     kgLimit: "80 kg",
-    features: [
-      "80 kg laundry",
-      "Shared usage",
-      "Priority service",
-      "Ideal for households",
-    ],
+    features: ["80 kg laundry", "Shared usage", "Faster processing"],
     icon: <Users className="h-6 w-6" />,
     gradient: {
       from: "#98BCD6",
@@ -229,9 +216,9 @@ const subscriptionPlans = [
     kgLimit: "120 kg",
     features: [
       "120 kg laundry",
-      "Premium services included",
-      "Maximum savings",
-      "VIP support",
+      "Premium laundry included",
+      "Priority pickup",
+      "Best value",
     ],
     icon: <Crown className="h-6 w-6" />,
     gradient: {
@@ -285,23 +272,21 @@ function TabButton({
   active,
   onClick,
   children,
-  icon,
 }: {
   active: boolean;
   onClick: () => void;
   children: React.ReactNode;
-  icon: React.ReactNode;
 }) {
   return (
     <button
+      type="button"
       onClick={onClick}
-      className={`group flex items-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 rounded-full font-medium text-sm sm:text-base transition-all duration-300 cursor-pointer ${
+      className={`group relative isolate flex min-h-[48px] items-center justify-center rounded-full px-5 py-3 text-sm font-semibold sm:min-h-[52px] sm:px-6 sm:py-3.5 sm:text-base ${
         active
-          ? "bg-gradient-to-r from-[#FF7700] to-[#FFAB5C] text-white shadow-[0_4px_20px_rgba(255,119,0,0.35)]"
-          : "bg-white/80 text-[#5E5450] border border-[#E8DFD6] hover:bg-white hover:border-[#D4B8AD] hover:shadow-[0_2px_12px_rgba(80,60,50,0.08)]"
-      }`}
+          ? "bg-gradient-to-r from-[#FF7700] to-[#FFAB5C] text-white shadow-[inset_0_2px_0_rgba(255,255,255,0.35),0_7px_0_0_#B84700,0_12px_28px_rgba(255,119,0,0.42)] transition-[transform,box-shadow,filter] duration-200 ease-out will-change-transform hover:brightness-[1.03] active:translate-y-1 active:scale-[0.97] active:shadow-[inset_0_3px_8px_rgba(0,0,0,0.18),0_2px_0_0_#8F3600,0_4px_14px_rgba(255,119,0,0.3)] motion-reduce:transition-none motion-reduce:active:translate-y-0 motion-reduce:active:scale-100"
+          : "border border-[#E0D5CC] bg-gradient-to-b from-white to-[#FAF7F4] text-[#5E5450] shadow-[inset_0_2px_0_rgba(255,255,255,0.95),0_7px_0_0_#C9BDB2,0_10px_24px_rgba(120,100,90,0.12)] transition-[transform,box-shadow,filter] duration-200 ease-out will-change-transform hover:-translate-y-0.5 hover:shadow-[inset_0_2px_0_rgba(255,255,255,1),0_8px_0_0_#C9BDB2,0_14px_30px_rgba(120,100,90,0.14)] active:translate-y-1.5 active:scale-[0.96] active:shadow-[inset_0_3px_6px_rgba(100,85,75,0.12),0_2px_0_0_#B0A69C,0_4px_12px_rgba(120,100,90,0.1)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:translate-y-0 motion-reduce:active:scale-100"
+      } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-services/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFBF6]`}
     >
-      <span className={active ? "text-white" : "text-[#91776C]"}>{icon}</span>
       {children}
     </button>
   );
@@ -310,12 +295,12 @@ function TabButton({
 function LaundryCard({ service }: { service: (typeof laundryServices)[0] }) {
   return (
     <div
-      className={`group relative overflow-hidden rounded-[24px] sm:rounded-[28px] border ${
+      className={`group relative flex h-full min-h-0 w-full flex-col overflow-hidden rounded-[24px] sm:rounded-[28px] border ${
         service.popular ? "border-orange/30" : "border-[#E8DFD6]/50"
       } bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] p-6 sm:p-8 shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8),inset_-1px_-1px_2px_rgba(209,199,189,0.15)] transition-all duration-300 hover:shadow-[8px_8px_20px_rgba(209,199,189,0.5),-8px_-8px_20px_rgba(255,255,255,0.95),inset_1px_1px_3px_rgba(255,255,255,0.9),inset_-1px_-1px_3px_rgba(209,199,189,0.2)]`}
     >
       {service.popular && (
-        <div className="absolute -right-8 top-6 rotate-45 bg-gradient-to-r from-[#FF7700] to-[#FFAB5C] px-10 py-1 text-xs font-semibold text-white shadow-md">
+        <div className="absolute -right-8 top-6 rotate-45 bg-gradient-to-r from-[#FF7700] to-[#FFAB5C] px-10 py-1 text-xs font-semibold text-white opacity-75 shadow-[0_0_8px_rgba(255,119,0,0.28),0_0_14px_rgba(255,171,92,0.14)]">
           Most Popular
         </div>
       )}
@@ -327,18 +312,10 @@ function LaundryCard({ service }: { service: (typeof laundryServices)[0] }) {
         }}
       />
 
-      <div className="relative">
-        <div className="mb-4 flex items-center gap-3">
-          <span
-            className="flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-lg"
-            style={{
-              background: `linear-gradient(135deg, ${service.gradient.from} 0%, ${service.gradient.to} 100%)`,
-              boxShadow: `0 4px 14px ${service.gradient.shadow}, inset 0 1px 1px rgba(255,255,255,0.3)`,
-            }}
-          >
-            {service.icon}
-          </span>
-          <div>
+      <div className="relative flex min-h-0 flex-1 flex-col">
+        {/* Fixed min height so price starts at the same place in every laundry card */}
+        <div className="mb-6 flex min-h-[9.5rem] flex-col sm:min-h-[8.75rem]">
+          <div className="mb-4 shrink-0">
             <h3
               className="text-xl font-semibold text-[#33302E] sm:text-2xl"
               style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
@@ -346,20 +323,20 @@ function LaundryCard({ service }: { service: (typeof laundryServices)[0] }) {
               {service.title}
             </h3>
           </div>
+
+          <p className="min-h-0 flex-1 text-[15px] leading-relaxed text-[#5E5450] sm:text-[16px]">
+            {service.description}
+          </p>
         </div>
 
-        <p className="mb-5 text-[15px] leading-relaxed text-[#5E5450] sm:text-[16px]">
-          {service.description}
-        </p>
-
-        <div className="mb-5 flex items-baseline gap-1">
+        <div className="mb-6 flex shrink-0 items-baseline gap-1 py-2">
           <span className="text-3xl font-bold text-[#33302E] sm:text-4xl">
             ₹{service.price}
           </span>
           <span className="text-[#91776C]">/{service.unit}</span>
         </div>
 
-        <ul className="mb-6 space-y-2.5">
+        <ul className="flex min-h-0 flex-1 flex-col space-y-2.5">
           {service.features.map((feature) => (
             <li
               key={feature}
@@ -380,13 +357,6 @@ function LaundryCard({ service }: { service: (typeof laundryServices)[0] }) {
             </li>
           ))}
         </ul>
-
-        <button className="group/btn w-full rounded-full border border-[#E8DFD6] bg-white px-6 py-3 font-medium text-[#5E5450] shadow-[3px_3px_8px_rgba(209,199,189,0.3),-3px_-3px_8px_rgba(255,255,255,0.8)] transition-all duration-300 hover:border-orange/30 hover:text-orange hover:shadow-[4px_4px_12px_rgba(209,199,189,0.35),-4px_-4px_12px_rgba(255,255,255,0.85)]">
-          <span className="flex items-center justify-center gap-2">
-            Select Plan
-            <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-          </span>
-        </button>
       </div>
     </div>
   );
@@ -398,28 +368,68 @@ function DryCleaningCategory({
   category: (typeof dryCleaningCategories)[0];
 }) {
   return (
-    <div className="overflow-hidden rounded-[20px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] shadow-[5px_5px_12px_rgba(209,199,189,0.4),-5px_-5px_12px_rgba(255,255,255,0.88),inset_1px_1px_2px_rgba(255,255,255,0.7)]">
-      <div className="flex items-center gap-3 border-b border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] px-5 py-4">
-        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-orange/20 to-orange/10 text-orange">
-          {category.icon}
-        </span>
-        <h3
-          className="text-lg font-semibold text-[#33302E]"
-          style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-        >
-          {category.title}
-        </h3>
+    <div className="flex h-full min-h-0 w-full flex-col overflow-hidden rounded-[20px] sm:rounded-[24px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] shadow-[5px_5px_12px_rgba(209,199,189,0.4),-5px_-5px_12px_rgba(255,255,255,0.88),inset_1px_1px_2px_rgba(255,255,255,0.7)] transition-all duration-300 hover:shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9)]">
+      {/* Header */}
+      <div className="relative shrink-0 border-b border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] px-5 py-4 sm:px-6 sm:py-5">
+        <div
+          className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full opacity-30 blur-2xl"
+          style={{
+            background: `linear-gradient(135deg, ${category.gradient.from}, ${category.gradient.to})`,
+          }}
+        />
+        <div className="relative flex items-center gap-3">
+          <span
+            className="flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-md"
+            style={{
+              background: `linear-gradient(135deg, ${category.gradient.from} 0%, ${category.gradient.to} 100%)`,
+            }}
+          >
+            {category.icon}
+          </span>
+          <div>
+            <h3
+              className="text-lg font-semibold text-[#33302E] sm:text-xl"
+              style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
+            >
+              {category.title}
+            </h3>
+            <p className="text-[13px] text-[#91776C] sm:text-[14px]">
+              {category.description}
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="divide-y divide-[#E8DFD6]/30">
+
+      {/* Items List */}
+      <div className="min-h-0 flex-1 divide-y divide-[#E8DFD6]/30">
         {category.items.map((item) => (
           <div
             key={item.name}
-            className="flex items-center justify-between px-5 py-3 transition-colors hover:bg-white/50"
+            className="flex items-center justify-between px-5 py-3.5 transition-colors hover:bg-white/60 sm:px-6"
           >
             <span className="text-[15px] text-[#5E5450]">{item.name}</span>
-            <span className="font-medium text-[#33302E]">{item.price}</span>
+            <span className="font-semibold text-[#33302E]">{item.price}</span>
           </div>
         ))}
+      </div>
+
+      {/* Features */}
+      <div className="mt-auto shrink-0 border-t border-[#E8DFD6]/40 bg-gradient-to-r from-[#FEFEFE] to-[#F8F5F2] px-5 py-4 sm:px-6">
+        <div className="flex flex-wrap gap-2">
+          {category.features.map((feature) => (
+            <span
+              key={feature}
+              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[12px] font-medium sm:text-[13px]"
+              style={{
+                backgroundColor: `${category.gradient.from}15`,
+                color: category.gradient.to,
+              }}
+            >
+              <Check className="h-3 w-3" />
+              {feature}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -428,12 +438,12 @@ function DryCleaningCategory({
 function SubscriptionCard({ plan }: { plan: (typeof subscriptionPlans)[0] }) {
   return (
     <div
-      className={`group relative overflow-hidden rounded-[24px] sm:rounded-[28px] border ${
+      className={`group relative flex h-full min-h-0 w-full flex-col overflow-hidden rounded-[24px] sm:rounded-[28px] border ${
         plan.popular ? "border-orange/30" : "border-[#E8DFD6]/50"
       } bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] p-6 sm:p-8 shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8),inset_-1px_-1px_2px_rgba(209,199,189,0.15)] transition-all duration-300 hover:shadow-[8px_8px_20px_rgba(209,199,189,0.5),-8px_-8px_20px_rgba(255,255,255,0.95),inset_1px_1px_3px_rgba(255,255,255,0.9),inset_-1px_-1px_3px_rgba(209,199,189,0.2)]`}
     >
       {plan.popular && (
-        <div className="absolute -right-8 top-6 rotate-45 bg-gradient-to-r from-[#FF7700] to-[#FFAB5C] px-10 py-1 text-xs font-semibold text-white shadow-md">
+        <div className="absolute -right-8 top-6 rotate-45 bg-gradient-to-r from-[#FF7700] to-[#FFAB5C] px-10 py-1 text-xs font-semibold text-white opacity-75 shadow-[0_0_8px_rgba(255,119,0,0.28),0_0_14px_rgba(255,171,92,0.14)]">
           Most Popular
         </div>
       )}
@@ -445,10 +455,11 @@ function SubscriptionCard({ plan }: { plan: (typeof subscriptionPlans)[0] }) {
         }}
       />
 
-      <div className="relative">
-        <div className="mb-4 flex items-center gap-3">
+      <div className="relative flex min-h-0 flex-1 flex-col">
+        {/* Same header height + fixed gap so price spacing matches on every plan card */}
+        <div className="mb-4 flex min-h-[5.25rem] shrink-0 items-center gap-3 sm:min-h-[5rem]">
           <span
-            className="flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-lg"
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white shadow-lg"
             style={{
               background: `linear-gradient(135deg, ${plan.gradient.from} 0%, ${plan.gradient.to} 100%)`,
               boxShadow: `0 4px 14px ${plan.gradient.shadow}, inset 0 1px 1px rgba(255,255,255,0.3)`,
@@ -456,7 +467,7 @@ function SubscriptionCard({ plan }: { plan: (typeof subscriptionPlans)[0] }) {
           >
             {plan.icon}
           </span>
-          <div>
+          <div className="min-w-0">
             <h3
               className="text-xl font-semibold text-[#33302E] sm:text-2xl"
               style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
@@ -469,14 +480,14 @@ function SubscriptionCard({ plan }: { plan: (typeof subscriptionPlans)[0] }) {
           </div>
         </div>
 
-        <div className="mb-5 flex items-baseline gap-1">
+        <div className="flex shrink-0 items-baseline gap-1 py-6">
           <span className="text-3xl font-bold text-[#33302E] sm:text-4xl">
             ₹{plan.price.toLocaleString()}
           </span>
           <span className="text-[#91776C]">/{plan.period}</span>
         </div>
 
-        <ul className="mb-6 space-y-2.5">
+        <ul className="flex min-h-0 flex-1 flex-col space-y-2.5 pt-1">
           {plan.features.map((feature) => (
             <li
               key={feature}
@@ -497,13 +508,6 @@ function SubscriptionCard({ plan }: { plan: (typeof subscriptionPlans)[0] }) {
             </li>
           ))}
         </ul>
-
-        <button className="group/btn w-full rounded-full border border-[#E8DFD6] bg-white px-6 py-3 font-medium text-[#5E5450] shadow-[3px_3px_8px_rgba(209,199,189,0.3),-3px_-3px_8px_rgba(255,255,255,0.8)] transition-all duration-300 hover:border-orange/30 hover:text-orange hover:shadow-[4px_4px_12px_rgba(209,199,189,0.35),-4px_-4px_12px_rgba(255,255,255,0.85)]">
-          <span className="flex items-center justify-center gap-2">
-            Subscribe Now
-            <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-          </span>
-        </button>
       </div>
     </div>
   );
@@ -511,7 +515,7 @@ function SubscriptionCard({ plan }: { plan: (typeof subscriptionPlans)[0] }) {
 
 function AddOnCard({ service }: { service: (typeof addOnServices)[0] }) {
   return (
-    <div className="flex items-center gap-4 rounded-xl border border-[#E8DFD6]/40 bg-gradient-to-br from-[#FEFEFE] to-[#F6F3F0] p-4 shadow-[3px_3px_8px_rgba(209,199,189,0.35),-3px_-3px_8px_rgba(255,255,255,0.85),inset_1px_1px_1px_rgba(255,255,255,0.6)] transition-all duration-200 hover:shadow-[4px_4px_10px_rgba(209,199,189,0.4),-4px_-4px_10px_rgba(255,255,255,0.9)]">
+    <div className="flex h-full min-h-0 w-full items-center gap-4 rounded-xl border border-[#E8DFD6]/40 bg-gradient-to-br from-[#FEFEFE] to-[#F6F3F0] p-4 shadow-[3px_3px_8px_rgba(209,199,189,0.35),-3px_-3px_8px_rgba(255,255,255,0.85),inset_1px_1px_1px_rgba(255,255,255,0.6)] transition-all duration-200 hover:shadow-[4px_4px_10px_rgba(209,199,189,0.4),-4px_-4px_10px_rgba(255,255,255,0.9)]">
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-orange/15 to-orange/5 text-orange">
         {service.icon}
       </span>
@@ -568,25 +572,22 @@ export default function PricingPage() {
         <Container isMaxWidth={true} className="px-[20px] pb-16 md:pb-24">
           <div className="mx-auto max-w-6xl">
             {/* Pricing Tabs */}
-            <div className="page-section gsap-animate mb-10 flex flex-wrap justify-center gap-3 opacity-0 sm:mb-12">
+            <div className="page-section gsap-animate mt-8 flex flex-wrap justify-center gap-3 opacity-0 mb-12 sm:mt-10 sm:mb-14 md:mt-12 md:mb-16">
               <TabButton
                 active={activeTab === "laundry"}
                 onClick={() => setActiveTab("laundry")}
-                icon={<Package className="h-4 w-4" />}
               >
                 Laundry (Per Kg)
               </TabButton>
               <TabButton
                 active={activeTab === "dryCleaning"}
                 onClick={() => setActiveTab("dryCleaning")}
-                icon={<Sparkles className="h-4 w-4" />}
               >
                 Dry Cleaning
               </TabButton>
               <TabButton
                 active={activeTab === "subscription"}
                 onClick={() => setActiveTab("subscription")}
-                icon={<Star className="h-4 w-4" />}
               >
                 Subscriptions
               </TabButton>
@@ -594,8 +595,8 @@ export default function PricingPage() {
 
             {/* Laundry Section */}
             {activeTab === "laundry" && (
-              <div className="page-section gsap-animate opacity-0">
-                <div className="mb-8 text-center">
+              <div className="tab-content-animate">
+                <div className="mb-8 text-center tab-header-animate">
                   <h2
                     className="text-2xl font-semibold text-[#33302E] sm:text-3xl"
                     style={{
@@ -609,13 +610,22 @@ export default function PricingPage() {
                   </p>
                 </div>
 
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                  {laundryServices.map((service) => (
-                    <LaundryCard key={service.title} service={service} />
+                <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  {laundryServices.map((service, index) => (
+                    <div
+                      key={service.title}
+                      className="tab-card-animate flex h-full min-h-0"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <LaundryCard service={service} />
+                    </div>
                   ))}
                 </div>
 
-                <div className="mt-8 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center">
+                <div
+                  className="mt-8 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center tab-card-animate"
+                  style={{ animationDelay: "450ms" }}
+                >
                   <p className="text-[15px] text-[#5E5450]">
                     <span className="font-medium text-[#33302E]">
                       Suitable items:
@@ -629,8 +639,8 @@ export default function PricingPage() {
 
             {/* Dry Cleaning Section */}
             {activeTab === "dryCleaning" && (
-              <div className="page-section gsap-animate opacity-0">
-                <div className="mb-8 text-center">
+              <div className="tab-content-animate">
+                <div className="mb-8 text-center sm:mb-10 tab-header-animate">
                   <h2
                     className="text-2xl font-semibold text-[#33302E] sm:text-3xl"
                     style={{
@@ -644,21 +654,43 @@ export default function PricingPage() {
                   </p>
                 </div>
 
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {dryCleaningCategories.map((category) => (
-                    <DryCleaningCategory
+                <div className="grid auto-rows-fr gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-2">
+                  {dryCleaningCategories.slice(0, 4).map((category, index) => (
+                    <div
                       key={category.title}
-                      category={category}
-                    />
+                      className="tab-card-animate flex h-full min-h-0 items-stretch"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <DryCleaningCategory category={category} />
+                    </div>
                   ))}
+                </div>
+
+                {/* Home & Bedding - Full width */}
+                <div
+                  className="mt-5 flex min-h-0 sm:mt-6 tab-card-animate"
+                  style={{ animationDelay: "400ms" }}
+                >
+                  <DryCleaningCategory category={dryCleaningCategories[4]} />
+                </div>
+
+                <div
+                  className="mt-8 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center tab-card-animate"
+                  style={{ animationDelay: "500ms" }}
+                >
+                  <p className="text-[15px] text-[#5E5450]">
+                    <span className="font-medium text-[#33302E]">Note:</span>{" "}
+                    Prices may vary based on fabric type, embellishments, and
+                    garment condition.
+                  </p>
                 </div>
               </div>
             )}
 
             {/* Subscription Section */}
             {activeTab === "subscription" && (
-              <div className="page-section gsap-animate opacity-0">
-                <div className="mb-8 text-center">
+              <div className="tab-content-animate">
+                <div className="mb-8 text-center tab-header-animate">
                   <h2
                     className="text-2xl font-semibold text-[#33302E] sm:text-3xl"
                     style={{
@@ -672,9 +704,15 @@ export default function PricingPage() {
                   </p>
                 </div>
 
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                  {subscriptionPlans.map((plan) => (
-                    <SubscriptionCard key={plan.title} plan={plan} />
+                <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  {subscriptionPlans.map((plan, index) => (
+                    <div
+                      key={plan.title}
+                      className="tab-card-animate flex h-full min-h-0 items-stretch"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <SubscriptionCard plan={plan} />
+                    </div>
                   ))}
                 </div>
               </div>
@@ -694,7 +732,7 @@ export default function PricingPage() {
                 </p>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {addOnServices.map((service) => (
                   <AddOnCard key={service.title} service={service} />
                 ))}

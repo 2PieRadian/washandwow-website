@@ -14,7 +14,7 @@ import {
 const trustFeatures = [
   {
     title: "Free Pickup & Delivery",
-    description: "Doorstep convenience at no extra cost",
+    description: "Doorstep convenience.",
     icon: <Truck className="h-8 w-8 sm:h-10 sm:w-10" />,
     gradient: { from: "#FFAB5C", to: "#FF7700" },
   },
@@ -40,7 +40,7 @@ const trustFeatures = [
 
 function TrustCard({ feature }: { feature: (typeof trustFeatures)[0] }) {
   return (
-    <div className="group flex h-full flex-col items-center justify-center gap-3 min-[520px]:gap-4 sm:gap-5 rounded-[20px] min-[520px]:rounded-[24px] sm:rounded-[28px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] p-4 min-[520px]:p-5 sm:p-8 text-center shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8),inset_-1px_-1px_2px_rgba(209,199,189,0.15)] transition-all duration-300 hover:shadow-[8px_8px_20px_rgba(209,199,189,0.5),-8px_-8px_20px_rgba(255,255,255,0.95),inset_1px_1px_3px_rgba(255,255,255,0.9),inset_-1px_-1px_3px_rgba(209,199,189,0.2)]">
+    <div className="group flex h-full flex-col items-center justify-between gap-3 min-[520px]:gap-4 sm:gap-5 rounded-[20px] min-[520px]:rounded-[24px] sm:rounded-[28px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] p-4 min-[520px]:p-5 sm:p-8 text-center shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8),inset_-1px_-1px_2px_rgba(209,199,189,0.15)] transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-[8px_8px_20px_rgba(209,199,189,0.5),-8px_-8px_20px_rgba(255,255,255,0.95),inset_1px_1px_3px_rgba(255,255,255,0.9),inset_-1px_-1px_3px_rgba(209,199,189,0.2)]">
       <span
         className="flex h-14 w-14 min-[520px]:h-16 min-[520px]:w-16 sm:h-20 sm:w-20 md:h-22 md:w-22 shrink-0 items-center justify-center rounded-xl min-[520px]:rounded-2xl sm:rounded-3xl text-white shadow-lg transition-transform duration-300 group-hover:scale-110"
         style={{
