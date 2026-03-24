@@ -623,35 +623,65 @@ img {
   }
 }
 
-/* Hero — animated gradient keyword (warm orange, background-position) */
-@keyframes gradient-text-shift {
+/* Hero — shine: enters from right → exits left in 2s, then 3s pause; full loop 5s. Orange fill fixed.
+   Avoid background-blend-mode here: it often breaks painting with background-clip: text. */
+@keyframes gradient-text-shine-loop {
   0% {
-    background-position: 0% 50%;
+    background-position:
+      200% 50%,
+      40% 50%;
+  }
+  /* 2s / 5s = 40% */
+  40% {
+    background-position:
+      -100% 50%,
+      40% 50%;
   }
   100% {
-    background-position: 100% 50%;
+    background-position:
+      -100% 50%,
+      40% 50%;
   }
+}
+
+.gradient-text-wrap {
+  display: inline-block;
+  vertical-align: baseline;
+  filter: drop-shadow(0 0 8px rgba(255, 122, 24, 0.16));
 }
 
 .gradient-text {
   display: inline-block;
   color: #ff7a18;
-  background-image: linear-gradient(
-    90deg,
-    #ff7a18 0%,
-    #ff9a44 22%,
-    #ffb066 50%,
-    #ff9a44 78%,
-    #ff7a18 100%
-  );
-  background-size: 200% 100%;
+  /* First layer = shine (on top); second = orange. Normal compositing: white tints the letters. */
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(255, 255, 255, 0.1) 44%,
+      rgba(255, 255, 255, 0.52) 50%,
+      rgba(255, 255, 255, 0.1) 56%,
+      transparent 64%,
+      transparent 100%
+    ),
+    linear-gradient(
+      90deg,
+      #ff7a18 0%,
+      #ff9a44 22%,
+      #ffb066 50%,
+      #ff9a44 78%,
+      #ff7a18 100%
+    );
+  background-size:
+    240% 100%,
+    200% 100%;
   background-repeat: no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   will-change: background-position;
-  animation: gradient-text-shift 7s ease-in-out infinite;
-  filter: drop-shadow(0 0 10px rgba(255, 122, 24, 0.22));
+  animation: gradient-text-shine-loop 5s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -662,6 +692,9 @@ img {
     -webkit-text-fill-color: #ff7a18;
     color: #ff7a18;
     will-change: auto;
+  }
+
+  .gradient-text-wrap {
     filter: none;
   }
 }

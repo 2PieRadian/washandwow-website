@@ -17,11 +17,11 @@ import {
 
 function FadedImage({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative md:max-w-7xl mx-auto overflow-hidden -mx-[20px] md:mx-auto">
+    <div className="relative -mx-[20px] overflow-hidden md:mx-auto md:max-w-7xl">
       <img
         src={src}
         alt={alt}
-        className="w-full object-cover [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%),linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)] mask-intersect md:scale-100 h-[350px] sm:h-[400px] md:h-auto"
+        className="h-[350px] w-full object-cover mask-[linear-gradient(to_bottom,black_70%,transparent_100%),linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)] mask-intersect sm:h-[400px] md:h-auto md:scale-100"
       />
     </div>
   );
@@ -96,7 +96,9 @@ export default function Hero() {
                 Fresh and Easy
               </span>
               <span className="hero-headline-2 gsap-animate text-[clamp(2.441rem,6vw,4rem)] opacity-0">
-                <span className="gradient-text">Laundry</span>
+                <span className="gradient-text-wrap">
+                  <span className="gradient-text">Laundry</span>
+                </span>
                 <span className="text-dark-brown"> Service</span>
               </span>
             </h1>
@@ -138,7 +140,7 @@ export default function Hero() {
 
       {/* Section divider */}
       <div className="max-w-[1200px] mx-auto px-[20px]">
-        <div className="h-[1px] bg-gradient-to-r from-transparent via-[#E5DDD6] to-transparent" />
+        <div className="h-px bg-linear-to-r from-transparent via-[#E5DDD6] to-transparent" />
       </div>
     </section>
   );
