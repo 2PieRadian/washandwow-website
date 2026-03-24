@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -10,6 +11,19 @@ export default function LenisProvider({
   children: React.ReactNode;
 }) {
   const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
+
+  // Every route change: jump to top before paint (matches hero pages + fixes /about, /help, etc.).
+  // Skip when URL has a real hash so HomeHashScroll (/#section) and in-page anchors still work.
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.location.hash.length > 1) return;
+
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    ScrollTrigger.refresh();
+  }, [pathname]);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -37,6 +51,13 @@ export default function LenisProvider({
       lenisRef.current = null;
     };
   }, []);
+
+  // Keep Lenis internal scroll position in sync after each navigation.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.location.hash.length > 1) return;
+    lenisRef.current?.scrollTo(0, { immediate: true });
+  }, [pathname]);
 
   return <>{children}</>;
 }

@@ -22,9 +22,9 @@ export function PageHeroAnimation({
   const containerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
+  // Scroll-to-top on navigation is handled globally in LenisProvider (all routes).
 
+  useEffect(() => {
     if (prefersReducedMotion()) return;
 
     // Parent page drives animation (e.g. pricing full-column sequence)
