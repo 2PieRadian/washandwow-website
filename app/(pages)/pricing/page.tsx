@@ -368,7 +368,7 @@ function DryCleaningCategory({
   category: (typeof dryCleaningCategories)[0];
 }) {
   return (
-    <div className="flex h-full min-h-0 w-full flex-col overflow-hidden rounded-[20px] sm:rounded-[24px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] shadow-[5px_5px_12px_rgba(209,199,189,0.4),-5px_-5px_12px_rgba(255,255,255,0.88),inset_1px_1px_2px_rgba(255,255,255,0.7)] transition-all duration-300 hover:shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9)]">
+    <div className="flex h-auto min-h-0 w-full flex-col overflow-hidden rounded-[20px] sm:rounded-[24px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] shadow-[5px_5px_12px_rgba(209,199,189,0.4),-5px_-5px_12px_rgba(255,255,255,0.88),inset_1px_1px_2px_rgba(255,255,255,0.7)] transition-all duration-300 hover:shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9)] md:h-full">
       {/* Header */}
       <div className="relative shrink-0 border-b border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] px-5 py-4 sm:px-6 sm:py-5">
         <div
@@ -400,8 +400,8 @@ function DryCleaningCategory({
         </div>
       </div>
 
-      {/* Items List */}
-      <div className="min-h-0 flex-1 divide-y divide-[#E8DFD6]/30">
+      {/* Items List: flex-1 only when card is row-stretched (md+ 2-col); single-col uses content height */}
+      <div className="min-h-0 divide-y divide-[#E8DFD6]/30 md:flex-1">
         {category.items.map((item) => (
           <div
             key={item.name}
@@ -553,7 +553,7 @@ export default function PricingPage() {
 
           <Container
             isMaxWidth={true}
-            className="relative mt-[70px] flex min-h-[calc(55svh-70px)] items-center justify-center px-[20px] pb-8 pt-12 md:pb-12 md:pt-16"
+            className="relative mt-[70px] flex min-h-[calc(55svh-70px)] items-center justify-center px-[20px] pb-12 pt-12 md:pb-16 md:pt-16"
           >
             <div className="max-w-3xl text-center">
               <h1
@@ -579,10 +579,10 @@ export default function PricingPage() {
       </PageHeroAnimation>
 
       <PageSectionsAnimation>
-        <Container isMaxWidth={true} className="px-[20px] pb-16 md:pb-24">
+        <Container isMaxWidth={true} className="px-[20px] pb-20 md:pb-32">
           <div className="mx-auto max-w-6xl">
             {/* Scroll-in: same as Privacy Policy .page-section (top 80%, duration normal×1.3) */}
-            <div className="page-section gsap-animate mt-8 mb-12 flex flex-wrap justify-center gap-3 opacity-0 sm:mt-10 sm:mb-14 md:mt-12 md:mb-16">
+            <div className="page-section gsap-animate mt-10 mb-16 flex flex-wrap justify-center gap-x-3 gap-y-7 opacity-0 sm:mt-12 sm:mb-20 sm:gap-3 md:mt-14 md:mb-24">
               <TabButton
                 active={activeTab === "laundry"}
                 onClick={() => selectTab("laundry")}
@@ -605,7 +605,7 @@ export default function PricingPage() {
 
             <div className="page-section gsap-animate opacity-0">
               <div
-                className={`mb-8 text-center sm:mb-10 ${
+                className={`mb-10 text-center sm:mb-12 md:mb-14 ${
                   hasUserSwitchedTab ? "tab-header-animate" : ""
                 }`}
                 key={
@@ -686,7 +686,7 @@ export default function PricingPage() {
                     </div>
 
                     <div
-                      className={`mt-8 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center ${
+                      className={`mt-10 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center sm:mt-12 md:mt-14 ${
                         hasUserSwitchedTab ? "tab-card-animate" : ""
                       }`}
                       style={
@@ -708,13 +708,13 @@ export default function PricingPage() {
 
                 {activeTab === "dryCleaning" && (
                   <>
-                    <div className="grid auto-rows-fr gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-2">
+                    <div className="grid auto-rows-auto gap-5 sm:gap-6 md:auto-rows-fr md:grid-cols-2 lg:grid-cols-2">
                       {dryCleaningCategories
                         .slice(0, 4)
                         .map((category, index) => (
                           <div
                             key={category.title}
-                            className={`flex h-full min-h-0 items-stretch ${
+                            className={`flex min-h-0 items-stretch max-md:h-auto md:h-full ${
                               hasUserSwitchedTab ? "tab-card-animate" : ""
                             }`}
                             style={
@@ -729,7 +729,7 @@ export default function PricingPage() {
                     </div>
 
                     <div
-                      className={`mt-5 flex min-h-0 sm:mt-6 ${
+                      className={`mt-10 flex min-h-0 sm:mt-12 md:mt-14 ${
                         hasUserSwitchedTab ? "tab-card-animate" : ""
                       }`}
                       style={
@@ -744,7 +744,7 @@ export default function PricingPage() {
                     </div>
 
                     <div
-                      className={`mt-8 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center ${
+                      className={`mt-10 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center sm:mt-12 md:mt-14 ${
                         hasUserSwitchedTab ? "tab-card-animate" : ""
                       }`}
                       style={
@@ -787,8 +787,8 @@ export default function PricingPage() {
             </div>
 
             {/* Add-On Services */}
-            <div className="page-section gsap-animate mt-16 opacity-0">
-              <div className="mb-8 text-center">
+            <div className="page-section gsap-animate mt-20 opacity-0 md:mt-28">
+              <div className="mb-10 text-center sm:mb-12 md:mb-14">
                 <h2
                   className="text-2xl font-semibold text-[#33302E] sm:text-3xl"
                   style={{
@@ -810,7 +810,7 @@ export default function PricingPage() {
             </div>
 
             {/* Final CTA */}
-            <div className="page-section gsap-animate mt-16 overflow-hidden rounded-[28px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FFFBF6] to-[#F8F5F2] p-8 text-center shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8)] sm:p-12 opacity-0">
+            <div className="page-section gsap-animate mt-20 overflow-hidden rounded-[28px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FFFBF6] to-[#F8F5F2] p-8 text-center shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8)] sm:p-12 opacity-0 md:mt-28">
               <h2
                 className="text-2xl font-semibold text-[#33302E] sm:text-3xl"
                 style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
