@@ -91,11 +91,11 @@ export default function Hero() {
             className="font-bold text-dark-brown"
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
           >
-            <h1 className="flex flex-col text-[clamp(2.441rem,4vw,7rem)] leading-[45px] sm:leading-[50px] md:leading-[56px] lg:leading-[65px] xl:leading-[70px]">
+            <h1 className="flex flex-col overflow-visible leading-[1.2] sm:leading-[1.18] md:leading-[1.15]">
               <span className="hero-headline-1 gsap-animate text-[clamp(2.441rem,6vw,4rem)] opacity-0">
                 Fresh and Easy
               </span>
-              <span className="hero-headline-2 gsap-animate text-[clamp(2.441rem,6vw,4rem)] opacity-0">
+              <span className="hero-headline-2 gsap-animate overflow-visible pb-[0.2em] text-[clamp(2.441rem,6vw,4rem)] opacity-0">
                 <span className="gradient-text-wrap">
                   <span className="gradient-text">Laundry</span>
                 </span>

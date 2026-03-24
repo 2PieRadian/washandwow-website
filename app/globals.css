@@ -644,15 +644,22 @@ img {
   }
 }
 
+/* No filter here — filter: drop-shadow tightens paint bounds and clips descenders (e.g. “y”). */
 .gradient-text-wrap {
-  display: inline-block;
+  display: inline;
+  overflow: visible;
   vertical-align: baseline;
-  filter: drop-shadow(0 0 8px rgba(255, 122, 24, 0.16));
 }
 
 .gradient-text {
-  display: inline-block;
+  display: inline;
+  overflow: visible;
+  padding-bottom: 0.22em;
   color: #ff7a18;
+  line-height: 1.28;
+  background-origin: border-box;
+  /* Glow without filter (works with clipped text in WebKit/Chromium) */
+  text-shadow: 0 0 20px rgba(255, 122, 24, 0.18);
   /* First layer = shine (on top); second = orange. Normal compositing: white tints the letters. */
   background-image:
     linear-gradient(
@@ -680,7 +687,6 @@ img {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  will-change: background-position;
   animation: gradient-text-shine-loop 5s linear infinite;
 }
 
@@ -691,11 +697,7 @@ img {
     background-size: auto;
     -webkit-text-fill-color: #ff7a18;
     color: #ff7a18;
-    will-change: auto;
-  }
-
-  .gradient-text-wrap {
-    filter: none;
+    text-shadow: none;
   }
 }
 

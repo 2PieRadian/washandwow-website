@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import {
   gsap,
+  ScrollTrigger,
   prefersReducedMotion,
   getResponsiveConfig,
   isMobile,
@@ -194,11 +195,26 @@ interface FooterAnimationProps {
   children: React.ReactNode;
 }
 
+function revealFooterWithoutAnimation(root: HTMLElement) {
+  root
+    .querySelectorAll<HTMLElement>(".footer-main, .footer-copyright")
+    .forEach((el) => {
+      el.style.opacity = "1";
+      el.style.transform = "none";
+    });
+}
+
 export function FooterAnimation({ children }: FooterAnimationProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (prefersReducedMotion()) return;
+    const root = containerRef.current;
+    if (!root) return;
+
+    if (prefersReducedMotion()) {
+      revealFooterWithoutAnimation(root);
+      return;
+    }
 
     const ctx = gsap.context(() => {
       const config = getResponsiveConfig();
@@ -213,8 +229,9 @@ export function FooterAnimation({ children }: FooterAnimationProps) {
           ease: ANIMATION_CONFIG.ease.default,
           scrollTrigger: {
             trigger: ".footer-main",
-            start: "top 90%",
+            start: "top bottom",
             once: true,
+            invalidateOnRefresh: true,
           },
         },
       );
@@ -228,14 +245,22 @@ export function FooterAnimation({ children }: FooterAnimationProps) {
           ease: ANIMATION_CONFIG.ease.default,
           scrollTrigger: {
             trigger: ".footer-copyright",
-            start: "top 95%",
+            start: "top bottom",
             once: true,
+            invalidateOnRefresh: true,
           },
         },
       );
     }, containerRef);
 
-    return () => ctx.revert();
+    const refresh = () => ScrollTrigger.refresh();
+    requestAnimationFrame(refresh);
+    const delayedRefresh = window.setTimeout(refresh, 150);
+
+    return () => {
+      window.clearTimeout(delayedRefresh);
+      ctx.revert();
+    };
   }, []);
 
   return <div ref={containerRef}>{children}</div>;
