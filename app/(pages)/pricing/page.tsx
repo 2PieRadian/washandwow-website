@@ -296,8 +296,10 @@ function LaundryCard({ service }: { service: (typeof laundryServices)[0] }) {
   return (
     <div
       className={`group relative flex h-full min-h-0 w-full flex-col overflow-hidden rounded-[24px] sm:rounded-[28px] border ${
-        service.popular ? "border-orange/30" : "border-[#E8DFD6]/50"
-      } bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] p-6 sm:p-8 shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8),inset_-1px_-1px_2px_rgba(209,199,189,0.15)] transition-all duration-300 hover:shadow-[8px_8px_20px_rgba(209,199,189,0.5),-8px_-8px_20px_rgba(255,255,255,0.95),inset_1px_1px_3px_rgba(255,255,255,0.9),inset_-1px_-1px_3px_rgba(209,199,189,0.2)]`}
+        service.popular
+          ? "border-orange/30 hover:border-orange/50"
+          : "border-[#E8DFD6]/50 hover:border-[#D2C7BC]"
+      } bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] p-6 sm:p-8 shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8),inset_-1px_-1px_2px_rgba(209,199,189,0.15)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[10px_14px_28px_rgba(209,199,189,0.55),-8px_-8px_24px_rgba(255,255,255,0.98),inset_1px_1px_3px_rgba(255,255,255,0.95),inset_-1px_-1px_3px_rgba(209,199,189,0.18)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:hover:-translate-y-1.5`}
     >
       {service.popular && (
         <div className="absolute -right-8 top-6 rotate-45 bg-gradient-to-r from-[#FF7700] to-[#FFAB5C] px-10 py-1 text-xs font-semibold text-white opacity-75 shadow-[0_0_8px_rgba(255,119,0,0.28),0_0_14px_rgba(255,171,92,0.14)]">
@@ -368,11 +370,11 @@ function DryCleaningCategory({
   category: (typeof dryCleaningCategories)[0];
 }) {
   return (
-    <div className="flex h-auto min-h-0 w-full flex-col overflow-hidden rounded-[20px] sm:rounded-[24px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] shadow-[5px_5px_12px_rgba(209,199,189,0.4),-5px_-5px_12px_rgba(255,255,255,0.88),inset_1px_1px_2px_rgba(255,255,255,0.7)] transition-all duration-300 hover:shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9)] md:h-full">
+    <div className="group flex h-auto min-h-0 w-full flex-col overflow-hidden rounded-[20px] sm:rounded-[24px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] shadow-[5px_5px_12px_rgba(209,199,189,0.4),-5px_-5px_12px_rgba(255,255,255,0.88),inset_1px_1px_2px_rgba(255,255,255,0.7)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#D2C7BC] hover:shadow-[9px_12px_26px_rgba(209,199,189,0.52),-7px_-7px_22px_rgba(255,255,255,0.95),inset_1px_1px_2px_rgba(255,255,255,0.85)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:hover:-translate-y-1.5 md:h-full">
       {/* Header */}
       <div className="relative shrink-0 border-b border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] px-5 py-4 sm:px-6 sm:py-5">
         <div
-          className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full opacity-30 blur-2xl"
+          className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full opacity-30 blur-2xl transition-opacity duration-500 group-hover:opacity-50"
           style={{
             background: `linear-gradient(135deg, ${category.gradient.from}, ${category.gradient.to})`,
           }}
@@ -439,8 +441,10 @@ function SubscriptionCard({ plan }: { plan: (typeof subscriptionPlans)[0] }) {
   return (
     <div
       className={`group relative flex h-full min-h-0 w-full flex-col overflow-hidden rounded-[24px] sm:rounded-[28px] border ${
-        plan.popular ? "border-orange/30" : "border-[#E8DFD6]/50"
-      } bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] p-6 sm:p-8 shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8),inset_-1px_-1px_2px_rgba(209,199,189,0.15)] transition-all duration-300 hover:shadow-[8px_8px_20px_rgba(209,199,189,0.5),-8px_-8px_20px_rgba(255,255,255,0.95),inset_1px_1px_3px_rgba(255,255,255,0.9),inset_-1px_-1px_3px_rgba(209,199,189,0.2)]`}
+        plan.popular
+          ? "border-orange/30 hover:border-orange/50"
+          : "border-[#E8DFD6]/50 hover:border-[#D2C7BC]"
+      } bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] p-6 sm:p-8 shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8),inset_-1px_-1px_2px_rgba(209,199,189,0.15)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[10px_14px_28px_rgba(209,199,189,0.55),-8px_-8px_24px_rgba(255,255,255,0.98),inset_1px_1px_3px_rgba(255,255,255,0.95),inset_-1px_-1px_3px_rgba(209,199,189,0.18)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:hover:-translate-y-1.5`}
     >
       {plan.popular && (
         <div className="absolute -right-8 top-6 rotate-45 bg-gradient-to-r from-[#FF7700] to-[#FFAB5C] px-10 py-1 text-xs font-semibold text-white opacity-75 shadow-[0_0_8px_rgba(255,119,0,0.28),0_0_14px_rgba(255,171,92,0.14)]">
@@ -515,8 +519,8 @@ function SubscriptionCard({ plan }: { plan: (typeof subscriptionPlans)[0] }) {
 
 function AddOnCard({ service }: { service: (typeof addOnServices)[0] }) {
   return (
-    <div className="flex h-full min-h-0 w-full items-center gap-4 rounded-xl border border-[#E8DFD6]/40 bg-gradient-to-br from-[#FEFEFE] to-[#F6F3F0] p-4 shadow-[3px_3px_8px_rgba(209,199,189,0.35),-3px_-3px_8px_rgba(255,255,255,0.85),inset_1px_1px_1px_rgba(255,255,255,0.6)] transition-all duration-200 hover:shadow-[4px_4px_10px_rgba(209,199,189,0.4),-4px_-4px_10px_rgba(255,255,255,0.9)]">
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-orange/15 to-orange/5 text-orange">
+    <div className="group flex h-full min-h-0 w-full items-center gap-4 rounded-xl border border-[#E8DFD6]/40 bg-gradient-to-br from-[#FEFEFE] to-[#F6F3F0] p-4 shadow-[3px_3px_8px_rgba(209,199,189,0.35),-3px_-3px_8px_rgba(255,255,255,0.85),inset_1px_1px_1px_rgba(255,255,255,0.6)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#D2C7BC] hover:shadow-[6px_8px_18px_rgba(209,199,189,0.45),-5px_-5px_14px_rgba(255,255,255,0.92),inset_1px_1px_2px_rgba(255,255,255,0.75)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:hover:-translate-y-1">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-orange/15 to-orange/5 text-orange shadow-sm transition-transform duration-300 ease-out group-hover:scale-110 group-hover:shadow-md motion-reduce:group-hover:scale-100">
         {service.icon}
       </span>
       <div className="flex-1">
@@ -689,7 +693,7 @@ export default function PricingPage() {
                     </div>
 
                     <div
-                      className={`mt-10 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center sm:mt-12 md:mt-14 ${
+                      className={`mt-10 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#D2C7BC] hover:shadow-[6px_10px_22px_rgba(209,199,189,0.38),-5px_-5px_16px_rgba(255,255,255,0.92),inset_1px_1px_2px_rgba(255,255,255,0.88)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:mt-12 md:mt-14 ${
                         hasUserSwitchedTab ? "tab-card-animate" : ""
                       }`}
                       style={
@@ -747,7 +751,7 @@ export default function PricingPage() {
                     </div>
 
                     <div
-                      className={`mt-10 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center sm:mt-12 md:mt-14 ${
+                      className={`mt-10 rounded-2xl border border-[#E8DFD6]/40 bg-gradient-to-r from-[#F8F5F2] to-[#FEFEFE] p-5 text-center shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#D2C7BC] hover:shadow-[6px_10px_22px_rgba(209,199,189,0.38),-5px_-5px_16px_rgba(255,255,255,0.92),inset_1px_1px_2px_rgba(255,255,255,0.88)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:mt-12 md:mt-14 ${
                         hasUserSwitchedTab ? "tab-card-animate" : ""
                       }`}
                       style={
@@ -813,7 +817,7 @@ export default function PricingPage() {
             </div>
 
             {/* Final CTA */}
-            <div className="page-section gsap-animate mt-20 overflow-hidden rounded-[28px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FFFBF6] to-[#F8F5F2] p-8 text-center shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8)] sm:p-12 opacity-0 md:mt-28">
+            <div className="page-section gsap-animate mt-20 overflow-hidden rounded-[28px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FFFBF6] to-[#F8F5F2] p-8 text-center shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#D2C7BC] hover:shadow-[10px_16px_32px_rgba(209,199,189,0.5),-8px_-8px_26px_rgba(255,255,255,0.96),inset_1px_1px_3px_rgba(255,255,255,0.9)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-12 sm:hover:-translate-y-1.5 opacity-0 md:mt-28">
               <h2
                 className="text-2xl font-semibold text-[#33302E] sm:text-3xl"
                 style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
