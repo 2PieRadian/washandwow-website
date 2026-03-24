@@ -582,7 +582,7 @@ export default function PricingPage() {
         <Container isMaxWidth={true} className="px-[20px] pb-20 md:pb-32">
           <div className="mx-auto max-w-6xl">
             {/* Scroll-in: same as Privacy Policy .page-section (top 80%, duration normal×1.3) */}
-            <div className="page-section gsap-animate mt-10 mb-16 flex flex-wrap justify-center gap-x-3 gap-y-7 opacity-0 sm:mt-12 sm:mb-20 sm:gap-3 md:mt-14 md:mb-24">
+            <div className="page-section gsap-animate mt-10 mb-16 flex flex-wrap justify-center gap-x-3 gap-y-4 opacity-0 sm:mt-12 sm:mb-20 sm:gap-3 md:mt-14 md:mb-24">
               <TabButton
                 active={activeTab === "laundry"}
                 onClick={() => selectTab("laundry")}
