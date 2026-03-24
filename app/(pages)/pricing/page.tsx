@@ -583,7 +583,7 @@ export default function PricingPage() {
           <div className="mx-auto max-w-6xl">
             {/* Scroll-in: same as Privacy Policy .page-section (top 80%, duration normal×1.3) */}
             {/* Tabs + tab title share one scroll section so the headline appears with the controls on first view */}
-            <div className="page-section gsap-animate my-10 flex flex-col items-center opacity-0 sm:mt-12 sm:mb-20 md:mt-14 md:mb-24 gap-10">
+            <div className="page-section gsap-animate my-10 flex flex-col items-center opacity-0 sm:mt-12 mb-10 md-mb-12 gap-10">
               <div className="flex flex-wrap justify-center gap-x-3 gap-y-5 sm:gap-3">
                 <TabButton
                   active={activeTab === "laundry"}
