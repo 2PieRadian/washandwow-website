@@ -553,7 +553,7 @@ export default function PricingPage() {
 
           <Container
             isMaxWidth={true}
-            className="relative mt-[70px] flex min-h-[calc(55svh-70px)] items-center justify-center px-[20px] pb-12 pt-12 md:pb-16 md:pt-16"
+            className="relative mt-[70px] flex min-h-[calc(55svh-70px)] items-center justify-center px-[20px] pt-12 md:pt-16"
           >
             <div className="max-w-3xl text-center">
               <h1
@@ -582,30 +582,31 @@ export default function PricingPage() {
         <Container isMaxWidth={true} className="px-[20px] pb-20 md:pb-32">
           <div className="mx-auto max-w-6xl">
             {/* Scroll-in: same as Privacy Policy .page-section (top 80%, duration normal×1.3) */}
-            <div className="page-section gsap-animate mt-10 mb-16 flex flex-wrap justify-center gap-x-3 gap-y-4 opacity-0 sm:mt-12 sm:mb-20 sm:gap-3 md:mt-14 md:mb-24">
-              <TabButton
-                active={activeTab === "laundry"}
-                onClick={() => selectTab("laundry")}
-              >
-                Laundry (Per Kg)
-              </TabButton>
-              <TabButton
-                active={activeTab === "dryCleaning"}
-                onClick={() => selectTab("dryCleaning")}
-              >
-                Dry Cleaning
-              </TabButton>
-              <TabButton
-                active={activeTab === "subscription"}
-                onClick={() => selectTab("subscription")}
-              >
-                Subscriptions
-              </TabButton>
-            </div>
+            {/* Tabs + tab title share one scroll section so the headline appears with the controls on first view */}
+            <div className="page-section gsap-animate my-10 flex flex-col items-center opacity-0 sm:mt-12 sm:mb-20 md:mt-14 md:mb-24 gap-10">
+              <div className="flex flex-wrap justify-center gap-x-3 gap-y-5 sm:gap-3">
+                <TabButton
+                  active={activeTab === "laundry"}
+                  onClick={() => selectTab("laundry")}
+                >
+                  Laundry (Per Kg)
+                </TabButton>
+                <TabButton
+                  active={activeTab === "dryCleaning"}
+                  onClick={() => selectTab("dryCleaning")}
+                >
+                  Dry Cleaning
+                </TabButton>
+                <TabButton
+                  active={activeTab === "subscription"}
+                  onClick={() => selectTab("subscription")}
+                >
+                  Subscriptions
+                </TabButton>
+              </div>
 
-            <div className="page-section gsap-animate opacity-0">
               <div
-                className={`mb-10 text-center sm:mb-12 md:mb-14 ${
+                className={` w-full max-w-3xl text-center ${
                   hasUserSwitchedTab ? "tab-header-animate" : ""
                 }`}
                 key={
@@ -660,7 +661,9 @@ export default function PricingPage() {
                   </>
                 )}
               </div>
+            </div>
 
+            <div className="page-section gsap-animate opacity-0">
               <div
                 className={hasUserSwitchedTab ? "tab-content-animate" : ""}
                 key={hasUserSwitchedTab ? activeTab : "initial"}
