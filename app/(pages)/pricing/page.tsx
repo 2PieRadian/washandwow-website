@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Image from "next/image";
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/sections/Footer";
 import Container from "@/app/components/layout/Container";
@@ -31,6 +32,9 @@ import {
 } from "lucide-react";
 
 type PricingTab = "laundry" | "dryCleaning" | "subscription";
+
+const WHATSAPP_NUMBER_E164 = "919318387705";
+const WHATSAPP_CHAT_URL = `https://wa.me/${WHATSAPP_NUMBER_E164}`;
 
 const laundryServices = [
   {
@@ -831,10 +835,29 @@ export default function PricingPage() {
                 the effort.
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <OrangeGradientButton className="rounded-full px-8 py-4 text-base font-semibold">
-                  <span className="flex items-center gap-2">
-                    Start Your Laundry Pickup
-                    <ChevronRight className="h-5 w-5" />
+                <OrangeGradientButton
+                  className="rounded-full px-8 py-4 text-base font-semibold"
+                  onClick={() => {
+                    window.open(
+                      WHATSAPP_CHAT_URL,
+                      "_blank",
+                      "noopener,noreferrer",
+                    );
+                  }}
+                >
+                  <span className="flex items-center gap-3">
+                    <Image
+                      src="/gifs/whatsapp.gif"
+                      alt=""
+                      width={50}
+                      height={50}
+                      unoptimized
+                      className="h-10 w-10 shrink-0 rounded-md object-contain ring-2 ring-white/40"
+                    />
+                    <span className="whitespace-nowrap">
+                      Schedule via WhatsApp
+                    </span>
+                    <ChevronRight className="h-5 w-5 shrink-0 opacity-90" />
                   </span>
                 </OrangeGradientButton>
               </div>
