@@ -591,7 +591,7 @@ export default function PricingPage() {
                     className="pricing-delivery-particle-anchor pricing-delivery-particle-anchor--1"
                     aria-hidden
                   >
-                    <Sparkles className="pricing-delivery-particle-icon size-4 text-amber-500" />
+                    <PartyPopper className="pricing-delivery-particle-icon size-4 text-amber-500" />
                   </span>
                   <span
                     className="pricing-delivery-particle-anchor pricing-delivery-particle-anchor--2"
@@ -603,7 +603,7 @@ export default function PricingPage() {
                     className="pricing-delivery-particle-anchor pricing-delivery-particle-anchor--3"
                     aria-hidden
                   >
-                    <Sparkles className="pricing-delivery-particle-icon size-3.5 text-emerald-600" />
+                    <PartyPopper className="pricing-delivery-particle-icon size-3.5 text-emerald-600" />
                   </span>
                   <span
                     className="pricing-delivery-particle-anchor pricing-delivery-particle-anchor--4"
@@ -615,13 +615,7 @@ export default function PricingPage() {
                     className="pricing-delivery-particle-anchor pricing-delivery-particle-anchor--5"
                     aria-hidden
                   >
-                    <Sparkles className="pricing-delivery-particle-icon size-3.5 text-[#FF9431]" />
-                  </span>
-                  <span
-                    className="pricing-delivery-particle-anchor pricing-delivery-particle-anchor--6 hidden sm:flex"
-                    aria-hidden
-                  >
-                    <PartyPopper className="pricing-delivery-particle-icon size-4 text-orange-services" />
+                    <PartyPopper className="pricing-delivery-particle-icon size-3.5 text-[#FF9431]" />
                   </span>
                   <span
                     className="pricing-delivery-confetti pricing-delivery-confetti--a"
