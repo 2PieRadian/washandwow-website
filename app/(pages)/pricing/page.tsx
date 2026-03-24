@@ -313,8 +313,8 @@ function LaundryCard({ service }: { service: (typeof laundryServices)[0] }) {
       />
 
       <div className="relative flex min-h-0 flex-1 flex-col">
-        {/* Fixed min height so price starts at the same place in every laundry card */}
-        <div className="mb-6 flex min-h-[9.5rem] flex-col sm:min-h-[8.75rem]">
+        {/* lg+: fixed min height so price aligns across 4 columns; below lg cards are content-sized (avoids gap on phone/tablet 1–2 col) */}
+        <div className="mb-6 flex flex-col lg:min-h-[8.75rem]">
           <div className="mb-4 shrink-0">
             <h3
               className="text-xl font-semibold text-[#33302E] sm:text-2xl"
@@ -324,7 +324,7 @@ function LaundryCard({ service }: { service: (typeof laundryServices)[0] }) {
             </h3>
           </div>
 
-          <p className="min-h-0 flex-1 text-[15px] leading-relaxed text-[#5E5450] sm:text-[16px]">
+          <p className="min-h-0 text-[15px] leading-relaxed text-[#5E5450] sm:text-[16px] lg:flex-1">
             {service.description}
           </p>
         </div>
@@ -569,10 +569,10 @@ export default function PricingPage() {
                 Quality cleaning at prices that make sense.
               </p>
 
-              {/* <div className="page-hero-subtitle gsap-animate mt-6 items-center gap-2 rounded-full border border-emerald-200/60 bg-gradient-to-r from-emerald-50/80 to-emerald-50/40 px-5 py-2.5 opacity-0 text-emerald-600">
+              <div className="page-hero-subtitle gsap-animate mt-6 items-center gap-2 rounded-full border border-emerald-200/60 bg-gradient-to-r from-emerald-50/80 to-emerald-50/40 opacity-0 text-emerald-600 w-fit mx-auto flex items-center px-[10px] py-[2px] text-[13px] sm:text-base">
                 <Truck className="h-4 w-4" /> No Delivery Charges on Orders
                 Above ₹299
-              </div> */}
+              </div>
             </div>
           </Container>
         </div>
