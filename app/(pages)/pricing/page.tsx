@@ -560,8 +560,7 @@ export default function PricingPage() {
     <div style={{ fontFamily: SatoshiFont.style.fontFamily }}>
       <Navbar />
 
-      {/* Hero: same classes & timing as Privacy Policy (PageHeroAnimation centered) */}
-      <PageHeroAnimation variant="centered">
+      <PageHeroAnimation variant="centeredSequential">
         <div className="relative mt-[70px] flex min-h-[calc(100svh-70px)] flex-col overflow-x-clip overflow-y-visible">
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#FFFBF6] via-[#FDF9F5] to-white" />
           <div className="pointer-events-none absolute -left-40 top-20 h-80 w-80 rounded-full bg-gradient-to-br from-orange/10 to-transparent blur-3xl" />
@@ -642,7 +641,7 @@ export default function PricingPage() {
               </div>
             </div>
 
-            <div className="flex shrink-0 flex-col items-center justify-end pt-6 pb-2">
+            <div className="page-hero-cta gsap-animate flex shrink-0 flex-col items-center justify-end pt-6 pb-2 opacity-0">
               <div className="pricing-hero-cta-wrap">
                 <button
                   type="button"
@@ -672,10 +671,10 @@ export default function PricingPage() {
         </div>
       </PageHeroAnimation>
 
-      <PageSectionsAnimation>
+      <PageSectionsAnimation sequentialSections>
         <Container isMaxWidth={true} className="px-[20px] pb-20 md:pb-32">
           <div className="mx-auto max-w-6xl">
-            {/* Scroll-in: same as Privacy Policy .page-section (top 80%, duration normal×1.3) */}
+            {/* Scroll-in: sequential stagger via PageSectionsAnimation sequentialSections */}
             {/* Tabs + tab title share one scroll section so the headline appears with the controls on first view */}
             <div
               id="pricing-tabs"

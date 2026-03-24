@@ -11,9 +11,13 @@ import {
   ANIMATION_CONFIG,
 } from "@/app/lib/animations";
 
+/** Next step starts when the previous tween has reached this fraction of its duration (GSAP `"<70%"`). */
+const SEQUENCE_CHAIN_AT_PREV_PROGRESS = 0.4;
+const sequenceAfterPrev = `<${Math.round(SEQUENCE_CHAIN_AT_PREV_PROGRESS * 100)}%`;
+
 interface PageHeroAnimationProps {
   children: React.ReactNode;
-  variant?: "default" | "split" | "centered" | "none";
+  variant?: "default" | "split" | "centered" | "centeredSequential" | "none";
 }
 
 export function PageHeroAnimation({
@@ -69,7 +73,7 @@ export function PageHeroAnimation({
               duration: config.duration.fast,
               ease: ANIMATION_CONFIG.ease.default,
             },
-            "-=0.5",
+            sequenceAfterPrev,
           )
           .fromTo(
             ".page-hero-subtitle",
@@ -80,7 +84,51 @@ export function PageHeroAnimation({
               duration: config.duration.fast,
               ease: ANIMATION_CONFIG.ease.default,
             },
-            "-=0.4",
+            sequenceAfterPrev,
+          );
+      } else if (variant === "centeredSequential") {
+        tl.fromTo(
+          ".page-hero-title",
+          { opacity: 0, y: 25 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: config.duration.normal,
+            ease: ANIMATION_CONFIG.ease.smooth,
+          },
+        )
+          .fromTo(
+            ".page-hero-meta",
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: config.duration.fast,
+              ease: ANIMATION_CONFIG.ease.default,
+            },
+            sequenceAfterPrev,
+          )
+          .fromTo(
+            ".page-hero-subtitle",
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: config.duration.fast,
+              ease: ANIMATION_CONFIG.ease.default,
+            },
+            sequenceAfterPrev,
+          )
+          .fromTo(
+            ".page-hero-cta",
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: config.duration.fast,
+              ease: ANIMATION_CONFIG.ease.default,
+            },
+            sequenceAfterPrev,
           );
       } else {
         tl.fromTo(
@@ -100,11 +148,14 @@ export function PageHeroAnimation({
 interface PageSectionsAnimationProps {
   children: React.ReactNode;
   className?: string;
+  /** Animate `.page-section` in order with stagger when the first section hits the viewport (single trigger). */
+  sequentialSections?: boolean;
 }
 
 export function PageSectionsAnimation({
   children,
   className = "",
+  sequentialSections = false,
 }: PageSectionsAnimationProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -119,23 +170,43 @@ export function PageSectionsAnimation({
         const config = getResponsiveConfig();
 
         const sections = gsap.utils.toArray(".page-section") as Element[];
-        sections.forEach((section, index) => {
+        if (sequentialSections && sections.length > 0) {
+          const sectionDuration = config.duration.normal * 1.3;
           gsap.fromTo(
-            section,
+            sections,
             { opacity: 0, y: config.distance.medium },
             {
               opacity: 1,
               y: 0,
-              duration: config.duration.normal * 1.3,
+              duration: sectionDuration,
               ease: ANIMATION_CONFIG.ease.default,
+              stagger: sectionDuration * SEQUENCE_CHAIN_AT_PREV_PROGRESS,
               scrollTrigger: {
-                trigger: section,
+                trigger: sections[0],
                 start: "top 80%",
                 once: true,
               },
             },
           );
-        });
+        } else {
+          sections.forEach((section) => {
+            gsap.fromTo(
+              section,
+              { opacity: 0, y: config.distance.medium },
+              {
+                opacity: 1,
+                y: 0,
+                duration: config.duration.normal * 1.3,
+                ease: ANIMATION_CONFIG.ease.default,
+                scrollTrigger: {
+                  trigger: section,
+                  start: "top 80%",
+                  once: true,
+                },
+              },
+            );
+          });
+        }
 
         const cards = gsap.utils.toArray(".page-card") as Element[];
         cards.forEach((card) => {
@@ -158,7 +229,7 @@ export function PageSectionsAnimation({
         });
 
         const faqItems = gsap.utils.toArray(".page-faq-item") as Element[];
-        faqItems.forEach((item, index) => {
+        faqItems.forEach((item) => {
           gsap.fromTo(
             item,
             { opacity: 0, x: -20 },
@@ -182,7 +253,7 @@ export function PageSectionsAnimation({
       clearTimeout(heroDelay);
       if (ctx) ctx.revert();
     };
-  }, []);
+  }, [sequentialSections]);
 
   return (
     <div ref={containerRef} className={className}>

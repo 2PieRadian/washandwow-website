@@ -327,7 +327,7 @@ export default function page() {
     <div style={{ fontFamily: SatoshiFont.style.fontFamily }}>
       <Navbar />
 
-      <PageHeroAnimation variant="centered">
+      <PageHeroAnimation variant="centeredSequential">
         <div className="relative overflow-hidden">
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#FFFBF6] via-[#FDF9F5] to-white" />
           <div className="pointer-events-none absolute -left-40 top-20 h-80 w-80 rounded-full bg-gradient-to-br from-orange/10 to-transparent blur-3xl" />
@@ -361,7 +361,7 @@ export default function page() {
         </div>
       </PageHeroAnimation>
 
-      <PageSectionsAnimation>
+      <PageSectionsAnimation sequentialSections>
         <Container isMaxWidth={true} className="px-[20px] pb-16 md:pb-24">
           <div className="mx-auto max-w-4xl">
             <div className="page-section gsap-animate mb-10 overflow-hidden rounded-[24px] border border-[#E8DFD6]/50 bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] p-6 shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9),inset_1px_1px_2px_rgba(255,255,255,0.8),inset_-1px_-1px_2px_rgba(209,199,189,0.15)] opacity-0 sm:rounded-[28px] sm:p-8">
