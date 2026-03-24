@@ -96,7 +96,8 @@ export default function Hero() {
                 Fresh and Easy
               </span>
               <span className="hero-headline-2 gsap-animate text-[clamp(2.441rem,6vw,4rem)] opacity-0">
-                Laundry Service
+                <span className="gradient-text">Laundry</span>
+                <span className="text-dark-brown"> Service</span>
               </span>
             </h1>
           </div>

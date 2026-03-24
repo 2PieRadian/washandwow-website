@@ -11,15 +11,16 @@ import {
   PageHeroAnimation,
   PageSectionsAnimation,
 } from "@/app/components/animations/PageAnimations";
+import { scrollToSection } from "@/app/utils/scrollToSection";
 import {
   Shirt,
   Sparkles,
-  Zap,
   Package,
   Truck,
   Shield,
   Star,
   ChevronRight,
+  ChevronDown,
   Check,
   Crown,
   Users,
@@ -29,6 +30,7 @@ import {
   Flame,
   SprayCan,
   Timer,
+  PartyPopper,
 } from "lucide-react";
 
 type PricingTab = "laundry" | "dryCleaning" | "subscription";
@@ -550,39 +552,127 @@ export default function PricingPage() {
     });
   }, []);
 
+  const scrollToPricingTabs = useCallback(() => {
+    scrollToSection("#pricing-tabs", 70);
+  }, []);
+
   return (
     <div style={{ fontFamily: SatoshiFont.style.fontFamily }}>
       <Navbar />
 
       {/* Hero: same classes & timing as Privacy Policy (PageHeroAnimation centered) */}
       <PageHeroAnimation variant="centered">
-        <div className="relative overflow-hidden">
+        <div className="relative mt-[70px] flex min-h-[calc(100svh-70px)] flex-col overflow-x-clip overflow-y-visible">
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#FFFBF6] via-[#FDF9F5] to-white" />
           <div className="pointer-events-none absolute -left-40 top-20 h-80 w-80 rounded-full bg-gradient-to-br from-orange/10 to-transparent blur-3xl" />
           <div className="pointer-events-none absolute -right-40 top-40 h-96 w-96 rounded-full bg-gradient-to-bl from-[#98BCD6]/10 to-transparent blur-3xl" />
 
           <Container
             isMaxWidth={true}
-            className="relative mt-[70px] flex min-h-[calc(55svh-70px)] items-center justify-center px-[20px] pt-12 md:pt-16"
+            className="relative z-1 flex min-h-0 w-full flex-1 flex-col px-[20px] pb-14 pt-8 md:pb-20 md:pt-12"
           >
-            <div className="max-w-3xl text-center">
-              <h1
-                className="page-hero-title gsap-animate text-3xl font-bold text-[#33302E] opacity-0 sm:text-4xl md:text-5xl"
-                style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-              >
-                Affordable Laundry &{" "}
-                <span className="text-orange-services">Dry Cleaning</span>
-              </h1>
+            <div className="flex min-h-0 flex-1 flex-col justify-center">
+              <div className="max-w-3xl text-center mx-auto w-full">
+                <h1
+                  className="page-hero-title gsap-animate text-3xl font-bold text-[#33302E] opacity-0 sm:text-4xl md:text-5xl"
+                  style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
+                >
+                  Affordable Laundry &{" "}
+                  <span className="text-orange-services">Dry Cleaning</span>
+                </h1>
 
-              <p className="page-hero-meta gsap-animate mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-[#5E5450] opacity-0 sm:text-[18px]">
-                Transparent pricing, no hidden charges, free pickup & delivery.
-                Quality cleaning at prices that make sense.
-              </p>
+                <p className="page-hero-meta gsap-animate mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-[#5E5450] opacity-0 sm:text-[18px]">
+                  Transparent pricing, no hidden charges, free pickup &
+                  delivery. Quality cleaning at prices that make sense.
+                </p>
 
-              <div className="page-hero-subtitle gsap-animate mt-6 items-center gap-2 rounded-full border border-emerald-200/60 bg-gradient-to-r from-emerald-50/80 to-emerald-50/40 opacity-0 text-emerald-600 w-fit mx-auto flex items-center px-[10px] py-[2px] text-[13px] sm:text-base">
-                <Truck className="h-4 w-4" /> No Delivery Charges on Orders
-                Above ₹299
+                <div className="pricing-delivery-badge-wrap page-hero-subtitle gsap-animate mx-auto mt-6 inline-block w-fit max-w-full opacity-0 mt-[40px]">
+                  <span
+                    className="pricing-delivery-particle-anchor pricing-delivery-particle-anchor--1"
+                    aria-hidden
+                  >
+                    <Sparkles className="pricing-delivery-particle-icon size-4 text-amber-500" />
+                  </span>
+                  <span
+                    className="pricing-delivery-particle-anchor pricing-delivery-particle-anchor--2"
+                    aria-hidden
+                  >
+                    <Star className="pricing-delivery-particle-icon size-3.5 fill-amber-400/35 text-amber-500" />
+                  </span>
+                  <span
+                    className="pricing-delivery-particle-anchor pricing-delivery-particle-anchor--3"
+                    aria-hidden
+                  >
+                    <Sparkles className="pricing-delivery-particle-icon size-3.5 text-emerald-600" />
+                  </span>
+                  <span
+                    className="pricing-delivery-particle-anchor pricing-delivery-particle-anchor--4"
+                    aria-hidden
+                  >
+                    <Star className="pricing-delivery-particle-icon size-3 fill-emerald-500/40 text-emerald-600" />
+                  </span>
+                  <span
+                    className="pricing-delivery-particle-anchor pricing-delivery-particle-anchor--5"
+                    aria-hidden
+                  >
+                    <Sparkles className="pricing-delivery-particle-icon size-3.5 text-[#FF9431]" />
+                  </span>
+                  <span
+                    className="pricing-delivery-particle-anchor pricing-delivery-particle-anchor--6 hidden sm:flex"
+                    aria-hidden
+                  >
+                    <PartyPopper className="pricing-delivery-particle-icon size-4 text-orange-services" />
+                  </span>
+                  <span
+                    className="pricing-delivery-confetti pricing-delivery-confetti--a"
+                    aria-hidden
+                  />
+                  <span
+                    className="pricing-delivery-confetti pricing-delivery-confetti--b"
+                    aria-hidden
+                  />
+                  <span
+                    className="pricing-delivery-confetti pricing-delivery-confetti--c"
+                    aria-hidden
+                  />
+                  <div className="relative z-[2] flex w-fit max-w-full items-center gap-2 rounded-full border border-emerald-200/60 bg-gradient-to-r from-emerald-50/80 to-emerald-50/40 px-3 py-1.5 text-left text-[13px] text-emerald-700 shadow-sm backdrop-blur-[2px] sm:text-base sm:px-4">
+                    <Truck
+                      className="h-4 w-4 shrink-0 text-emerald-600"
+                      aria-hidden
+                    />
+                    <span className="leading-snug">
+                      No Delivery Charges on Orders Above ₹299
+                    </span>
+                  </div>
+                </div>
               </div>
+            </div>
+
+            <div className="flex shrink-0 flex-col items-center justify-end pt-6 pb-2">
+              <div className="pricing-hero-cta-wrap">
+                <button
+                  type="button"
+                  onClick={scrollToPricingTabs}
+                  className="group relative z-10 isolate w-full cursor-pointer rounded-full bg-gradient-to-r from-[#FF7700] via-[#FF9431] to-[#F8BB7A] px-8 py-4 text-center text-base font-semibold text-white shadow-[0_10px_40px_rgba(255,119,0,0.42),0_2px_8px_rgba(255,148,49,0.25)] ring-2 ring-white/70 ring-offset-2 ring-offset-[#FDF9F5] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_14px_48px_rgba(255,119,0,0.52),0_4px_12px_rgba(255,148,49,0.3)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF9431] focus-visible:ring-offset-4 sm:px-12 sm:py-[1.125rem] sm:text-lg motion-reduce:transition-none motion-reduce:hover:scale-100"
+                >
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 overflow-hidden rounded-full"
+                  >
+                    <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 transition-all duration-700 ease-out group-hover:translate-x-full group-hover:opacity-100 motion-reduce:hidden" />
+                  </span>
+                  <span className="relative z-10 flex items-center justify-center gap-2.5">
+                    <span className="tracking-tight">View plans & pricing</span>
+                    <ChevronDown
+                      className="pricing-hero-cta-chevron size-5 shrink-0"
+                      aria-hidden
+                    />
+                  </span>
+                </button>
+              </div>
+              <p className="mt-8 max-w-xs text-center text-[13px] text-[#91776C] sm:mt-10 sm:text-sm">
+                Compare laundry, dry cleaning & subscription rates
+              </p>
             </div>
           </Container>
         </div>
@@ -593,8 +683,11 @@ export default function PricingPage() {
           <div className="mx-auto max-w-6xl">
             {/* Scroll-in: same as Privacy Policy .page-section (top 80%, duration normal×1.3) */}
             {/* Tabs + tab title share one scroll section so the headline appears with the controls on first view */}
-            <div className="page-section gsap-animate my-10 flex flex-col items-center opacity-0 sm:mt-12 mb-10 md-mb-12 gap-10">
-              <div className="flex flex-wrap justify-center gap-x-3 gap-y-5 sm:gap-3">
+            <div
+              id="pricing-tabs"
+              className="page-section gsap-animate my-10 flex flex-col items-center opacity-0 sm:mt-12 mb-10 md:mb-12 gap-10 scroll-mt-[88px]"
+            >
+              <div className="mt-[70px] flex flex-wrap justify-center gap-x-3 gap-y-5 sm:gap-3">
                 <TabButton
                   active={activeTab === "laundry"}
                   onClick={() => selectTab("laundry")}
