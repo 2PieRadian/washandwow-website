@@ -34,7 +34,9 @@ import {
 type PricingTab = "laundry" | "dryCleaning" | "subscription";
 
 const WHATSAPP_NUMBER_E164 = "919318387705";
-const WHATSAPP_CHAT_URL = `https://wa.me/${WHATSAPP_NUMBER_E164}`;
+const WHATSAPP_PREFILL_MESSAGE =
+  "Hi! I'd like to schedule a laundry pickup with Wash & Wow.";
+const WHATSAPP_CHAT_URL = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(WHATSAPP_PREFILL_MESSAGE)}`;
 
 const laundryServices = [
   {
