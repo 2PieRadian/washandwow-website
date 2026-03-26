@@ -122,7 +122,7 @@ export default function WhyChooseUs() {
       <Container isMaxWidth={true} className="max-w-[1200px]">
         <div className="why-choose-header gsap-animate text-center mb-10 sm:mb-14 opacity-0">
           <h2
-            className="font-semibold text-[#33302E] mt-2"
+            className="font-semibold text-[#33302E] -mt-4"
             style={{
               fontFamily: WixMadeForDisplayFont.style.fontFamily,
               fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
