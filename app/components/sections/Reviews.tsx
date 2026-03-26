@@ -1,7 +1,9 @@
 "use client";
 
 import { WixMadeForDisplayFont } from "@/app/fonts";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import {
   gsap,
   prefersReducedMotion,
@@ -17,6 +19,7 @@ interface Review {
   avatar: string;
 }
 
+/** Stock portrait URLs (Pravatar CDN) — replace with your own customer photos when available. */
 const reviews: Review[] = [
   {
     id: 1,
@@ -24,7 +27,7 @@ const reviews: Review[] = [
     review:
       "Amazing service! My clothes come back fresh, neatly folded, and perfectly clean every single time. The attention to detail is incredible and I couldn't be happier with the results.",
     rating: 5,
-    avatar: "/images/reviews/avatar1.png",
+    avatar: "https://i.pravatar.cc/256?img=11",
   },
   {
     id: 2,
@@ -32,7 +35,7 @@ const reviews: Review[] = [
     review:
       "I'm so impressed with the quality of care they give to my delicate items. The pickup was on time, delivery was seamless, and my clothes have never looked better. Highly recommended!",
     rating: 5,
-    avatar: "/images/reviews/avatar2.png",
+    avatar: "https://i.pravatar.cc/256?img=12",
   },
   {
     id: 3,
@@ -40,7 +43,7 @@ const reviews: Review[] = [
     review:
       "Super convenient pickup and delivery service. The app makes scheduling so easy and I love getting real-time updates on my order status. This has been a total game changer for my busy lifestyle!",
     rating: 5,
-    avatar: "/images/reviews/avatar3.png",
+    avatar: "https://i.pravatar.cc/256?img=32",
   },
   {
     id: 4,
@@ -48,7 +51,7 @@ const reviews: Review[] = [
     review:
       "Best laundry service in the city! Professional staff who are always on time, and my clothes smell absolutely amazing every time. Can't imagine going back to doing laundry myself ever again.",
     rating: 5,
-    avatar: "/images/reviews/avatar4.png",
+    avatar: "https://i.pravatar.cc/256?img=15",
   },
   {
     id: 5,
@@ -56,17 +59,24 @@ const reviews: Review[] = [
     review:
       "Finally found a service I can completely trust with my expensive suits and formal wear. The dry cleaning quality is excellent and they handle everything with such care and professionalism.",
     rating: 5,
-    avatar: "/images/reviews/avatar5.png",
+    avatar: "https://i.pravatar.cc/256?img=45",
   },
 ];
 
 function StarRating({ rating }: { rating: number }) {
   return (
-    <div className="flex gap-[2px]">
+    <div
+      className="flex justify-center gap-0.5 rounded-full bg-amber-50/90 px-2.5 py-1 ring-1 ring-amber-200/40"
+      aria-label={`${rating} out of 5 stars`}
+    >
       {[...Array(5)].map((_, i) => (
         <svg
           key={i}
-          className={`w-5 h-5 ${i < rating ? "text-[#FFB800]" : "text-gray-300"}`}
+          className={`h-4 w-4 sm:h-[18px] sm:w-[18px] ${
+            i < rating
+              ? "text-amber-500 drop-shadow-[0_1px_1px_rgba(245,158,11,0.35)]"
+              : "text-amber-200/80"
+          }`}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -78,51 +88,92 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 function ReviewCard({ review }: { review: Review }) {
+  const excerpt =
+    review.review.length > 120
+      ? `${review.review.slice(0, 120).trim()}…`
+      : review.review;
+
   return (
-    <div className="bg-gradient-to-b from-[#FFFFFF] to-[#FDFCFB] rounded-[37px] border border-[#F4EFEE] px-[24px] sm:px-[30px] py-[32px] sm:py-[40px] shadow-[0px_4px_20px_rgba(0,0,0,0.06),inset_0_2px_4px_rgba(255,255,255,1),inset_0_-2px_6px_rgba(0,0,0,0.02),inset_0_0_20px_rgba(255,255,255,0.8)] flex flex-col items-center text-center w-full h-[360px] sm:h-[380px] select-none">
-      {/* Avatar */}
-      <div className="w-[70px] h-[70px] rounded-full bg-gradient-to-b from-[#B8E986] to-[#7EC850] p-[3px] mb-[20px]">
-        <div className="w-full h-full rounded-full bg-[#87CEEB] flex items-center justify-center overflow-hidden">
-          <div className="w-[40px] h-[40px] rounded-full bg-[#FFD699] mt-[15px]"></div>
+    <article className="group relative flex h-full min-h-[360px] w-full flex-col overflow-hidden rounded-[28px] border border-[#E8DFD6]/55 bg-gradient-to-br from-white via-[#FFFCFA] to-[#F5F0EB] text-center shadow-[6px_8px_24px_rgba(209,199,189,0.28),-4px_-4px_16px_rgba(255,255,255,0.95),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-300 ease-out motion-reduce:transition-none hover:-translate-y-1 hover:border-[#FF9431]/28 hover:shadow-[10px_16px_36px_rgba(255,148,49,0.12),8px_10px_28px_rgba(209,199,189,0.32),-6px_-6px_20px_rgba(255,255,255,1)] motion-reduce:hover:translate-y-0 sm:min-h-[380px]">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-[#FF9431]/85 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="pointer-events-none absolute -right-6 -top-6 h-28 w-28 rounded-full bg-gradient-to-br from-[#FF9431]/12 to-transparent blur-2xl transition-opacity duration-500 group-hover:from-[#FF9431]/18" />
+      <Quote
+        className="pointer-events-none absolute right-5 top-16 size-14 text-[#FF9431]/[0.09] transition-colors duration-300 group-hover:text-[#FF9431]/[0.14] sm:right-6 sm:top-[4.5rem] sm:size-16"
+        strokeWidth={1}
+        aria-hidden
+      />
+
+      <div className="relative flex flex-1 flex-col items-center px-6 pb-8 pt-7 sm:px-8 sm:pb-9 sm:pt-8">
+        <div className="relative mb-5 shrink-0">
+          <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-[#FF9431]/50 via-[#FFB86C]/30 to-[#98BCD6]/25 opacity-70 blur-md transition duration-300 group-hover:opacity-100" />
+          <div className="relative rounded-full bg-white p-[3px] shadow-[0_4px_14px_rgba(209,199,189,0.45)] ring-2 ring-white/90">
+            <Image
+              src={review.avatar}
+              alt={`${review.name}, customer`}
+              width={76}
+              height={76}
+              sizes="76px"
+              className="h-[68px] w-[68px] rounded-full object-cover sm:h-[76px] sm:w-[76px]"
+            />
+          </div>
+        </div>
+
+        <p className="relative z-[1] line-clamp-5 min-h-0 flex-1 text-[15px] leading-[1.65] text-[#5E5450] sm:text-[16px] md:text-[17px]">
+          <span className="font-serif text-[#FF9431]/90" aria-hidden>
+            &ldquo;
+          </span>
+          {excerpt}
+          <span className="font-serif text-[#FF9431]/90" aria-hidden>
+            &rdquo;
+          </span>
+        </p>
+
+        <div className="mt-6 w-full shrink-0 border-t border-[#E8DFD6]/60 pt-5">
+          <p className="font-semibold tracking-tight text-[#33302E] sm:text-[17px]">
+            {review.name}
+          </p>
+          <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.14em] text-[#B5A49A]">
+            Verified customer
+          </p>
+          <div className="mt-3 flex justify-center">
+            <StarRating rating={review.rating} />
+          </div>
         </div>
       </div>
-
-      {/* Quote Icon */}
-      <div className="text-[#FF9431] text-[32px] font-serif leading-none mb-[10px]">
-        "
-      </div>
-
-      {/* Review Text */}
-      <p className="text-[#5E5450] md:text-[18px] leading-relaxed flex-1">
-        {review.review.length > 100
-          ? review.review.slice(0, 100).trim() + "..."
-          : review.review}
-      </p>
-
-      {/* Name & Stars - Always at bottom */}
-      <div className="mt-auto">
-        <h4 className="text-[#91776C] font-semibold text-[16px] sm:text-md mb-[8px]">
-          {review.name}
-        </h4>
-        <StarRating rating={review.rating} />
-      </div>
-    </div>
+    </article>
   );
+}
+
+function getScrollStepPx(scrollRoot: HTMLDivElement): number {
+  const track = scrollRoot.firstElementChild as HTMLElement | null;
+  const firstSlide = track?.firstElementChild as HTMLElement | null;
+  if (!track || !firstSlide) return 320;
+  const gap =
+    parseFloat(
+      getComputedStyle(track).columnGap || getComputedStyle(track).gap,
+    ) || 20;
+  return firstSlide.offsetWidth + gap;
 }
 
 export default function Reviews() {
   const sectionRef = useRef<HTMLElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const velocityRef = useRef(0);
-  const lastX = useRef(0);
-  const animationRef = useRef<number | null>(null);
-  const autoScrollRef = useRef<number | null>(null);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
 
-  const duplicatedReviews = [...reviews, ...reviews];
+  const updateScrollEdges = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const epsilon = 4;
+    const max = el.scrollWidth - el.clientWidth;
+    if (max <= epsilon) {
+      setCanScrollPrev(false);
+      setCanScrollNext(false);
+      return;
+    }
+    setCanScrollPrev(el.scrollLeft > epsilon);
+    setCanScrollNext(el.scrollLeft < max - epsilon);
+  }, []);
 
   useEffect(() => {
     if (prefersReducedMotion()) return;
@@ -167,73 +218,45 @@ export default function Reviews() {
     return () => ctx.revert();
   }, []);
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!scrollRef.current) return;
-    if (animationRef.current) cancelAnimationFrame(animationRef.current);
-    setIsDragging(true);
-    setIsPaused(true);
-    setStartX(e.pageX - scrollRef.current.offsetLeft);
-    setScrollLeft(scrollRef.current.scrollLeft);
-    lastX.current = e.pageX;
-    velocityRef.current = 0;
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    if (Math.abs(velocityRef.current) > 0.5 && scrollRef.current) {
-      const momentum = () => {
-        if (!scrollRef.current) return;
-        scrollRef.current.scrollLeft -= velocityRef.current;
-        velocityRef.current *= 0.95;
-        if (Math.abs(velocityRef.current) > 0.5) {
-          animationRef.current = requestAnimationFrame(momentum);
-        } else {
-          setIsPaused(false);
-        }
-      };
-      animationRef.current = requestAnimationFrame(momentum);
-    } else {
-      setTimeout(() => setIsPaused(false), 1000);
-    }
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 1.2;
-    scrollRef.current.scrollLeft = scrollLeft - walk;
-    velocityRef.current = e.pageX - lastX.current;
-    lastX.current = e.pageX;
-  };
-
   useEffect(() => {
-    const scroll = scrollRef.current;
-    if (!scroll) return;
-
-    const singleSetWidth = scroll.scrollWidth / 2;
-
-    const autoScroll = () => {
-      if (!scroll || isPaused || isDragging) {
-        autoScrollRef.current = requestAnimationFrame(autoScroll);
-        return;
-      }
-
-      scroll.scrollLeft += 0.5;
-
-      if (scroll.scrollLeft >= singleSetWidth) {
-        scroll.scrollLeft = scroll.scrollLeft - singleSetWidth;
-      }
-
-      autoScrollRef.current = requestAnimationFrame(autoScroll);
-    };
-
-    autoScrollRef.current = requestAnimationFrame(autoScroll);
-
+    const el = scrollRef.current;
+    if (!el) return;
+    let cancelled = false;
+    const onScroll = () => updateScrollEdges();
+    el.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", updateScrollEdges);
+    const raf1 = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (!cancelled) updateScrollEdges();
+      });
+    });
     return () => {
-      if (autoScrollRef.current) cancelAnimationFrame(autoScrollRef.current);
+      cancelled = true;
+      cancelAnimationFrame(raf1);
+      el.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", updateScrollEdges);
     };
-  }, [isPaused, isDragging]);
+  }, [updateScrollEdges]);
+
+  const scrollPrev = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const step = getScrollStepPx(el);
+    const motion = prefersReducedMotion() ? "auto" : "smooth";
+    el.scrollTo({ left: Math.max(0, el.scrollLeft - step), behavior: motion });
+  };
+
+  const scrollNext = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const step = getScrollStepPx(el);
+    const max = el.scrollWidth - el.clientWidth;
+    const motion = prefersReducedMotion() ? "auto" : "smooth";
+    el.scrollTo({
+      left: Math.min(max, el.scrollLeft + step),
+      behavior: motion,
+    });
+  };
 
   return (
     <section
@@ -257,34 +280,57 @@ export default function Reviews() {
         </p>
       </div>
 
-      <div className="reviews-carousel gsap-animate max-w-[1200px] mx-auto px-[20px] relative opacity-0">
-        {/* Left fade overlay */}
-        <div className="absolute left-[20px] top-0 bottom-0 w-[60px] sm:w-[80px] bg-gradient-to-r from-[#FDFBF9] to-transparent z-10 pointer-events-none" />
+      <div className="reviews-carousel gsap-animate relative mx-auto max-w-[1200px] px-[20px] opacity-0">
+        <div className="relative">
+          {/* Left fade */}
+          <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-[5] w-12 bg-gradient-to-r from-[#FDFBF9] to-transparent sm:w-16" />
+          {/* Right fade */}
+          <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-[5] w-12 bg-gradient-to-l from-[#FDFBF9] to-transparent sm:w-16" />
 
-        {/* Right fade overlay */}
-        <div className="absolute right-[20px] top-0 bottom-0 w-[60px] sm:w-[80px] bg-gradient-to-l from-[#FDFBF9] to-transparent z-10 pointer-events-none" />
+          <button
+            type="button"
+            aria-label="Previous testimonials"
+            disabled={!canScrollPrev}
+            onClick={scrollPrev}
+            className="absolute left-0 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-[#E8DFD6]/80 bg-white/95 text-[#33302E] shadow-[4px_6px_16px_rgba(209,199,189,0.35)] backdrop-blur-sm transition-all duration-200 hover:border-[#FF9431]/35 hover:text-[#FF7700] hover:shadow-[6px_10px_22px_rgba(255,148,49,0.2)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-35 sm:left-1 sm:h-12 sm:w-12"
+          >
+            <ChevronLeft className="size-6" strokeWidth={2} aria-hidden />
+          </button>
+          <button
+            type="button"
+            aria-label="Next testimonials"
+            disabled={!canScrollNext}
+            onClick={scrollNext}
+            className="absolute right-0 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-[#E8DFD6]/80 bg-white/95 text-[#33302E] shadow-[4px_6px_16px_rgba(209,199,189,0.35)] backdrop-blur-sm transition-all duration-200 hover:border-[#FF9431]/35 hover:text-[#FF7700] hover:shadow-[6px_10px_22px_rgba(255,148,49,0.2)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-35 sm:right-1 sm:h-12 sm:w-12"
+          >
+            <ChevronRight className="size-6" strokeWidth={2} aria-hidden />
+          </button>
 
-        <div
-          ref={scrollRef}
-          className={`overflow-x-auto pb-[20px] scrollbar-hide ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={() => {
-            handleMouseUp();
-            setIsPaused(false);
-          }}
-          onMouseMove={handleMouseMove}
-          onMouseEnter={() => setIsPaused(true)}
-        >
-          <div className="flex gap-[20px] w-max px-[60px] sm:px-[80px] py-[20px]">
-            {duplicatedReviews.map((review, index) => (
-              <div
-                key={`${review.id}-${index}`}
-                className="w-[300px] sm:w-[360px] shrink-0"
-              >
-                <ReviewCard review={review} />
-              </div>
-            ))}
+          <div
+            ref={scrollRef}
+            className="scrollbar-hide overflow-x-hidden pb-5 pl-12 pr-12 pt-1 sm:pl-14 sm:pr-14"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "ArrowLeft") {
+                e.preventDefault();
+                scrollPrev();
+              }
+              if (e.key === "ArrowRight") {
+                e.preventDefault();
+                scrollNext();
+              }
+            }}
+          >
+            <div className="flex w-max gap-5 py-4 sm:gap-6">
+              {reviews.map((review) => (
+                <div
+                  key={review.id}
+                  className="w-[300px] shrink-0 sm:w-[360px]"
+                >
+                  <ReviewCard review={review} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
