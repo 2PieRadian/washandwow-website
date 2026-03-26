@@ -290,38 +290,37 @@ export function FooterAnimation({ children }: FooterAnimationProps) {
     const ctx = gsap.context(() => {
       const config = getResponsiveConfig();
 
-      gsap.fromTo(
-        ".footer-main",
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: config.duration.normal * 1.3,
-          ease: ANIMATION_CONFIG.ease.default,
+      // One ScrollTrigger on `.footer-main` drives both tweens so copyright cannot get a stale
+      // start position when page height changes (e.g. pricing tab switch) and max scroll < old trigger.
+      gsap
+        .timeline({
           scrollTrigger: {
             trigger: ".footer-main",
             start: "top bottom",
             once: true,
             invalidateOnRefresh: true,
           },
-        },
-      );
-
-      gsap.fromTo(
-        ".footer-copyright",
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: config.duration.fast,
-          ease: ANIMATION_CONFIG.ease.default,
-          scrollTrigger: {
-            trigger: ".footer-copyright",
-            start: "top bottom",
-            once: true,
-            invalidateOnRefresh: true,
+        })
+        .fromTo(
+          ".footer-main",
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: config.duration.normal * 1.3,
+            ease: ANIMATION_CONFIG.ease.default,
           },
-        },
-      );
+        )
+        .fromTo(
+          ".footer-copyright",
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: config.duration.fast,
+            ease: ANIMATION_CONFIG.ease.default,
+          },
+          "<20%",
+        );
     }, containerRef);
 
     const refresh = () => ScrollTrigger.refresh();

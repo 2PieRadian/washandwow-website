@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/sections/Footer";
@@ -12,6 +12,7 @@ import {
   PageSectionsAnimation,
 } from "@/app/components/animations/PageAnimations";
 import { scrollToSection } from "@/app/utils/scrollToSection";
+import { ScrollTrigger } from "@/app/lib/animations";
 import {
   Shirt,
   Sparkles,
@@ -555,6 +556,18 @@ export default function PricingPage() {
   const scrollToPricingTabs = useCallback(() => {
     scrollToSection("#pricing-tabs", 70);
   }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (!cancelled) ScrollTrigger.refresh();
+      });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [activeTab]);
 
   return (
     <div style={{ fontFamily: SatoshiFont.style.fontFamily }}>
