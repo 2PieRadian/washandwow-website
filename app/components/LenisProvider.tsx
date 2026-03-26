@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { setLenisInstance } from "@/app/lib/lenis-instance";
 
 export default function LenisProvider({
   children,
@@ -33,9 +34,11 @@ export default function LenisProvider({
       gestureOrientation: "vertical",
       smoothWheel: true,
       touchMultiplier: 2,
+      stopInertiaOnNavigate: true,
     });
 
     lenisRef.current = lenis;
+    setLenisInstance(lenis);
 
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -47,6 +50,7 @@ export default function LenisProvider({
     requestAnimationFrame(raf);
 
     return () => {
+      setLenisInstance(null);
       lenis.destroy();
       lenisRef.current = null;
     };
