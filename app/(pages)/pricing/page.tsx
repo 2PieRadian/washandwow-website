@@ -91,23 +91,6 @@ const laundryServices = [
     gradient: { from: "#FFAB5C", to: "#FF7700", shadow: "rgba(255,119,0,0.3)" },
     popular: true,
   },
-  {
-    title: "Express Laundry",
-    price: 149,
-    unit: "kg",
-    description: "Priority processing with 24-hour delivery for urgent needs.",
-    features: [
-      "Priority processing",
-      "24-hour delivery",
-      "All premium features",
-      "SMS updates",
-    ],
-    gradient: {
-      from: "#E6C29E",
-      to: "#D4A574",
-      shadow: "rgba(212,165,116,0.3)",
-    },
-  },
 ];
 
 const dryCleaningCategories = [
@@ -304,7 +287,7 @@ function TabButton({
 function LaundryCard({ service }: { service: (typeof laundryServices)[0] }) {
   return (
     <div
-      className={`group relative flex h-full min-h-0 w-full flex-col overflow-hidden rounded-[24px] sm:rounded-[28px] border ${
+      className={`group relative flex max-sm:h-fit sm:h-full min-h-0 w-full flex-col overflow-hidden rounded-[24px] sm:rounded-[28px] border ${
         service.popular
           ? "border-orange/30 hover:border-orange/50"
           : "border-[#E8DFD6]/50 hover:border-[#D2C7BC]"
@@ -323,9 +306,8 @@ function LaundryCard({ service }: { service: (typeof laundryServices)[0] }) {
         }}
       />
 
-      <div className="relative flex min-h-0 flex-1 flex-col">
-        {/* lg+: fixed min height so price aligns across 4 columns; below lg cards are content-sized (avoids gap on phone/tablet 1–2 col) */}
-        <div className="mb-6 flex flex-col lg:min-h-[8.75rem]">
+      <div className="relative flex min-h-0 flex-col max-sm:flex-none sm:flex-1">
+        <div className="flex flex-col">
           <div className="mb-4 shrink-0">
             <h3
               className="text-xl font-semibold text-[#33302E] sm:text-2xl"
@@ -335,19 +317,19 @@ function LaundryCard({ service }: { service: (typeof laundryServices)[0] }) {
             </h3>
           </div>
 
-          <p className="min-h-0 text-[15px] leading-relaxed text-[#5E5450] sm:text-[16px] lg:flex-1">
+          <p className="text-[15px] leading-relaxed text-[#5E5450] sm:text-[16px]">
             {service.description}
           </p>
         </div>
 
-        <div className="mb-6 flex shrink-0 items-baseline gap-1 py-2">
+        <div className="my-6 flex shrink-0 items-baseline gap-1">
           <span className="text-3xl font-bold text-[#33302E] sm:text-4xl">
             ₹{service.price}
           </span>
           <span className="text-[#91776C]">/{service.unit}</span>
         </div>
 
-        <ul className="flex min-h-0 flex-1 flex-col space-y-2.5">
+        <ul className="flex min-h-0 flex-col space-y-2.5 max-sm:flex-none sm:flex-1">
           {service.features.map((feature) => (
             <li
               key={feature}
@@ -449,7 +431,7 @@ function DryCleaningCategory({
 function SubscriptionCard({ plan }: { plan: (typeof subscriptionPlans)[0] }) {
   return (
     <div
-      className={`group relative flex h-full min-h-0 w-full flex-col overflow-hidden rounded-[24px] sm:rounded-[28px] border ${
+      className={`group relative flex max-sm:h-fit sm:h-full min-h-0 w-full flex-col overflow-hidden rounded-[24px] sm:rounded-[28px] border ${
         plan.popular
           ? "border-orange/30 hover:border-orange/50"
           : "border-[#E8DFD6]/50 hover:border-[#D2C7BC]"
@@ -468,9 +450,8 @@ function SubscriptionCard({ plan }: { plan: (typeof subscriptionPlans)[0] }) {
         }}
       />
 
-      <div className="relative flex min-h-0 flex-1 flex-col">
-        {/* Same header height + fixed gap so price spacing matches on every plan card */}
-        <div className="mb-4 flex min-h-[5.25rem] shrink-0 items-center gap-3 sm:min-h-[5rem]">
+      <div className="relative flex min-h-0 flex-col max-sm:flex-none sm:flex-1">
+        <div className="flex shrink-0 items-start gap-3">
           <span
             className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white shadow-lg"
             style={{
@@ -493,14 +474,14 @@ function SubscriptionCard({ plan }: { plan: (typeof subscriptionPlans)[0] }) {
           </div>
         </div>
 
-        <div className="flex shrink-0 items-baseline gap-1 py-6">
+        <div className="my-6 flex shrink-0 items-baseline gap-1">
           <span className="text-3xl font-bold text-[#33302E] sm:text-4xl">
             ₹{plan.price.toLocaleString()}
           </span>
           <span className="text-[#91776C]">/{plan.period}</span>
         </div>
 
-        <ul className="flex min-h-0 flex-1 flex-col space-y-2.5 pt-1">
+        <ul className="flex min-h-0 flex-col space-y-2.5 max-sm:flex-none sm:flex-1">
           {plan.features.map((feature) => (
             <li
               key={feature}
@@ -528,7 +509,7 @@ function SubscriptionCard({ plan }: { plan: (typeof subscriptionPlans)[0] }) {
 
 function AddOnCard({ service }: { service: (typeof addOnServices)[0] }) {
   return (
-    <div className="group flex h-full min-h-0 w-full items-center gap-4 rounded-xl border border-[#E8DFD6]/40 bg-gradient-to-br from-[#FEFEFE] to-[#F6F3F0] p-4 shadow-[3px_3px_8px_rgba(209,199,189,0.35),-3px_-3px_8px_rgba(255,255,255,0.85),inset_1px_1px_1px_rgba(255,255,255,0.6)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#D2C7BC] hover:shadow-[6px_8px_18px_rgba(209,199,189,0.45),-5px_-5px_14px_rgba(255,255,255,0.92),inset_1px_1px_2px_rgba(255,255,255,0.75)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:hover:-translate-y-1">
+    <div className="group flex max-sm:h-fit max-sm:self-start sm:h-full min-h-0 w-full items-center gap-4 rounded-xl border border-[#E8DFD6]/40 bg-gradient-to-br from-[#FEFEFE] to-[#F6F3F0] p-4 shadow-[3px_3px_8px_rgba(209,199,189,0.35),-3px_-3px_8px_rgba(255,255,255,0.85),inset_1px_1px_1px_rgba(255,255,255,0.6)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#D2C7BC] hover:shadow-[6px_8px_18px_rgba(209,199,189,0.45),-5px_-5px_14px_rgba(255,255,255,0.92),inset_1px_1px_2px_rgba(255,255,255,0.75)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:hover:-translate-y-1">
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-orange/15 to-orange/5 text-orange shadow-sm transition-transform duration-300 ease-out group-hover:scale-110 group-hover:shadow-md motion-reduce:group-hover:scale-100">
         {service.icon}
       </span>
@@ -779,13 +760,15 @@ export default function PricingPage() {
               >
                 {activeTab === "laundry" && (
                   <>
-                    <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    <div className="grid auto-rows-auto grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
                       {laundryServices.map((service, index) => (
                         <div
                           key={service.title}
-                          className={`flex h-full min-h-0 ${
-                            hasUserSwitchedTab ? "tab-card-animate" : ""
-                          }`}
+                          className={`flex max-sm:h-auto max-sm:self-start min-h-0 sm:h-full ${
+                            index === laundryServices.length - 1
+                              ? "sm:col-span-2 md:col-span-1"
+                              : ""
+                          } ${hasUserSwitchedTab ? "tab-card-animate" : ""}`}
                           style={
                             hasUserSwitchedTab
                               ? { animationDelay: `${index * 100}ms` }
@@ -877,11 +860,11 @@ export default function PricingPage() {
                 )}
 
                 {activeTab === "subscription" && (
-                  <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  <div className="grid auto-rows-auto gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {subscriptionPlans.map((plan, index) => (
                       <div
                         key={plan.title}
-                        className={`flex h-full min-h-0 items-stretch ${
+                        className={`flex max-sm:h-auto max-sm:self-start min-h-0 sm:h-full ${
                           hasUserSwitchedTab ? "tab-card-animate" : ""
                         }`}
                         style={
@@ -914,7 +897,7 @@ export default function PricingPage() {
                 </p>
               </div>
 
-              <div className="grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid auto-rows-auto gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {addOnServices.map((service) => (
                   <AddOnCard key={service.title} service={service} />
                 ))}
