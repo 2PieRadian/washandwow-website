@@ -1,0 +1,41 @@
+/**
+ * Set NEXT_PUBLIC_SITE_URL in production (e.g. https://washandwow.in).
+ * Defaults to the domain used by your public contact email.
+ */
+export function getSiteUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_SITE_URL ?? "https://washandwow.in";
+  return raw.replace(/\/$/, "");
+}
+
+export const SITE_NAME = "Wash and Wow";
+/** Common spelling used in UI copy */
+export const SITE_NAME_AMPERSAND = "Wash & Wow";
+
+export const SITE_DESCRIPTION =
+  "Wash and Wow (washandwow) is a laundry and dry cleaning service in India with easy pickup and delivery, wash & fold, dry cleaning, and subscription plans. Book on the web or app.";
+
+/** Brand and discovery phrases for meta keywords (supplement to visible copy). */
+export const SITE_KEYWORDS: string[] = [
+  "Wash and Wow",
+  "Wash and wow",
+  "washandwow",
+  "Wash & Wow",
+  "wash and wow laundry",
+  "washandwow laundry",
+  "laundry service India",
+  "dry cleaning pickup delivery",
+  "wash and fold",
+  "laundry app India",
+];
+
+export const SITE_EMAIL = "support@washandwow.in";
+export const SITE_PHONE_E164 = "+919318387705";
+export const SITE_PHONE_DISPLAY = "9318387705";
+export const SITE_ADDRESS = "123, Location Here";
+
+export function canonicalPath(path: string): string {
+  const base = getSiteUrl();
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  if (normalized === "/") return `${base}/`;
+  return `${base}${normalized}`;
+}

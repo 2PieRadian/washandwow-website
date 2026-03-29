@@ -29,11 +29,18 @@ import {
   PageHeroAnimation,
   PageSectionsAnimation,
 } from "@/app/components/animations/PageAnimations";
+import { canonicalPath } from "@/app/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Wash & Wow",
+  title: "Privacy Policy",
   description:
-    "How Wash & Wow collects, uses, and protects your data across our website and app.",
+    "How Wash and Wow (washandwow) collects, uses, and protects your data across our website and app.",
+  alternates: { canonical: canonicalPath("/privacy-policy") },
+  openGraph: {
+    url: canonicalPath("/privacy-policy"),
+    description:
+      "How Wash and Wow collects, uses, and protects your data across our website and app.",
+  },
 };
 
 const LAST_UPDATED = "March 22, 2026";

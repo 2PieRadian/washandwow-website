@@ -3,13 +3,20 @@ import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/sections/Footer";
 import { SatoshiFont, WixMadeForDisplayFont } from "@/app/fonts";
 import type { Metadata } from "next";
+import { canonicalPath } from "@/app/lib/site-config";
 import { StepVisual } from "./StepVisual";
 import { AboutHeroAnimation, AboutSectionAnimation } from "./AboutAnimations";
 
 export const metadata: Metadata = {
-  title: "About Us | Wash & Wow",
+  title: "About Us",
   description:
-    "Learn how Wash & Wow brings care and precision to your everyday laundry.",
+    "Learn how Wash and Wow (Wash & Wow / washandwow) brings care and precision to everyday laundry, dry cleaning, and pickup delivery in India.",
+  alternates: { canonical: canonicalPath("/about") },
+  openGraph: {
+    url: canonicalPath("/about"),
+    description:
+      "Learn how Wash and Wow brings care and precision to your everyday laundry.",
+  },
 };
 
 const processStepBadgeShadow =

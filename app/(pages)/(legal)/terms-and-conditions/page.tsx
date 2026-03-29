@@ -8,6 +8,7 @@ import {
   PageHeroAnimation,
   PageSectionsAnimation,
 } from "@/app/components/animations/PageAnimations";
+import { canonicalPath } from "@/app/lib/site-config";
 
 const LAST_UPDATED = "March 22, 2026";
 const CONTACT_EMAIL = "support@washandwow.in";
@@ -19,15 +20,23 @@ const DAMAGE_CLAIM_WINDOW = "48 hours";
 const JURISDICTION_CITY = "New Delhi";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions | Wash & Wow",
+  title: "Terms and Conditions",
   description:
-    "Terms governing use of Wash & Wow website, app, and laundry services in India.",
+    "Terms governing use of Wash and Wow website, app, and laundry services in India.",
   keywords: [
     "Laundry service terms India",
     "dry cleaning service conditions",
     "laundry app terms and conditions",
     "pickup delivery laundry terms",
+    "Wash and Wow terms",
+    "washandwow terms",
   ],
+  alternates: { canonical: canonicalPath("/terms-and-conditions") },
+  openGraph: {
+    url: canonicalPath("/terms-and-conditions"),
+    description:
+      "Terms governing use of Wash and Wow website, app, and laundry services in India.",
+  },
 };
 
 function PolicySection({

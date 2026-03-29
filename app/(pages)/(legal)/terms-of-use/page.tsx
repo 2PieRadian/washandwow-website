@@ -9,6 +9,7 @@ import {
   PageHeroAnimation,
   PageSectionsAnimation,
 } from "@/app/components/animations/PageAnimations";
+import { canonicalPath } from "@/app/lib/site-config";
 
 const LAST_UPDATED = "March 22, 2026";
 const CONTACT_EMAIL = "support@washandwow.in";
@@ -17,15 +18,23 @@ const CONTACT_ADDRESS = "123, Location Here";
 const JURISDICTION_CITY = "New Delhi";
 
 export const metadata: Metadata = {
-  title: "Terms of Use | Wash & Wow",
+  title: "Terms of Use",
   description:
-    "Terms governing access to Wash & Wow website and mobile app in India.",
+    "Terms governing access to Wash and Wow website and mobile app in India.",
   keywords: [
     "Laundry app terms of use India",
     "website usage policy laundry service",
     "mobile app usage terms India",
     "laundry platform legal terms",
+    "Wash and Wow terms of use",
+    "washandwow app terms",
   ],
+  alternates: { canonical: canonicalPath("/terms-of-use") },
+  openGraph: {
+    url: canonicalPath("/terms-of-use"),
+    description:
+      "Terms governing access to Wash and Wow website and mobile app in India.",
+  },
 };
 
 function PolicySection({

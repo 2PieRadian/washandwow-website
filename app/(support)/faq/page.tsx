@@ -8,6 +8,7 @@ import {
   PageHeroAnimation,
   PageSectionsAnimation,
 } from "@/app/components/animations/PageAnimations";
+import { canonicalPath } from "@/app/lib/site-config";
 
 const CONTACT_EMAIL = "support@washandwow.in";
 const CONTACT_PHONE = "9318387705";
@@ -15,9 +16,15 @@ const LAUNDRY_DELIVERY = "24–48 hours";
 const DRY_CLEANING_DELIVERY = "2–3 days";
 
 export const metadata: Metadata = {
-  title: "FAQs | Wash & Wow",
+  title: "FAQs",
   description:
-    "Answers about Wash & Wow laundry, dry cleaning, pickup & delivery, pricing, and the app.",
+    "Wash and Wow FAQs: laundry and dry cleaning, pickup and delivery, pricing, subscriptions, and the washandwow app.",
+  alternates: { canonical: canonicalPath("/faq") },
+  openGraph: {
+    url: canonicalPath("/faq"),
+    description:
+      "Answers about Wash and Wow laundry, dry cleaning, pickup & delivery, pricing, and the app.",
+  },
 };
 
 function FaqCategory({
