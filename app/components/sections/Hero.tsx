@@ -104,8 +104,8 @@ export default function Hero() {
             </h1>
           </div>
           <p className="hero-subtitle gsap-animate text-brown text-[clamp(1rem,0.8rem+1vw,1.25rem)] mt-[20px] max-w-xl mx-auto opacity-0">
-            Laundry, home cleaning, car care, and pest control — premium care
-            at your doorstep, booked in one app.
+            Laundry, home cleaning, car care, and pest control — premium care at
+            your doorstep, booked in one app.
           </p>
         </div>
 

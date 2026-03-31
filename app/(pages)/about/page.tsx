@@ -48,7 +48,7 @@ function SectionShell({
   return (
     <section
       id={id}
-      className={`about-animate-section px-[20px] py-10 sm:py-12 md:py-14 lg:py-16 ${className}`}
+      className={`about-animate-section px-[20px] py-14 sm:py-16 md:py-20 lg:py-24 ${className}`}
     >
       <Container isMaxWidth={true} className="max-w-6xl">
         {children}
@@ -68,10 +68,10 @@ export default function AboutPage() {
       <AboutHeroAnimation>
         <Container
           isMaxWidth={true}
-          className="mt-[70px] max-w-6xl px-[20px] pb-8 pt-6 md:pb-10 md:pt-8"
+          className="mt-[70px] max-w-6xl px-[20px] pb-12 pt-10 md:pb-14 md:pt-12"
         >
-          <div className="flex flex-col gap-8 min-[1024px]:flex-row min-[1024px]:items-center min-[1024px]:gap-10">
-            <div className="about-hero-text min-w-0 flex-1 space-y-5">
+          <div className="flex flex-col gap-10 min-[1024px]:flex-row min-[1024px]:items-center min-[1024px]:gap-14">
+            <div className="about-hero-text min-w-0 flex-1 space-y-6">
               <p
                 className={`about-hero-item inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#FF9431] opacity-0 motion-reduce:opacity-100`}
               >
@@ -86,7 +86,7 @@ export default function AboutPage() {
               >
                 Transforming How India Cleans, Cares &amp; Lives Fresh
               </h1>
-              <div className="space-y-3 text-[17px] leading-[1.65] text-[#5E5450] sm:text-[18px] md:text-[19px]">
+              <div className="space-y-4 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]">
                 <p className="about-hero-item opacity-0 motion-reduce:opacity-100">
                   Wash &amp; Wow is India&apos;s fast-growing, tech-enabled
                   laundry and home service brand, redefining how modern
@@ -105,7 +105,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <p
-                className="about-hero-item rounded-[20px] border border-[#FF9431]/20 bg-gradient-to-br from-white to-[#FFF8F2] px-5 py-4 text-[16px] font-medium leading-relaxed text-[#584E46] shadow-[0_12px_40px_-12px_rgba(255,148,49,0.25)] opacity-0 motion-reduce:opacity-100 sm:px-6 sm:py-5 sm:text-[17px]"
+                className="about-hero-item rounded-[20px] border border-[#FF9431]/20 bg-gradient-to-br from-white to-[#FFF8F2] px-5 py-4 text-[16px] font-medium leading-relaxed text-[#584E46] shadow-[0_12px_40px_-12px_rgba(255,148,49,0.25)] opacity-0 motion-reduce:opacity-100 sm:px-7 sm:py-6 sm:text-[18px]"
                 style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
               >
                 <span className="mr-2" aria-hidden>
@@ -132,8 +132,8 @@ export default function AboutPage() {
       <AboutScrollAnimate>
         {/* Who we are */}
         <SectionShell className="bg-white">
-          <div className="space-y-6">
-            <div className="max-w-3xl space-y-3">
+          <div className="space-y-9">
+            <div className="max-w-3xl space-y-4">
               <h2
                 className={`${item} flex flex-wrap items-center gap-3 text-[clamp(1.65rem,3.5vw,2.35rem)] font-semibold text-[#33302E]`}
                 style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
@@ -144,13 +144,13 @@ export default function AboutPage() {
                 Who We Are
               </h2>
               <p
-                className={`${item} text-[17px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
+                className={`${item} text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
               >
                 At Wash &amp; Wow, we believe that life should not revolve
                 around chores.
               </p>
               <p
-                className={`${item} text-[17px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
+                className={`${item} text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
               >
                 We are building a smart service ecosystem where everything —
                 from laundry pickup to home cleaning — is handled with
@@ -164,7 +164,7 @@ export default function AboutPage() {
               >
                 By combining
               </p>
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2">
                 {[
                   {
                     icon: <Zap className="h-6 w-6" strokeWidth={1.75} />,
@@ -185,7 +185,7 @@ export default function AboutPage() {
                 ].map((row) => (
                   <div
                     key={row.t}
-                    className={`${item} flex gap-3 rounded-[20px] border border-[#E8DFD6]/80 bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] p-4 shadow-[6px_8px_28px_rgba(209,199,189,0.2)] sm:p-5`}
+                    className={`${item} flex gap-3 rounded-[20px] border border-[#E8DFD6]/80 bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] p-5 shadow-[6px_8px_28px_rgba(209,199,189,0.2)] sm:p-6`}
                   >
                     <span
                       className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#FFAB5C] to-[#FF7700] text-white shadow-lg"
@@ -204,13 +204,13 @@ export default function AboutPage() {
             </div>
 
             <p
-              className={`${item} max-w-3xl text-[17px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
+              className={`${item} max-w-3xl text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
             >
               …we ensure that every service meets modern standards of hygiene,
               safety, and quality.
             </p>
             <p
-              className={`${item} max-w-3xl text-[17px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
+              className={`${item} max-w-3xl text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
             >
               From busy professionals to families and businesses, Wash &amp; Wow
               is designed for anyone who values time, cleanliness, and
@@ -221,7 +221,7 @@ export default function AboutPage() {
 
         {/* What we offer */}
         <SectionShell className="bg-gradient-to-b from-[#FFFBF6] to-[#FDFBF9]">
-          <div className="space-y-6">
+          <div className="space-y-9">
             <div className="mx-auto max-w-3xl text-center">
               <h2
                 className={`${item} flex flex-wrap items-center justify-center gap-3 text-[clamp(1.65rem,3.5vw,2.35rem)] font-semibold text-[#33302E]`}
@@ -233,13 +233,13 @@ export default function AboutPage() {
                 What We Offer
               </h2>
               <p
-                className={`${item} mt-3 text-[17px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
+                className={`${item} mt-3 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
               >
                 Wash &amp; Wow is not just a laundry brand — it&apos;s a
                 complete home service platform.
               </p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2 md:gap-5">
+            <div className="grid gap-5 sm:grid-cols-2 md:gap-7">
               {[
                 {
                   emoji: "\u{1F9FA}",
@@ -268,7 +268,7 @@ export default function AboutPage() {
               ].map((card) => (
                 <article
                   key={card.title}
-                  className={`${item} group relative overflow-hidden rounded-[22px] border border-[#E8DFD6]/70 bg-white p-5 shadow-[8px_12px_40px_-12px_rgba(80,60,50,0.12)] transition-shadow duration-300 hover:shadow-[12px_20px_48px_-14px_rgba(255,148,49,0.15)] sm:p-6`}
+                  className={`${item} group relative overflow-hidden rounded-[22px] border border-[#E8DFD6]/70 bg-white p-6 shadow-[8px_12px_40px_-12px_rgba(80,60,50,0.12)] transition-shadow duration-300 hover:shadow-[12px_20px_48px_-14px_rgba(255,148,49,0.15)] sm:p-8`}
                 >
                   <div
                     className={`pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br ${card.ring} to-transparent blur-2xl`}
@@ -284,7 +284,7 @@ export default function AboutPage() {
                   >
                     {card.title}
                   </h3>
-                  <p className="mt-2 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[17px]">
+                  <p className="mt-3 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]">
                     {card.body}
                   </p>
                 </article>
@@ -295,7 +295,7 @@ export default function AboutPage() {
 
         {/* Why choose */}
         <SectionShell className="bg-white">
-          <div className="space-y-6">
+          <div className="space-y-9">
             <div className="mx-auto max-w-3xl text-center">
               <h2
                 className={`${item} flex flex-wrap items-center justify-center gap-3 text-[clamp(1.65rem,3.5vw,2.35rem)] font-semibold text-[#33302E]`}
@@ -307,7 +307,7 @@ export default function AboutPage() {
                 Why Choose Wash &amp; Wow
               </h2>
               <p
-                className={`${item} mt-3 text-[17px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
+                className={`${item} mt-3 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
               >
                 Choosing Wash &amp; Wow means choosing peace of mind.
               </p>
@@ -317,7 +317,7 @@ export default function AboutPage() {
                 We focus on delivering
               </p>
             </div>
-            <ul className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-2 md:gap-4">
+            <ul className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2 md:gap-6">
               {[
                 {
                   icon: <Package className="h-5 w-5" strokeWidth={2} />,
@@ -352,7 +352,7 @@ export default function AboutPage() {
               ].map((row) => (
                 <li
                   key={row.label}
-                  className={`${item} flex gap-3 rounded-[18px] border border-[#E8DFD6]/60 bg-[#FDFBF9]/80 px-4 py-4 sm:px-5 sm:py-4`}
+                  className={`${item} flex gap-3 rounded-[18px] border border-[#E8DFD6]/60 bg-[#FDFBF9]/80 px-5 py-5 sm:px-6 sm:py-5`}
                 >
                   <span
                     className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#FFAB5C] to-[#FF7700] text-white shadow-md"
@@ -361,10 +361,10 @@ export default function AboutPage() {
                     {row.icon}
                   </span>
                   <div className="min-w-0">
-                    <p className="text-[15px] font-semibold text-[#33302E] sm:text-base">
+                    <p className="text-base font-semibold text-[#33302E] sm:text-lg">
                       {row.label}
                     </p>
-                    <p className="mt-1 text-[14px] leading-relaxed text-[#6B635C] sm:text-[15px]">
+                    <p className="mt-2 text-[16px] leading-relaxed text-[#6B635C] sm:text-[18px]">
                       {row.sub}
                     </p>
                   </div>
@@ -372,7 +372,7 @@ export default function AboutPage() {
               ))}
             </ul>
             <p
-              className={`${item} mx-auto max-w-2xl text-center text-[18px] font-medium leading-relaxed text-[#584E46] sm:text-xl`}
+              className={`${item} mx-auto max-w-2xl text-center text-[16px] font-medium leading-relaxed text-[#584E46] sm:text-[18px] md:text-xl`}
               style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
             >
               <span className="text-[#FF9431]" aria-hidden>
@@ -386,7 +386,7 @@ export default function AboutPage() {
 
         {/* Process */}
         <SectionShell className="bg-gradient-to-b from-[#F5EDE6]/40 via-[#FFFBF6] to-white">
-          <div className="space-y-6">
+          <div className="space-y-9">
             <div className="mx-auto max-w-3xl text-center">
               <h2
                 className={`${item} flex flex-wrap items-center justify-center gap-3 text-[clamp(1.65rem,3.5vw,2.35rem)] font-semibold text-[#33302E]`}
@@ -451,7 +451,7 @@ export default function AboutPage() {
                 },
               ].map((step) => {
                 const liClass =
-                  "relative flex gap-4 pb-8 pl-0 sm:gap-6 sm:pb-10 last:pb-0";
+                  "relative flex gap-5 pb-10 pl-0 sm:gap-7 sm:pb-12 last:pb-0";
                 const badgeCol = `${item} relative z-1 flex shrink-0 flex-col items-center`;
                 const badge =
                   "flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#FFAB5C] to-[#FF7700] text-sm font-bold text-white shadow-[0_6px_20px_rgba(255,119,0,0.35)] ring-4 ring-[#FFFBF6] sm:h-11 sm:w-11 sm:text-base";
@@ -477,7 +477,7 @@ export default function AboutPage() {
                         >
                           {step.extraTitle}
                         </p>
-                        <ul className="mt-2 space-y-2 text-[15px] leading-relaxed text-[#5E5450] sm:text-[16px]">
+                        <ul className="mt-3 space-y-2.5 text-[16px] leading-relaxed text-[#5E5450] sm:text-[18px]">
                           {step.extra.map((line) => (
                             <li key={line} className={`${item} flex gap-2`}>
                               <CheckCircle2
@@ -493,7 +493,7 @@ export default function AboutPage() {
                         >
                           {step.homeTitle}
                         </p>
-                        <ul className="mt-2 space-y-2 text-[15px] leading-relaxed text-[#5E5450] sm:text-[16px]">
+                        <ul className="mt-3 space-y-2.5 text-[16px] leading-relaxed text-[#5E5450] sm:text-[18px]">
                           {step.homeBullets.map((line) => (
                             <li key={line} className={`${item} flex gap-2`}>
                               <CheckCircle2
@@ -526,7 +526,7 @@ export default function AboutPage() {
                       </h3>
                       {step.body ? (
                         <p
-                          className={`${item} mt-2 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[17px]`}
+                          className={`${item} mt-3 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
                         >
                           {step.body}
                         </p>
@@ -541,7 +541,7 @@ export default function AboutPage() {
 
         {/* Focus / Mission / Vision */}
         <SectionShell className="bg-white">
-          <div className="grid gap-5 md:grid-cols-3 md:gap-5">
+          <div className="grid gap-7 md:grid-cols-3 md:gap-8">
             {[
               {
                 emoji: "\u{1F3AF}",
@@ -561,7 +561,7 @@ export default function AboutPage() {
             ].map((block) => (
               <article
                 key={block.title}
-                className={`${item} flex flex-col rounded-[20px] border border-[#E8DFD6]/60 bg-gradient-to-b from-[#FEFEFE] to-[#F8F5F2] p-5 shadow-[6px_10px_32px_-8px_rgba(80,60,50,0.1)] sm:p-6`}
+                className={`${item} flex flex-col rounded-[20px] border border-[#E8DFD6]/60 bg-gradient-to-b from-[#FEFEFE] to-[#F8F5F2] p-6 shadow-[6px_10px_32px_-8px_rgba(80,60,50,0.1)] sm:p-8`}
               >
                 <p className="text-2xl sm:text-3xl" aria-hidden>
                   {block.emoji}
@@ -574,7 +574,7 @@ export default function AboutPage() {
                 >
                   {block.title}
                 </h3>
-                <p className="mt-3 flex-1 text-[15px] leading-[1.65] text-[#5E5450] sm:text-[16px]">
+                <p className="mt-4 flex-1 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]">
                   {block.text}
                 </p>
               </article>
@@ -584,7 +584,7 @@ export default function AboutPage() {
 
         {/* Franchise */}
         <SectionShell className="bg-[#1a314b] text-white">
-          <div className="overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-br from-[#1a314b] via-[#243a52] to-[#1a314b] p-6 shadow-[0_24px_80px_-20px_rgba(26,49,75,0.6)] sm:p-8 md:p-10">
+          <div className="overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-br from-[#1a314b] via-[#243a52] to-[#1a314b] p-8 shadow-[0_24px_80px_-20px_rgba(26,49,75,0.6)] sm:p-10 md:p-12">
             <div className="mx-auto max-w-3xl text-center">
               <h2
                 className={`${item} text-[clamp(1.4rem,3vw,1.95rem)] font-semibold`}
@@ -596,14 +596,14 @@ export default function AboutPage() {
                 Business &amp; Franchise Opportunity
               </h2>
               <p
-                className={`${item} mt-4 text-[16px] leading-[1.65] text-white/85 sm:text-[17px]`}
+                className={`${item} mt-6 text-[16px] leading-[1.65] text-white/85 sm:text-[18px]`}
               >
                 Thinking of entering the multi-billion home services industry?
                 Wash &amp; Wow offers a low-investment, high-growth business
                 opportunity with:
               </p>
             </div>
-            <ul className="mx-auto mt-6 grid max-w-4xl gap-3 sm:grid-cols-2 md:gap-4">
+            <ul className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-2 md:gap-6">
               {[
                 { emoji: "\u{1F3EA}", text: "Complete setup support" },
                 {
@@ -618,7 +618,7 @@ export default function AboutPage() {
               ].map((row) => (
                 <li
                   key={row.text}
-                  className={`${item} flex items-center gap-3 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-left text-[14px] font-medium text-white/95 backdrop-blur-sm sm:text-[15px]`}
+                  className={`${item} flex items-center gap-3 rounded-xl border border-white/15 bg-white/5 px-5 py-4 text-left text-[16px] font-medium text-white/95 backdrop-blur-sm sm:text-[18px]`}
                 >
                   <span className="text-2xl leading-none" aria-hidden>
                     {row.emoji}
@@ -628,7 +628,7 @@ export default function AboutPage() {
               ))}
             </ul>
             <p
-              className={`${item} mx-auto mt-6 max-w-2xl text-center text-[15px] leading-[1.65] text-white/80 sm:text-[16px]`}
+              className={`${item} mx-auto mt-8 max-w-2xl text-center text-[16px] leading-[1.65] text-white/80 sm:text-[18px]`}
             >
               Build a profitable business while becoming part of a future-ready
               service ecosystem.
@@ -638,7 +638,7 @@ export default function AboutPage() {
 
         {/* Sustainability */}
         <SectionShell className="bg-gradient-to-b from-[#FFFBF6] to-white">
-          <div className="max-w-3xl space-y-5">
+          <div className="max-w-3xl space-y-7">
             <h2
               className={`${item} flex flex-wrap items-center gap-3 text-[clamp(1.65rem,3.5vw,2.35rem)] font-semibold text-[#33302E]`}
               style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
@@ -649,7 +649,7 @@ export default function AboutPage() {
               Our Commitment to Sustainability
             </h2>
             <p
-              className={`${item} text-[17px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
+              className={`${item} text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
             >
               We care about more than just cleanliness.
             </p>
@@ -658,7 +658,7 @@ export default function AboutPage() {
             >
               Wash &amp; Wow is committed to:
             </p>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3.5">
               {[
                 "Using eco-friendly detergents and chemicals",
                 "Reducing water wastage with efficient processes",
@@ -667,7 +667,7 @@ export default function AboutPage() {
               ].map((line) => (
                 <li
                   key={line}
-                  className={`${item} flex gap-3 rounded-[14px] border border-[#E8DFD6]/60 bg-white px-4 py-3 text-[15px] leading-snug text-[#5E5450] sm:text-[16px]`}
+                  className={`${item} flex gap-3 rounded-[14px] border border-[#E8DFD6]/60 bg-white px-5 py-4 text-[16px] leading-snug text-[#5E5450] sm:text-[18px]`}
                 >
                   <Leaf
                     className="mt-0.5 h-5 w-5 shrink-0 text-[#FF9431]"
@@ -681,8 +681,8 @@ export default function AboutPage() {
         </SectionShell>
 
         {/* Final word */}
-        <SectionShell className="bg-white pb-12 sm:pb-14 md:pb-16">
-          <div className="mx-auto max-w-3xl space-y-6 text-center">
+        <SectionShell className="bg-white pb-16 sm:pb-20 md:pb-24">
+          <div className="mx-auto max-w-3xl space-y-8 text-center">
             <h2
               className={`${item} text-[clamp(1.5rem,3vw,2rem)] font-semibold text-[#33302E]`}
               style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
@@ -692,7 +692,7 @@ export default function AboutPage() {
               </span>
               Final Word
             </h2>
-            <div className="space-y-3 text-[17px] leading-[1.65] text-[#5E5450] sm:text-[18px] md:text-[19px]">
+            <div className="space-y-5 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]">
               <p className={item}>
                 In a world that moves fast, your time is your most valuable
                 asset.
