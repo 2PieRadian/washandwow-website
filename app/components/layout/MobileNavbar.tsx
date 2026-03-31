@@ -16,7 +16,7 @@ export default function MobileNavbar() {
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "How It Works", href: "#how-it-works" },
-    { name: "Services", href: "#services" },
+    { name: "Services", href: "/services" },
     { name: "Pricing", href: "/pricing" },
     { name: "Reviews", href: "#reviews" },
     { name: "About", href: "/about" },
@@ -53,7 +53,7 @@ export default function MobileNavbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] min-[900px]:hidden h-[70px]">
+    <nav className="fixed top-0 left-0 right-0 z-[100] h-[70px] min-[1000px]:hidden">
       {/* Top Bar */}
       <div className="bg-white shadow-sm h-[70px]">
         <div className="flex items-center justify-between px-[20px] h-[70px]">
@@ -114,13 +114,13 @@ export default function MobileNavbar() {
             <ul className="flex flex-col">
               {navItems.map((item) => {
                 const rowClass =
-                  "flex items-center justify-between py-[16px] text-gray-900 font-medium text-[16px] active:text-orange transition-colors duration-200";
+                  "flex min-h-[48px] w-full items-center justify-between py-3 text-gray-900 font-medium text-[16px] active:text-orange transition-colors duration-200";
 
                 if (!item.href.startsWith("#")) {
                   return (
                     <li
                       key={item.name}
-                      className="group cursor-pointer border-b border-gray-100 last:border-b-0"
+                      className="group border-b border-gray-100 last:border-b-0"
                     >
                       <Link
                         href={item.href}
@@ -128,7 +128,7 @@ export default function MobileNavbar() {
                         onClick={() => setIsMenuOpen(false)}
                         className={rowClass}
                       >
-                        <span>{item.name}</span>
+                        <span className="flex-1">{item.name}</span>
                       </Link>
                     </li>
                   );
@@ -139,7 +139,7 @@ export default function MobileNavbar() {
                   return (
                     <li
                       key={item.name}
-                      className="group cursor-pointer border-b border-gray-100 last:border-b-0"
+                      className="group border-b border-gray-100 last:border-b-0"
                     >
                       <Link
                         href={href}
@@ -147,7 +147,7 @@ export default function MobileNavbar() {
                         onClick={() => setIsMenuOpen(false)}
                         className={rowClass}
                       >
-                        <span>{item.name}</span>
+                        <span className="flex-1">{item.name}</span>
                       </Link>
                     </li>
                   );
@@ -156,14 +156,15 @@ export default function MobileNavbar() {
                 return (
                   <li
                     key={item.name}
-                    className="group cursor-pointer border-b border-gray-100 last:border-b-0"
+                    className="group border-b border-gray-100 last:border-b-0"
                   >
-                    <div
-                      className={rowClass}
+                    <button
+                      type="button"
+                      className={`${rowClass} cursor-pointer appearance-none border-0 bg-transparent text-left font-inherit`}
                       onClick={() => scrollToSection(item.href)}
                     >
-                      <span>{item.name}</span>
-                    </div>
+                      <span className="flex-1">{item.name}</span>
+                    </button>
                   </li>
                 );
               })}

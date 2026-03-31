@@ -131,8 +131,8 @@ export default function WhyChooseUs() {
             Why Choose <span className="text-orange-services">Wash & Wow</span>?
           </h2>
           <p className="text-[#5E5450] mt-3 max-w-xl mx-auto text-[16px] sm:text-[17px]">
-            Experience laundry service that puts your convenience and garment
-            care first.
+            Convenience, transparent pricing, and dependable quality across
+            every service we offer.
           </p>
         </div>
 

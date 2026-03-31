@@ -1,6 +1,7 @@
 import {
   getSiteUrl,
   SITE_ADDRESS,
+  SITE_DESCRIPTION,
   SITE_EMAIL,
   SITE_NAME,
   SITE_NAME_AMPERSAND,
@@ -36,6 +37,7 @@ export default function OrganizationJsonLd() {
           addressCountry: "IN",
         },
         areaServed: { "@type": "Country", name: "India" },
+        description: SITE_DESCRIPTION,
       },
       {
         "@type": "WebSite",

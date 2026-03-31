@@ -259,24 +259,18 @@ export default function Reviews() {
   };
 
   return (
-    <section
-      id="reviews"
-      ref={sectionRef}
-      className="py-[60px] sm:py-[80px] md:py-[120px] bg-[#FDFBF9]"
-    >
+    <section id="reviews" ref={sectionRef} className="py-[60px] bg-[#FDFBF9]">
       <div className="reviews-header gsap-animate text-center max-w-[700px] mx-auto mb-[40px] sm:mb-[50px] px-[20px] opacity-0">
-        <span className="text-[#FF9431] text-lg sm:text-xl">
-          Customer Testimonials
-        </span>
+        <span className="text-[#FF9431] text-lg sm:text-xl">Testimonials</span>
         <h2
           className="text-[#2D2D2D] text-2xl sm:text-3xl font-semibold mt-[8px]"
           style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
         >
-          What Our Customers Are Saying
+          What our customers are saying
         </h2>
         <p className="text-[#6B635C] text-[16px] sm:text-md mt-[12px]">
-          Real stories from our satisfied customers who trust us with their
-          laundry and love the results.
+          Real stories from customers who rely on us for laundry, home care, and
+          more.
         </p>
       </div>
 

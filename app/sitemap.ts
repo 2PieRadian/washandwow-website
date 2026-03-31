@@ -6,6 +6,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const entries: { path: string; changeFrequency: MetadataRoute.Sitemap[0]["changeFrequency"]; priority: number }[] = [
     { path: "/", changeFrequency: "weekly", priority: 1 },
     { path: "/pricing", changeFrequency: "weekly", priority: 0.95 },
+    { path: "/services", changeFrequency: "weekly", priority: 0.92 },
+    { path: "/services/laundry", changeFrequency: "weekly", priority: 0.88 },
+    {
+      path: "/services/home-cleaning",
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
+      path: "/services/doorstep-car-wash",
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
+      path: "/services/pest-control",
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
     { path: "/about", changeFrequency: "monthly", priority: 0.9 },
     { path: "/contact", changeFrequency: "monthly", priority: 0.85 },
     { path: "/faq", changeFrequency: "monthly", priority: 0.85 },

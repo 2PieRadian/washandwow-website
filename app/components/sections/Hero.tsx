@@ -92,20 +92,20 @@ export default function Hero() {
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
           >
             <h1 className="flex flex-col overflow-visible leading-[1.2] sm:leading-[1.18] md:leading-[1.15]">
-              <span className="hero-headline-1 gsap-animate text-[clamp(2.441rem,6vw,4rem)] opacity-0">
-                Fresh and Easy
+              <span className="hero-headline-1 gsap-animate text-[clamp(2rem,5.5vw,3.35rem)] opacity-0">
+                One Stop Solution
               </span>
-              <span className="hero-headline-2 gsap-animate overflow-visible pb-[0.2em] text-[clamp(2.441rem,6vw,4rem)] opacity-0">
+              <span className="hero-headline-2 gsap-animate overflow-visible pb-[0.2em] text-[clamp(2rem,5.5vw,3.35rem)] opacity-0">
+                <span className="text-dark-brown">for </span>
                 <span className="gradient-text-wrap">
-                  <span className="gradient-text">Laundry</span>
+                  <span className="gradient-text">Clean Living</span>
                 </span>
-                <span className="text-dark-brown"> Service</span>
               </span>
             </h1>
           </div>
-          <p className="hero-subtitle gsap-animate text-brown text-[clamp(1rem,0.8rem+1vw,1.25rem)] mt-[20px] opacity-0">
-            Fast, reliable, and affordable laundry <br /> service at your
-            fingertips.
+          <p className="hero-subtitle gsap-animate text-brown text-[clamp(1rem,0.8rem+1vw,1.25rem)] mt-[20px] max-w-xl mx-auto opacity-0">
+            Laundry, home cleaning, car care, and pest control — premium care
+            at your doorstep, booked in one app.
           </p>
         </div>
 

@@ -12,7 +12,7 @@ export const SITE_NAME = "Wash and Wow";
 export const SITE_NAME_AMPERSAND = "Wash & Wow";
 
 export const SITE_DESCRIPTION =
-  "Wash and Wow (washandwow) is a laundry and dry cleaning service in India with easy pickup and delivery, wash & fold, dry cleaning, and subscription plans. Book on the web or app.";
+  "Wash and Wow (washandwow) — laundry, home cleaning, doorstep car wash, and pest control in India. Pickup, professional care, and delivery. Book on the app.";
 
 /** Brand and discovery phrases for meta keywords (supplement to visible copy). */
 export const SITE_KEYWORDS: string[] = [
@@ -26,6 +26,9 @@ export const SITE_KEYWORDS: string[] = [
   "dry cleaning pickup delivery",
   "wash and fold",
   "laundry app India",
+  "home cleaning India",
+  "doorstep car wash",
+  "pest control service",
 ];
 
 export const SITE_EMAIL = "support@washandwow.in";

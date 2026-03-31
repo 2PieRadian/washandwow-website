@@ -121,15 +121,16 @@ export default function HowItWorks() {
         isMaxWidth={false}
       >
         <div className="hiw-header gsap-animate text-center flex flex-col gap-[5px] opacity-0">
-          <p className="text-lg sm:text-xl">Simple Steps</p>
+          <p className="text-lg sm:text-xl">Simple steps</p>
           <h1
             className="text-2xl sm:text-3xl font-semibold"
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
           >
             How It Works
           </h1>
-          <p className="text-dark-brown text-[16px] sm:text-md">
-            Here's how we turn everyday laundry into something you'll love.
+          <p className="text-dark-brown mx-auto max-w-[540px] text-[16px] sm:text-md">
+            One app for laundry, home cleaning, doorstep car care, and pest
+            control — book in minutes, we handle the rest.
           </p>
         </div>
 
@@ -140,7 +141,7 @@ export default function HowItWorks() {
           <div className="hiw-image gsap-animate group hidden md:block opacity-0">
             <img
               src="/images/how-it-works/washing-machine.png"
-              alt="How It Works"
+              alt="Wash and Wow — simple booking and service flow"
               className="w-[350px] lg:w-[400px] group-hover:scale-[1.06] transition-all duration-700 drop-shadow-lg hover:drop-shadow-2xl"
             />
           </div>
@@ -148,8 +149,8 @@ export default function HowItWorks() {
           <div className="hiw-steps flex flex-col gap-[10px] sm:gap-[15px] max-w-[500px] w-full">
             <div className="hiw-step gsap-animate opacity-0">
               <Step
-                title="Choose Your Service"
-                description="Browse laundry options easily on our mobile app."
+                title="Choose your category"
+                description="Laundry, home deep cleaning, doorstep car wash, or pest control — explore what’s included and starting options in the app."
                 gradientFrom="#FFAB5C"
                 gradientTo="#FF7700"
                 shadowColor="rgba(255,119,0,0.35)"
@@ -159,8 +160,8 @@ export default function HowItWorks() {
 
             <div className="hiw-step gsap-animate opacity-0">
               <Step
-                title="Schedule Pickup"
-                description="Select a convenient time directly from the app."
+                title="Book pickup or a visit"
+                description="Pick a slot for laundry pickup &amp; delivery, in-home cleaning, car care at your door, or a pest treatment visit."
                 gradientFrom="#D4B8AD"
                 gradientTo="#A68B7B"
                 shadowColor="rgba(166,139,123,0.35)"
@@ -170,8 +171,8 @@ export default function HowItWorks() {
 
             <div className="hiw-step gsap-animate opacity-0">
               <Step
-                title="We Pick, Clean & Deliver"
-                description="Sit back while we handle everything."
+                title="We work with precision"
+                description="Trained professionals use the right methods and products for fabrics, surfaces, vehicles, or safe pest treatments."
                 gradientFrom="#FFAB5C"
                 gradientTo="#FF7700"
                 shadowColor="rgba(255,119,0,0.35)"
@@ -181,8 +182,8 @@ export default function HowItWorks() {
 
             <div className="hiw-step gsap-animate opacity-0">
               <Step
-                title="Track & Relax 😌"
-                description="Get real-time updates in the app."
+                title="Track and get results"
+                description="Follow status in the app — fresh laundry back at your door, a cleaner home, a detailed car, or treatment completed as planned."
                 gradientFrom="#D4B8AD"
                 gradientTo="#A68B7B"
                 shadowColor="rgba(166,139,123,0.35)"

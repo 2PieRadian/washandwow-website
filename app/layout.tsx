@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "./components/LenisProvider";
+import RoutePrefetch from "./components/RoutePrefetch";
 import {
   getSiteUrl,
   SITE_DESCRIPTION,
@@ -24,7 +25,7 @@ const siteUrl = getSiteUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${SITE_NAME} | Laundry, dry cleaning & pickup delivery`,
+    default: `${SITE_NAME} | Laundry, cleaning, car care & pest control`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -75,7 +76,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <LenisProvider>{children}</LenisProvider>
+        <LenisProvider>
+          <RoutePrefetch />
+          {children}
+        </LenisProvider>
       </body>
     </html>
   );

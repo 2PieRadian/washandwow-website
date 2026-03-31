@@ -7,14 +7,19 @@ import Footer from "./components/sections/Footer";
 import Hero from "./components/sections/Hero";
 import HowItWorks from "./components/sections/HowItWorks";
 import Reviews from "./components/sections/Reviews";
-import Services from "./components/sections/Services";
 import WhyChooseUs from "./components/sections/WhyChooseUs";
 import { SatoshiFont } from "./fonts";
 import { canonicalPath } from "./lib/site-config";
 
 export const metadata: Metadata = {
+  description:
+    "One stop for clean living — laundry, home cleaning, doorstep car wash, and pest control with Wash & Wow. Book pickup, care, and delivery from one app.",
   alternates: { canonical: canonicalPath("/") },
-  openGraph: { url: canonicalPath("/") },
+  openGraph: {
+    url: canonicalPath("/"),
+    description:
+      "Laundry, home cleaning, car care, and pest control — premium service at your doorstep.",
+  },
 };
 
 export default function Home() {
@@ -30,9 +35,8 @@ export default function Home() {
       <div className="pt-[60px]">
         <Hero />
         <HowItWorks />
-        <Services />
-        <Reviews />
         <WhyChooseUs />
+        <Reviews />
         <DownloadApp />
         <Footer />
       </div>

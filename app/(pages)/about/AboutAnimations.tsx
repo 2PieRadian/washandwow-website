@@ -20,13 +20,47 @@ export function AboutHeroAnimation({
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
 
-    if (prefersReducedMotion()) return;
+    if (prefersReducedMotion()) {
+      containerRef.current
+        ?.querySelectorAll(".about-hero-item")
+        .forEach((el) => {
+          el.classList.remove("opacity-0");
+        });
+      return;
+    }
 
     const config = getResponsiveConfig();
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
+      const items = gsap.utils.toArray<HTMLElement>(
+        containerRef.current?.querySelectorAll(".about-hero-item") ?? [],
+      );
 
+      if (items.length > 0) {
+        gsap.fromTo(
+          items,
+          {
+            opacity: 0,
+            y: config.distance.large,
+            scale: 0.96,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: config.duration.normal * 1.05,
+            stagger: {
+              each: 0.11,
+              from: "start",
+            },
+            ease: ANIMATION_CONFIG.ease.smooth,
+            delay: 0.08,
+          },
+        );
+        return;
+      }
+
+      const tl = gsap.timeline();
       tl.fromTo(
         ".about-hero-text",
         { opacity: 0, x: -40 },
