@@ -12,7 +12,7 @@ import {
 } from "@/app/components/animations/PageAnimations";
 
 const SUPPORT_EMAIL = "support@washandwow.in";
-const SUPPORT_PHONE = "9645387390";
+const SUPPORT_PHONE = "7078497263";
 const BUSINESS_EMAIL = "support@washandwow.in";
 const BUSINESS_ADDRESS = "123, Location Here";
 const SUPPORT_HOURS = "9:00 AM – 8:00 PM, All Days";

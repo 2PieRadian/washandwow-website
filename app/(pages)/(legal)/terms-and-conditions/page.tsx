@@ -12,7 +12,7 @@ import { canonicalPath } from "@/app/lib/site-config";
 
 const LAST_UPDATED = "March 22, 2026";
 const CONTACT_EMAIL = "support@washandwow.in";
-const CONTACT_PHONE = "9645387390";
+const CONTACT_PHONE = "7078497263";
 const CONTACT_ADDRESS = "123, Location Here";
 /** Update if your policy specifies a different claims window */
 const DAMAGE_CLAIM_WINDOW = "48 hours";

@@ -7,8 +7,8 @@ import Link from "next/link";
 import { FooterAnimation } from "../animations/PageAnimations";
 import { FooterParticles } from "./FooterParticles";
 
-const FOOTER_PHONE_DISPLAY = "9645387390";
-const FOOTER_PHONE_TEL = "tel:+9645387390";
+const FOOTER_PHONE_DISPLAY = "7078497263";
+const FOOTER_PHONE_TEL = "tel:+7078497263";
 const FOOTER_EMAIL = "support@washandwow.in";
 const FOOTER_EMAIL_MAILTO = `mailto:${FOOTER_EMAIL}`;
 const FOOTER_ADDRESS = "123, Location Here";

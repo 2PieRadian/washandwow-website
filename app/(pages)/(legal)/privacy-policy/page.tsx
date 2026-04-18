@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 
 const LAST_UPDATED = "March 22, 2026";
 const CONTACT_EMAIL = "support@washandwow.in";
-const CONTACT_PHONE = "9645387390";
+const CONTACT_PHONE = "7078497263";
 const CONTACT_ADDRESS = "123, Location Here";
 
 const sectionIcons: Record<string, React.ReactNode> = {

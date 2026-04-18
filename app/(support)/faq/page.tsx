@@ -11,7 +11,7 @@ import {
 import { canonicalPath } from "@/app/lib/site-config";
 
 const CONTACT_EMAIL = "support@washandwow.in";
-const CONTACT_PHONE = "9645387390";
+const CONTACT_PHONE = "7078497263";
 const LAUNDRY_DELIVERY = "24–48 hours";
 const DRY_CLEANING_DELIVERY = "2–3 days";
 
