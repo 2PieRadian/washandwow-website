@@ -240,19 +240,19 @@ export default function CleanIndiaSection() {
             </p>
             <div className="cic-hero-bit gsap-animate mt-3 border-b border-[#E8DFD6]/70 pb-6 sm:pb-8 opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-100">
               <h2
-                className="flex flex-nowrap items-center justify-center gap-3 sm:gap-4 lg:justify-start"
+                className="flex flex-col items-center gap-2.5 text-center sm:flex-row sm:items-center sm:justify-center sm:gap-3 md:gap-4 lg:justify-start"
                 style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
               >
                 <Image
                   src="/icons/clean-india/flag-india.svg"
                   alt=""
-                  width={45}
-                  height={25}
+                  width={40}
+                  height={27}
                   unoptimized
-                  className="h-11 w-auto shrink-0 self-center rounded-[4px] object-contain shadow-sm ring-1 ring-black/5 sm:h-12 md:h-[52px]"
+                  className="h-8 w-auto shrink-0 rounded-[3px] object-contain shadow-sm ring-1 ring-black/5 sm:h-9 md:h-10 lg:h-11 xl:h-[52px]"
                   aria-hidden
                 />
-                <span className="min-w-0 whitespace-nowrap text-[clamp(1rem,3.4vw,2.45rem)] font-semibold leading-none tracking-tight text-[#33302E]">
+                <span className="max-w-[22ch] text-balance text-center text-[clamp(1.35rem,0.85rem+3.1vw,2.45rem)] font-semibold leading-[1.12] tracking-tight text-[#33302E] sm:min-w-0 sm:max-w-none sm:text-left sm:leading-none lg:whitespace-nowrap">
                   Clean India Commitment – Wash &amp; Wow
                 </span>
               </h2>
@@ -515,14 +515,14 @@ export default function CleanIndiaSection() {
           >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(255,255,255,0.12),transparent_55%)]" />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/[0.12] to-transparent" />
-            <p className="relative flex max-w-[20ch] flex-wrap items-center justify-center gap-2 text-[clamp(1.05rem,2.5vw,1.3rem)] font-semibold leading-snug text-white sm:max-w-none">
+            <p className="relative flex max-w-[20ch] flex-wrap items-center justify-center gap-2 text-[clamp(1.1rem,2.6vw,1.35rem)] font-semibold leading-snug text-white sm:max-w-none">
               <Image
                 src="/icons/clean-india/flag-india.svg"
                 alt=""
-                width={36}
-                height={24}
+                width={32}
+                height={21}
                 unoptimized
-                className="h-6 w-auto shrink-0 rounded-sm object-contain shadow-md ring-1 ring-white/20"
+                className="h-5 w-auto shrink-0 rounded-sm object-contain shadow-md ring-1 ring-white/20 sm:h-6"
                 aria-hidden
               />
               <span>
