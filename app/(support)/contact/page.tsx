@@ -12,7 +12,7 @@ import {
 } from "@/app/components/animations/PageAnimations";
 
 const SUPPORT_EMAIL = "support@washandwow.in";
-const SUPPORT_PHONE = "9318387705";
+const SUPPORT_PHONE = "9645387390";
 const BUSINESS_EMAIL = "support@washandwow.in";
 const BUSINESS_ADDRESS = "123, Location Here";
 const SUPPORT_HOURS = "9:00 AM – 8:00 PM, All Days";
@@ -133,9 +133,9 @@ export default function page() {
               Contact Us
             </h1>
             <p className="mt-4 text-[18px] leading-relaxed text-dark-blue">
-              We&apos;re here to help! Whether you have a question, need support,
-              or just want to say hello — the Wash &amp; Wow team is always ready
-              to assist you.
+              We&apos;re here to help! Whether you have a question, need
+              support, or just want to say hello — the Wash &amp; Wow team is
+              always ready to assist you.
             </p>
           </div>
 
@@ -156,9 +156,23 @@ export default function page() {
               <Section emoji="📱" title="Customer Support">
                 <p>Have questions about your order, pickup, or delivery?</p>
                 <div className="mt-4 flex flex-col gap-3">
-                  <InfoRow icon={<Mail className="h-5 w-5" aria-hidden />} label="Email" value={SUPPORT_EMAIL} href={`mailto:${SUPPORT_EMAIL}`} />
-                  <InfoRow icon={<Phone className="h-5 w-5" aria-hidden />} label="Phone" value={SUPPORT_PHONE} href={`tel:${SUPPORT_PHONE}`} />
-                  <InfoRow icon={<Clock className="h-5 w-5" aria-hidden />} label="Support hours" value={SUPPORT_HOURS} />
+                  <InfoRow
+                    icon={<Mail className="h-5 w-5" aria-hidden />}
+                    label="Email"
+                    value={SUPPORT_EMAIL}
+                    href={`mailto:${SUPPORT_EMAIL}`}
+                  />
+                  <InfoRow
+                    icon={<Phone className="h-5 w-5" aria-hidden />}
+                    label="Phone"
+                    value={SUPPORT_PHONE}
+                    href={`tel:${SUPPORT_PHONE}`}
+                  />
+                  <InfoRow
+                    icon={<Clock className="h-5 w-5" aria-hidden />}
+                    label="Support hours"
+                    value={SUPPORT_HOURS}
+                  />
                 </div>
               </Section>
             </div>
@@ -167,14 +181,23 @@ export default function page() {
               <Section emoji="📍" title="Our Location">
                 <p className="font-semibold text-[#33302E]">Wash &amp; Wow</p>
                 <div className="flex gap-3 rounded-xl border border-[#E8DFD6] bg-[#FBF6F2]/60 px-4 py-4">
-                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-orange" aria-hidden />
-                  <p className="text-[18px] text-[#5E5450]">{BUSINESS_ADDRESS}</p>
+                  <MapPin
+                    className="mt-0.5 h-5 w-5 shrink-0 text-orange"
+                    aria-hidden
+                  />
+                  <p className="text-[18px] text-[#5E5450]">
+                    {BUSINESS_ADDRESS}
+                  </p>
                 </div>
               </Section>
             </div>
 
             <div className="page-section gsap-animate opacity-0">
-              <Section emoji="🗺️" title="Locate Us" subtitle="Visit our store or schedule a pickup from your location">
+              <Section
+                emoji="🗺️"
+                title="Locate Us"
+                subtitle="Visit our store or schedule a pickup from your location"
+              >
                 <div className="overflow-hidden rounded-2xl border border-[#E8DFD6] bg-[#F7F4F1] shadow-sm">
                   <iframe
                     title="Wash & Wow location on Google Maps"
@@ -190,8 +213,12 @@ export default function page() {
 
             <div className="page-section gsap-animate opacity-0">
               <Section emoji="💬" title="Get in Touch">
-                <p>You can also reach out to us by filling out the form below:</p>
-                <p className="text-[16px] text-[#91776C]">We usually respond within 24 hours.</p>
+                <p>
+                  You can also reach out to us by filling out the form below:
+                </p>
+                <p className="text-[16px] text-[#91776C]">
+                  We usually respond within 24 hours.
+                </p>
                 <div className="mt-6">
                   <ContactForm />
                 </div>
@@ -201,15 +228,30 @@ export default function page() {
             <div className="page-section gsap-animate opacity-0">
               <Section emoji="📦" title="Order Support">
                 <p>For faster assistance, please include:</p>
-                <BulletList items={["Your registered phone number", "Order ID (if applicable)"]} />
-                <p className="pt-2 text-[17px] text-[#5E5450]">This helps us resolve your issue quickly 🚀</p>
+                <BulletList
+                  items={[
+                    "Your registered phone number",
+                    "Order ID (if applicable)",
+                  ]}
+                />
+                <p className="pt-2 text-[17px] text-[#5E5450]">
+                  This helps us resolve your issue quickly 🚀
+                </p>
               </Section>
             </div>
 
             <div className="page-section gsap-animate opacity-0">
               <Section emoji="📲" title="App Support">
-                <p>Since all services are managed through our mobile application, we recommend:</p>
-                <BulletList items={["Checking order status in the app", "Using in-app support (if available)"]} />
+                <p>
+                  Since all services are managed through our mobile application,
+                  we recommend:
+                </p>
+                <BulletList
+                  items={[
+                    "Checking order status in the app",
+                    "Using in-app support (if available)",
+                  ]}
+                />
               </Section>
             </div>
 
@@ -218,7 +260,9 @@ export default function page() {
                 <p>Interested in partnering with Wash &amp; Wow?</p>
                 <div className="mt-4 space-y-3 rounded-xl border border-[#E8DFD6] bg-white p-4 sm:p-5">
                   <p className="flex flex-wrap items-center gap-2 text-[18px]">
-                    <span className="font-semibold text-[#33302E]">📧 Email:</span>
+                    <span className="font-semibold text-[#33302E]">
+                      📧 Email:
+                    </span>
                     <a
                       href={`mailto:${BUSINESS_EMAIL}?subject=${encodeURIComponent("Partnership Inquiry")}`}
                       className="font-medium text-orange underline decoration-orange/40 underline-offset-2 hover:decoration-orange"
@@ -226,7 +270,9 @@ export default function page() {
                       {BUSINESS_EMAIL}
                     </a>
                   </p>
-                  <p className="text-[16px] text-[#91776C]">Subject: Partnership Inquiry</p>
+                  <p className="text-[16px] text-[#91776C]">
+                    Subject: Partnership Inquiry
+                  </p>
                 </div>
               </Section>
             </div>
@@ -245,8 +291,9 @@ export default function page() {
             <div className="page-section gsap-animate opacity-0">
               <Section emoji="💙" title="We're Here For You">
                 <p>
-                  At Wash &amp; Wow, we believe in making laundry effortless and stress-free. If something isn&apos;t
-                  right, we&apos;ll do our best to fix it — quickly and fairly.
+                  At Wash &amp; Wow, we believe in making laundry effortless and
+                  stress-free. If something isn&apos;t right, we&apos;ll do our
+                  best to fix it — quickly and fairly.
                 </p>
               </Section>
             </div>

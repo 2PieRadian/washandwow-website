@@ -13,7 +13,7 @@ import { canonicalPath } from "@/app/lib/site-config";
 
 const LAST_UPDATED = "March 22, 2026";
 const CONTACT_EMAIL = "support@washandwow.in";
-const CONTACT_PHONE = "9318387705";
+const CONTACT_PHONE = "9645387390";
 const CONTACT_ADDRESS = "123, Location Here";
 const JURISDICTION_CITY = "New Delhi";
 
