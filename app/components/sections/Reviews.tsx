@@ -2,8 +2,7 @@
 
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import { useRef, useState, useEffect, useCallback } from "react";
-import Image from "next/image";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote, User } from "lucide-react";
 import {
   gsap,
   prefersReducedMotion,
@@ -16,50 +15,43 @@ interface Review {
   name: string;
   review: string;
   rating: number;
-  avatar: string;
 }
 
-/** Stock portrait URLs (Pravatar CDN) — replace with your own customer photos when available. */
 const reviews: Review[] = [
   {
     id: 1,
-    name: "Daniel S.",
+    name: "Rahul Sharma",
     review:
-      "Amazing service! My clothes come back fresh, neatly folded, and perfectly clean every single time. The attention to detail is incredible and I couldn't be happier with the results.",
+      "Bahut hi shandaar service! Mere kapde hamesha ekdam saaf, taaje aur acche se fold hokar aate hain. Inki kaam karne ki lagan dekhkar bahut accha lagta hai. Main is service se bahut khush hoon.",
     rating: 5,
-    avatar: "https://i.pravatar.cc/256?img=11",
   },
   {
     id: 2,
-    name: "John Doe",
+    name: "Priya Gupta",
     review:
-      "I'm so impressed with the quality of care they give to my delicate items. The pickup was on time, delivery was seamless, and my clothes have never looked better. Highly recommended!",
+      "Mere mehnge aur naazuk kapdon ka bahut acche se dhyan rakha gaya. Pickup time par hua aur delivery bhi ekdam sahi samay par. Maine isse behtar service pehle kabhi nahi dekhi.",
     rating: 5,
-    avatar: "https://i.pravatar.cc/256?img=12",
   },
   {
     id: 3,
-    name: "Priya M.",
+    name: "Sameer Verma",
     review:
-      "Super convenient pickup and delivery service. The app makes scheduling so easy and I love getting real-time updates on my order status. This has been a total game changer for my busy lifestyle!",
+      "Inki pickup aur delivery service bahut convenient hai. App se booking karna bahut aasan hai aur mujhe har update milti rehti hai. Meri busy lifestyle ke liye ye ekdam perfect hai!",
     rating: 5,
-    avatar: "https://i.pravatar.cc/256?img=32",
   },
   {
     id: 4,
-    name: "Rahul K.",
+    name: "Aditi Singh",
     review:
-      "Best laundry service in the city! Professional staff who are always on time, and my clothes smell absolutely amazing every time. Can't imagine going back to doing laundry myself ever again.",
+      "Shehar ki sabse behtareen laundry service! Inka staff bahut professional hai aur hamesha samay par aata hai. Kapdon se hamesha ek bahut acchi khushboo aati hai. Ab main khud kapde dhone ke baare mein soch bhi nahi sakti.",
     rating: 5,
-    avatar: "https://i.pravatar.cc/256?img=15",
   },
   {
     id: 5,
-    name: "Sneha T.",
+    name: "Vikram Rathore",
     review:
-      "Finally found a service I can completely trust with my expensive suits and formal wear. The dry cleaning quality is excellent and they handle everything with such care and professionalism.",
+      "Aakhirkar mujhe ek aisi service mil gayi jis par main apne suits aur formal kapdon ke liye bharosa kar sakta hoon. Inki dry cleaning ki quality behtareen hai aur ye kapdon ko bahut sambhal kar rakhte hain.",
     rating: 5,
-    avatar: "https://i.pravatar.cc/256?img=45",
   },
 ];
 
@@ -107,14 +99,9 @@ function ReviewCard({ review }: { review: Review }) {
         <div className="relative mb-5 shrink-0">
           <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-[#FF9431]/50 via-[#FFB86C]/30 to-[#98BCD6]/25 opacity-70 blur-md transition duration-300 group-hover:opacity-100" />
           <div className="relative rounded-full bg-white p-[3px] shadow-[0_4px_14px_rgba(209,199,189,0.45)] ring-2 ring-white/90">
-            <Image
-              src={review.avatar}
-              alt={`${review.name}, customer`}
-              width={76}
-              height={76}
-              sizes="76px"
-              className="h-[68px] w-[68px] rounded-full object-cover sm:h-[76px] sm:w-[76px]"
-            />
+            <div className="flex h-[68px] w-[68px] items-center justify-center rounded-full bg-[#F5F0EB] sm:h-[76px] sm:w-[76px]">
+              <User className="size-8 text-[#B5A49A] sm:size-10" strokeWidth={1.5} />
+            </div>
           </div>
         </div>
 
