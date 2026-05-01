@@ -1,6 +1,7 @@
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/app/lib/store-links";
 import { Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
 import AppleIcon from "../icons/AppleIcon";
 import GooglePlayIcon from "../icons/GooglePlayIcon";
 import Link from "next/link";
@@ -147,6 +148,38 @@ function HelpColumn() {
   );
 }
 
+function FooterBrandIntro() {
+  return (
+    <div>
+      <Image
+        src="/logo.png"
+        alt=""
+        width={112}
+        height={112}
+        className="mb-3 h-24 w-24 object-contain sm:h-28 sm:w-28"
+      />
+      <h1
+        className={`text-xl font-bold cursor-pointer hover:scale-[1.05] transition-transform duration-300`}
+        style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
+      >
+        <span className="text-brown hover:text-dark-brown transition-colors duration-300">
+          Wash
+        </span>
+        <span className="text-brown hover:text-dark-brown transition-colors duration-300">
+          {" "}
+          &
+        </span>{" "}
+        <span className="text-orange hover:text-[#FF7700] transition-colors duration-300">
+          Wow
+        </span>
+      </h1>
+      <p className="text-[#5E5450] text-[16px]">
+        Wash, dry, fold - freshness delivered
+      </p>
+    </div>
+  );
+}
+
 export default function Footer() {
   return (
     <FooterAnimation>
@@ -158,27 +191,7 @@ export default function Footer() {
           <div className="hidden min-[900px]:flex w-full max-w-[1200px] mx-auto items-start justify-between gap-[20px]">
             {/* Left Content */}
             <div className="text-left">
-              {/* Logo and Description */}
-              <div>
-                <h1
-                  className={`text-xl font-bold cursor-pointer hover:scale-[1.05] transition-transform duration-300`}
-                  style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-                >
-                  <span className="text-brown hover:text-dark-brown transition-colors duration-300">
-                    Wash
-                  </span>
-                  <span className="text-brown hover:text-dark-brown transition-colors duration-300">
-                    {" "}
-                    &
-                  </span>{" "}
-                  <span className="text-orange hover:text-[#FF7700] transition-colors duration-300">
-                    Wow
-                  </span>
-                </h1>
-                <p className="text-[#5E5450] text-[16px]">
-                  Wash, dry, fold - freshness delivered
-                </p>
-              </div>
+              <FooterBrandIntro />
 
               {/* Contact Items */}
               <div className="mt-[30px] flex flex-col gap-[10px] items-start">
@@ -229,24 +242,7 @@ export default function Footer() {
             <div className="flex flex-col sm:flex-row items-start justify-between gap-[28px] sm:gap-[20px]">
               {/* Logo and Description */}
               <div className="text-left">
-                <h1
-                  className={`text-xl font-bold cursor-pointer hover:scale-[1.05] transition-transform duration-300`}
-                  style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-                >
-                  <span className="text-brown hover:text-dark-brown transition-colors duration-300">
-                    Wash
-                  </span>
-                  <span className="text-brown hover:text-dark-brown transition-colors duration-300">
-                    {" "}
-                    &
-                  </span>{" "}
-                  <span className="text-orange hover:text-[#FF7700] transition-colors duration-300">
-                    Wow
-                  </span>
-                </h1>
-                <p className="text-[#5E5450] text-[16px]">
-                  Wash, dry, fold - freshness delivered
-                </p>
+                <FooterBrandIntro />
               </div>
 
               {/* Contact Items */}

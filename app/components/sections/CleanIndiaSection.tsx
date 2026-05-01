@@ -238,9 +238,9 @@ export default function CleanIndiaSection() {
             <p className="cic-hero-bit gsap-animate text-xs font-bold uppercase tracking-[0.22em] text-[#FF9431] opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-100 sm:text-sm">
               Our pledge
             </p>
-            <div className="cic-hero-bit gsap-animate mt-3 border-b border-[#E8DFD6]/70 pb-6 sm:pb-8 opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-100">
+            <div className="cic-hero-bit gsap-animate mt-3 border-b border-[#E8DFD6]/70 pb-6 sm:pb-8 opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-100 mx-auto">
               <h2
-                className="flex flex-col items-center gap-2.5 text-center sm:flex-row sm:items-center sm:justify-center sm:gap-3 md:gap-4 lg:justify-start"
+                className="flex items-center gap-2.5 sm:justify-center sm:gap-3 md:gap-4 lg:justify-start"
                 style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
               >
                 <Image
@@ -252,8 +252,8 @@ export default function CleanIndiaSection() {
                   className="h-8 w-auto shrink-0 rounded-[3px] object-contain shadow-sm ring-1 ring-black/5 sm:h-9 md:h-10 lg:h-11 xl:h-[52px]"
                   aria-hidden
                 />
-                <span className="max-w-[22ch] text-balance text-center text-[clamp(1.35rem,0.85rem+3.1vw,2.45rem)] font-semibold leading-[1.12] tracking-tight text-[#33302E] sm:min-w-0 sm:max-w-none sm:text-left sm:leading-none lg:whitespace-nowrap">
-                  Clean India Commitment – Wash &amp; Wow
+                <span className=" text-balance text-[clamp(1.35rem,0.85rem+3.1vw,2.45rem)] font-semibold leading-[1.12] tracking-tight text-[#33302E] sm:text-left sm:leading-none lg:whitespace-nowrap">
+                  Clean India Commitment
                 </span>
               </h2>
             </div>
@@ -263,11 +263,6 @@ export default function CleanIndiaSection() {
           <div className="mt-8 grid gap-8 sm:mt-10 sm:gap-10 lg:mt-12 lg:grid-cols-2 lg:items-start lg:gap-12">
             <div className="mx-auto max-w-prose space-y-4 text-center lg:mx-0 lg:max-w-none lg:text-left">
               <p className="cic-hero-bit gsap-animate inline-flex items-center justify-center gap-2 text-base font-medium text-[#FF7700] opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-100 sm:text-lg lg:justify-start">
-                <Sparkles
-                  className="h-5 w-5 shrink-0 text-[#FF9431]"
-                  strokeWidth={2}
-                  aria-hidden
-                />
                 Supporting a Cleaner, Healthier India
               </p>
               <p
@@ -314,19 +309,6 @@ export default function CleanIndiaSection() {
               className="text-[clamp(1.35rem,3vw,1.9rem)] font-semibold text-dark-brown"
               style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
             >
-              <span
-                className="mr-2 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-[#FFE4CC] to-[#FFD4A8] sm:h-11 sm:w-11"
-                aria-hidden
-              >
-                <Image
-                  src="/icons/clean-india/icon-bubbles.svg"
-                  alt=""
-                  width={22}
-                  height={22}
-                  unoptimized
-                  className="h-[22px] w-[22px] object-contain sm:h-[24px] sm:w-[24px]"
-                />
-              </span>
               How Wash &amp; Wow Contributes
             </h3>
             <p
@@ -363,23 +345,6 @@ export default function CleanIndiaSection() {
                     className="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[#FEFCFB] via-[#FEFCFB]/88 to-transparent"
                     aria-hidden
                   />
-                  <span
-                    className="absolute left-4 top-4 z-[1] flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-[0_8px_24px_rgba(255,119,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.4)] ring-1 ring-white/25 backdrop-blur-[2px] sm:left-5 sm:top-5 sm:h-14 sm:w-14"
-                    style={{
-                      background:
-                        "linear-gradient(145deg, #ffb066 0%, #ff9431 42%, #ff7700 100%)",
-                    }}
-                    aria-hidden
-                  >
-                    <Image
-                      src={c.iconSrc}
-                      alt=""
-                      width={26}
-                      height={26}
-                      unoptimized
-                      className="h-[26px] w-[26px] object-contain sm:h-7 sm:w-7"
-                    />
-                  </span>
                 </div>
 
                 <div className="relative z-[1] -mt-10 flex flex-1 flex-col bg-gradient-to-b from-[#FEFCFB] to-white px-5 pb-5 pt-3 sm:-mt-11 sm:px-6 sm:pb-6 sm:pt-4">
@@ -464,7 +429,7 @@ export default function CleanIndiaSection() {
                 </ul>
               </div>
 
-                <figure className="cic-matters-bit gsap-animate relative w-full opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-100">
+              <figure className="cic-matters-bit gsap-animate relative w-full opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-100">
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-[#E8DFD6]/70 shadow-[0_14px_36px_-16px_rgba(255,148,49,0.45)] sm:rounded-[24px]">
                   <Image
                     src={CLEAN_INDIA_SPOTLIGHT_IMAGE}

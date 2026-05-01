@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
@@ -43,18 +44,28 @@ export default function DesktopNavbar() {
         <Link
           href="/"
           scroll={false}
-          className="inline-block shrink-0 cursor-pointer text-lg font-bold transition-transform duration-300 hover:scale-[1.05]"
+          className="inline-flex shrink-0 cursor-pointer items-center gap-2 transition-transform duration-300 hover:scale-[1.05]"
           style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
         >
-          <span className="text-brown transition-colors duration-300 hover:text-dark-brown">
-            Wash
-          </span>
-          <span className="text-brown transition-colors duration-300 hover:text-dark-brown">
-            {" "}
-            &
-          </span>{" "}
-          <span className="text-orange transition-colors duration-300 hover:text-[#FF7700]">
-            Wow
+          <Image
+            src="/logo.png"
+            alt=""
+            width={48}
+            height={48}
+            className="h-12 w-12 shrink-0 object-contain"
+            priority
+          />
+          <span className="text-lg font-bold">
+            <span className="text-brown transition-colors duration-300 hover:text-dark-brown">
+              Wash
+            </span>
+            <span className="text-brown transition-colors duration-300 hover:text-dark-brown">
+              {" "}
+              &
+            </span>{" "}
+            <span className="text-orange transition-colors duration-300 hover:text-[#FF7700]">
+              Wow
+            </span>
           </span>
         </Link>
 

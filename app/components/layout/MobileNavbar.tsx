@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import OrangeGradientButton from "../ui/buttons/OrangeGradientButton";
@@ -61,12 +62,22 @@ export default function MobileNavbar() {
             href="/"
             scroll={false}
             onClick={() => setIsMenuOpen(false)}
-            className={`text-lg font-bold cursor-pointer`}
+            className="inline-flex cursor-pointer items-center gap-2"
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
           >
-            <span className="text-brown">Wash</span>
-            <span className="text-brown"> &</span>{" "}
-            <span className="text-orange">Wow</span>
+            <Image
+              src="/logo.png"
+              alt=""
+              width={48}
+              height={48}
+              className="h-12 w-12 shrink-0 object-contain"
+              priority
+            />
+            <span className="text-lg font-bold">
+              <span className="text-brown">Wash</span>
+              <span className="text-brown"> &</span>{" "}
+              <span className="text-orange">Wow</span>
+            </span>
           </Link>
 
           <button
@@ -91,12 +102,21 @@ export default function MobileNavbar() {
             href="/"
             scroll={false}
             onClick={() => setIsMenuOpen(false)}
-            className={`text-lg font-bold`}
+            className="inline-flex items-center gap-2"
             style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
           >
-            <span className="text-brown">Wash</span>
-            <span className="text-brown"> &</span>{" "}
-            <span className="text-orange">Wow</span>
+            <Image
+              src="/logo.png"
+              alt=""
+              width={48}
+              height={48}
+              className="h-12 w-12 shrink-0 object-contain"
+            />
+            <span className="text-lg font-bold">
+              <span className="text-brown">Wash</span>
+              <span className="text-brown"> &</span>{" "}
+              <span className="text-orange">Wow</span>
+            </span>
           </Link>
           <button
             className="text-gray-500 p-2 cursor-pointer select-none hover:text-gray-700 active:scale-95 transition-all duration-200"
