@@ -93,19 +93,19 @@ export default function Hero() {
           >
             <h1 className="flex flex-col overflow-visible leading-[1.2] sm:leading-[1.18] md:leading-[1.15]">
               <span className="hero-headline-1 gsap-animate text-[clamp(2rem,5.5vw,3.35rem)] opacity-0">
-                One Stop Solution
+                Everything Clean.
               </span>
               <span className="hero-headline-2 gsap-animate overflow-visible pb-[0.2em] text-[clamp(2rem,5.5vw,3.35rem)] opacity-0">
-                <span className="text-dark-brown">for </span>
                 <span className="gradient-text-wrap">
-                  <span className="gradient-text">Clean Living</span>
+                  <span className="gradient-text">Everything Wow.</span>
                 </span>
               </span>
             </h1>
           </div>
-          <p className="hero-subtitle gsap-animate text-brown text-[clamp(1rem,0.8rem+1vw,1.25rem)] mt-[20px] max-w-xl mx-auto opacity-0">
-            Laundry, home cleaning, car care, and pest control — premium care at
-            your doorstep, booked in one app.
+          <p className="hero-subtitle gsap-animate text-brown text-[clamp(1rem,0.8rem+1vw,1.25rem)] mt-[20px] max-w-2xl mx-auto opacity-0">
+            Laundry, doorstep car wash, home services, and pest control — all
+            delivered with care, convenience, and trusted quality in one
+            seamless experience.
           </p>
         </div>
 

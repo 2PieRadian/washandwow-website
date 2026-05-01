@@ -35,7 +35,7 @@ export default function DesktopNavbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 hidden min-h-[70px] h-auto min-[1000px]:block py-2 ${isScrolled ? "bg-white backdrop-blur-sm shadow-sm" : "bg-white"}`}
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 hidden min-h-[80px] h-auto min-[1000px]:block py-2 ${isScrolled ? "bg-white backdrop-blur-sm shadow-sm" : "bg-white"}`}
     >
       <Container
         isMaxWidth={true}
@@ -44,29 +44,40 @@ export default function DesktopNavbar() {
         <Link
           href="/"
           scroll={false}
-          className="inline-flex shrink-0 cursor-pointer items-center gap-2 transition-transform duration-300 hover:scale-[1.05]"
+          className="inline-flex shrink-0 cursor-pointer items-center gap-3 transition-transform duration-300 hover:scale-[1.03]"
           style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
         >
           <Image
             src="/logo.png"
-            alt=""
-            width={48}
-            height={48}
-            className="h-12 w-12 shrink-0 object-contain"
+            alt="Wash & Wow"
+            height={68}
+            width={68}
+            className="h-[68px] w-[68px] shrink-0 object-contain drop-shadow-sm"
             priority
           />
-          <span className="text-lg font-bold">
-            <span className="text-brown transition-colors duration-300 hover:text-dark-brown">
-              Wash
-            </span>
-            <span className="text-brown transition-colors duration-300 hover:text-dark-brown">
+          <div className="flex flex-col leading-none gap-[4px]">
+            <span className="text-[1.4rem] font-extrabold tracking-tight">
+              <span className="text-brown">Wash</span>
               {" "}
-              &
-            </span>{" "}
-            <span className="text-orange transition-colors duration-300 hover:text-[#FF7700]">
-              Wow
+              <span className="text-brown">&amp;</span>
+              {" "}
+              <span className="text-orange">Wow</span>
             </span>
-          </span>
+            <span
+              className="text-[13px] font-semibold tracking-wide block"
+              style={{
+                background:
+                  "linear-gradient(90deg,#b85000 0%,#FF7700 55%,#d45e00 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                paddingBottom: "3px",
+                lineHeight: "1.3",
+              }}
+            >
+              Clean Homes. Happy Hearts.
+            </span>
+          </div>
         </Link>
 
         {/* Desktop nav: flex-wrap from 1000px+; hamburger below 1000px */}

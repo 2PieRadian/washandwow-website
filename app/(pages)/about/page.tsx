@@ -1,717 +1,334 @@
-import Container from "@/app/components/layout/Container";
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/sections/Footer";
 import { SatoshiFont, WixMadeForDisplayFont } from "@/app/fonts";
-import type { Metadata } from "next";
-import { canonicalPath } from "@/app/lib/site-config";
-import { AboutHeroAnimation } from "./AboutAnimations";
-import AboutScrollAnimate from "./AboutScrollAnimate";
-import {
-  CheckCircle2,
-  CircleCheck,
-  Clock,
-  Leaf,
-  Package,
-  Shirt,
-  Smartphone,
-  Sparkles,
-  Sprout,
-  Users,
-  Zap,
-} from "lucide-react";
+import { useEffect, useRef } from "react";
+import { gsap, prefersReducedMotion, getResponsiveConfig, ANIMATION_CONFIG } from "@/app/lib/animations";
 
-export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Wash & Wow — transforming how India cleans, cares, and lives fresh. Doorstep laundry, cleaning, car wash, pest control, eco-friendly care, and tech-enabled booking.",
-  alternates: { canonical: canonicalPath("/about") },
-  openGraph: {
-    url: canonicalPath("/about"),
-    description:
-      "Tech-enabled laundry and home services across India — convenience, hygiene, and premium quality at your doorstep.",
-  },
-};
+const wix = { fontFamily: "" as string };
 
-/** Scroll-stagger targets (see AboutScrollAnimate). */
-const item =
-  "about-animate-item opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-100";
-
-function SectionShell({
-  id,
-  className = "",
-  children,
-}: {
-  id?: string;
-  className?: string;
-  children: React.ReactNode;
-}) {
+function Overline({ children }: { children: React.ReactNode }) {
+  return <p className="ab-reveal opacity-0 text-[11px] font-bold uppercase tracking-[0.26em] text-[#FF9431] mb-3">{children}</p>;
+}
+function Heading1({ children }: { children: React.ReactNode }) {
   return (
-    <section
-      id={id}
-      className={`about-animate-section px-[20px] py-14 sm:py-16 md:py-20 lg:py-24 ${className}`}
-    >
-      <Container isMaxWidth={true} className="max-w-6xl">
-        {children}
-      </Container>
-    </section>
+    <h1 className="ab-reveal opacity-0 text-[clamp(2rem,5vw,3.1rem)] font-bold leading-[1.1] text-[#2C2118] mb-5" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
+      {children}
+    </h1>
   );
 }
+function Heading2({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <h2 className={`ab-reveal opacity-0 text-[clamp(1.65rem,3.8vw,2.4rem)] font-bold leading-[1.15] text-[#2C2118] ${className}`} style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
+      {children}
+    </h2>
+  );
+}
+function Divider() {
+  return <div className="mx-auto max-w-[1160px] px-5"><div className="h-px bg-gradient-to-r from-transparent via-[#E5DDD6] to-transparent" /></div>;
+}
+function CheckIcon() {
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5"><polyline points="20 6 9 17 4 12" /></svg>;
+}
+function ArrowRight() {
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>;
+}
+
+const stats = [
+  { icon: "😊", value: "10K+", label: "Happy Customers" },
+  { icon: "📦", value: "25K+", label: "Loads Delivered" },
+  { icon: "⏰", value: "99%", label: "On-Time Delivery" },
+  { icon: "⭐", value: "4.9/5", label: "Customer Rating" },
+];
+
+const services = [
+  {
+    tag: "Laundry & Dry Cleaning",
+    color: "#FF9431",
+    bg: "#FFF0E0",
+    image: "/images/about/service-laundry.png",
+    alt: "Fresh folded laundry service",
+    heading: "Your Clothes, Cared For Like Our Own.",
+    body: "We pick up your laundry right from your doorstep, wash it with premium, fabric-safe detergents, carefully fold every piece, and deliver it back — fresh, crisp, and smelling amazing. Whether it's delicate silks, everyday casuals, or heavy woollens, our trained professionals handle each item with the precision it deserves. No more laundry stress. Just clean clothes, on time, every time.",
+    bullets: ["Pickup & doorstep delivery", "Fabric-safe premium detergents", "Dry cleaning & steam ironing", "Stain treatment specialists"],
+    floatCard: "Fresh. Crisp.\nDelivered.",
+  },
+  {
+    tag: "Home Cleaning",
+    color: "#3E8FD4",
+    bg: "#EBF4FC",
+    image: "/images/about/service-home-cleaning.png",
+    alt: "Professional home cleaning service",
+    heading: "A Spotless Home, Effortlessly.",
+    body: "Your home is your sanctuary — and it deserves to look, feel, and smell its best. Our professional home cleaning teams arrive equipped with commercial-grade tools and eco-friendly products to deep-clean every corner of your space. From gleaming marble floors and sparkling bathrooms to dust-free shelves and sanitized kitchens, we leave your home looking brand new. Scheduled cleaning or one-time deep cleans — we've got you covered.",
+    bullets: ["Full home deep cleaning", "Kitchen & bathroom sanitization", "Sofa & carpet cleaning", "Eco-friendly, family-safe products"],
+    floatCard: "Deep Clean.\nEvery Corner.",
+  },
+  {
+    tag: "Pest Control",
+    color: "#4CAF85",
+    bg: "#E8F6F0",
+    image: "/images/about/service-pest-control.png",
+    alt: "Professional pest control service",
+    heading: "Protect Your Family. Reclaim Your Space.",
+    body: "Pests are more than a nuisance — they're a health risk. Our certified pest control experts use government-approved, family-safe treatments that are tough on pests but gentle on your home and loved ones. From cockroaches and termites to rodents and bed bugs, we diagnose the problem and eliminate it at the root. We'll help you take back your home — safely, efficiently, and with zero disruption to your daily life.",
+    bullets: ["Government-approved chemicals", "Child & pet-safe treatments", "Cockroach, termite & rodent control", "Post-treatment follow-up"],
+    floatCard: "Safe Home.\nHappy Family.",
+  },
+  {
+    tag: "Doorstep Car Wash",
+    color: "#E87B3E",
+    bg: "#FDF0E8",
+    image: "/images/about/service-car-wash.png",
+    alt: "Doorstep car wash service",
+    heading: "Showroom Shine, Right at Your Doorstep.",
+    body: "Why drive to a car wash when we can bring the car wash to you? Our trained technicians arrive with all the equipment needed to give your vehicle a thorough, scratch-free clean — exterior wash, interior vacuuming, dashboard wipe-down, and tyre shine included. We use water-efficient methods that protect both your car and the environment. Book a slot, and we'll handle the rest while you enjoy your morning chai.",
+    bullets: ["Exterior & interior detailing", "Water-efficient techniques", "Scratch-free microfiber wash", "Flexible scheduling, any time"],
+    floatCard: "Shine On.\nNo Effort.",
+  },
+];
+
+const whyCards = [
+  { emoji: "❤️", title: "Care in Every Step", body: "We treat every item, surface, and space like it belongs to us — with attention, care, and genuine pride." },
+  { emoji: "📅", title: "Flexible & Convenient", body: "Book any service in minutes. Choose your slot. We show up on time, every time — no chasing required." },
+  { emoji: "🏷️", title: "Affordable Pricing", body: "Premium quality doesn't have to cost a fortune. Our transparent pricing means no surprises on your bill." },
+  { emoji: "✅", title: "Satisfaction Guaranteed", body: "Not 100% happy? We'll come back and make it right — because your satisfaction is our reputation." },
+];
 
 export default function AboutPage() {
+  const pageRef = useRef<HTMLDivElement>(null);
+  wix.fontFamily = WixMadeForDisplayFont.style.fontFamily;
+
+  useEffect(() => {
+    if (prefersReducedMotion()) { gsap.set(".ab-reveal", { opacity: 1, y: 0 }); return; }
+    const ctx = gsap.context(() => {
+      const config = getResponsiveConfig();
+      (gsap.utils.toArray<Element>(".ab-reveal")).forEach((el) => {
+        gsap.fromTo(el, { opacity: 0, y: config.distance.medium }, {
+          opacity: 1, y: 0, duration: config.duration.normal * 1.2,
+          ease: ANIMATION_CONFIG.ease.smooth,
+          scrollTrigger: { trigger: el, start: "top 82%", once: true },
+          onComplete() { gsap.set(el, { clearProps: "transform" }); },
+        });
+      });
+    }, pageRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div
-      className="overflow-x-hidden bg-[#FFFBF6]"
-      style={{ fontFamily: SatoshiFont.style.fontFamily }}
-    >
+    <div ref={pageRef} className="overflow-x-hidden bg-[#FDFAF7]" style={{ fontFamily: SatoshiFont.style.fontFamily }}>
       <Navbar />
 
-      <AboutHeroAnimation>
-        <Container
-          isMaxWidth={true}
-          className="mt-[70px] max-w-6xl px-[20px] pb-12 pt-10 md:pb-14 md:pt-12"
-        >
-          <div className="flex flex-col gap-10 min-[1024px]:flex-row min-[1024px]:items-center min-[1024px]:gap-14">
-            <div className="about-hero-text min-w-0 flex-1 space-y-6">
-              <p
-                className={`about-hero-item inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#FF9431] opacity-0 motion-reduce:opacity-100`}
-              >
-                <span className="text-lg" aria-hidden>
-                  🌊
-                </span>
-                About Wash &amp; Wow
+      {/* ── HERO ─────────────────────────────────────────── */}
+      <section className="pt-[80px] pb-16 sm:pt-[100px] sm:pb-20 px-5">
+        <div className="mx-auto max-w-[1160px]">
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
+            <div className="flex-1 min-w-0">
+              <Overline>About Us</Overline>
+              <Heading1>
+                We&apos;re Here to Make Life Easier,{" "}
+                <span className="text-[#FF9431]">One Service at a Time.</span>
+              </Heading1>
+              <p className="ab-reveal opacity-0 text-[15px] leading-relaxed text-[#6B5E54] max-w-lg mb-8">
+                At Wash &amp; Wow, we believe a clean home, fresh laundry, a pest-free space, and a sparkling car shouldn&apos;t eat into your precious time. That&apos;s why we bring premium home services right to your doorstep — reliable, affordable, and always designed around you.
               </p>
-              <h1
-                className="about-hero-item text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[1.12] text-[#33302E] opacity-0 motion-reduce:opacity-100"
-                style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-              >
-                Transforming How India Cleans, Cares &amp; Lives Fresh
-              </h1>
-              <div className="space-y-4 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]">
-                <p className="about-hero-item opacity-0 motion-reduce:opacity-100">
-                  Wash &amp; Wow is India&apos;s fast-growing, tech-enabled
-                  laundry and home service brand, redefining how modern
-                  households manage everyday chores.
-                </p>
-                <p className="about-hero-item opacity-0 motion-reduce:opacity-100">
-                  We provide doorstep laundry, dry-cleaning, household cleaning,
-                  car wash, and pest control services — all designed to deliver
-                  convenience, hygiene, and premium quality, right at your home.
-                </p>
-                <p className="about-hero-item opacity-0 motion-reduce:opacity-100">
-                  With a strong focus on technology, eco-friendly practices, and
-                  customer experience, Wash &amp; Wow transforms routine
-                  services into a seamless, reliable, and time-saving lifestyle
-                  solution.
-                </p>
+              <div className="ab-reveal opacity-0 flex flex-wrap gap-3 mb-10">
+                <Link href="#" className="group inline-flex items-center gap-2 rounded-full bg-[#FF9431] px-6 py-3 text-[14px] font-semibold text-white shadow-[0_8px_24px_rgba(255,148,49,0.35)] transition-all duration-300 hover:bg-[#FF7700] hover:-translate-y-0.5">
+                  Book a Service
+                </Link>
+                <Link href="#services" className="group inline-flex items-center gap-2 rounded-full border border-[#E0D5CC] bg-white px-6 py-3 text-[14px] font-semibold text-[#4A3D35] transition-all duration-300 hover:border-[#FF9431]/40 hover:bg-[#FFF8F2] hover:-translate-y-0.5">
+                  Explore Services <ArrowRight />
+                </Link>
               </div>
-              <p
-                className="about-hero-item rounded-[20px] border border-[#FF9431]/20 bg-gradient-to-br from-white to-[#FFF8F2] px-5 py-4 text-[16px] font-medium leading-relaxed text-[#584E46] shadow-[0_12px_40px_-12px_rgba(255,148,49,0.25)] opacity-0 motion-reduce:opacity-100 sm:px-7 sm:py-6 sm:text-[18px]"
-                style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-              >
-                <span className="mr-2" aria-hidden>
-                  ✨
-                </span>
-                We don&apos;t just clean — we care, we simplify, and we elevate
-                your everyday life.
-              </p>
-            </div>
-            <div className="about-hero-image w-full shrink-0 min-[1024px]:max-w-[min(46%,520px)]">
-              <div className="about-hero-item relative opacity-0 motion-reduce:opacity-100">
-                <div className="pointer-events-none absolute -inset-4 rounded-[28px] bg-gradient-to-br from-[#FF9431]/15 via-transparent to-[#98BCD6]/20 blur-2xl" />
-                <img
-                  src="/images/about/about.png"
-                  alt="Wash and Wow team and service experience"
-                  className="relative w-full rounded-[24px] shadow-[0_20px_60px_-15px_rgba(80,60,50,0.25)] ring-1 ring-[#E8DFD6]/80"
-                />
-              </div>
-            </div>
-          </div>
-        </Container>
-      </AboutHeroAnimation>
-
-      <AboutScrollAnimate>
-        {/* Who we are */}
-        <SectionShell className="bg-white">
-          <div className="space-y-9">
-            <div className="max-w-3xl space-y-4">
-              <h2
-                className={`${item} flex flex-wrap items-center gap-3 text-[clamp(1.65rem,3.5vw,2.35rem)] font-semibold text-[#33302E]`}
-                style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-              >
-                <span className="text-3xl sm:text-4xl" aria-hidden>
-                  🧠
-                </span>
-                Who We Are
-              </h2>
-              <p
-                className={`${item} text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
-              >
-                At Wash &amp; Wow, we believe that life should not revolve
-                around chores.
-              </p>
-              <p
-                className={`${item} text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
-              >
-                We are building a smart service ecosystem where everything —
-                from laundry pickup to home cleaning — is handled with
-                precision, professionalism, and consistency.
-              </p>
-            </div>
-
-            <div>
-              <p
-                className={`${item} mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-[#FF9431]`}
-              >
-                By combining
-              </p>
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="ab-reveal opacity-0 flex flex-wrap gap-5">
                 {[
-                  {
-                    icon: <Zap className="h-6 w-6" strokeWidth={1.75} />,
-                    t: "Smart scheduling & logistics",
-                  },
-                  {
-                    icon: <Sparkles className="h-6 w-6" strokeWidth={1.75} />,
-                    t: "Fabric-care science & cleaning expertise",
-                  },
-                  {
-                    icon: <Sprout className="h-6 w-6" strokeWidth={1.75} />,
-                    t: "Eco-friendly products",
-                  },
-                  {
-                    icon: <Users className="h-6 w-6" strokeWidth={1.75} />,
-                    t: "Trained service professionals",
-                  },
-                ].map((row) => (
-                  <div
-                    key={row.t}
-                    className={`${item} flex gap-3 rounded-[20px] border border-[#E8DFD6]/80 bg-gradient-to-br from-[#FEFEFE] to-[#F8F5F2] p-5 shadow-[6px_8px_28px_rgba(209,199,189,0.2)] sm:p-6`}
-                  >
-                    <span
-                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#FFAB5C] to-[#FF7700] text-white shadow-lg"
-                      aria-hidden
-                    >
-                      {row.icon}
-                    </span>
-                    <div className="flex min-w-0 items-center">
-                      <p className="text-lg font-semibold leading-snug text-[#33302E]">
-                        {row.t}
-                      </p>
-                    </div>
+                  { emoji: "🧺", label: "Laundry & Dry Cleaning" },
+                  { emoji: "🏠", label: "Home Cleaning" },
+                  { emoji: "🐛", label: "Pest Control" },
+                  { emoji: "🚗", label: "Doorstep Car Wash" },
+                ].map((f) => (
+                  <div key={f.label} className="flex items-center gap-2 text-[13px] font-medium text-[#5E5450]">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FFF0E0] text-base">{f.emoji}</span>
+                    {f.label}
                   </div>
                 ))}
               </div>
             </div>
-
-            <p
-              className={`${item} max-w-3xl text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
-            >
-              …we ensure that every service meets modern standards of hygiene,
-              safety, and quality.
-            </p>
-            <p
-              className={`${item} max-w-3xl text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
-            >
-              From busy professionals to families and businesses, Wash &amp; Wow
-              is designed for anyone who values time, cleanliness, and
-              reliability.
-            </p>
-          </div>
-        </SectionShell>
-
-        {/* What we offer */}
-        <SectionShell className="bg-gradient-to-b from-[#FFFBF6] to-[#FDFBF9]">
-          <div className="space-y-9">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2
-                className={`${item} flex flex-wrap items-center justify-center gap-3 text-[clamp(1.65rem,3.5vw,2.35rem)] font-semibold text-[#33302E]`}
-                style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-              >
-                <span className="text-3xl sm:text-4xl" aria-hidden>
-                  🚀
-                </span>
-                What We Offer
-              </h2>
-              <p
-                className={`${item} mt-3 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
-              >
-                Wash &amp; Wow is not just a laundry brand — it&apos;s a
-                complete home service platform.
-              </p>
-            </div>
-            <div className="grid gap-5 sm:grid-cols-2 md:gap-7">
-              {[
-                {
-                  emoji: "\u{1F9FA}",
-                  title: "Laundry & Dry Cleaning",
-                  body: "Premium washing, stain removal, and fabric-safe dry cleaning using modern machines and gentle detergents.",
-                  ring: "from-[#FF9431]/12",
-                },
-                {
-                  emoji: "\u{1F3E0}",
-                  title: "Household Cleaning",
-                  body: "Deep cleaning for homes, kitchens, bathrooms, sofas, and more — ensuring a hygienic living space.",
-                  ring: "from-[#98BCD6]/20",
-                },
-                {
-                  emoji: "\u{1F697}",
-                  title: "Doorstep Car Wash",
-                  body: "Water-efficient, scratch-free cleaning at your doorstep with professional-grade tools.",
-                  ring: "from-[#E6C29E]/25",
-                },
-                {
-                  emoji: "\u{1F41C}",
-                  title: "Pest Control Services",
-                  body: "Safe and effective pest management solutions for a healthier, worry-free home.",
-                  ring: "from-[#C5AEA5]/25",
-                },
-              ].map((card) => (
-                <article
-                  key={card.title}
-                  className={`${item} group relative overflow-hidden rounded-[22px] border border-[#E8DFD6]/70 bg-white p-6 shadow-[8px_12px_40px_-12px_rgba(80,60,50,0.12)] transition-shadow duration-300 hover:shadow-[12px_20px_48px_-14px_rgba(255,148,49,0.15)] sm:p-8`}
-                >
-                  <div
-                    className={`pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br ${card.ring} to-transparent blur-2xl`}
-                  />
-                  <p className="text-4xl" aria-hidden>
-                    {card.emoji}
-                  </p>
-                  <h3
-                    className="mt-3 text-xl font-semibold text-[#33302E] sm:text-2xl"
-                    style={{
-                      fontFamily: WixMadeForDisplayFont.style.fontFamily,
-                    }}
-                  >
-                    {card.title}
-                  </h3>
-                  <p className="mt-3 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]">
-                    {card.body}
-                  </p>
-                </article>
-              ))}
+            <div className="ab-reveal opacity-0 lg:w-[46%] lg:shrink-0">
+              <div className="relative">
+                <div className="pointer-events-none absolute -right-4 -top-4 h-[calc(100%+32px)] w-[calc(100%+32px)] rounded-[32px] border-2 border-dashed border-[#FF9431]/25" aria-hidden />
+                <div className="pointer-events-none absolute -right-2 top-1/3 h-3 w-3 rounded-full bg-[#FF9431]" aria-hidden />
+                <div className="overflow-hidden rounded-[24px] shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
+                  <Image src="/images/about/hero-towels.png" alt="Wash and Wow services" width={600} height={520} className="w-full object-cover" priority />
+                </div>
+              </div>
             </div>
           </div>
-        </SectionShell>
+        </div>
+      </section>
 
-        {/* Why choose */}
-        <SectionShell className="bg-white">
-          <div className="space-y-9">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2
-                className={`${item} flex flex-wrap items-center justify-center gap-3 text-[clamp(1.65rem,3.5vw,2.35rem)] font-semibold text-[#33302E]`}
-                style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-              >
-                <span className="text-3xl sm:text-4xl" aria-hidden>
-                  💎
-                </span>
-                Why Choose Wash &amp; Wow
-              </h2>
-              <p
-                className={`${item} mt-3 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
-              >
-                Choosing Wash &amp; Wow means choosing peace of mind.
-              </p>
-              <p
-                className={`${item} mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-[#FF9431]`}
-              >
-                We focus on delivering
-              </p>
+      <Divider />
+
+      {/* ── VALUES + STATS ───────────────────────────────── */}
+      <section id="values" className="py-16 sm:py-20 px-5">
+        <div className="mx-auto max-w-[1160px]">
+          <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
+            <div className="ab-reveal opacity-0 lg:w-[40%] lg:shrink-0">
+              <div className="overflow-hidden rounded-[22px] shadow-[0_16px_48px_rgba(0,0,0,0.10)]" style={{ aspectRatio: "4/5" }}>
+                <Image src="/images/about/woman-laundry.png" alt="Happy customer with fresh laundry" width={480} height={600} className="h-full w-full object-cover" />
+              </div>
             </div>
-            <ul className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2 md:gap-6">
-              {[
-                {
-                  icon: <Package className="h-5 w-5" strokeWidth={2} />,
-                  label: "Doorstep Pickup & Delivery",
-                  sub: "No more running around",
-                },
-                {
-                  icon: <Clock className="h-5 w-5" strokeWidth={2} />,
-                  label: "On-Time Service",
-                  sub: "Because your schedule matters",
-                },
-                {
-                  icon: <Smartphone className="h-5 w-5" strokeWidth={2} />,
-                  label: "Real-Time Tracking",
-                  sub: "Always know your service status",
-                },
-                {
-                  icon: <Leaf className="h-5 w-5" strokeWidth={2} />,
-                  label: "Eco-Friendly Solutions",
-                  sub: "Safe for clothes, home, and environment",
-                },
-                {
-                  icon: <Shirt className="h-5 w-5" strokeWidth={2} />,
-                  label: "Fabric & Surface Care Expertise",
-                  sub: "Professional handling of every item",
-                },
-                {
-                  icon: <CircleCheck className="h-5 w-5" strokeWidth={2} />,
-                  label: "Quality Checks",
-                  sub: "Spotless and consistent results",
-                },
-              ].map((row) => (
-                <li
-                  key={row.label}
-                  className={`${item} flex gap-3 rounded-[18px] border border-[#E8DFD6]/60 bg-[#FDFBF9]/80 px-5 py-5 sm:px-6 sm:py-5`}
-                >
-                  <span
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#FFAB5C] to-[#FF7700] text-white shadow-md"
-                    aria-hidden
-                  >
-                    {row.icon}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-base font-semibold text-[#33302E] sm:text-lg">
-                      {row.label}
-                    </p>
-                    <p className="mt-2 text-[16px] leading-relaxed text-[#6B635C] sm:text-[18px]">
-                      {row.sub}
-                    </p>
+            <div className="flex-1 min-w-0 space-y-8">
+              <div>
+                <Overline>Our Values</Overline>
+                <Heading2 className="mb-4">Built on Trust.<br />Focused on You.</Heading2>
+                <p className="ab-reveal opacity-0 text-[15px] leading-relaxed text-[#6B5E54] max-w-md">
+                  From the moment you book to the moment we deliver, every single step is handled with care, professionalism, and genuine respect for your time. Across laundry, cleaning, pest control, and car wash — your satisfaction drives everything we do.
+                </p>
+              </div>
+              <div className="ab-reveal opacity-0 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+                {stats.map((s) => (
+                  <div key={s.label} className="group rounded-[16px] border border-[#EDE5DC] bg-white p-4 text-center shadow-[0_4px_16px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(255,148,49,0.12)] sm:p-5">
+                    <div className="mb-2 text-xl">{s.icon}</div>
+                    <div className="text-[1.5rem] font-bold text-[#FF9431] sm:text-[1.7rem]" style={{ fontFamily: wix.fontFamily }}>{s.value}</div>
+                    <p className="mt-1 text-[12px] font-medium text-[#8A7B72] leading-tight">{s.label}</p>
                   </div>
-                </li>
-              ))}
-            </ul>
-            <p
-              className={`${item} mx-auto max-w-2xl text-center text-[16px] font-medium leading-relaxed text-[#584E46] sm:text-[18px] md:text-xl`}
-              style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-            >
-              <span className="text-[#FF9431]" aria-hidden>
-                💬{" "}
-              </span>
-              Seamless | Smart | Spotless — that&apos;s the Wash &amp; Wow
-              promise.
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Divider />
+
+      {/* ── SERVICES ─────────────────────────────────────── */}
+      <section id="services" className="py-16 sm:py-20 px-5">
+        <div className="mx-auto max-w-[1160px]">
+          <div className="text-center mb-12">
+            <Overline>What We Do</Overline>
+            <Heading2 className="text-center mb-4">Four Services. One App.<br /><span className="text-[#FF9431]">Endless Convenience.</span></Heading2>
+            <p className="ab-reveal opacity-0 text-[15px] leading-relaxed text-[#6B5E54] max-w-xl mx-auto">
+              Everything your home needs — cleaned, cared for, and delivered — without you lifting a finger.
             </p>
           </div>
-        </SectionShell>
 
-        {/* Process */}
-        <SectionShell className="bg-gradient-to-b from-[#F5EDE6]/40 via-[#FFFBF6] to-white">
-          <div className="space-y-9">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2
-                className={`${item} flex flex-wrap items-center justify-center gap-3 text-[clamp(1.65rem,3.5vw,2.35rem)] font-semibold text-[#33302E]`}
-                style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-              >
-                <span className="text-3xl sm:text-4xl" aria-hidden>
-                  ⚙️
-                </span>
-                Our Process – How Wash &amp; Wow Works
-              </h2>
-            </div>
-
-            <ol className="relative mx-auto max-w-3xl space-y-0">
-              <div className="absolute left-[18px] top-3 bottom-3 w-px bg-gradient-to-b from-[#FF9431]/50 via-[#E8DFD6] to-[#E8DFD6] sm:left-[22px]" />
-              {[
-                {
-                  n: "1",
-                  emoji: "\u{1F4F1}",
-                  title: "Easy Booking",
-                  body: "Book your service through our website, app, or WhatsApp in just a few clicks.",
-                },
-                {
-                  n: "2",
-                  emoji: "\u{1F69A}",
-                  title: "Doorstep Pickup / Visit",
-                  body: "Our team arrives on schedule to collect items or perform services at your location.",
-                },
-                {
-                  n: "3",
-                  emoji: "\u{1F9FC}",
-                  title: "Smart Processing",
-                  body: null,
-                  extra: [
-                    "Clothes are sorted by fabric and color",
-                    "Cleaning is done using eco-friendly detergents",
-                    "Advanced machines ensure deep and hygienic cleaning",
-                  ],
-                  extraTitle: "For laundry",
-                  homeTitle: "For home services",
-                  homeBullets: [
-                    "Professional tools and safe chemicals are used",
-                    "Trained experts follow standardized cleaning protocols",
-                  ],
-                },
-                {
-                  n: "4",
-                  emoji: "\u{1F50D}",
-                  title: "Quality Check",
-                  body: "Every item and service goes through multi-step inspection to ensure perfection.",
-                },
-                {
-                  n: "5",
-                  emoji: "\u2728",
-                  title: "Finishing Touch",
-                  body: "Steam ironing, polishing, sanitization, and detailing for a premium finish.",
-                },
-                {
-                  n: "6",
-                  emoji: "\u{1F6AA}",
-                  title: "Doorstep Delivery",
-                  body: "Timely delivery or service completion with a satisfaction-first approach.",
-                },
-              ].map((step) => {
-                const liClass =
-                  "relative flex gap-5 pb-10 pl-0 sm:gap-7 sm:pb-12 last:pb-0";
-                const badgeCol = `${item} relative z-1 flex shrink-0 flex-col items-center`;
-                const badge =
-                  "flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#FFAB5C] to-[#FF7700] text-sm font-bold text-white shadow-[0_6px_20px_rgba(255,119,0,0.35)] ring-4 ring-[#FFFBF6] sm:h-11 sm:w-11 sm:text-base";
-
-                if ("extra" in step && step.extra && step.homeBullets) {
-                  return (
-                    <li key={step.n} className={liClass}>
-                      <div className={badgeCol}>
-                        <span className={badge}>{step.n}</span>
+          <div className="space-y-16 sm:space-y-20">
+            {services.map((svc, i) => (
+              <div key={svc.tag} className={`flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16 ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}>
+                {/* Image */}
+                <div className="ab-reveal opacity-0 lg:w-[45%] lg:shrink-0">
+                  <div className="relative">
+                    <div className="pointer-events-none absolute -inset-3 rounded-[28px] opacity-40 blur-2xl" style={{ background: `radial-gradient(circle, ${svc.color}40, transparent)` }} aria-hidden />
+                    <div className="relative overflow-hidden rounded-[22px] shadow-[0_16px_48px_rgba(0,0,0,0.10)]" style={{ aspectRatio: "4/3" }}>
+                      <Image src={svc.image} alt={svc.alt} fill className="object-cover transition-transform duration-700 hover:scale-[1.03]" sizes="(max-width:1024px) 100vw, 520px" />
+                      {/* floating card */}
+                      <div className="absolute bottom-5 left-5 rounded-[14px] px-4 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.15)]" style={{ background: "rgba(255,255,255,0.92)", backdropFilter: "blur(10px)", border: `1px solid ${svc.color}30` }}>
+                        <div className="mb-1 h-1 w-5 rounded-full" style={{ background: svc.color }} />
+                        <p className="text-[13px] font-bold leading-snug whitespace-pre-line text-[#2C2118]" style={{ fontFamily: wix.fontFamily }}>{svc.floatCard}</p>
                       </div>
-                      <div className="min-w-0 flex-1 pt-0.5">
-                        <h3
-                          className={`${item} flex flex-wrap items-center gap-2 text-xl font-semibold text-[#33302E] sm:text-2xl`}
-                          style={{
-                            fontFamily: WixMadeForDisplayFont.style.fontFamily,
-                          }}
-                        >
-                          <span aria-hidden>{step.emoji}</span>
-                          {step.title}
-                        </h3>
-                        <p
-                          className={`${item} mt-3 text-xs font-bold uppercase tracking-[0.12em] text-[#FF9431]`}
-                        >
-                          {step.extraTitle}
-                        </p>
-                        <ul className="mt-3 space-y-2.5 text-[16px] leading-relaxed text-[#5E5450] sm:text-[18px]">
-                          {step.extra.map((line) => (
-                            <li key={line} className={`${item} flex gap-2`}>
-                              <CheckCircle2
-                                className="mt-0.5 h-4 w-4 shrink-0 text-[#FF9431]"
-                                strokeWidth={2}
-                              />
-                              <span>{line}</span>
-                            </li>
-                          ))}
-                        </ul>
-                        <p
-                          className={`${item} mt-3 text-xs font-bold uppercase tracking-[0.12em] text-[#98BCD6]`}
-                        >
-                          {step.homeTitle}
-                        </p>
-                        <ul className="mt-3 space-y-2.5 text-[16px] leading-relaxed text-[#5E5450] sm:text-[18px]">
-                          {step.homeBullets.map((line) => (
-                            <li key={line} className={`${item} flex gap-2`}>
-                              <CheckCircle2
-                                className="mt-0.5 h-4 w-4 shrink-0 text-[#6A9BC3]"
-                                strokeWidth={2}
-                              />
-                              <span>{line}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </li>
-                  );
-                }
-
-                return (
-                  <li key={step.n} className={liClass}>
-                    <div className={badgeCol}>
-                      <span className={badge}>{step.n}</span>
                     </div>
-                    <div className="min-w-0 flex-1 pt-0.5">
-                      <h3
-                        className={`${item} flex flex-wrap items-center gap-2 text-xl font-semibold text-[#33302E] sm:text-2xl`}
-                        style={{
-                          fontFamily: WixMadeForDisplayFont.style.fontFamily,
-                        }}
-                      >
-                        <span aria-hidden>{step.emoji}</span>
-                        {step.title}
-                      </h3>
-                      {step.body ? (
-                        <p
-                          className={`${item} mt-3 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
-                        >
-                          {step.body}
-                        </p>
-                      ) : null}
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
-        </SectionShell>
-
-        {/* Focus / Mission / Vision */}
-        <SectionShell className="bg-white">
-          <div className="grid gap-7 md:grid-cols-3 md:gap-8">
-            {[
-              {
-                emoji: "\u{1F3AF}",
-                title: "Our Focus",
-                text: "To lead India’s shift towards tech-enabled, eco-friendly, and on-demand home services, making everyday living smarter and stress-free.",
-              },
-              {
-                emoji: "\u{1F3AF}",
-                title: "Our Mission",
-                text: "To provide reliable, affordable, and high-quality laundry and home services that save time, ensure hygiene, and deliver complete customer satisfaction.",
-              },
-              {
-                emoji: "\u{1F52E}",
-                title: "Our Vision",
-                text: "To become India’s most trusted home-service and laundry brand, expanding across cities and empowering entrepreneurs through a scalable, tech-driven service model.",
-              },
-            ].map((block) => (
-              <article
-                key={block.title}
-                className={`${item} flex flex-col rounded-[20px] border border-[#E8DFD6]/60 bg-gradient-to-b from-[#FEFEFE] to-[#F8F5F2] p-6 shadow-[6px_10px_32px_-8px_rgba(80,60,50,0.1)] sm:p-8`}
-              >
-                <p className="text-2xl sm:text-3xl" aria-hidden>
-                  {block.emoji}
-                </p>
-                <h3
-                  className="mt-3 text-lg font-semibold text-[#33302E] sm:text-xl"
-                  style={{
-                    fontFamily: WixMadeForDisplayFont.style.fontFamily,
-                  }}
-                >
-                  {block.title}
-                </h3>
-                <p className="mt-4 flex-1 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]">
-                  {block.text}
-                </p>
-              </article>
+                  </div>
+                </div>
+                {/* Copy */}
+                <div className="flex-1 min-w-0">
+                  <span className="ab-reveal opacity-0 inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] mb-4" style={{ background: svc.bg, color: svc.color }}>
+                    {svc.tag}
+                  </span>
+                  <h3 className="ab-reveal opacity-0 text-[clamp(1.4rem,3vw,2rem)] font-bold leading-[1.2] text-[#2C2118] mb-4" style={{ fontFamily: wix.fontFamily }}>
+                    {svc.heading}
+                  </h3>
+                  <p className="ab-reveal opacity-0 text-[15px] leading-relaxed text-[#6B5E54] mb-6">{svc.body}</p>
+                  <ul className="ab-reveal opacity-0 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                    {svc.bullets.map((b) => (
+                      <li key={b} className="flex items-center gap-2.5 text-[14px] font-medium text-[#4A3D35]">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-white" style={{ background: svc.color }}>
+                          <CheckIcon />
+                        </span>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             ))}
           </div>
-        </SectionShell>
+        </div>
+      </section>
 
-        {/* Franchise */}
-        <SectionShell className="bg-[#1a314b] text-white">
-          <div className="overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-br from-[#1a314b] via-[#243a52] to-[#1a314b] p-8 shadow-[0_24px_80px_-20px_rgba(26,49,75,0.6)] sm:p-10 md:p-12">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2
-                className={`${item} text-[clamp(1.4rem,3vw,1.95rem)] font-semibold`}
-                style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-              >
-                <span className="mr-2" aria-hidden>
-                  💼
-                </span>
-                Business &amp; Franchise Opportunity
-              </h2>
-              <p
-                className={`${item} mt-6 text-[16px] leading-[1.65] text-white/85 sm:text-[18px]`}
-              >
-                Thinking of entering the multi-billion home services industry?
-                Wash &amp; Wow offers a low-investment, high-growth business
-                opportunity with:
+      <Divider />
+
+      {/* ── WHY CHOOSE US ────────────────────────────────── */}
+      <section className="py-16 sm:py-20 px-5">
+        <div className="mx-auto max-w-[1160px]">
+          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
+            <div className="lg:w-[35%] lg:shrink-0 lg:pt-2">
+              <Overline>Why Choose Us</Overline>
+              <Heading2>A Home Service<br />You Can Rely On</Heading2>
+              <p className="ab-reveal opacity-0 mt-4 text-[15px] leading-relaxed text-[#6B5E54]">
+                Across every service we offer — laundry, home cleaning, pest control, or car wash — these four promises never change.
               </p>
             </div>
-            <ul className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-2 md:gap-6">
-              {[
-                { emoji: "\u{1F3EA}", text: "Complete setup support" },
-                {
-                  emoji: "\u{1F4E3}",
-                  text: "Marketing & branding assistance",
-                },
-                { emoji: "\u{1F393}", text: "Training & operational guidance" },
-                {
-                  emoji: "\u2699\uFE0F",
-                  text: "Technology & logistics support",
-                },
-              ].map((row) => (
-                <li
-                  key={row.text}
-                  className={`${item} flex items-center gap-3 rounded-xl border border-white/15 bg-white/5 px-5 py-4 text-left text-[16px] font-medium text-white/95 backdrop-blur-sm sm:text-[18px]`}
-                >
-                  <span className="text-2xl leading-none" aria-hidden>
-                    {row.emoji}
-                  </span>
-                  <span>{row.text}</span>
-                </li>
+            <div className="flex-1 grid grid-cols-1 gap-5 sm:grid-cols-2">
+              {whyCards.map((f) => (
+                <div key={f.title} className="ab-reveal opacity-0 group flex flex-col gap-3 rounded-[18px] border border-[#EDE5DC] bg-white p-6 shadow-[0_4px_16px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[#FF9431]/30 hover:shadow-[0_12px_32px_rgba(255,148,49,0.10)]">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#FFF0E0] text-xl transition-all duration-300 group-hover:bg-[#FF9431] group-hover:scale-110">{f.emoji}</span>
+                  <h3 className="text-[15px] font-bold text-[#2C2118]" style={{ fontFamily: wix.fontFamily }}>{f.title}</h3>
+                  <p className="text-[14px] leading-relaxed text-[#7A6E68]">{f.body}</p>
+                </div>
               ))}
-            </ul>
-            <p
-              className={`${item} mx-auto mt-8 max-w-2xl text-center text-[16px] leading-[1.65] text-white/80 sm:text-[18px]`}
-            >
-              Build a profitable business while becoming part of a future-ready
-              service ecosystem.
-            </p>
-          </div>
-        </SectionShell>
-
-        {/* Sustainability */}
-        <SectionShell className="bg-gradient-to-b from-[#FFFBF6] to-white">
-          <div className="max-w-3xl space-y-7">
-            <h2
-              className={`${item} flex flex-wrap items-center gap-3 text-[clamp(1.65rem,3.5vw,2.35rem)] font-semibold text-[#33302E]`}
-              style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-            >
-              <span className="text-3xl sm:text-4xl" aria-hidden>
-                🌱
-              </span>
-              Our Commitment to Sustainability
-            </h2>
-            <p
-              className={`${item} text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]`}
-            >
-              We care about more than just cleanliness.
-            </p>
-            <p
-              className={`${item} text-sm font-semibold uppercase tracking-[0.14em] text-[#FF9431]`}
-            >
-              Wash &amp; Wow is committed to:
-            </p>
-            <ul className="space-y-3.5">
-              {[
-                "Using eco-friendly detergents and chemicals",
-                "Reducing water wastage with efficient processes",
-                "Promoting sustainable cleaning practices",
-                "Minimizing environmental impact at every step",
-              ].map((line) => (
-                <li
-                  key={line}
-                  className={`${item} flex gap-3 rounded-[14px] border border-[#E8DFD6]/60 bg-white px-5 py-4 text-[16px] leading-snug text-[#5E5450] sm:text-[18px]`}
-                >
-                  <Leaf
-                    className="mt-0.5 h-5 w-5 shrink-0 text-[#FF9431]"
-                    strokeWidth={2}
-                  />
-                  {line}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </SectionShell>
-
-        {/* Final word */}
-        <SectionShell className="bg-white pb-16 sm:pb-20 md:pb-24">
-          <div className="mx-auto max-w-3xl space-y-8 text-center">
-            <h2
-              className={`${item} text-[clamp(1.5rem,3vw,2rem)] font-semibold text-[#33302E]`}
-              style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-            >
-              <span className="mr-2" aria-hidden>
-                💬
-              </span>
-              Final Word
-            </h2>
-            <div className="space-y-5 text-[16px] leading-[1.65] text-[#5E5450] sm:text-[18px]">
-              <p className={item}>
-                In a world that moves fast, your time is your most valuable
-                asset.
-              </p>
-              <p className={item}>
-                Wash &amp; Wow exists to give that time back to you. No stress.
-                No hassle. Just clean clothes, clean spaces, and a cleaner life.
-              </p>
             </div>
-            <p
-              className={`${item} rounded-[20px] bg-gradient-to-r from-[#FF9431] via-[#FF7700] to-[#FFAB5C] px-6 py-5 text-[clamp(1.05rem,2.2vw,1.3rem)] font-semibold leading-snug text-white shadow-[0_16px_48px_-12px_rgba(255,119,0,0.45)] sm:px-8 sm:py-6`}
-              style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
-            >
-              🌊 Wash the stress away. Experience the Wow.
-            </p>
           </div>
-        </SectionShell>
-      </AboutScrollAnimate>
+        </div>
+      </section>
 
+      {/* ── MISSION BANNER ───────────────────────────────── */}
+      <section className="px-5 pb-20 sm:pb-24">
+        <div className="mx-auto max-w-[1160px]">
+          <div className="ab-reveal opacity-0 relative overflow-hidden rounded-[28px]" style={{ background: "linear-gradient(135deg,#FFF8F1 0%,#FFF3E8 50%,#FFF8F1 100%)" }}>
+            <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-[#FF9431]/50 to-transparent" aria-hidden />
+            <div className="flex flex-col gap-0 lg:flex-row lg:items-stretch">
+              <div className="flex flex-col justify-center gap-6 px-8 py-12 lg:w-[48%] lg:px-12 lg:py-14">
+                <p className="text-[11px] font-bold uppercase tracking-[0.26em] text-[#FF9431]">Our Mission</p>
+                <h2 className="text-[clamp(1.65rem,3.5vw,2.3rem)] font-bold leading-[1.2] text-[#2C2118]" style={{ fontFamily: wix.fontFamily }}>
+                  Simplifying Your Day<br />With Services{" "}
+                  <span className="text-[#FF9431]">You Can Feel.</span>
+                </h2>
+                <p className="text-[15px] leading-relaxed text-[#6B5E54] max-w-sm">
+                  Our mission is to deliver home services that are seamless, dependable, and delightful — covering every corner of your life so you can focus on what truly matters.
+                </p>
+                <ul className="space-y-2.5">
+                  {["Free pickup & doorstep delivery", "Eco-certified products across all services", "One app for laundry, cleaning, pest & car wash", "Happiness guaranteed, always"].map((item) => (
+                    <li key={item} className="flex items-center gap-2.5 text-[14px] font-medium text-[#4A3D35]">
+                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#FF9431] text-white"><CheckIcon /></span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div>
+                  <Link href="#" className="group inline-flex items-center gap-2 rounded-full bg-[#FF9431] px-6 py-3 text-[14px] font-semibold text-white shadow-[0_8px_24px_rgba(255,148,49,0.35)] transition-all duration-300 hover:bg-[#FF7700] hover:-translate-y-0.5">
+                    Join Our Journey <ArrowRight />
+                  </Link>
+                </div>
+              </div>
+              <div className="relative flex-1 min-h-[300px] lg:min-h-0">
+                <Image src="/images/about/mission-banner.png" alt="Our mission — all services" fill className="object-cover object-center" sizes="(max-width:1024px) 100vw,600px" />
+                <div className="absolute bottom-8 right-8 rounded-[18px] px-6 py-5 shadow-[0_16px_48px_rgba(0,0,0,0.18)]" style={{ background: "rgba(255,255,255,0.92)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,148,49,0.2)" }}>
+                  <div className="mb-1 h-1.5 w-6 rounded-full bg-[#FF9431]" />
+                  <p className="text-[1rem] font-bold leading-snug text-[#2C2118] sm:text-[1.1rem]" style={{ fontFamily: wix.fontFamily }}>
+                    We Clean &amp; Care<br />So You Can<br />Live More
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    
       <Footer />
     </div>
   );

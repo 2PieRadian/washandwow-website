@@ -54,10 +54,10 @@ export default function MobileNavbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] h-[70px] min-[1000px]:hidden">
+    <nav className="fixed top-0 left-0 right-0 z-[100] h-[80px] min-[1000px]:hidden">
       {/* Top Bar */}
-      <div className="bg-white shadow-sm h-[70px]">
-        <div className="flex items-center justify-between px-[20px] h-[70px]">
+      <div className="bg-white shadow-sm h-[80px]">
+        <div className="flex items-center justify-between px-[20px] h-[80px]">
           <Link
             href="/"
             scroll={false}
@@ -67,17 +67,33 @@ export default function MobileNavbar() {
           >
             <Image
               src="/logo.png"
-              alt=""
-              width={48}
-              height={48}
-              className="h-12 w-12 shrink-0 object-contain"
+              alt="Wash & Wow"
+              width={52}
+              height={52}
+              className="h-[52px] w-[52px] shrink-0 object-contain drop-shadow-sm"
               priority
             />
-            <span className="text-lg font-bold">
-              <span className="text-brown">Wash</span>
-              <span className="text-brown"> &</span>{" "}
-              <span className="text-orange">Wow</span>
-            </span>
+            <div className="flex flex-col leading-none gap-[4px]">
+              <span className="text-[1rem] font-extrabold tracking-tight">
+                <span className="text-brown">Wash</span>{" "}
+                <span className="text-brown">&amp;</span>{" "}
+                <span className="text-orange">Wow</span>
+              </span>
+              <span
+                className="text-[12px] font-semibold tracking-wide block"
+                style={{
+                  background:
+                    "linear-gradient(90deg,#b85000 0%,#FF7700 55%,#d45e00 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  paddingBottom: "3px",
+                  lineHeight: "1.3",
+                }}
+              >
+                Clean Homes. Happy Hearts.
+              </span>
+            </div>
           </Link>
 
           <button
@@ -97,7 +113,7 @@ export default function MobileNavbar() {
         }`}
       >
         {/* Header with Logo and Close */}
-        <div className="flex items-center justify-between px-[20px] h-[70px] border-b border-gray-100">
+        <div className="flex items-center justify-between px-[20px] h-[80px] border-b border-gray-100">
           <Link
             href="/"
             scroll={false}
@@ -107,16 +123,32 @@ export default function MobileNavbar() {
           >
             <Image
               src="/logo.png"
-              alt=""
-              width={48}
-              height={48}
-              className="h-12 w-12 shrink-0 object-contain"
+              alt="Wash & Wow"
+              width={52}
+              height={52}
+              className="h-[52px] w-[52px] shrink-0 object-contain drop-shadow-sm"
             />
-            <span className="text-lg font-bold">
-              <span className="text-brown">Wash</span>
-              <span className="text-brown"> &</span>{" "}
-              <span className="text-orange">Wow</span>
-            </span>
+            <div className="flex flex-col leading-none gap-[4px]">
+              <span className="text-[1rem] font-extrabold tracking-tight">
+                <span className="text-brown">Wash</span>{" "}
+                <span className="text-brown">&amp;</span>{" "}
+                <span className="text-orange">Wow</span>
+              </span>
+              <span
+                className="text-[12px] font-semibold tracking-wide block"
+                style={{
+                  background:
+                    "linear-gradient(90deg,#b85000 0%,#FF7700 55%,#d45e00 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  paddingBottom: "3px",
+                  lineHeight: "1.3",
+                }}
+              >
+                Clean Homes. Happy Hearts.
+              </span>
+            </div>
           </Link>
           <button
             className="text-gray-500 p-2 cursor-pointer select-none hover:text-gray-700 active:scale-95 transition-all duration-200"

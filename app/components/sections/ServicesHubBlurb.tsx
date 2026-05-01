@@ -46,7 +46,7 @@ export default function ServicesHubBlurb() {
   return (
     <section
       ref={sectionRef}
-      className="border-t border-[#E8DFD6]/40 bg-gradient-to-b from-[#FFFBF6] to-white px-[20px] py-8 sm:py-8"
+      className="border-t border-[#E8DFD6]/40 bg-white px-[20px] pt-12 pb-12 sm:pt-16 sm:pb-16 md:pt-20 md:pb-20"
     >
       <Container isMaxWidth={true} className="max-w-[800px] text-center">
         <span className="services-hub-blurb-line block text-sm font-medium uppercase tracking-[0.2em] text-[#FF9431] opacity-0 sm:text-base">
