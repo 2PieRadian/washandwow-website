@@ -691,6 +691,17 @@ img {
   }
 }
 
+/* Clean India Section — stat card shimmer */
+@keyframes ci-stat-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.ci-stat-value {
+  background-size: 200% auto;
+  animation: ci-stat-shimmer 3s linear infinite;
+}
+
 /* GSAP scroll animation utilities */
 .gsap-animate {
   will-change: transform, opacity;
