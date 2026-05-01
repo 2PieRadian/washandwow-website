@@ -12,7 +12,7 @@ const FOOTER_PHONE_DISPLAY = "7078497263";
 const FOOTER_PHONE_TEL = "tel:+7078497263";
 const FOOTER_EMAIL = "support@washandwow.in";
 const FOOTER_EMAIL_MAILTO = `mailto:${FOOTER_EMAIL}`;
-const FOOTER_ADDRESS = "123, Location Here";
+const FOOTER_ADDRESS = "Khasra No. 1360, Shamli, Thanabhawan, Uttar Pradesh";
 const FOOTER_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(FOOTER_ADDRESS)}`;
 
 function ContactItem({
@@ -29,7 +29,7 @@ function ContactItem({
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="group flex items-center gap-[10px] text-brown-footer-contact-icon transition-colors duration-300 hover:text-orange"
+      className="group flex items-start gap-[10px] text-brown-footer-contact-icon transition-colors duration-300 hover:text-orange"
     >
       <span className="transition-transform duration-300 group-hover:scale-110">
         {icon}
@@ -190,7 +190,7 @@ export default function Footer() {
           {/* Container Div - Desktop Layout (900px+) */}
           <div className="hidden min-[900px]:flex w-full max-w-[1200px] mx-auto items-start justify-between gap-[20px]">
             {/* Left Content */}
-            <div className="text-left">
+            <div className="text-left max-w-[300px]">
               <FooterBrandIntro />
 
               {/* Contact Items */}
