@@ -17,10 +17,8 @@ export default function DesktopNavbar() {
 
   const navItems = [
     { name: "Home", href: "#home" },
-    { name: "How It Works", href: "#how-it-works" },
     { name: "Services", href: "/services" },
     { name: "Pricing", href: "/pricing" },
-    { name: "Reviews", href: "#reviews" },
     { name: "About", href: "/about" },
   ];
 
@@ -35,7 +33,7 @@ export default function DesktopNavbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 hidden min-h-[80px] h-auto min-[1000px]:block py-2 ${isScrolled ? "bg-white backdrop-blur-sm shadow-sm" : "bg-white"}`}
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 hidden min-h-[80px] h-auto min-[1000px]:block py-2 ${isScrolled ? "bg-[#FDFCF9] backdrop-blur-sm shadow-sm" : "bg-[#FDFCF9]"}`}
     >
       <Container
         isMaxWidth={true}

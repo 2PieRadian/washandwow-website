@@ -8,7 +8,7 @@ import { WixMadeForDisplayFont } from "@/app/fonts";
 import DownloadAppModal from "../ui/modals/DownloadAppModal";
 import { scrollToSection } from "@/app/utils/scrollToSection";
 import { 
-  ArrowRight, ShieldCheck, Clock, ThumbsUp, Star, 
+  ArrowRight, ShieldCheck, Clock, ThumbsUp, Zap,
   Shirt, Car, Bug, Home, CalendarCheck, Shield, MapPin, Smile, Sparkles, CalendarDays
 } from "lucide-react";
 
@@ -22,7 +22,7 @@ export default function Hero() {
   }, [pathname]);
 
   return (
-    <section id="home" ref={sectionRef} className="relative pt-[140px] pb-10 bg-[#FDFCF9] overflow-hidden">
+    <section id="home" ref={sectionRef} className="relative pt-[90px] pb-10 bg-[#FDFCF9] overflow-hidden">
       
       {/* Right Side Huge Abstract Background Shape */}
       <div className="absolute top-[-10%] right-[-10%] w-[800px] lg:w-[1200px] h-[800px] lg:h-[1200px] bg-[#FFF3E5] rounded-bl-[400px] rounded-tl-[600px] rounded-tr-[100px] rounded-br-[100px] -z-10 opacity-70" />
@@ -69,24 +69,17 @@ export default function Hero() {
               </button>
             </div>
 
-            {/* Social Proof */}
-            <div className="flex items-center gap-5">
-              <div className="flex -space-x-3">
-                {/* Realistically looking Avatars using UI Faces/Pravatar */}
-                {[12, 32, 44, 68].map((imgId, i) => (
-                  <div key={i} className={`w-11 h-11 rounded-full border-[3px] border-[#FDFCF9] overflow-hidden bg-gray-200 shadow-sm relative z-[${10-i}]`}>
-                    <img src={`https://i.pravatar.cc/100?img=${imgId}`} className="w-full h-full object-cover" alt="User" />
-                  </div>
-                ))}
+            {/* Info Card */}
+            <div className="flex items-center gap-4 bg-[#FFF6EE] border border-[#FFE0C2] rounded-2xl px-5 py-3.5 w-fit">
+              <div className="w-10 h-10 shrink-0 bg-[#FF7700] rounded-xl flex items-center justify-center shadow-sm">
+                <Zap size={20} className="text-white fill-white" strokeWidth={2.5} />
               </div>
-              <div className="flex flex-col">
-                <span className="text-[13px] lg:text-[14px] text-[#6B5E5B] font-medium mb-0.5">Trusted by 10,000+ happy homes</span>
-                <div className="flex items-center gap-1">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="text-[#FF7700] fill-[#FF7700] w-4 h-4" />
-                  ))}
-                  <span className="text-[14px] font-bold text-[#2D2422] ml-1 mt-0.5">4.8/5</span>
-                </div>
+              <div>
+                <p className="text-[15px] font-bold text-[#2D2422] leading-snug">
+                  Book your first service in{" "}
+                  <span className="text-[#FF7700]">under 60 seconds</span>
+                </p>
+                <p className="text-[13px] text-[#6B5E5B] mt-0.5">No calls. No confusion. Just clean homes.</p>
               </div>
             </div>
           </div>
@@ -104,9 +97,15 @@ export default function Hero() {
               />
             </div>
 
-            {/* Floating Card */}
-            <div className="absolute top-[10%] lg:top-[20%] right-[-5%] lg:right-[-12%] bg-white rounded-[24px] p-6 lg:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.08)] z-10 min-w-[260px] border border-gray-50">
-              <ul className="flex flex-col gap-6">
+            {/* Floating Card — glassmorphism */}
+            <div className="absolute top-[10%] lg:top-[20%] right-[-5%] lg:right-[-12%] rounded-[24px] p-6 lg:p-8 z-10 min-w-[260px]
+              bg-white/40 backdrop-blur-xl
+              border border-white/60
+              shadow-[0_8px_32px_rgba(255,119,0,0.08),0_2px_8px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.8)]"
+            >
+              {/* Subtle inner glow top edge */}
+              <div className="absolute inset-0 rounded-[24px] bg-gradient-to-b from-white/50 to-transparent pointer-events-none" />
+              <ul className="flex flex-col gap-5 relative z-10">
                 {[
                   { icon: CalendarDays, text: "Easy Booking" },
                   { icon: ShieldCheck, text: "Verified Experts" },
@@ -114,10 +113,10 @@ export default function Hero() {
                   { icon: ThumbsUp, text: "Satisfaction Guaranteed" },
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-center gap-4">
-                    <div className="bg-[#FFF3E5] p-2 rounded-full text-[#FF7700] border border-[#FFE8D6]">
+                    <div className="bg-[#FF7700]/15 backdrop-blur-sm p-2 rounded-full text-[#FF7700] border border-[#FF7700]/20 shadow-sm">
                       <item.icon size={20} strokeWidth={2.5} />
                     </div>
-                    <span className="text-[#2D2422] font-bold text-[15px]">{item.text}</span>
+                    <span className="text-[#2D2422] font-bold text-[15px] drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">{item.text}</span>
                   </li>
                 ))}
               </ul>
