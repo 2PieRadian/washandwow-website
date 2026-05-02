@@ -6,9 +6,9 @@ import { useEffect } from "react";
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/sections/Footer";
 import { SatoshiFont, WixMadeForDisplayFont } from "@/app/fonts";
-import { 
-  Smartphone, Home, Sparkles, Package, ShieldCheck, Clock, 
-  ArrowRight, Car, Bug, CalendarCheck, Heart 
+import {
+  Smartphone, Home, Sparkles, Package, ShieldCheck, Clock,
+  ArrowRight, Car, Bug, CalendarCheck, Heart
 } from "lucide-react";
 import Container from "@/app/components/layout/Container";
 
@@ -28,7 +28,7 @@ export default function AboutPage() {
             <div className="lg:w-[45%]">
               <p className="text-[12px] font-bold text-[#FF7700] tracking-wider uppercase mb-4">About Wash & Wow</p>
               <h1 className="text-[3.2rem] lg:text-[4rem] font-extrabold leading-[1.1] text-[#2D2422] mb-6" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
-                We bring ease<br/>to your everyday<br/>
+                We bring ease<br />to your everyday<br />
                 <span className="text-[#FF7700]">in just a few clicks.</span>
               </h1>
               <p className="text-[1.1rem] text-[#6B5E5B] leading-relaxed mb-12 max-w-lg">
@@ -37,19 +37,19 @@ export default function AboutPage() {
               <div className="flex gap-8 flex-wrap">
                 <div className="flex flex-col items-center gap-3 w-[70px]">
                   <div className="text-[#FF7700]"><Smartphone size={28} strokeWidth={1.5} /></div>
-                  <p className="text-[12px] font-bold text-[#2D2422] text-center leading-tight">Few clicks<br/>to book</p>
+                  <p className="text-[12px] font-bold text-[#2D2422] text-center leading-tight">Few clicks<br />to book</p>
                 </div>
                 <div className="flex flex-col items-center gap-3 w-[70px]">
                   <div className="text-[#FF7700]"><Home size={28} strokeWidth={1.5} /></div>
-                  <p className="text-[12px] font-bold text-[#2D2422] text-center leading-tight">We come<br/>to you</p>
+                  <p className="text-[12px] font-bold text-[#2D2422] text-center leading-tight">We come<br />to you</p>
                 </div>
                 <div className="flex flex-col items-center gap-3 w-[70px]">
                   <div className="text-[#FF7700]"><Sparkles size={28} strokeWidth={1.5} /></div>
-                  <p className="text-[12px] font-bold text-[#2D2422] text-center leading-tight">We clean<br/>everything</p>
+                  <p className="text-[12px] font-bold text-[#2D2422] text-center leading-tight">We clean<br />everything</p>
                 </div>
                 <div className="flex flex-col items-center gap-3 w-[70px]">
                   <div className="text-[#FF7700]"><Package size={28} strokeWidth={1.5} /></div>
-                  <p className="text-[12px] font-bold text-[#2D2422] text-center leading-tight">We deliver<br/>it back</p>
+                  <p className="text-[12px] font-bold text-[#2D2422] text-center leading-tight">We deliver<br />it back</p>
                 </div>
               </div>
             </div>
@@ -65,7 +65,7 @@ export default function AboutPage() {
               >
                 {/* Subtle inner glow top edge */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/60 to-transparent pointer-events-none" />
-                
+
                 <div className="flex flex-col gap-6 relative z-10">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-white/50 rounded-xl flex items-center justify-center text-[#FF7700] shrink-0 border border-white/60"><Smartphone size={20} /></div>
@@ -130,9 +130,9 @@ export default function AboutPage() {
             <div className="xl:w-2/3 w-full grid grid-cols-2 md:flex md:flex-row items-start justify-between gap-x-4 gap-y-12 md:gap-4 relative mt-8 xl:mt-0">
               {/* Desktop connecting arrows */}
               <div className="hidden md:flex absolute top-[100px] left-[20%] right-[20%] justify-between items-center z-0 text-[#FF7700] opacity-40 px-10">
-                 <ArrowRight size={24} />
-                 <ArrowRight size={24} />
-                 <ArrowRight size={24} />
+                <ArrowRight size={24} />
+                <ArrowRight size={24} />
+                <ArrowRight size={24} />
               </div>
               {/* Step 1 */}
               <div className="flex flex-col items-center flex-1 relative z-10 w-full md:w-auto">
@@ -148,14 +148,14 @@ export default function AboutPage() {
               <div className="flex flex-col items-center flex-1 relative z-10 w-full md:w-auto">
                 <div className="h-[220px] flex items-center justify-center">
                   <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col gap-3 w-[160px]">
-                    <div className="flex items-center gap-3"><div className="w-8 h-8 bg-[#FFF3E5] rounded-full text-[#FF7700] flex items-center justify-center"><Package size={14}/></div><span className="text-[12px] font-bold text-[#2D2422]">Laundry</span></div>
-                    <div className="flex items-center gap-3"><div className="w-8 h-8 bg-[#EBF4FC] rounded-full text-[#3E8FD4] flex items-center justify-center"><Home size={14}/></div><span className="text-[12px] font-bold text-[#2D2422]">Home Cleaning</span></div>
-                    <div className="flex items-center gap-3"><div className="w-8 h-8 bg-[#EFF8F2] rounded-full text-[#4CAF85] flex items-center justify-center"><Car size={14}/></div><span className="text-[12px] font-bold text-[#2D2422]">Car Wash</span></div>
-                    <div className="flex items-center gap-3"><div className="w-8 h-8 bg-[#F6F0FE] rounded-full text-[#9B51E0] flex items-center justify-center"><Bug size={14}/></div><span className="text-[12px] font-bold text-[#2D2422]">Pest Control</span></div>
+                    <div className="flex items-center gap-3"><div className="w-8 h-8 bg-[#FFF3E5] rounded-full text-[#FF7700] flex items-center justify-center"><Package size={14} /></div><span className="text-[12px] font-bold text-[#2D2422]">Laundry</span></div>
+                    <div className="flex items-center gap-3"><div className="w-8 h-8 bg-[#EBF4FC] rounded-full text-[#3E8FD4] flex items-center justify-center"><Home size={14} /></div><span className="text-[12px] font-bold text-[#2D2422]">Home Cleaning</span></div>
+                    <div className="flex items-center gap-3"><div className="w-8 h-8 bg-[#EFF8F2] rounded-full text-[#4CAF85] flex items-center justify-center"><Car size={14} /></div><span className="text-[12px] font-bold text-[#2D2422]">Car Wash</span></div>
+                    <div className="flex items-center gap-3"><div className="w-8 h-8 bg-[#F6F0FE] rounded-full text-[#9B51E0] flex items-center justify-center"><Bug size={14} /></div><span className="text-[12px] font-bold text-[#2D2422]">Pest Control</span></div>
                   </div>
                 </div>
                 <div className="w-10 h-10 rounded-full bg-[#FF7700] text-white flex items-center justify-center font-bold text-[14px] mt-6 mb-3 shadow-lg">02</div>
-                <p className="text-[15px] font-bold text-[#2D2422] text-center">Choose<br/>your service</p>
+                <p className="text-[15px] font-bold text-[#2D2422] text-center">Choose<br />your service</p>
               </div>
               {/* Step 3 */}
               <div className="flex flex-col items-center flex-1 relative z-10 w-full md:w-auto">
@@ -165,7 +165,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <div className="w-10 h-10 rounded-full bg-[#FF7700] text-white flex items-center justify-center font-bold text-[14px] mt-6 mb-3 shadow-lg">03</div>
-                <p className="text-[15px] font-bold text-[#2D2422] text-center">We handle<br/>everything</p>
+                <p className="text-[15px] font-bold text-[#2D2422] text-center">We handle<br />everything</p>
               </div>
               {/* Step 4 */}
               <div className="flex flex-col items-center flex-1 relative z-10 w-full md:w-auto">
@@ -175,7 +175,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <div className="w-10 h-10 rounded-full bg-[#FF7700] text-white flex items-center justify-center font-bold text-[14px] mt-6 mb-3 shadow-lg">04</div>
-                <p className="text-[15px] font-bold text-[#2D2422] text-center">Sit back,<br/>we deliver</p>
+                <p className="text-[15px] font-bold text-[#2D2422] text-center">Sit back,<br />we deliver</p>
               </div>
             </div>
           </div>
@@ -192,7 +192,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 text-left">
             {/* Card 1 */}
             <div className="bg-[#F0F6FE] rounded-3xl p-8 pb-32 xl:pb-8 xl:min-h-[280px] relative overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
-              <h3 className="text-[#3E8FD4] text-[20px] font-bold mb-2">Laundry<br/>Pickup & Delivery</h3>
+              <h3 className="text-[#3E8FD4] text-[20px] font-bold mb-2">Laundry<br />Pickup & Delivery</h3>
               <p className="text-[14px] text-[#2D2422] mb-12 relative z-10 w-[70%]">We take it. We clean it. We bring it back fresh.</p>
               <div className="absolute bottom-[-10%] right-[-10%] w-[180px] h-[180px] md:w-[220px] md:h-[220px] xl:w-[180px] xl:h-[180px]">
                 <Image src="/images/about/about_laundry_basket_1777741915329.png" fill alt="Laundry" className="object-contain object-bottom right-0" />
@@ -203,7 +203,7 @@ export default function AboutPage() {
             </div>
             {/* Card 2 */}
             <div className="bg-[#FEF4EA] rounded-3xl p-8 pb-32 xl:pb-8 xl:min-h-[280px] relative overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
-              <h3 className="text-[#FF7700] text-[20px] font-bold mb-2">Home<br/>Cleaning</h3>
+              <h3 className="text-[#FF7700] text-[20px] font-bold mb-2">Home<br />Cleaning</h3>
               <p className="text-[14px] text-[#2D2422] mb-12 relative z-10 w-[70%]">Your space reset without you lifting a finger.</p>
               <div className="absolute bottom-[-5%] right-[-15%] w-[180px] h-[180px] md:w-[220px] md:h-[220px] xl:w-[200px] xl:h-[200px]">
                 <Image src="/images/about/about_home_cleaning_sofa_1777741933846.png" fill alt="Cleaning" className="object-contain object-bottom right-0" />
@@ -214,7 +214,7 @@ export default function AboutPage() {
             </div>
             {/* Card 3 */}
             <div className="bg-[#EFF8F2] rounded-3xl p-8 pb-32 xl:pb-8 xl:min-h-[280px] relative overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
-              <h3 className="text-[#4CAF85] text-[20px] font-bold mb-2">Doorstep<br/>Car Wash</h3>
+              <h3 className="text-[#4CAF85] text-[20px] font-bold mb-2">Doorstep<br />Car Wash</h3>
               <p className="text-[14px] text-[#2D2422] mb-12 relative z-10 w-[70%]">Your car cleaned while you chill inside.</p>
               <div className="absolute bottom-[0%] right-[-10%] w-[180px] h-[180px] md:w-[240px] md:h-[240px] xl:w-[200px] xl:h-[200px]">
                 <Image src="/images/about/about_car_wash_car_1777741958725.png" fill alt="Car wash" className="object-contain object-bottom right-0" />
@@ -225,7 +225,7 @@ export default function AboutPage() {
             </div>
             {/* Card 4 */}
             <div className="bg-[#F6F0FE] rounded-3xl p-8 pb-32 xl:pb-8 xl:min-h-[280px] relative overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
-              <h3 className="text-[#9B51E0] text-[20px] font-bold mb-2">Pest<br/>Control</h3>
+              <h3 className="text-[#9B51E0] text-[20px] font-bold mb-2">Pest<br />Control</h3>
               <p className="text-[14px] text-[#2D2422] mb-12 relative z-10 w-[70%]">Safe, quick and handled professionally.</p>
               <div className="absolute bottom-[-10%] right-[-10%] w-[160px] h-[160px] md:w-[200px] md:h-[200px] xl:w-[160px] xl:h-[160px]">
                 <Image src="/images/about/about_pest_control_spray_1777741974315.png" fill alt="Pest control" className="object-contain object-bottom right-0" />
@@ -249,9 +249,9 @@ export default function AboutPage() {
               </h2>
               <ul className="flex flex-col gap-5">
                 {[
-                  "Few-click booking", 
-                  "At-home everything", 
-                  "Trusted professionals", 
+                  "Few-click booking",
+                  "At-home everything",
+                  "Trusted professionals",
                   "Pickup & delivery built-in"
                 ].map(item => (
                   <li key={item} className="flex items-center gap-4">
@@ -270,19 +270,19 @@ export default function AboutPage() {
               </div>
               {/* Floating pills */}
               <div className="absolute top-[10%] left-[0%] lg:left-[5%] bg-white rounded-full px-4 lg:px-5 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#FFF3E5] flex items-center justify-center text-[#FF7700]"><CalendarCheck size={18}/></div>
+                <div className="w-10 h-10 rounded-full bg-[#FFF3E5] flex items-center justify-center text-[#FF7700]"><CalendarCheck size={18} /></div>
                 <div><p className="text-[13px] lg:text-[14px] font-bold text-[#2D2422]">Easy booking</p><p className="text-[11px] lg:text-[12px] text-[#6B5E5B]">Done in seconds</p></div>
               </div>
               <div className="absolute bottom-[15%] left-[-5%] lg:left-[0%] bg-white rounded-full px-4 lg:px-5 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex items-center gap-3 z-10">
-                <div className="w-10 h-10 rounded-full bg-[#FFF3E5] flex items-center justify-center text-[#FF7700]"><ShieldCheck size={18}/></div>
+                <div className="w-10 h-10 rounded-full bg-[#FFF3E5] flex items-center justify-center text-[#FF7700]"><ShieldCheck size={18} /></div>
                 <div><p className="text-[13px] lg:text-[14px] font-bold text-[#2D2422]">Verified experts</p><p className="text-[11px] lg:text-[12px] text-[#6B5E5B]">You can trust</p></div>
               </div>
               <div className="absolute top-[15%] right-[0%] lg:right-[5%] bg-white rounded-full px-4 lg:px-5 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#FFF3E5] flex items-center justify-center text-[#FF7700]"><Clock size={18}/></div>
+                <div className="w-10 h-10 rounded-full bg-[#FFF3E5] flex items-center justify-center text-[#FF7700]"><Clock size={18} /></div>
                 <div><p className="text-[13px] lg:text-[14px] font-bold text-[#2D2422]">On-time service</p><p className="text-[11px] lg:text-[12px] text-[#6B5E5B]">Always</p></div>
               </div>
               <div className="absolute bottom-[20%] right-[-5%] lg:right-[0%] bg-white rounded-full px-4 lg:px-5 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex items-center gap-3 z-10">
-                <div className="w-10 h-10 rounded-full bg-[#FFF3E5] flex items-center justify-center text-[#FF7700]"><Home size={18}/></div>
+                <div className="w-10 h-10 rounded-full bg-[#FFF3E5] flex items-center justify-center text-[#FF7700]"><Home size={18} /></div>
                 <div><p className="text-[13px] lg:text-[14px] font-bold text-[#2D2422]">100% at-home</p><p className="text-[11px] lg:text-[12px] text-[#6B5E5B]">Zero hassle</p></div>
               </div>
             </div>
@@ -297,26 +297,26 @@ export default function AboutPage() {
             <div className="lg:w-[35%] w-full pt-10">
               <p className="text-[12px] font-bold text-[#FF7700] tracking-wider uppercase mb-4">Our Vision</p>
               <h2 className="text-[2.8rem] lg:text-[3.2rem] font-extrabold leading-[1.1] text-[#2D2422] mb-12" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
-                A future where<br/>clean feels <span className="text-[#FF7700]">effortless.</span>
+                A future where<br />clean feels <span className="text-[#FF7700]">effortless.</span>
               </h2>
               <div className="flex gap-6 lg:gap-8">
                 <div className="flex flex-col items-center gap-3 text-center w-24">
                   <div className="text-[#FF7700]"><Heart size={28} strokeWidth={1.5} /></div>
-                  <p className="text-[13px] font-bold text-[#2D2422] leading-tight mt-2">Home services<br/>feel invisible</p>
+                  <p className="text-[13px] font-bold text-[#2D2422] leading-tight mt-2">Home services<br />feel invisible</p>
                 </div>
                 <div className="flex flex-col items-center gap-3 text-center w-24">
                   <div className="text-[#FF7700]"><Sparkles size={28} strokeWidth={1.5} /></div>
-                  <p className="text-[13px] font-bold text-[#2D2422] leading-tight mt-2">Everything<br/>just works</p>
+                  <p className="text-[13px] font-bold text-[#2D2422] leading-tight mt-2">Everything<br />just works</p>
                 </div>
                 <div className="flex flex-col items-center gap-3 text-center w-24">
                   <div className="text-[#FF7700]"><Clock size={28} strokeWidth={1.5} /></div>
-                  <p className="text-[13px] font-bold text-[#2D2422] leading-tight mt-2">Your time<br/>stays yours</p>
+                  <p className="text-[13px] font-bold text-[#2D2422] leading-tight mt-2">Your time<br />stays yours</p>
                 </div>
               </div>
             </div>
             <div className="lg:w-[65%] w-full bg-[#FF7700] rounded-[40px] p-10 lg:p-16 relative flex flex-col justify-center min-h-[400px]">
               <h2 className="text-[2.8rem] lg:text-[3.5rem] font-extrabold text-white leading-[1.1] mb-6" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
-                Relax.<br/>We've got it from here.
+                Relax.<br />We've got it from here.
               </h2>
               <p className="text-[1.1rem] text-white/90 mb-10 lg:w-[60%]">
                 Book once. Experience the difference. Never go back to the old way again.
@@ -336,15 +336,15 @@ export default function AboutPage() {
                   <div className="mt-4 flex items-center justify-between">
                     <div>
                       <p className="text-[11px] text-[#6B5E5B]">Hello, Neha 👋</p>
-                      <p className="text-[14px] font-bold text-[#2D2422] leading-tight mt-1">What can we help<br/>you with today?</p>
+                      <p className="text-[14px] font-bold text-[#2D2422] leading-tight mt-1">What can we help<br />you with today?</p>
                     </div>
                   </div>
                   {/* Quick icons inside phone */}
                   <div className="grid grid-cols-4 gap-2 mt-8">
-                    <div className="flex flex-col items-center gap-2"><div className="w-10 h-10 bg-[#FFF3E5] rounded-xl flex items-center justify-center text-[#FF7700]"><Package size={16}/></div><p className="text-[9px] font-bold text-center">Laundry</p></div>
-                    <div className="flex flex-col items-center gap-2"><div className="w-10 h-10 bg-[#FFF3E5] rounded-xl flex items-center justify-center text-[#FF7700]"><Home size={16}/></div><p className="text-[9px] font-bold text-center leading-[1.1]">Home<br/>Cleaning</p></div>
-                    <div className="flex flex-col items-center gap-2"><div className="w-10 h-10 bg-[#FFF3E5] rounded-xl flex items-center justify-center text-[#FF7700]"><Car size={16}/></div><p className="text-[9px] font-bold text-center leading-[1.1]">Car<br/>Wash</p></div>
-                    <div className="flex flex-col items-center gap-2"><div className="w-10 h-10 bg-[#FFF3E5] rounded-xl flex items-center justify-center text-[#FF7700]"><Bug size={16}/></div><p className="text-[9px] font-bold text-center leading-[1.1]">Pest<br/>Control</p></div>
+                    <div className="flex flex-col items-center gap-2"><div className="w-10 h-10 bg-[#FFF3E5] rounded-xl flex items-center justify-center text-[#FF7700]"><Package size={16} /></div><p className="text-[9px] font-bold text-center">Laundry</p></div>
+                    <div className="flex flex-col items-center gap-2"><div className="w-10 h-10 bg-[#FFF3E5] rounded-xl flex items-center justify-center text-[#FF7700]"><Home size={16} /></div><p className="text-[9px] font-bold text-center leading-[1.1]">Home<br />Cleaning</p></div>
+                    <div className="flex flex-col items-center gap-2"><div className="w-10 h-10 bg-[#FFF3E5] rounded-xl flex items-center justify-center text-[#FF7700]"><Car size={16} /></div><p className="text-[9px] font-bold text-center leading-[1.1]">Car<br />Wash</p></div>
+                    <div className="flex flex-col items-center gap-2"><div className="w-10 h-10 bg-[#FFF3E5] rounded-xl flex items-center justify-center text-[#FF7700]"><Bug size={16} /></div><p className="text-[9px] font-bold text-center leading-[1.1]">Pest<br />Control</p></div>
                   </div>
                   {/* Bottom image decoration */}
                   <div className="mt-auto relative h-32 -mx-5 mb-0 bg-white">
