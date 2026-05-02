@@ -21,7 +21,9 @@ import {
   Wind,
   Bike,
   UserCheck,
-  Leaf
+  Leaf,
+  Home,
+  ChevronRight
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -105,7 +107,17 @@ export default function CarWashPage() {
             <div className="flex flex-col lg:flex-row items-center justify-between">
               
               {/* Left Content */}
-              <div className="w-full lg:w-1/2 z-10">
+              <div className="w-full lg:w-1/2 z-10 pt-4">
+                
+                {/* Breadcrumbs */}
+                <div className="flex items-center gap-2 text-[14px] text-[#7A7A7A] mb-8 bg-[#FFF6F0] px-4 py-2 rounded-full w-fit">
+                  <Link href="/" className="hover:text-[#F26B21] transition-colors flex items-center gap-1"><Home className="w-3.5 h-3.5" /> Home</Link>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                  <Link href="/services" className="hover:text-[#F26B21] transition-colors">Services</Link>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                  <span className="text-[#F26B21] font-medium">Doorstep Car Wash</span>
+                </div>
+
                 <div className="flex items-center gap-2 bg-[#FFF6F0] border border-[#FCECE4] text-[#F26B21] px-4 py-1.5 rounded-full text-[13px] font-bold uppercase tracking-wide w-fit mb-6 shadow-sm">
                   <CarFront size={16} strokeWidth={2.5} /> Doorstep Car Wash
                 </div>

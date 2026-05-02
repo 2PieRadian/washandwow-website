@@ -233,9 +233,9 @@ export default function ServicesPage() {
                     <h3 className="text-[2rem] leading-tight font-medium text-white mb-2" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>Pest Control</h3>
                     <p className="text-white/80 text-[14px] max-w-[220px]">Safe, effective and long-lasting solutions for a pest-free home.</p>
                   </div>
-                  <button className="bg-white text-black px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 self-start hover:bg-gray-100 transition-colors">
+                  <Link href="/services/pest-control" className="bg-white text-black px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 self-start hover:bg-gray-100 transition-colors w-fit">
                     Book Pest Control <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -248,9 +248,9 @@ export default function ServicesPage() {
                     <h3 className="text-[2rem] leading-tight font-medium text-white mb-2" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>Home Cleaning</h3>
                     <p className="text-white/80 text-[14px] max-w-[240px]">A cleaner home for a healthier you. Sit back and relax.</p>
                   </div>
-                  <button className="bg-white text-black px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 self-start hover:bg-gray-100 transition-colors">
+                  <Link href="/services/home-cleaning" className="bg-white text-black px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 self-start hover:bg-gray-100 transition-colors w-fit">
                     Book Home Cleaning <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 

@@ -18,11 +18,12 @@ import {
   Crown,
   Sparkles,
   Footprints,
-  LayoutTemplate,
   Baby,
   Bed,
   Heart,
   Plus,
+  Home,
+  LayoutTemplate,
   Package,
   Truck,
   Zap,
@@ -141,11 +142,11 @@ export default function LaundryServicePage() {
         <section className="relative w-full pt-8 pb-12 lg:pt-12 lg:pb-16 bg-gradient-to-r from-[#FFFBF7] to-[#FDF4EA] overflow-hidden">
           <Container isMaxWidth className="relative z-10">
             {/* Breadcrumbs */}
-            <div className="flex items-center gap-2 text-[14px] text-[#7A7A7A] mb-8">
-              <Link href="/" className="hover:text-[#F26B21] transition-colors">Home</Link>
-              <ChevronRight className="w-4 h-4" />
+            <div className="flex items-center gap-2 text-[14px] text-[#7A7A7A] mb-8 bg-[#FFF6F0] px-4 py-2 rounded-full w-fit">
+              <Link href="/" className="hover:text-[#F26B21] transition-colors flex items-center gap-1"><Home className="w-3.5 h-3.5" /> Home</Link>
+              <ChevronRight className="w-3.5 h-3.5" />
               <Link href="/services" className="hover:text-[#F26B21] transition-colors">Services</Link>
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-3.5 h-3.5" />
               <span className="text-[#F26B21] font-medium">Laundry</span>
             </div>
 

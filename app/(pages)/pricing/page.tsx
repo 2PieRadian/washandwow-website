@@ -53,6 +53,7 @@ const servicesData = [
     unit: "/service",
     features: ["General Pest Control", "Cockroach Control", "Termite Control", "Mosquito Control"],
     btnText: "Book Pest Control",
+    href: "/services/pest-control",
   },
   {
     title: "Home Cleaning",
@@ -61,6 +62,7 @@ const servicesData = [
     unit: "/visit",
     features: ["Deep Cleaning", "Kitchen Cleaning", "Bathroom Cleaning", "Sofa & Carpet Cleaning"],
     btnText: "Book Home Cleaning",
+    href: "/services/home-cleaning",
   }
 ];
 
