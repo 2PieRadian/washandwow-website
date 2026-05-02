@@ -25,7 +25,7 @@ import {
   CalendarClock,
   Wallet,
   Smile,
-  ChevronRight
+  ChevronRight,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -40,7 +40,7 @@ const cleaningCards = [
     title: "Basic Home Cleaning",
     description: "General cleaning for a fresh and tidy home.",
     price: "₹399",
-    icon: <Armchair className="w-8 h-8 text-[#22C55E]" strokeWidth={1.5} />,
+    icon: <Armchair className="w-7 h-7 text-[#22C55E]" strokeWidth={1.5} />,
     iconBg: "bg-[#F0FDF4]",
   },
   {
@@ -48,7 +48,7 @@ const cleaningCards = [
     title: "Deep Cleaning",
     description: "Thorough cleaning for every nook and corner.",
     price: "₹999",
-    icon: <SprayCan className="w-8 h-8 text-[#3B82F6]" strokeWidth={1.5} />,
+    icon: <SprayCan className="w-7 h-7 text-[#3B82F6]" strokeWidth={1.5} />,
     iconBg: "bg-[#EFF6FF]",
   },
   {
@@ -56,7 +56,7 @@ const cleaningCards = [
     title: "Kitchen Cleaning",
     description: "Deep clean & degrease your modular kitchen.",
     price: "₹599",
-    icon: <CookingPot className="w-8 h-8 text-[#F97316]" strokeWidth={1.5} />,
+    icon: <CookingPot className="w-7 h-7 text-[#F97316]" strokeWidth={1.5} />,
     iconBg: "bg-[#FFF7ED]",
   },
   {
@@ -64,7 +64,7 @@ const cleaningCards = [
     title: "Bathroom Cleaning",
     description: "Sanitize & disinfect for a hygienic bathroom.",
     price: "₹499",
-    icon: <Bath className="w-8 h-8 text-[#0EA5E9]" strokeWidth={1.5} />,
+    icon: <Bath className="w-7 h-7 text-[#0EA5E9]" strokeWidth={1.5} />,
     iconBg: "bg-[#F0F9FF]",
   },
   {
@@ -72,7 +72,7 @@ const cleaningCards = [
     title: "Full Home Cleaning",
     description: "Complete home cleaning for a sparkling home.",
     price: "₹1,499",
-    icon: <Home className="w-8 h-8 text-[#A855F7]" strokeWidth={1.5} />,
+    icon: <Home className="w-7 h-7 text-[#A855F7]" strokeWidth={1.5} />,
     iconBg: "bg-[#FAF5FF]",
   },
   {
@@ -80,7 +80,7 @@ const cleaningCards = [
     title: "Move In / Move Out",
     description: "Perfect cleaning for a fresh new start.",
     price: "₹1,199",
-    icon: <Package className="w-8 h-8 text-[#EAB308]" strokeWidth={1.5} />,
+    icon: <Package className="w-7 h-7 text-[#EAB308]" strokeWidth={1.5} />,
     iconBg: "bg-[#FEFCE8]",
   },
 ];
@@ -90,160 +90,140 @@ export default function HomeCleaningPage() {
     <div className="overflow-x-hidden antialiased bg-[#FFFFFF]" style={{ fontFamily: SatoshiFont.style.fontFamily }}>
       <Navbar />
 
-      <main className="pt-[60px] lg:pt-[80px]">
+      <main className="pt-[56px] lg:pt-[80px] px-5">
         {/* ─── HERO SECTION ──────────────────────────────────────────────────────── */}
-        <section className="relative w-full pt-12 pb-24 lg:pt-16 lg:pb-32 overflow-hidden flex flex-col lg:flex-row">
-          
-          {/* Background Split */}
-          <div className="absolute inset-0 z-0 flex">
-            <div className="w-full lg:w-[45%] bg-white h-full"></div>
-            <div className="w-full lg:w-[55%] h-full relative hidden lg:block">
-               <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent z-10 w-1/3"></div>
-               <Image src="/images/home-cleaning/hero.png" alt="Professional home cleaning" fill className="object-cover object-left" priority quality={100} />
-            </div>
-          </div>
+        <section className="relative w-full overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-white via-[#FFFBF7] to-[#FFF0E8] z-0" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-[#F26B21]/5 rounded-full -translate-y-1/3 translate-x-1/3 pointer-events-none z-0" />
 
-          <Container isMaxWidth className="relative z-10 w-full flex-1">
-            <div className="flex flex-col lg:flex-row justify-between h-full w-full">
-              
+          <Container isMaxWidth className="relative z-10 py-8 md:py-12 lg:py-16">
+            {/* Breadcrumbs */}
+            <div className="flex items-center gap-1.5 text-[13px] text-[#7A7A7A] mb-6 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full w-fit border border-[#FCECE4] shadow-sm">
+              <Link href="/" className="hover:text-[#F26B21] transition-colors flex items-center gap-1">
+                <Home className="w-3 h-3" /> Home
+              </Link>
+              <ChevronRight className="w-3 h-3" />
+              <Link href="/services" className="hover:text-[#F26B21] transition-colors">Services</Link>
+              <ChevronRight className="w-3 h-3" />
+              <span className="text-[#F26B21] font-semibold">Home Cleaning</span>
+            </div>
+
+            <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
               {/* Left Content */}
-              <div className="w-full lg:w-[55%] z-10 pb-10 lg:pb-0 pt-6">
-                
-                {/* Breadcrumbs */}
-                <div className="flex items-center gap-2 text-[14px] text-[#7A7A7A] mb-8 bg-[#FFF6F0] px-4 py-2 rounded-full w-fit">
-                  <Link href="/" className="hover:text-[#F26B21] transition-colors flex items-center gap-1"><Home className="w-3.5 h-3.5" /> Home</Link>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                  <span className="text-[#F26B21] font-medium">Home Cleaning</span>
-                </div>
-                
-                <h1 
-                  className="text-[clamp(46px,5vw,64px)] leading-[1.05] font-extrabold text-[#1A1A1A] tracking-tight mb-5"
+              <div className="w-full lg:w-[55%] z-10">
+                <h1
+                  className="text-[clamp(32px,6vw,58px)] leading-[1.1] font-extrabold text-[#1A1A1A] tracking-tight mb-4"
                   style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
                 >
                   A Cleaner Home,<br />
-                  <span className="text-[#F26B21] flex items-center gap-3">A Better Life. <Sparkles className="w-8 h-8 lg:w-10 lg:h-10 text-[#F26B21] opacity-70" strokeWidth={1.5} /></span>
+                  <span className="text-[#F26B21] flex items-center gap-2 flex-wrap">
+                    A Better Life. <Sparkles className="w-7 h-7 md:w-9 md:h-9 opacity-70" strokeWidth={1.5} />
+                  </span>
                 </h1>
-                
-                <p className="text-[18px] lg:text-[20px] leading-relaxed text-[#5B5B5B] max-w-md mb-10">
-                  Professional home cleaning services<br className="hidden md:block"/>
-                  for a spotless, healthy and happy home.
+
+                <p className="text-[15px] md:text-[17px] leading-relaxed text-[#5B5B5B] max-w-md mb-8">
+                  Professional home cleaning services for a spotless, healthy and happy home.
                 </p>
 
-                {/* Features Highlights */}
-                <div className="flex flex-wrap items-center gap-x-8 gap-y-6 mb-10">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full border border-green-200 bg-white shadow-sm flex items-center justify-center text-green-600"><ShieldCheck className="w-5 h-5" strokeWidth={1.5} /></div>
-                    <div>
-                      <h4 className="text-[12px] font-bold text-[#1A1A1A] leading-tight">Trained &amp; Verified</h4>
-                      <p className="text-[11px] text-[#7A7A7A] leading-tight mt-0.5">Professionals</p>
+                {/* Feature highlights — 2 col on mobile */}
+                <div className="grid grid-cols-2 gap-3 mb-8">
+                  {[
+                    { icon: <ShieldCheck className="w-4 h-4" strokeWidth={1.5} />, title: "Trained & Verified", sub: "Professionals", colorClass: "text-green-600 bg-white border-green-100" },
+                    { icon: <Leaf className="w-4 h-4" strokeWidth={1.5} />, title: "Eco-Friendly", sub: "Products", colorClass: "text-green-600 bg-white border-green-100" },
+                    { icon: <Clock className="w-4 h-4" strokeWidth={1.5} />, title: "On-Time Service", sub: "Always punctual", colorClass: "text-[#F26B21] bg-white border-[#FCECE4]" },
+                    { icon: <ShieldCheck className="w-4 h-4" strokeWidth={1.5} />, title: "Satisfaction", sub: "Guaranteed", colorClass: "text-[#F26B21] bg-white border-[#FCECE4]" },
+                  ].map((f, i) => (
+                    <div key={i} className="flex items-center gap-2.5 bg-white/80 rounded-xl p-3 border border-white/60 shadow-sm">
+                      <div className={`w-8 h-8 shrink-0 rounded-full border flex items-center justify-center ${f.colorClass}`}>
+                        {f.icon}
+                      </div>
+                      <div>
+                        <h4 className="text-[12px] font-bold text-[#1A1A1A] leading-tight">{f.title}</h4>
+                        <p className="text-[10px] text-[#7A7A7A] leading-tight hidden sm:block">{f.sub}</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full border border-green-200 bg-white shadow-sm flex items-center justify-center text-green-600"><Leaf className="w-5 h-5" strokeWidth={1.5} /></div>
-                    <div>
-                      <h4 className="text-[12px] font-bold text-[#1A1A1A] leading-tight">Eco-Friendly</h4>
-                      <p className="text-[11px] text-[#7A7A7A] leading-tight mt-0.5">Products</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full border border-[#FCECE4] bg-white shadow-sm flex items-center justify-center text-[#F26B21]"><Clock className="w-5 h-5" strokeWidth={1.5} /></div>
-                    <div>
-                      <h4 className="text-[12px] font-bold text-[#1A1A1A] leading-tight">On-Time</h4>
-                      <p className="text-[11px] text-[#7A7A7A] leading-tight mt-0.5">Service</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full border border-[#FCECE4] bg-white shadow-sm flex items-center justify-center text-[#F26B21]"><ShieldCheck className="w-5 h-5" strokeWidth={1.5} /></div>
-                    <div>
-                      <h4 className="text-[12px] font-bold text-[#1A1A1A] leading-tight">Satisfaction</h4>
-                      <p className="text-[11px] text-[#7A7A7A] leading-tight mt-0.5">Guaranteed</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
 
-                {/* Buttons */}
-                <div className="flex items-center gap-4">
-                  <button className="bg-[#F26B21] text-white px-7 py-3.5 rounded-full text-[15px] font-bold flex items-center gap-2 hover:bg-[#D95D1A] transition-colors shadow-md">
+                <div className="flex flex-wrap gap-3">
+                  <button className="bg-[#F26B21] text-white px-6 py-3 rounded-full text-[14px] font-bold flex items-center gap-2 hover:bg-[#D95D1A] transition-colors shadow-md">
                     Book Home Cleaning <ArrowRight className="w-4 h-4" />
                   </button>
-                  <button className="bg-white border border-[#FCECE4] text-[#F26B21] px-7 py-3.5 rounded-full text-[15px] font-bold flex items-center gap-2 hover:bg-gray-50 transition-colors shadow-sm">
-                    How It Works <PlayCircle className="w-5 h-5" />
+                  <button className="bg-white border border-[#FCECE4] text-[#F26B21] px-5 py-3 rounded-full text-[14px] font-bold flex items-center gap-2 hover:bg-gray-50 transition-colors shadow-sm">
+                    How It Works <PlayCircle className="w-4 h-4" />
                   </button>
                 </div>
               </div>
 
-              {/* Right Floating Card */}
-              <div className="w-full lg:w-[40%] flex justify-end items-center mt-12 lg:mt-0 relative z-20">
-                <div className="bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-gray-100 p-8 flex flex-col min-w-[320px]">
-                  
-                  <div className="flex items-center gap-2 bg-[#FFF6F0] text-[#F26B21] px-4 py-1.5 rounded-full text-[12px] font-bold mb-6 w-fit border border-[#FCECE4]">
-                    <ShieldCheck size={14} strokeWidth={2.5} /> Book with Confidence
-                  </div>
+              {/* Right — Image + Card stacked on mobile */}
+              <div className="w-full lg:w-[45%] flex flex-col items-center gap-6">
+                {/* Hero image */}
+                <div className="relative w-full h-[220px] sm:h-[300px] lg:h-[360px] rounded-3xl overflow-hidden shadow-xl">
+                  <Image
+                    src="/images/home-cleaning/hero.png"
+                    alt="Professional home cleaning"
+                    fill
+                    className="object-cover object-left"
+                    priority
+                    quality={100}
+                  />
+                </div>
 
-                  <p className="text-[14px] font-bold text-[#1A1A1A] mb-1">Starting at</p>
-                  <div className="flex items-start mb-6">
-                    <span className="text-[56px] font-extrabold text-[#F26B21] leading-none tracking-tight">₹399</span>
+                {/* Pricing card */}
+                <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 w-full max-w-sm lg:max-w-none">
+                  <div className="flex items-center gap-2 bg-[#FFF6F0] text-[#F26B21] px-3 py-1 rounded-full text-[11px] font-bold mb-4 w-fit border border-[#FCECE4]">
+                    <ShieldCheck size={12} strokeWidth={2.5} /> Book with Confidence
                   </div>
-                  
-                  <ul className="space-y-4 mb-8">
-                    <li className="flex items-center gap-3 text-[14px] font-medium text-[#1A1A1A]">
-                      <CheckCircle2 className="w-5 h-5 text-green-500" strokeWidth={2.5} /> Deep &amp; Detailed Cleaning
-                    </li>
-                    <li className="flex items-center gap-3 text-[14px] font-medium text-[#1A1A1A]">
-                      <CheckCircle2 className="w-5 h-5 text-green-500" strokeWidth={2.5} /> No Hidden Charges
-                    </li>
-                    <li className="flex items-center gap-3 text-[14px] font-medium text-[#1A1A1A]">
-                      <CheckCircle2 className="w-5 h-5 text-green-500" strokeWidth={2.5} /> Safe for Kids &amp; Pets
-                    </li>
-                    <li className="flex items-center gap-3 text-[14px] font-medium text-[#1A1A1A]">
-                      <CheckCircle2 className="w-5 h-5 text-green-500" strokeWidth={2.5} /> Flexible Scheduling
-                    </li>
+                  <p className="text-[13px] font-bold text-[#1A1A1A] mb-0.5">Starting at</p>
+                  <span className="text-[42px] font-extrabold text-[#F26B21] leading-none block mb-5">₹399</span>
+                  <ul className="grid grid-cols-2 gap-2 mb-5">
+                    {["Deep & Detailed Cleaning", "No Hidden Charges", "Safe for Kids & Pets", "Flexible Scheduling"].map((t, i) => (
+                      <li key={i} className="flex items-center gap-2 text-[12px] font-medium text-[#1A1A1A]">
+                        <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0" strokeWidth={2.5} /> {t}
+                      </li>
+                    ))}
                   </ul>
-
-                  <button className="w-full bg-[#F26B21] text-white py-4 rounded-xl text-[16px] font-bold flex items-center justify-center gap-2 hover:bg-[#D95D1A] transition-colors shadow-md">
-                    Book Now <ArrowRightCircle className="w-5 h-5" strokeWidth={2} />
+                  <button className="w-full bg-[#F26B21] text-white py-3 rounded-xl text-[14px] font-bold flex items-center justify-center gap-2 hover:bg-[#D95D1A] transition-colors shadow-md">
+                    Book Now <ArrowRightCircle className="w-4 h-4" strokeWidth={2} />
                   </button>
                 </div>
               </div>
             </div>
           </Container>
-          
-          {/* Mobile only image */}
-          <div className="w-full h-[350px] relative lg:hidden mt-8">
-             <Image src="/images/home-cleaning/hero.png" alt="Professional home cleaning" fill className="object-cover object-left" priority />
-          </div>
         </section>
 
         {/* ─── CARDS SECTION ─────────────────────────────────────────────────────── */}
-        <section className="py-20 bg-white relative z-20 border-t border-gray-50">
+        <section className="py-12 md:py-16 bg-white border-t border-gray-50">
           <Container isMaxWidth>
-            <div className="text-center mb-16">
-              <h2 className="text-[clamp(32px,4vw,40px)] font-bold text-[#1A1A1A] leading-tight mb-3" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
+            <div className="text-center mb-10">
+              <h2
+                className="text-[24px] md:text-[32px] font-bold text-[#1A1A1A] leading-tight mb-2"
+                style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
+              >
                 Our Home Cleaning Services
               </h2>
-              <p className="text-[16px] text-[#5B5B5B]">
-                Tailored cleaning solutions for every corner of your home.
-              </p>
+              <p className="text-[14px] text-[#5B5B5B]">Tailored cleaning solutions for every corner of your home.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+            {/* 2 col mobile, 3 md, 6 xl */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
               {cleaningCards.map((card) => (
-                <div key={card.id} className="bg-white rounded-3xl border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-xl transition-all relative flex flex-col items-center p-8 text-center group cursor-pointer h-full">
-                  
-                  <div className={`w-20 h-20 rounded-full flex items-center justify-center mb-6 ${card.iconBg}`}>
+                <div
+                  key={card.id}
+                  className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col items-center p-4 text-center group cursor-pointer"
+                >
+                  <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-3 ${card.iconBg}`}>
                     {card.icon}
                   </div>
-                  
-                  <h3 className="font-bold text-[#1A1A1A] text-[16px] leading-tight mb-3">{card.title}</h3>
-                  <p className="text-[12px] text-[#7A7A7A] leading-relaxed mb-8 flex-1">{card.description}</p>
-                  
-                  <div className="mt-auto w-full flex items-center justify-between border-t border-gray-50 pt-4">
+                  <h3 className="font-bold text-[#1A1A1A] text-[13px] leading-tight mb-1">{card.title}</h3>
+                  <p className="text-[11px] text-[#7A7A7A] leading-relaxed mb-4 flex-1">{card.description}</p>
+                  <div className="w-full flex items-center justify-between border-t border-gray-50 pt-3">
                     <div className="flex flex-col items-start">
-                       <span className="text-[11px] text-[#7A7A7A]">Starting at</span>
-                       <span className="text-[16px] font-bold text-[#F26B21]">{card.price}</span>
+                      <span className="text-[9px] text-[#9E9E9E]">Starting at</span>
+                      <span className="text-[15px] font-bold text-[#F26B21]">{card.price}</span>
                     </div>
-                    <div className="w-8 h-8 rounded-full border border-[#FFF6F0] bg-[#FFF6F0] flex items-center justify-center text-[#F26B21] group-hover:bg-[#F26B21] group-hover:text-white transition-colors">
-                      <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
+                    <div className="w-7 h-7 rounded-full border border-[#FFF6F0] bg-[#FFF6F0] flex items-center justify-center text-[#F26B21] group-hover:bg-[#F26B21] group-hover:text-white transition-colors">
+                      <ArrowRight className="w-3.5 h-3.5" strokeWidth={2.5} />
                     </div>
                   </div>
                 </div>
@@ -253,66 +233,31 @@ export default function HomeCleaningPage() {
         </section>
 
         {/* ─── TRUST BADGES ──────────────────────────────────────────────────────── */}
-        <section className="pb-24 bg-white">
+        <section className="pb-12 md:pb-16 bg-white">
           <Container isMaxWidth>
-            <div className="bg-[#FCFBF9] rounded-3xl border border-gray-100 p-8 lg:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4">
-                
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center text-green-600 border border-green-100 shadow-sm">
-                    <ShieldCheck strokeWidth={1.5} />
+            <div className="bg-[#FCFBF9] rounded-2xl border border-gray-100 p-6 md:p-8 shadow-sm">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                {[
+                  { icon: <ShieldCheck strokeWidth={1.5} />, title: "Background Verified", sub: "& Trained Professionals", color: "text-green-600", bg: "bg-white", border: "border-green-100" },
+                  { icon: <Leaf strokeWidth={1.5} />, title: "Eco-Friendly", sub: "Cleaning Products", color: "text-green-600", bg: "bg-white", border: "border-green-100" },
+                  { icon: <CalendarClock strokeWidth={1.5} />, title: "Flexible Scheduling", sub: "As Per Your Convenience", color: "text-[#F26B21]", bg: "bg-white", border: "border-[#FCECE4]" },
+                  { icon: <Wallet strokeWidth={1.5} />, title: "Transparent Pricing", sub: "No Hidden Charges", color: "text-blue-500", bg: "bg-white", border: "border-blue-100" },
+                  { icon: <Smile strokeWidth={1.5} />, title: "100% Satisfaction", sub: "Guaranteed", color: "text-purple-500", bg: "bg-white", border: "border-purple-100" },
+                ].map((b, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className={`w-10 h-10 shrink-0 rounded-full flex items-center justify-center ${b.color} ${b.bg} border ${b.border} shadow-sm`}>
+                      {b.icon}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#1A1A1A] text-[12px] leading-tight">{b.title}</h4>
+                      <p className="text-[10px] text-[#7A7A7A] leading-snug">{b.sub}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-[#1A1A1A] text-[13px] leading-tight mb-1">Background Verified</h4>
-                    <p className="text-[11px] text-[#7A7A7A] leading-snug">&amp; Trained Professionals</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center text-green-600 border border-green-100 shadow-sm">
-                    <Leaf strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#1A1A1A] text-[13px] leading-tight mb-1">Eco-Friendly</h4>
-                    <p className="text-[11px] text-[#7A7A7A] leading-snug">Cleaning Products</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center text-[#F26B21] border border-[#FCECE4] shadow-sm">
-                    <CalendarClock strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#1A1A1A] text-[13px] leading-tight mb-1">Flexible Scheduling</h4>
-                    <p className="text-[11px] text-[#7A7A7A] leading-snug">As Per Your Convenience</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center text-blue-500 border border-blue-100 shadow-sm">
-                    <Wallet strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#1A1A1A] text-[13px] leading-tight mb-1">Transparent Pricing</h4>
-                    <p className="text-[11px] text-[#7A7A7A] leading-snug">No Hidden Charges</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center text-purple-500 border border-purple-100 shadow-sm">
-                    <Smile strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#1A1A1A] text-[13px] leading-tight mb-1">100% Satisfaction</h4>
-                    <p className="text-[11px] text-[#7A7A7A] leading-snug">Guaranteed</p>
-                  </div>
-                </div>
-
+                ))}
               </div>
             </div>
           </Container>
         </section>
-
       </main>
 
       <Footer />

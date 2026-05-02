@@ -20,10 +20,10 @@ export default function ServicesPage() {
     <div className="overflow-x-hidden antialiased bg-white" style={{ fontFamily: SatoshiFont.style.fontFamily }}>
       <Navbar />
       
-      <main className="pt-[20px] lg:pt-[70px]">
+      <main className="pt-[70px] lg:pt-[90px] px-5">
         
         {/* ─── Hero Section ────────────────────────────────────────────────────────── */}
-        <section className="relative w-full pb-32 lg:pb-48 pt-0">
+        <section className="relative w-full pb-16 sm:pb-24 lg:pb-48 pt-8 lg:pt-0">
           {/* Background Curve Right Side */}
           <div className="absolute right-0 top-0 h-full w-[80%] lg:w-[60%] z-0 pointer-events-none">
             <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full fill-[#F8F1EB]">
@@ -42,12 +42,12 @@ export default function ServicesPage() {
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
               
               {/* Left Content */}
-              <div className="pt-0 pr-0 lg:pr-10">
+              <div className="pt-0 pr-0">
                 {/* Breadcrumb */}
-                <div className="flex items-center gap-2 text-[13px] font-medium text-[#7A7A7A] mb-8">
+                <div className="flex items-center gap-2 text-[13px] font-medium text-[#7A7A7A] mb-6 bg-[#FFF6F0] px-3 py-1.5 rounded-full w-fit">
                   <Link href="/" className="hover:text-black transition-colors">Home</Link>
                   <span>&gt;</span>
-                  <span className="text-black">Services</span>
+                  <span className="text-[#F26B21]">Services</span>
                 </div>
 
                 <div className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#F26B21] mb-5">
@@ -96,7 +96,7 @@ export default function ServicesPage() {
               </div>
 
               {/* Right Image Container */}
-              <div className="relative h-[350px] sm:h-[450px] lg:h-[600px] w-full flex justify-end items-end">
+              <div className="relative h-[300px] sm:h-[420px] lg:h-[600px] w-full flex justify-end items-end">
                 {/* Main Worker Image */}
                 <div className="relative h-[95%] w-[95%] ml-auto right-[0%] lg:right-[-5%] bottom-[0%] z-10">
                   <Image 
@@ -108,8 +108,8 @@ export default function ServicesPage() {
                   />
                 </div>
                 
-                {/* Floating Badges */}
-                <div className="absolute top-[10%] left-[5%] lg:-left-[10%] z-20 flex items-center gap-3 bg-white rounded-full pr-5 pl-2 py-2 shadow-xl border border-gray-100">
+                {/* Floating Badges — hidden on mobile */}
+                <div className="hidden sm:flex absolute top-[10%] left-[5%] lg:-left-[10%] z-20 items-center gap-3 bg-white rounded-full pr-5 pl-2 py-2 shadow-xl border border-gray-100">
                    <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#F5EBE1]">
                      <Image src="/images/services/laundry.png" alt="Laundry icon" width={24} height={24} className="opacity-80" />
                    </div>
@@ -119,7 +119,7 @@ export default function ServicesPage() {
                    </div>
                 </div>
 
-                <div className="absolute top-[25%] right-0 lg:-right-[5%] z-20 flex items-center gap-3 bg-white rounded-full pr-5 pl-2 py-2 shadow-xl border border-gray-100">
+                <div className="hidden sm:flex absolute top-[25%] right-0 lg:-right-[5%] z-20 items-center gap-3 bg-white rounded-full pr-5 pl-2 py-2 shadow-xl border border-gray-100">
                    <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#F5EBE1]">
                      <Image src="/images/services/pest-control.png" alt="Pest Control icon" width={24} height={24} className="opacity-80" />
                    </div>
@@ -129,7 +129,7 @@ export default function ServicesPage() {
                    </div>
                 </div>
 
-                <div className="absolute top-[50%] left-[-5%] lg:-left-[15%] z-20 flex items-center gap-3 bg-white rounded-full pr-5 pl-2 py-2 shadow-xl border border-gray-100">
+                <div className="hidden lg:flex absolute top-[50%] left-[-5%] lg:-left-[15%] z-20 items-center gap-3 bg-white rounded-full pr-5 pl-2 py-2 shadow-xl border border-gray-100">
                    <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#F5EBE1]">
                      <Image src="/images/services/car-wash.png" alt="Car Wash icon" width={24} height={24} className="opacity-80" />
                    </div>
@@ -139,7 +139,7 @@ export default function ServicesPage() {
                    </div>
                 </div>
 
-                <div className="absolute bottom-[10%] right-[-5%] lg:-right-[10%] z-20 flex items-center gap-3 bg-white rounded-full pr-5 pl-2 py-2 shadow-xl border border-gray-100">
+                <div className="hidden sm:flex absolute bottom-[10%] right-[-5%] lg:-right-[10%] z-20 items-center gap-3 bg-white rounded-full pr-5 pl-2 py-2 shadow-xl border border-gray-100">
                    <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#F5EBE1]">
                      <Image src="/images/services/home-cleaning.png" alt="Home Cleaning icon" width={24} height={24} className="opacity-80" />
                    </div>
@@ -170,10 +170,10 @@ export default function ServicesPage() {
             </div>
 
             {/* Grid Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:h-[650px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 lg:h-[650px]">
               
               {/* Laundry Block - Full Height */}
-              <div className="relative group rounded-3xl overflow-hidden md:col-span-1 lg:col-span-1 lg:row-span-2 h-[400px] lg:h-full">
+              <div className="relative group rounded-2xl sm:rounded-3xl overflow-hidden sm:col-span-2 lg:col-span-1 lg:row-span-2 h-[440px] sm:h-[440px] lg:h-full">
                 <Image src="/images/services/laundry_service_img.png" alt="Laundry Service" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/80"></div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-between">
@@ -181,7 +181,7 @@ export default function ServicesPage() {
                     <span className="inline-flex items-center gap-1.5 bg-white text-black px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider mb-5">
                       <span className="text-[#F26B21]">★</span> MOST POPULAR
                     </span>
-                    <h3 className="text-4xl font-medium text-white mb-3" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>Laundry<br/>Service</h3>
+                    <h3 className="text-3xl font-medium text-white mb-3" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>Laundry<br/>Service</h3>
                     <p className="text-white/80 text-[15px] max-w-[200px] leading-relaxed">
                       Fresh, clean and perfectly cared for. We handle your laundry with care.
                     </p>
@@ -210,7 +210,7 @@ export default function ServicesPage() {
               </div>
 
               {/* Car Wash Block */}
-              <div className="relative group rounded-3xl overflow-hidden h-[300px] lg:h-auto lg:col-span-1 lg:row-span-1">
+              <div className="relative group rounded-2xl sm:rounded-3xl overflow-hidden h-[240px] sm:h-[280px] lg:h-auto lg:col-span-1 lg:row-span-1">
                 <Image src="/images/services/car_wash_img.png" alt="Car Wash" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-between">
@@ -225,7 +225,7 @@ export default function ServicesPage() {
               </div>
 
               {/* Pest Control Block */}
-              <div className="relative group rounded-3xl overflow-hidden h-[300px] lg:h-auto lg:col-span-1 lg:row-span-1 bg-black">
+              <div className="relative group rounded-2xl sm:rounded-3xl overflow-hidden h-[240px] sm:h-[280px] lg:h-auto lg:col-span-1 lg:row-span-1 bg-black">
                 <Image src="/images/services/pest-control.png" alt="Pest Control Background" fill className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-between">
@@ -240,7 +240,7 @@ export default function ServicesPage() {
               </div>
 
               {/* Home Cleaning Block */}
-              <div className="relative group rounded-3xl overflow-hidden h-[300px] lg:h-auto md:col-span-2 lg:col-span-2 lg:row-span-1 bg-black">
+              <div className="relative group rounded-2xl sm:rounded-3xl overflow-hidden h-[240px] sm:h-[280px] lg:h-auto sm:col-span-2 lg:col-span-2 lg:row-span-1 bg-black">
                 <Image src="/images/services/home-cleaning.png" alt="Home Cleaning Background" fill className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent"></div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-between">
@@ -258,10 +258,10 @@ export default function ServicesPage() {
           </Container>
         </section>
 
-        {/* ─── Why Choose Us ──────────────────────────────────────────────────────── */}
-        <section className="py-20 bg-[#FAFAFA] mt-10">
+        {/* ─── Why Choose Us ────────────────────────────────────────────────── */}
+        <section className="py-12 md:py-20 bg-[#FAFAFA]">
           <Container isMaxWidth>
-            <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-16">
+            <div className="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-16">
               
               {/* Left Side */}
               <div>
@@ -280,38 +280,38 @@ export default function ServicesPage() {
               </div>
 
               {/* Right Side Icons Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
                 
                 <div className="flex flex-col items-center text-center">
-                  <div className="h-16 w-16 rounded-full border border-gray-200 flex items-center justify-center bg-white mb-4">
-                    <Users className="h-6 w-6 text-[#1A1A1A]" strokeWidth={1.5} />
+                  <div className="h-14 w-14 md:h-16 md:w-16 rounded-full border border-gray-200 flex items-center justify-center bg-white mb-3 md:mb-4">
+                    <Users className="h-5 w-5 md:h-6 md:w-6 text-[#1A1A1A]" strokeWidth={1.5} />
                   </div>
-                  <h4 className="font-bold text-[#1A1A1A] text-[15px] mb-2 leading-tight">Trained &<br/>Verified Experts</h4>
-                  <p className="text-[13px] text-[#7A7A7A] leading-relaxed">Skilled professionals you can rely on.</p>
+                  <h4 className="font-bold text-[#1A1A1A] text-[13px] md:text-[15px] mb-1 md:mb-2 leading-tight">Trained &<br/>Verified Experts</h4>
+                  <p className="text-[12px] md:text-[13px] text-[#7A7A7A] leading-relaxed">Skilled professionals you can rely on.</p>
                 </div>
 
-                <div className="flex flex-col items-center text-center border-l border-gray-200/50 pl-0 md:pl-8">
-                  <div className="h-16 w-16 rounded-full border border-gray-200 flex items-center justify-center bg-white mb-4">
-                    <Clock className="h-6 w-6 text-[#1A1A1A]" strokeWidth={1.5} />
+                <div className="flex flex-col items-center text-center md:border-l border-gray-200/50 md:pl-8">
+                  <div className="h-14 w-14 md:h-16 md:w-16 rounded-full border border-gray-200 flex items-center justify-center bg-white mb-3 md:mb-4">
+                    <Clock className="h-5 w-5 md:h-6 md:w-6 text-[#1A1A1A]" strokeWidth={1.5} />
                   </div>
-                  <h4 className="font-bold text-[#1A1A1A] text-[15px] mb-2 leading-tight">On-Time,<br/>Every Time</h4>
-                  <p className="text-[13px] text-[#7A7A7A] leading-relaxed">Punctual service that respects your time.</p>
+                  <h4 className="font-bold text-[#1A1A1A] text-[13px] md:text-[15px] mb-1 md:mb-2 leading-tight">On-Time,<br/>Every Time</h4>
+                  <p className="text-[12px] md:text-[13px] text-[#7A7A7A] leading-relaxed">Punctual service that respects your time.</p>
                 </div>
 
-                <div className="flex flex-col items-center text-center md:border-l border-gray-200/50 pl-0 md:pl-8">
-                  <div className="h-16 w-16 rounded-full border border-gray-200 flex items-center justify-center bg-white mb-4">
-                    <Leaf className="h-6 w-6 text-[#1A1A1A]" strokeWidth={1.5} />
+                <div className="flex flex-col items-center text-center md:border-l border-gray-200/50 md:pl-8">
+                  <div className="h-14 w-14 md:h-16 md:w-16 rounded-full border border-gray-200 flex items-center justify-center bg-white mb-3 md:mb-4">
+                    <Leaf className="h-5 w-5 md:h-6 md:w-6 text-[#1A1A1A]" strokeWidth={1.5} />
                   </div>
-                  <h4 className="font-bold text-[#1A1A1A] text-[15px] mb-2 leading-tight">Safe &<br/>Eco-Friendly</h4>
-                  <p className="text-[13px] text-[#7A7A7A] leading-relaxed">Products and methods that are safe for you and the environment.</p>
+                  <h4 className="font-bold text-[#1A1A1A] text-[13px] md:text-[15px] mb-1 md:mb-2 leading-tight">Safe &<br/>Eco-Friendly</h4>
+                  <p className="text-[12px] md:text-[13px] text-[#7A7A7A] leading-relaxed">Safe for you and the environment.</p>
                 </div>
 
-                <div className="flex flex-col items-center text-center border-l border-gray-200/50 pl-0 md:pl-8">
-                  <div className="h-16 w-16 rounded-full border border-gray-200 flex items-center justify-center bg-white mb-4">
-                    <Smile className="h-6 w-6 text-[#1A1A1A]" strokeWidth={1.5} />
+                <div className="flex flex-col items-center text-center md:border-l border-gray-200/50 md:pl-8">
+                  <div className="h-14 w-14 md:h-16 md:w-16 rounded-full border border-gray-200 flex items-center justify-center bg-white mb-3 md:mb-4">
+                    <Smile className="h-5 w-5 md:h-6 md:w-6 text-[#1A1A1A]" strokeWidth={1.5} />
                   </div>
-                  <h4 className="font-bold text-[#1A1A1A] text-[15px] mb-2 leading-tight">Satisfaction<br/>Guaranteed</h4>
-                  <p className="text-[13px] text-[#7A7A7A] leading-relaxed">We&apos;re not happy until you are.</p>
+                  <h4 className="font-bold text-[#1A1A1A] text-[13px] md:text-[15px] mb-1 md:mb-2 leading-tight">Satisfaction<br/>Guaranteed</h4>
+                  <p className="text-[12px] md:text-[13px] text-[#7A7A7A] leading-relaxed">We&apos;re not happy until you are.</p>
                 </div>
 
               </div>
@@ -322,71 +322,128 @@ export default function ServicesPage() {
         {/* ─── CTA Download Banner ────────────────────────────────────────────────── */}
         <section className="py-16 bg-white">
           <Container isMaxWidth>
-            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-r from-[#F4813E] to-[#FCD2B2] p-10 md:p-14 min-h-[300px] flex items-center">
+            <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#F26B21] via-[#F4813E] to-[#FBAB70] p-8 md:p-12 lg:p-14">
               
-              {/* Overlay Background image if available */}
-              <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay">
-                <Image src="/images/services/laundry_service_img.png" alt="Texture" fill className="object-cover" />
-              </div>
+              {/* Decorative blobs */}
+              <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+              <div className="absolute bottom-0 left-1/3 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 pointer-events-none" />
+              <div className="absolute top-1/2 left-0 w-24 h-24 bg-white/5 rounded-full -translate-x-1/2 pointer-events-none" />
 
-              {/* Content */}
-              <div className="relative z-10 grid md:grid-cols-2 w-full">
-                <div>
-                  <p className="text-white/90 text-[14px] font-medium mb-2">Your time is precious.</p>
-                  <h2 
-                    className="text-[clamp(2.5rem,4vw,3.5rem)] font-bold text-white leading-[1.1] mb-4"
+              <div className="relative z-10 flex flex-col md:flex-row items-center gap-10 lg:gap-16">
+                
+                {/* Left — Text */}
+                <div className="flex-1 w-full">
+                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white text-[12px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full w-fit mb-6">
+                    ✦ Download our app
+                  </div>
+                  <p className="text-white/80 text-[14px] font-medium mb-3">Your time is precious.</p>
+                  <h2
+                    className="text-[clamp(2rem,4vw,3rem)] font-extrabold text-white leading-[1.1] mb-5"
                     style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
                   >
                     Let us take care<br/>of the rest.
                   </h2>
-                  <p className="text-white/90 text-[15px] mb-8 max-w-sm">
-                    Book your service in seconds and enjoy a cleaner, happier home.
+                  <p className="text-white/85 text-[15px] mb-6 max-w-sm leading-relaxed">
+                    Book your service in seconds and enjoy a cleaner, happier home — right from your phone.
                   </p>
-                  
-                  <div className="flex flex-wrap items-center gap-4">
-                    <button className="bg-[#1A1A1A] text-white px-6 py-3.5 rounded-full text-[14px] font-bold flex items-center gap-2 hover:bg-black transition-colors">
+
+                  {/* Star rating */}
+                  <div className="flex items-center gap-3 mb-8">
+                    <div className="flex items-center gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-yellow-300 text-[18px]">★</span>
+                      ))}
+                    </div>
+                    <span className="text-white/80 text-[13px] font-medium">4.9 · 10,000+ happy customers</span>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-3">
+                    <Link href="/services" className="bg-white text-[#F26B21] px-6 py-3.5 rounded-full text-[14px] font-bold flex items-center gap-2 hover:bg-gray-50 transition-colors shadow-lg">
                       Book a Service <ArrowRight className="w-4 h-4" />
-                    </button>
-                    <span className="text-black/80 font-medium text-[14px] px-2">or Download the App</span>
+                    </Link>
                     <div className="flex gap-2">
-                      <div className="bg-black/10 p-2 rounded-full"><Apple className="w-4 h-4 text-[#1A1A1A]" /></div>
-                      <div className="bg-black/10 p-2 rounded-full"><Play className="w-4 h-4 text-[#1A1A1A]" /></div>
+                      <div className="bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-colors cursor-pointer px-3 py-2 rounded-xl flex items-center gap-2">
+                        <Apple className="w-4 h-4 text-white" />
+                        <div>
+                          <p className="text-white/70 text-[8px] leading-none">Download on the</p>
+                          <p className="text-white text-[11px] font-bold leading-tight">App Store</p>
+                        </div>
+                      </div>
+                      <div className="bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-colors cursor-pointer px-3 py-2 rounded-xl flex items-center gap-2">
+                        <Play className="w-4 h-4 text-white" />
+                        <div>
+                          <p className="text-white/70 text-[8px] leading-none">Get it on</p>
+                          <p className="text-white text-[11px] font-bold leading-tight">Google Play</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Right side phone mockup */}
-                <div className="hidden md:block absolute right-[10%] bottom-[-20%] w-[250px] h-[500px]">
-                  {/* Phone Mockup Frame shape */}
-                  <div className="relative w-full h-full bg-white rounded-[2.5rem] shadow-2xl border-8 border-gray-100 overflow-hidden pt-10 px-5 flex flex-col items-center">
-                    {/* Top Notch */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-6 bg-gray-100 rounded-b-xl"></div>
-                    
-                    <div className="w-full text-left mb-6">
-                      <p className="text-[12px] text-gray-500">Hi, Neha 👋</p>
-                      <h4 className="text-[18px] font-bold text-black leading-tight">What service<br/>do you need?</h4>
+                {/* Right — Phone Mockup fully contained, no overflow */}
+                <div className="hidden md:flex flex-col items-center shrink-0">
+                  <div className="relative w-[220px] h-[420px] bg-white rounded-[2.5rem] shadow-2xl border-[6px] border-white/80 overflow-hidden flex flex-col">
+                    {/* Notch */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[35%] h-5 bg-[#F8F8F8] rounded-b-2xl z-10" />
+                    {/* Status bar */}
+                    <div className="bg-[#F8F8F8] px-5 pt-3 pb-2 flex items-center justify-between shrink-0">
+                      <span className="text-[10px] font-bold text-gray-500">9:41</span>
+                      <div className="w-[30%] h-3 bg-gray-200 rounded-full" />
+                      <div className="flex gap-1 items-center">
+                        <div className="w-3 h-1.5 bg-gray-400 rounded-[2px]" />
+                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
+                      </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4 w-full">
-                       <div className="bg-gray-50 aspect-square rounded-2xl flex flex-col items-center justify-center border border-gray-100">
-                         <Image src="/images/services/laundry.png" alt="Laundry" width={32} height={32} />
-                         <span className="text-[10px] font-bold mt-2">Laundry</span>
-                       </div>
-                       <div className="bg-gray-50 aspect-square rounded-2xl flex flex-col items-center justify-center border border-gray-100">
-                         <Image src="/images/services/car-wash.png" alt="Car Wash" width={32} height={32} />
-                         <span className="text-[10px] font-bold mt-2">Car Wash</span>
-                       </div>
-                       <div className="bg-gray-50 aspect-square rounded-2xl flex flex-col items-center justify-center border border-gray-100">
-                         <Image src="/images/services/pest-control.png" alt="Pest Control" width={32} height={32} />
-                         <span className="text-[10px] font-bold mt-2">Pest Control</span>
-                       </div>
-                       <div className="bg-gray-50 aspect-square rounded-2xl flex flex-col items-center justify-center border border-gray-100">
-                         <Image src="/images/services/home-cleaning.png" alt="Home Cleaning" width={32} height={32} />
-                         <span className="text-[10px] font-bold mt-2 text-center">Home<br/>Cleaning</span>
-                       </div>
+                    {/* App content */}
+                    <div className="flex-1 overflow-hidden bg-white px-4 pt-3 pb-3 flex flex-col gap-3">
+                      <div>
+                        <p className="text-[10px] text-gray-400">Hi, Neha 👋</p>
+                        <h4 className="text-[14px] font-extrabold text-black leading-tight" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
+                          What service<br/>do you need?
+                        </h4>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2">
+                        {[
+                          { src: "/images/services/laundry.png", label: "Laundry" },
+                          { src: "/images/services/car-wash.png", label: "Car Wash" },
+                          { src: "/images/services/pest-control.png", label: "Pest Control" },
+                          { src: "/images/services/home-cleaning.png", label: "Home Cleaning" },
+                        ].map((s) => (
+                          <div key={s.label} className="bg-gray-50 aspect-square rounded-xl flex flex-col items-center justify-center border border-gray-100 p-2">
+                            <Image src={s.src} alt={s.label} width={28} height={28} />
+                            <span className="text-[9px] font-bold mt-1.5 text-center leading-tight text-gray-700">{s.label}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Mini booking card */}
+                      <div className="bg-[#FFF6F0] rounded-xl p-3 border border-[#FCECE4]">
+                        <p className="text-[9px] text-[#7A7A7A] font-medium mb-1.5">Next booking</p>
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="text-[11px] font-bold text-[#1A1A1A]">Laundry Service</p>
+                            <p className="text-[9px] text-[#F26B21]">Today, 11:00 AM</p>
+                          </div>
+                          <div className="w-6 h-6 rounded-full bg-[#F26B21] flex items-center justify-center shrink-0">
+                            <ArrowRight className="w-3 h-3 text-white" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom nav bar */}
+                    <div className="bg-white px-6 py-2.5 flex items-center justify-around border-t border-gray-100 shrink-0">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#F26B21]" />
+                      <div className="w-10 h-1.5 rounded-full bg-gray-200" />
+                      <div className="w-3.5 h-3.5 rounded border-[1.5px] border-gray-300" />
                     </div>
                   </div>
+                  {/* Subtle shadow beneath phone */}
+                  <div className="w-[130px] h-3 bg-black/10 blur-md rounded-full mt-1" />
                 </div>
+
               </div>
             </div>
           </Container>
