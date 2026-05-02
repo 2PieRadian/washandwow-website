@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/sections/Footer";
 import Container from "@/app/components/layout/Container";
@@ -34,6 +35,7 @@ const servicesData = [
     unit: "/load",
     features: ["Wash & Fold", "Steam Ironing", "Stain Treatment", "Premium Detergents"],
     btnText: "Book Laundry",
+    href: "/services/laundry",
   },
   {
     title: "Door to Door Car Wash",
@@ -42,6 +44,7 @@ const servicesData = [
     unit: "/wash",
     features: ["Exterior Wash", "Interior Cleaning", "Deep Cleaning", "Premium Products"],
     btnText: "Book Car Wash",
+    href: "/services/car-wash",
   },
   {
     title: "Pest Control",
@@ -63,7 +66,7 @@ const servicesData = [
 
 export default function PricingPage() {
   return (
-    <div className="overflow-x-hidden antialiased bg-[#FAFAFA]" style={{ fontFamily: SatoshiFont.style.fontFamily }}>
+    <div className="overflow-x-hidden antialiased bg-[#FAFAFA] p-[20px]" style={{ fontFamily: SatoshiFont.style.fontFamily }}>
       <Navbar />
 
       <main className="pt-[60px] lg:pt-[80px]">
@@ -79,17 +82,17 @@ export default function PricingPage() {
           </div>
 
           <Container isMaxWidth className="relative z-10 text-center">
-            <div className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#F26B21] mb-5">
+            <div className="text-[16px] font-bold uppercase tracking-[0.2em] text-[#F26B21] mb-5">
               PRICING
             </div>
             <h1 
-              className="text-[clamp(3rem,5vw,4.5rem)] leading-[1.05] font-extrabold text-[#1A1A1A] tracking-tight mb-5"
+              className="text-[clamp(46px,5vw,59px)] leading-[1.05] font-extrabold text-[#1A1A1A] tracking-tight mb-5"
               style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
             >
               Simple pricing.<br />
               <span className="text-[#F26B21]">Exceptional</span> care.
             </h1>
-            <p className="text-[16px] lg:text-[18px] leading-relaxed text-[#5B5B5B] max-w-sm mx-auto">
+            <p className="text-[21px] leading-relaxed text-[#5B5B5B] max-w-sm mx-auto">
               Choose what you need. Pay transparently.
               <br />No hidden charges, ever.
             </p>
@@ -104,40 +107,40 @@ export default function PricingPage() {
               <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 max-w-[200px]">
                 <div className="text-[#F26B21]"><ClipboardList strokeWidth={1.5} size={32}/></div>
                 <div>
-                  <h4 className="font-bold text-[#1A1A1A] text-[14px]">No Hidden Charges</h4>
-                  <p className="text-[12px] text-[#7A7A7A] mt-1 leading-tight">What you see is what you pay</p>
+                  <h4 className="font-bold text-[#1A1A1A] text-[16px]">No Hidden Charges</h4>
+                  <p className="text-[14px] text-[#7A7A7A] mt-1 leading-tight">What you see is what you pay</p>
                 </div>
               </div>
               {/* Feature 2 */}
               <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 max-w-[200px]">
                 <div className="text-[#F26B21]"><UserCheck strokeWidth={1.5} size={32}/></div>
                 <div>
-                  <h4 className="font-bold text-[#1A1A1A] text-[14px]">Trained Professionals</h4>
-                  <p className="text-[12px] text-[#7A7A7A] mt-1 leading-tight">Background verified and fully trained</p>
+                  <h4 className="font-bold text-[#1A1A1A] text-[16px]">Trained Professionals</h4>
+                  <p className="text-[14px] text-[#7A7A7A] mt-1 leading-tight">Background verified and fully trained</p>
                 </div>
               </div>
               {/* Feature 3 */}
               <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 max-w-[200px]">
                 <div className="text-[#F26B21]"><Clock strokeWidth={1.5} size={32}/></div>
                 <div>
-                  <h4 className="font-bold text-[#1A1A1A] text-[14px]">On-Time Service</h4>
-                  <p className="text-[12px] text-[#7A7A7A] mt-1 leading-tight">We value your time as much as you do</p>
+                  <h4 className="font-bold text-[#1A1A1A] text-[16px]">On-Time Service</h4>
+                  <p className="text-[14px] text-[#7A7A7A] mt-1 leading-tight">We value your time as much as you do</p>
                 </div>
               </div>
               {/* Feature 4 */}
               <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 max-w-[200px]">
                 <div className="text-[#F26B21]"><ShieldCheck strokeWidth={1.5} size={32}/></div>
                 <div>
-                  <h4 className="font-bold text-[#1A1A1A] text-[14px]">Satisfaction Guaranteed</h4>
-                  <p className="text-[12px] text-[#7A7A7A] mt-1 leading-tight">Not happy? We&apos;ll make it right</p>
+                  <h4 className="font-bold text-[#1A1A1A] text-[16px]">Satisfaction Guaranteed</h4>
+                  <p className="text-[14px] text-[#7A7A7A] mt-1 leading-tight">Not happy? We&apos;ll make it right</p>
                 </div>
               </div>
               {/* Feature 5 */}
               <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 max-w-[200px]">
                 <div className="text-[#F26B21]"><Wallet strokeWidth={1.5} size={32}/></div>
                 <div>
-                  <h4 className="font-bold text-[#1A1A1A] text-[14px]">Easy Booking &amp; Payments</h4>
-                  <p className="text-[12px] text-[#7A7A7A] mt-1 leading-tight">Super easy booking and secure payments</p>
+                  <h4 className="font-bold text-[#1A1A1A] text-[16px]">Easy Booking &amp; Payments</h4>
+                  <p className="text-[14px] text-[#7A7A7A] mt-1 leading-tight">Super easy booking and secure payments</p>
                 </div>
               </div>
             </div>
@@ -148,16 +151,16 @@ export default function PricingPage() {
         <section className="pt-20 pb-16">
           <Container isMaxWidth>
             <div className="text-center mb-16">
-              <div className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#F26B21] mb-3">
+              <div className="text-[16px] font-bold uppercase tracking-[0.2em] text-[#F26B21] mb-3">
                 OUR SERVICES &amp; PRICING
               </div>
               <h2 
-                className="text-[clamp(2rem,3vw,3rem)] font-bold text-[#1A1A1A] mb-3"
+                className="text-[clamp(35px,4vw,46px)] font-bold text-[#1A1A1A] mb-3"
                 style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
               >
                 Choose your service
               </h2>
-              <p className="text-[#5B5B5B] text-[16px]">Professional care for every need.</p>
+              <p className="text-[#5B5B5B] text-[21px]">Professional care for every need.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -167,29 +170,35 @@ export default function PricingPage() {
                     <Image src={service.imgSrc} alt={service.title} fill className="object-cover" />
                   </div>
                   <div className="p-7 flex-1 flex flex-col">
-                    <h3 className="text-[1.3rem] font-bold text-[#1A1A1A] leading-snug mb-5" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
+                    <h3 className="text-[21px] font-bold text-[#1A1A1A] leading-snug mb-5" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
                       {service.title}
                     </h3>
                     
                     <div className="mb-6">
-                      <p className="text-[12px] text-[#7A7A7A] mb-1">Starting from</p>
+                      <p className="text-[16px] text-[#7A7A7A] mb-1">Starting from</p>
                       <div className="flex items-baseline gap-1 text-[#1A1A1A]">
-                        <span className="text-[2rem] font-extrabold leading-none">₹{service.price}</span>
-                        <span className="text-[13px] font-medium text-[#7A7A7A]">{service.unit}</span>
+                        <span className="text-[35px] font-extrabold leading-none">₹{service.price}</span>
+                        <span className="text-[16px] font-medium text-[#7A7A7A]">{service.unit}</span>
                       </div>
                     </div>
 
                     <ul className="space-y-3.5 mb-8 flex-1">
                       {service.features.map((feature, i) => (
-                        <li key={i} className="flex items-start gap-2.5 text-[13.5px] text-[#5B5B5B]">
+                        <li key={i} className="flex items-start gap-2.5 text-[16px] text-[#5B5B5B]">
                           <Check className="w-[18px] h-[18px] text-[#F26B21] shrink-0" strokeWidth={2.5} /> {feature}
                         </li>
                       ))}
                     </ul>
 
-                    <button className="w-full py-3 rounded-full border-2 border-[#FCECE4] text-[#F26B21] font-bold text-[14px] flex items-center justify-center gap-2 hover:border-[#F26B21] hover:bg-[#F26B21] hover:text-white transition-all">
-                      {service.btnText} <ArrowRight size={16} />
-                    </button>
+                    {service.href ? (
+                      <Link href={service.href} className="w-full py-3 rounded-full border-2 border-[#FCECE4] text-[#F26B21] font-bold text-[16px] flex items-center justify-center gap-2 hover:border-[#F26B21] hover:bg-[#F26B21] hover:text-white transition-all">
+                        {service.btnText} <ArrowRight size={16} />
+                      </Link>
+                    ) : (
+                      <button className="w-full py-3 rounded-full border-2 border-[#FCECE4] text-[#F26B21] font-bold text-[16px] flex items-center justify-center gap-2 hover:border-[#F26B21] hover:bg-[#F26B21] hover:text-white transition-all">
+                        {service.btnText} <ArrowRight size={16} />
+                      </button>
+                    )}
                   </div>
                 </div>
               ))}
@@ -203,11 +212,11 @@ export default function PricingPage() {
             <div className="bg-[#FCF9F6] rounded-3xl p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-10 shadow-sm border border-[#F5EFEA]">
               {/* Left Side */}
               <div className="lg:w-[45%] text-center lg:text-left">
-                <h3 className="text-[1.8rem] font-bold text-[#1A1A1A] mb-3 leading-tight" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
+                <h3 className="text-[35px] font-bold text-[#1A1A1A] mb-3 leading-tight" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
                   Save more with<br/>Wash &amp; Wow Membership
                 </h3>
-                <p className="text-[#5B5B5B] text-[15px] mb-8">Enjoy exclusive benefits and priority service.</p>
-                <button className="bg-[#F26B21] text-white px-7 py-3.5 rounded-full text-[14px] font-bold flex items-center justify-center gap-2 hover:bg-[#D95D1A] shadow-md transition-colors mx-auto lg:mx-0">
+                <p className="text-[#5B5B5B] text-[21px] mb-8">Enjoy exclusive benefits and priority service.</p>
+                <button className="bg-[#F26B21] text-white px-7 py-3.5 rounded-full text-[16px] font-bold flex items-center justify-center gap-2 hover:bg-[#D95D1A] shadow-md transition-colors mx-auto lg:mx-0">
                   View Membership Plans <ArrowRight size={16} />
                 </button>
               </div>
@@ -218,25 +227,25 @@ export default function PricingPage() {
                   <div className="w-[52px] h-[52px] rounded-full bg-[#EAF5EE] flex items-center justify-center">
                     <Percent className="w-6 h-6 text-[#4CAF50]" strokeWidth={1.5} />
                   </div>
-                  <p className="text-[13px] font-bold text-[#1A1A1A] leading-tight">Up to 20% Off<br/><span className="font-normal text-[#7A7A7A] mt-1 block">on all services</span></p>
+                  <p className="text-[21px] font-bold text-[#1A1A1A] leading-tight">Up to 20% Off<br/><span className="text-[16px] font-normal text-[#7A7A7A] mt-1 block">on all services</span></p>
                 </div>
                 <div className="flex flex-col items-center gap-4">
                   <div className="w-[52px] h-[52px] rounded-full bg-[#EEF2FC] flex items-center justify-center">
                     <Download className="w-6 h-6 text-[#3F51B5]" strokeWidth={1.5} />
                   </div>
-                  <p className="text-[13px] font-bold text-[#1A1A1A] leading-tight">Priority<br/><span className="font-normal text-[#7A7A7A] mt-1 block">Booking</span></p>
+                  <p className="text-[21px] font-bold text-[#1A1A1A] leading-tight">Priority<br/><span className="text-[16px] font-normal text-[#7A7A7A] mt-1 block">Booking</span></p>
                 </div>
                 <div className="flex flex-col items-center gap-4">
                   <div className="w-[52px] h-[52px] rounded-full bg-[#FDF2E9] flex items-center justify-center">
                     <Shield className="w-6 h-6 text-[#F26B21]" strokeWidth={1.5} />
                   </div>
-                  <p className="text-[13px] font-bold text-[#1A1A1A] leading-tight">Exclusive<br/><span className="font-normal text-[#7A7A7A] mt-1 block">Offers</span></p>
+                  <p className="text-[21px] font-bold text-[#1A1A1A] leading-tight">Exclusive<br/><span className="text-[16px] font-normal text-[#7A7A7A] mt-1 block">Offers</span></p>
                 </div>
                 <div className="flex flex-col items-center gap-4">
                   <div className="w-[52px] h-[52px] rounded-full bg-[#FCEEEA] flex items-center justify-center">
                     <Calendar className="w-6 h-6 text-[#E53935]" strokeWidth={1.5} />
                   </div>
-                  <p className="text-[13px] font-bold text-[#1A1A1A] leading-tight">Free<br/><span className="font-normal text-[#7A7A7A] mt-1 block">Rescheduling</span></p>
+                  <p className="text-[21px] font-bold text-[#1A1A1A] leading-tight">Free<br/><span className="text-[16px] font-normal text-[#7A7A7A] mt-1 block">Rescheduling</span></p>
                 </div>
               </div>
             </div>
@@ -246,7 +255,7 @@ export default function PricingPage() {
         {/* ─── APP BANNER ────────────────────────────────────────────────────────── */}
         <section className="pb-24">
           <Container isMaxWidth>
-            <div className="bg-[#FFF6F0] rounded-[2.5rem] p-0 flex flex-col md:flex-row items-center overflow-hidden relative min-h-[350px]">
+            <div className="bg-[#FFF6F0] rounded-[2.5rem] p-0 flex flex-col md:flex-row items-center overflow-hidden relative min-h-[350px] shadow-[0_8px_30px_rgba(0,0,0,0.09)] border border-[#f0e2db]">
               
               {/* Left Side Image (App Mockup) */}
               <div className="w-full md:w-5/12 relative h-[300px] md:h-auto self-stretch overflow-hidden">
@@ -255,21 +264,21 @@ export default function PricingPage() {
 
               {/* Right Side Content */}
               <div className="w-full md:w-7/12 p-10 lg:p-16 relative z-10 flex flex-col justify-center">
-                <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#F26B21] mb-4">
+                <div className="text-[16px] font-bold uppercase tracking-[0.2em] text-[#F26B21] mb-4">
                   GET STARTED TODAY
                 </div>
                 <h2 
-                  className="text-[clamp(2rem,3vw,2.5rem)] font-bold text-[#1A1A1A] leading-[1.15] mb-8"
+                  className="text-[clamp(35px,4vw,46px)] font-bold text-[#1A1A1A] leading-[1.15] mb-8"
                   style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
                 >
                   Book in seconds.<br/>Relax while we care for the rest.
                 </h2>
                 
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-                  <button className="bg-[#F26B21] text-white px-7 py-3.5 rounded-full text-[14px] font-bold flex items-center gap-2 hover:bg-[#D95D1A] transition-colors shadow-md">
+                  <button className="bg-[#F26B21] text-white px-7 py-3.5 rounded-full text-[16px] font-bold flex items-center gap-2 hover:bg-[#D95D1A] transition-colors shadow-md">
                     Book a Service Now <ArrowRight size={16} />
                   </button>
-                  <span className="text-[#5B5B5B] text-sm">or download the app</span>
+                  <span className="text-[#5B5B5B] text-[16px]">or download the app</span>
                   <div className="flex items-center gap-2">
                     {/* App store buttons have been removed as requested */}
                   </div>

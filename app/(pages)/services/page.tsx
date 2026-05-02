@@ -202,9 +202,9 @@ export default function ServicesPage() {
                          <span className="text-[10px] text-white font-medium text-center leading-tight">Stain<br/>Treatment</span>
                        </div>
                     </div>
-                    <button className="bg-white text-black px-6 py-3 rounded-full text-[14px] font-bold flex items-center gap-2 hover:bg-gray-100 transition-colors">
+                    <Link href="/services/laundry" className="bg-white text-black px-6 py-3 rounded-full text-[14px] font-bold flex items-center gap-2 hover:bg-gray-100 transition-colors w-fit">
                       Book Laundry <ArrowRight className="w-4 h-4" />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -218,9 +218,9 @@ export default function ServicesPage() {
                     <h3 className="text-[2rem] leading-tight font-medium text-white mb-2" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>Door to Door<br/>Car Wash</h3>
                     <p className="text-white/80 text-[14px] max-w-[200px]">Spotless shine, right at your doorstep.</p>
                   </div>
-                  <button className="bg-white text-black px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 self-start hover:bg-gray-100 transition-colors">
+                  <Link href="/services/car-wash" className="bg-white text-black px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 self-start hover:bg-gray-100 transition-colors w-fit">
                     Book Car Wash <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 
