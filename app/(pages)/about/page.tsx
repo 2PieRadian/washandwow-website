@@ -2,333 +2,361 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/sections/Footer";
 import { SatoshiFont, WixMadeForDisplayFont } from "@/app/fonts";
-import { useEffect, useRef } from "react";
-import { gsap, prefersReducedMotion, getResponsiveConfig, ANIMATION_CONFIG } from "@/app/lib/animations";
-
-const wix = { fontFamily: "" as string };
-
-function Overline({ children }: { children: React.ReactNode }) {
-  return <p className="ab-reveal opacity-0 text-[11px] font-bold uppercase tracking-[0.26em] text-[#FF9431] mb-3">{children}</p>;
-}
-function Heading1({ children }: { children: React.ReactNode }) {
-  return (
-    <h1 className="ab-reveal opacity-0 text-[clamp(2rem,5vw,3.1rem)] font-bold leading-[1.1] text-[#2C2118] mb-5" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
-      {children}
-    </h1>
-  );
-}
-function Heading2({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return (
-    <h2 className={`ab-reveal opacity-0 text-[clamp(1.65rem,3.8vw,2.4rem)] font-bold leading-[1.15] text-[#2C2118] ${className}`} style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
-      {children}
-    </h2>
-  );
-}
-function Divider() {
-  return <div className="mx-auto max-w-[1160px] px-5"><div className="h-px bg-gradient-to-r from-transparent via-[#E5DDD6] to-transparent" /></div>;
-}
-function CheckIcon() {
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5"><polyline points="20 6 9 17 4 12" /></svg>;
-}
-function ArrowRight() {
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>;
-}
-
-const stats = [
-  { icon: "😊", value: "10K+", label: "Happy Customers" },
-  { icon: "📦", value: "25K+", label: "Loads Delivered" },
-  { icon: "⏰", value: "99%", label: "On-Time Delivery" },
-  { icon: "⭐", value: "4.9/5", label: "Customer Rating" },
-];
-
-const services = [
-  {
-    tag: "Laundry & Dry Cleaning",
-    color: "#FF9431",
-    bg: "#FFF0E0",
-    image: "/images/about/service-laundry.png",
-    alt: "Fresh folded laundry service",
-    heading: "Your Clothes, Cared For Like Our Own.",
-    body: "We pick up your laundry right from your doorstep, wash it with premium, fabric-safe detergents, carefully fold every piece, and deliver it back — fresh, crisp, and smelling amazing. Whether it's delicate silks, everyday casuals, or heavy woollens, our trained professionals handle each item with the precision it deserves. No more laundry stress. Just clean clothes, on time, every time.",
-    bullets: ["Pickup & doorstep delivery", "Fabric-safe premium detergents", "Dry cleaning & steam ironing", "Stain treatment specialists"],
-    floatCard: "Fresh. Crisp.\nDelivered.",
-  },
-  {
-    tag: "Home Cleaning",
-    color: "#3E8FD4",
-    bg: "#EBF4FC",
-    image: "/images/about/service-home-cleaning.png",
-    alt: "Professional home cleaning service",
-    heading: "A Spotless Home, Effortlessly.",
-    body: "Your home is your sanctuary — and it deserves to look, feel, and smell its best. Our professional home cleaning teams arrive equipped with commercial-grade tools and eco-friendly products to deep-clean every corner of your space. From gleaming marble floors and sparkling bathrooms to dust-free shelves and sanitized kitchens, we leave your home looking brand new. Scheduled cleaning or one-time deep cleans — we've got you covered.",
-    bullets: ["Full home deep cleaning", "Kitchen & bathroom sanitization", "Sofa & carpet cleaning", "Eco-friendly, family-safe products"],
-    floatCard: "Deep Clean.\nEvery Corner.",
-  },
-  {
-    tag: "Pest Control",
-    color: "#4CAF85",
-    bg: "#E8F6F0",
-    image: "/images/about/service-pest-control.png",
-    alt: "Professional pest control service",
-    heading: "Protect Your Family. Reclaim Your Space.",
-    body: "Pests are more than a nuisance — they're a health risk. Our certified pest control experts use government-approved, family-safe treatments that are tough on pests but gentle on your home and loved ones. From cockroaches and termites to rodents and bed bugs, we diagnose the problem and eliminate it at the root. We'll help you take back your home — safely, efficiently, and with zero disruption to your daily life.",
-    bullets: ["Government-approved chemicals", "Child & pet-safe treatments", "Cockroach, termite & rodent control", "Post-treatment follow-up"],
-    floatCard: "Safe Home.\nHappy Family.",
-  },
-  {
-    tag: "Doorstep Car Wash",
-    color: "#E87B3E",
-    bg: "#FDF0E8",
-    image: "/images/about/service-car-wash.png",
-    alt: "Doorstep car wash service",
-    heading: "Showroom Shine, Right at Your Doorstep.",
-    body: "Why drive to a car wash when we can bring the car wash to you? Our trained technicians arrive with all the equipment needed to give your vehicle a thorough, scratch-free clean — exterior wash, interior vacuuming, dashboard wipe-down, and tyre shine included. We use water-efficient methods that protect both your car and the environment. Book a slot, and we'll handle the rest while you enjoy your morning chai.",
-    bullets: ["Exterior & interior detailing", "Water-efficient techniques", "Scratch-free microfiber wash", "Flexible scheduling, any time"],
-    floatCard: "Shine On.\nNo Effort.",
-  },
-];
-
-const whyCards = [
-  { emoji: "❤️", title: "Care in Every Step", body: "We treat every item, surface, and space like it belongs to us — with attention, care, and genuine pride." },
-  { emoji: "📅", title: "Flexible & Convenient", body: "Book any service in minutes. Choose your slot. We show up on time, every time — no chasing required." },
-  { emoji: "🏷️", title: "Affordable Pricing", body: "Premium quality doesn't have to cost a fortune. Our transparent pricing means no surprises on your bill." },
-  { emoji: "✅", title: "Satisfaction Guaranteed", body: "Not 100% happy? We'll come back and make it right — because your satisfaction is our reputation." },
-];
+import { 
+  Smartphone, Home, Sparkles, Package, ShieldCheck, Clock, 
+  ArrowRight, Car, Bug, CalendarCheck, Heart 
+} from "lucide-react";
+import Container from "@/app/components/layout/Container";
 
 export default function AboutPage() {
-  const pageRef = useRef<HTMLDivElement>(null);
-  wix.fontFamily = WixMadeForDisplayFont.style.fontFamily;
-
   useEffect(() => {
-    if (prefersReducedMotion()) { gsap.set(".ab-reveal", { opacity: 1, y: 0 }); return; }
-    const ctx = gsap.context(() => {
-      const config = getResponsiveConfig();
-      (gsap.utils.toArray<Element>(".ab-reveal")).forEach((el) => {
-        gsap.fromTo(el, { opacity: 0, y: config.distance.medium }, {
-          opacity: 1, y: 0, duration: config.duration.normal * 1.2,
-          ease: ANIMATION_CONFIG.ease.smooth,
-          scrollTrigger: { trigger: el, start: "top 82%", once: true },
-          onComplete() { gsap.set(el, { clearProps: "transform" }); },
-        });
-      });
-    }, pageRef);
-    return () => ctx.revert();
+    window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 
   return (
-    <div ref={pageRef} className="overflow-x-hidden bg-[#FDFAF7]" style={{ fontFamily: SatoshiFont.style.fontFamily }}>
+    <div className="overflow-x-hidden bg-white" style={{ fontFamily: SatoshiFont.style.fontFamily }}>
       <Navbar />
 
-      {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="pt-[80px] pb-16 sm:pt-[100px] sm:pb-20 px-5">
-        <div className="mx-auto max-w-[1160px]">
-          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
-            <div className="flex-1 min-w-0">
-              <Overline>About Us</Overline>
-              <Heading1>
-                We&apos;re Here to Make Life Easier,{" "}
-                <span className="text-[#FF9431]">One Service at a Time.</span>
-              </Heading1>
-              <p className="ab-reveal opacity-0 text-[15px] leading-relaxed text-[#6B5E54] max-w-lg mb-8">
-                At Wash &amp; Wow, we believe a clean home, fresh laundry, a pest-free space, and a sparkling car shouldn&apos;t eat into your precious time. That&apos;s why we bring premium home services right to your doorstep — reliable, affordable, and always designed around you.
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-5 bg-white">
+        <Container isMaxWidth>
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-[45%]">
+              <p className="text-[12px] font-bold text-[#FF7700] tracking-wider uppercase mb-4">About Wash & Wow</p>
+              <h1 className="text-[3.2rem] lg:text-[4rem] font-extrabold leading-[1.1] text-[#2D2422] mb-6" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
+                We bring ease<br/>to your everyday<br/>
+                <span className="text-[#FF7700]">in just a few clicks.</span>
+              </h1>
+              <p className="text-[1.1rem] text-[#6B5E5B] leading-relaxed mb-12 max-w-lg">
+                From laundry to living rooms, from dusty cars to hidden pests — everything you need, picked up, handled, and delivered. All while you stay right where you are.
               </p>
-              <div className="ab-reveal opacity-0 flex flex-wrap gap-3 mb-10">
-                <Link href="#" className="group inline-flex items-center gap-2 rounded-full bg-[#FF9431] px-6 py-3 text-[14px] font-semibold text-white shadow-[0_8px_24px_rgba(255,148,49,0.35)] transition-all duration-300 hover:bg-[#FF7700] hover:-translate-y-0.5">
-                  Book a Service
-                </Link>
-                <Link href="#services" className="group inline-flex items-center gap-2 rounded-full border border-[#E0D5CC] bg-white px-6 py-3 text-[14px] font-semibold text-[#4A3D35] transition-all duration-300 hover:border-[#FF9431]/40 hover:bg-[#FFF8F2] hover:-translate-y-0.5">
-                  Explore Services <ArrowRight />
-                </Link>
-              </div>
-              <div className="ab-reveal opacity-0 flex flex-wrap gap-5">
-                {[
-                  { emoji: "🧺", label: "Laundry & Dry Cleaning" },
-                  { emoji: "🏠", label: "Home Cleaning" },
-                  { emoji: "🐛", label: "Pest Control" },
-                  { emoji: "🚗", label: "Doorstep Car Wash" },
-                ].map((f) => (
-                  <div key={f.label} className="flex items-center gap-2 text-[13px] font-medium text-[#5E5450]">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FFF0E0] text-base">{f.emoji}</span>
-                    {f.label}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="ab-reveal opacity-0 lg:w-[46%] lg:shrink-0">
-              <div className="relative">
-                <div className="pointer-events-none absolute -right-4 -top-4 h-[calc(100%+32px)] w-[calc(100%+32px)] rounded-[32px] border-2 border-dashed border-[#FF9431]/25" aria-hidden />
-                <div className="pointer-events-none absolute -right-2 top-1/3 h-3 w-3 rounded-full bg-[#FF9431]" aria-hidden />
-                <div className="overflow-hidden rounded-[24px] shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
-                  <Image src="/images/about/hero-towels.png" alt="Wash and Wow services" width={600} height={520} className="w-full object-cover" priority />
+              <div className="flex gap-8 flex-wrap">
+                <div className="flex flex-col items-center gap-3 w-[70px]">
+                  <div className="text-[#FF7700]"><Smartphone size={28} strokeWidth={1.5} /></div>
+                  <p className="text-[12px] font-bold text-[#2D2422] text-center leading-tight">Few clicks<br/>to book</p>
+                </div>
+                <div className="flex flex-col items-center gap-3 w-[70px]">
+                  <div className="text-[#FF7700]"><Home size={28} strokeWidth={1.5} /></div>
+                  <p className="text-[12px] font-bold text-[#2D2422] text-center leading-tight">We come<br/>to you</p>
+                </div>
+                <div className="flex flex-col items-center gap-3 w-[70px]">
+                  <div className="text-[#FF7700]"><Sparkles size={28} strokeWidth={1.5} /></div>
+                  <p className="text-[12px] font-bold text-[#2D2422] text-center leading-tight">We clean<br/>everything</p>
+                </div>
+                <div className="flex flex-col items-center gap-3 w-[70px]">
+                  <div className="text-[#FF7700]"><Package size={28} strokeWidth={1.5} /></div>
+                  <p className="text-[12px] font-bold text-[#2D2422] text-center leading-tight">We deliver<br/>it back</p>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <Divider />
-
-      {/* ── VALUES + STATS ───────────────────────────────── */}
-      <section id="values" className="py-16 sm:py-20 px-5">
-        <div className="mx-auto max-w-[1160px]">
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
-            <div className="ab-reveal opacity-0 lg:w-[40%] lg:shrink-0">
-              <div className="overflow-hidden rounded-[22px] shadow-[0_16px_48px_rgba(0,0,0,0.10)]" style={{ aspectRatio: "4/5" }}>
-                <Image src="/images/about/woman-laundry.png" alt="Happy customer with fresh laundry" width={480} height={600} className="h-full w-full object-cover" />
+            <div className="lg:w-[55%] relative w-full">
+              <div className="w-full h-[500px] lg:h-[600px] relative rounded-tl-[120px] rounded-bl-[200px] rounded-br-[200px] rounded-tr-[40px] overflow-hidden bg-[#FFF3E5]">
+                <Image src="/images/about/about_hero_woman_1777741860228.png" fill alt="Woman relaxing" className="object-cover object-top" priority />
               </div>
-            </div>
-            <div className="flex-1 min-w-0 space-y-8">
-              <div>
-                <Overline>Our Values</Overline>
-                <Heading2 className="mb-4">Built on Trust.<br />Focused on You.</Heading2>
-                <p className="ab-reveal opacity-0 text-[15px] leading-relaxed text-[#6B5E54] max-w-md">
-                  From the moment you book to the moment we deliver, every single step is handled with care, professionalism, and genuine respect for your time. Across laundry, cleaning, pest control, and car wash — your satisfaction drives everything we do.
-                </p>
-              </div>
-              <div className="ab-reveal opacity-0 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-                {stats.map((s) => (
-                  <div key={s.label} className="group rounded-[16px] border border-[#EDE5DC] bg-white p-4 text-center shadow-[0_4px_16px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(255,148,49,0.12)] sm:p-5">
-                    <div className="mb-2 text-xl">{s.icon}</div>
-                    <div className="text-[1.5rem] font-bold text-[#FF9431] sm:text-[1.7rem]" style={{ fontFamily: wix.fontFamily }}>{s.value}</div>
-                    <p className="mt-1 text-[12px] font-medium text-[#8A7B72] leading-tight">{s.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Divider />
-
-      {/* ── SERVICES ─────────────────────────────────────── */}
-      <section id="services" className="py-16 sm:py-20 px-5">
-        <div className="mx-auto max-w-[1160px]">
-          <div className="text-center mb-12">
-            <Overline>What We Do</Overline>
-            <Heading2 className="text-center mb-4">Four Services. One App.<br /><span className="text-[#FF9431]">Endless Convenience.</span></Heading2>
-            <p className="ab-reveal opacity-0 text-[15px] leading-relaxed text-[#6B5E54] max-w-xl mx-auto">
-              Everything your home needs — cleaned, cared for, and delivered — without you lifting a finger.
-            </p>
-          </div>
-
-          <div className="space-y-16 sm:space-y-20">
-            {services.map((svc, i) => (
-              <div key={svc.tag} className={`flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16 ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}>
-                {/* Image */}
-                <div className="ab-reveal opacity-0 lg:w-[45%] lg:shrink-0">
-                  <div className="relative">
-                    <div className="pointer-events-none absolute -inset-3 rounded-[28px] opacity-40 blur-2xl" style={{ background: `radial-gradient(circle, ${svc.color}40, transparent)` }} aria-hidden />
-                    <div className="relative overflow-hidden rounded-[22px] shadow-[0_16px_48px_rgba(0,0,0,0.10)]" style={{ aspectRatio: "4/3" }}>
-                      <Image src={svc.image} alt={svc.alt} fill className="object-cover transition-transform duration-700 hover:scale-[1.03]" sizes="(max-width:1024px) 100vw, 520px" />
-                      {/* floating card */}
-                      <div className="absolute bottom-5 left-5 rounded-[14px] px-4 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.15)]" style={{ background: "rgba(255,255,255,0.92)", backdropFilter: "blur(10px)", border: `1px solid ${svc.color}30` }}>
-                        <div className="mb-1 h-1 w-5 rounded-full" style={{ background: svc.color }} />
-                        <p className="text-[13px] font-bold leading-snug whitespace-pre-line text-[#2C2118]" style={{ fontFamily: wix.fontFamily }}>{svc.floatCard}</p>
-                      </div>
+              {/* Floating Card — highly transparent white glassmorphism */}
+              <div className="absolute top-[10%] lg:top-[15%] left-0 lg:left-[-5%] rounded-3xl p-6 w-[280px] lg:w-[320px] z-10
+                bg-white/25 backdrop-blur-xl 
+                border border-white/50 
+                shadow-[0_8px_32px_rgba(0,0,0,0.05),inset_0_1px_0_rgba(255,255,255,0.7)]"
+              >
+                {/* Subtle inner glow top edge */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/60 to-transparent pointer-events-none" />
+                
+                <div className="flex flex-col gap-6 relative z-10">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/50 rounded-xl flex items-center justify-center text-[#FF7700] shrink-0 border border-white/60"><Smartphone size={20} /></div>
+                    <div>
+                      <h4 className="text-[14px] font-bold text-[#2D2422] tracking-wide">Book in a few clicks</h4>
+                      <p className="text-[12px] text-[#2D2422]/70 mt-1 font-medium">Choose your service</p>
                     </div>
                   </div>
-                </div>
-                {/* Copy */}
-                <div className="flex-1 min-w-0">
-                  <span className="ab-reveal opacity-0 inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] mb-4" style={{ background: svc.bg, color: svc.color }}>
-                    {svc.tag}
-                  </span>
-                  <h3 className="ab-reveal opacity-0 text-[clamp(1.4rem,3vw,2rem)] font-bold leading-[1.2] text-[#2C2118] mb-4" style={{ fontFamily: wix.fontFamily }}>
-                    {svc.heading}
-                  </h3>
-                  <p className="ab-reveal opacity-0 text-[15px] leading-relaxed text-[#6B5E54] mb-6">{svc.body}</p>
-                  <ul className="ab-reveal opacity-0 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                    {svc.bullets.map((b) => (
-                      <li key={b} className="flex items-center gap-2.5 text-[14px] font-medium text-[#4A3D35]">
-                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-white" style={{ background: svc.color }}>
-                          <CheckIcon />
-                        </span>
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/50 rounded-xl flex items-center justify-center text-[#FF7700] shrink-0 border border-white/60"><Car size={20} /></div>
+                    <div>
+                      <h4 className="text-[14px] font-bold text-[#2D2422] tracking-wide">We pick up / arrive</h4>
+                      <p className="text-[12px] text-[#2D2422]/70 mt-1 font-medium">Right at your doorstep</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/50 rounded-xl flex items-center justify-center text-[#FF7700] shrink-0 border border-white/60"><ShieldCheck size={20} /></div>
+                    <div>
+                      <h4 className="text-[14px] font-bold text-[#2D2422] tracking-wide">We get everything done</h4>
+                      <p className="text-[12px] text-[#2D2422]/70 mt-1 font-medium">Professionally & carefully</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/50 rounded-xl flex items-center justify-center text-[#FF7700] shrink-0 border border-white/60"><Package size={20} /></div>
+                    <div>
+                      <h4 className="text-[14px] font-bold text-[#2D2422] tracking-wide">We deliver it back</h4>
+                      <p className="text-[12px] text-[#2D2422]/70 mt-1 font-medium">Fresh, clean & hassle-free</p>
+                    </div>
+                  </div>
+                  <div className="pt-4 border-t border-black/5">
+                    <p className="text-[16px] font-bold text-[#48413b] tracking-wide leading-relaxed">
+                      All this while you relax.😊
+                    </p>
+                  </div>
                 </div>
               </div>
-            ))}
+              {/* Dashed arrow */}
+              <div className="hidden lg:block absolute bottom-10 -left-16 w-32 h-32 opacity-30">
+                <svg viewBox="0 0 100 100" fill="none" stroke="#FF7700" strokeWidth="2" strokeDasharray="4 4" className="w-full h-full">
+                  <path d="M10,90 Q50,90 90,50" />
+                  <path d="M80,50 L90,50 L90,60" />
+                </svg>
+              </div>
+            </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      <Divider />
-
-      {/* ── WHY CHOOSE US ────────────────────────────────── */}
-      <section className="py-16 sm:py-20 px-5">
-        <div className="mx-auto max-w-[1160px]">
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
-            <div className="lg:w-[35%] lg:shrink-0 lg:pt-2">
-              <Overline>Why Choose Us</Overline>
-              <Heading2>A Home Service<br />You Can Rely On</Heading2>
-              <p className="ab-reveal opacity-0 mt-4 text-[15px] leading-relaxed text-[#6B5E54]">
-                Across every service we offer — laundry, home cleaning, pest control, or car wash — these four promises never change.
+      {/* How It Works Section */}
+      <section className="py-20 bg-[#FFF8F3] px-5">
+        <Container isMaxWidth>
+          <div className="flex flex-col xl:flex-row gap-16 items-center">
+            <div className="xl:w-1/3 text-center xl:text-left">
+              <p className="text-[12px] font-bold text-[#FF7700] tracking-wider uppercase mb-4">How It Works</p>
+              <h2 className="text-[2.8rem] lg:text-[3.2rem] font-extrabold leading-[1.1] text-[#2D2422] mb-6" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
+                Tap. Book. <span className="text-[#FF7700]">Done.</span>
+              </h2>
+              <p className="text-[1.1rem] text-[#6B5E5B] leading-relaxed max-w-md mx-auto xl:mx-0">
+                No calls. No chasing. No stress. We pick up, clean, fix and deliver — while your day continues.
               </p>
             </div>
-            <div className="flex-1 grid grid-cols-1 gap-5 sm:grid-cols-2">
-              {whyCards.map((f) => (
-                <div key={f.title} className="ab-reveal opacity-0 group flex flex-col gap-3 rounded-[18px] border border-[#EDE5DC] bg-white p-6 shadow-[0_4px_16px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[#FF9431]/30 hover:shadow-[0_12px_32px_rgba(255,148,49,0.10)]">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#FFF0E0] text-xl transition-all duration-300 group-hover:bg-[#FF9431] group-hover:scale-110">{f.emoji}</span>
-                  <h3 className="text-[15px] font-bold text-[#2C2118]" style={{ fontFamily: wix.fontFamily }}>{f.title}</h3>
-                  <p className="text-[14px] leading-relaxed text-[#7A6E68]">{f.body}</p>
+            <div className="xl:w-2/3 w-full grid grid-cols-2 md:flex md:flex-row items-start justify-between gap-x-4 gap-y-12 md:gap-4 relative mt-8 xl:mt-0">
+              {/* Desktop connecting arrows */}
+              <div className="hidden md:flex absolute top-[100px] left-[20%] right-[20%] justify-between items-center z-0 text-[#FF7700] opacity-40 px-10">
+                 <ArrowRight size={24} />
+                 <ArrowRight size={24} />
+                 <ArrowRight size={24} />
+              </div>
+              {/* Step 1 */}
+              <div className="flex flex-col items-center flex-1 relative z-10 w-full md:w-auto">
+                <div className="h-[220px] flex items-center justify-center">
+                  <div className="h-[200px] w-[100px] relative">
+                    <Image src="/images/about/about_phone_app_1777741999909.png" fill alt="Phone app" className="object-contain" />
+                  </div>
                 </div>
-              ))}
+                <div className="w-10 h-10 rounded-full bg-[#FF7700] text-white flex items-center justify-center font-bold text-[14px] mt-6 mb-3 shadow-lg">01</div>
+                <p className="text-[15px] font-bold text-[#2D2422] text-center">Open the app</p>
+              </div>
+              {/* Step 2 */}
+              <div className="flex flex-col items-center flex-1 relative z-10 w-full md:w-auto">
+                <div className="h-[220px] flex items-center justify-center">
+                  <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col gap-3 w-[160px]">
+                    <div className="flex items-center gap-3"><div className="w-8 h-8 bg-[#FFF3E5] rounded-full text-[#FF7700] flex items-center justify-center"><Package size={14}/></div><span className="text-[12px] font-bold text-[#2D2422]">Laundry</span></div>
+                    <div className="flex items-center gap-3"><div className="w-8 h-8 bg-[#EBF4FC] rounded-full text-[#3E8FD4] flex items-center justify-center"><Home size={14}/></div><span className="text-[12px] font-bold text-[#2D2422]">Home Cleaning</span></div>
+                    <div className="flex items-center gap-3"><div className="w-8 h-8 bg-[#EFF8F2] rounded-full text-[#4CAF85] flex items-center justify-center"><Car size={14}/></div><span className="text-[12px] font-bold text-[#2D2422]">Car Wash</span></div>
+                    <div className="flex items-center gap-3"><div className="w-8 h-8 bg-[#F6F0FE] rounded-full text-[#9B51E0] flex items-center justify-center"><Bug size={14}/></div><span className="text-[12px] font-bold text-[#2D2422]">Pest Control</span></div>
+                  </div>
+                </div>
+                <div className="w-10 h-10 rounded-full bg-[#FF7700] text-white flex items-center justify-center font-bold text-[14px] mt-6 mb-3 shadow-lg">02</div>
+                <p className="text-[15px] font-bold text-[#2D2422] text-center">Choose<br/>your service</p>
+              </div>
+              {/* Step 3 */}
+              <div className="flex flex-col items-center flex-1 relative z-10 w-full md:w-auto">
+                <div className="h-[220px] flex items-center justify-center">
+                  <div className="h-[220px] w-[140px] relative">
+                    <Image src="/images/about/about_worker_1777741885196.png" fill alt="Worker" className="object-contain" />
+                  </div>
+                </div>
+                <div className="w-10 h-10 rounded-full bg-[#FF7700] text-white flex items-center justify-center font-bold text-[14px] mt-6 mb-3 shadow-lg">03</div>
+                <p className="text-[15px] font-bold text-[#2D2422] text-center">We handle<br/>everything</p>
+              </div>
+              {/* Step 4 */}
+              <div className="flex flex-col items-center flex-1 relative z-10 w-full md:w-auto">
+                <div className="h-[220px] flex items-center justify-center">
+                  <div className="h-[180px] w-[160px] relative">
+                    <Image src="/images/about/about_folded_clothes_1777741898985.png" fill alt="Folded clothes" className="object-contain" />
+                  </div>
+                </div>
+                <div className="w-10 h-10 rounded-full bg-[#FF7700] text-white flex items-center justify-center font-bold text-[14px] mt-6 mb-3 shadow-lg">04</div>
+                <p className="text-[15px] font-bold text-[#2D2422] text-center">Sit back,<br/>we deliver</p>
+              </div>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* ── MISSION BANNER ───────────────────────────────── */}
-      <section className="px-5 pb-20 sm:pb-24">
-        <div className="mx-auto max-w-[1160px]">
-          <div className="ab-reveal opacity-0 relative overflow-hidden rounded-[28px]" style={{ background: "linear-gradient(135deg,#FFF8F1 0%,#FFF3E8 50%,#FFF8F1 100%)" }}>
-            <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-[#FF9431]/50 to-transparent" aria-hidden />
-            <div className="flex flex-col gap-0 lg:flex-row lg:items-stretch">
-              <div className="flex flex-col justify-center gap-6 px-8 py-12 lg:w-[48%] lg:px-12 lg:py-14">
-                <p className="text-[11px] font-bold uppercase tracking-[0.26em] text-[#FF9431]">Our Mission</p>
-                <h2 className="text-[clamp(1.65rem,3.5vw,2.3rem)] font-bold leading-[1.2] text-[#2C2118]" style={{ fontFamily: wix.fontFamily }}>
-                  Simplifying Your Day<br />With Services{" "}
-                  <span className="text-[#FF9431]">You Can Feel.</span>
-                </h2>
-                <p className="text-[15px] leading-relaxed text-[#6B5E54] max-w-sm">
-                  Our mission is to deliver home services that are seamless, dependable, and delightful — covering every corner of your life so you can focus on what truly matters.
-                </p>
-                <ul className="space-y-2.5">
-                  {["Free pickup & doorstep delivery", "Eco-certified products across all services", "One app for laundry, cleaning, pest & car wash", "Happiness guaranteed, always"].map((item) => (
-                    <li key={item} className="flex items-center gap-2.5 text-[14px] font-medium text-[#4A3D35]">
-                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#FF9431] text-white"><CheckIcon /></span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div>
-                  <Link href="#" className="group inline-flex items-center gap-2 rounded-full bg-[#FF9431] px-6 py-3 text-[14px] font-semibold text-white shadow-[0_8px_24px_rgba(255,148,49,0.35)] transition-all duration-300 hover:bg-[#FF7700] hover:-translate-y-0.5">
-                    Join Our Journey <ArrowRight />
-                  </Link>
+      {/* Services Grid */}
+      <section className="py-24 bg-white text-center px-5">
+        <Container isMaxWidth>
+          <p className="text-[12px] font-bold text-[#FF7700] tracking-wider uppercase mb-4">Everything You Need, Handled For You</p>
+          <h2 className="text-[2.8rem] lg:text-[3.2rem] font-extrabold leading-[1.1] text-[#2D2422] mb-16" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
+            One app. Many solutions.
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 text-left">
+            {/* Card 1 */}
+            <div className="bg-[#F0F6FE] rounded-3xl p-8 pb-32 xl:pb-8 xl:min-h-[280px] relative overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
+              <h3 className="text-[#3E8FD4] text-[20px] font-bold mb-2">Laundry<br/>Pickup & Delivery</h3>
+              <p className="text-[14px] text-[#2D2422] mb-12 relative z-10 w-[70%]">We take it. We clean it. We bring it back fresh.</p>
+              <div className="absolute bottom-[-10%] right-[-10%] w-[180px] h-[180px] md:w-[220px] md:h-[220px] xl:w-[180px] xl:h-[180px]">
+                <Image src="/images/about/about_laundry_basket_1777741915329.png" fill alt="Laundry" className="object-contain object-bottom right-0" />
+              </div>
+              <button className="w-10 h-10 rounded-full bg-[#3E8FD4] text-white flex items-center justify-center absolute bottom-6 left-6 transition-transform group-hover:translate-x-2 shadow-md z-10">
+                <ArrowRight size={18} />
+              </button>
+            </div>
+            {/* Card 2 */}
+            <div className="bg-[#FEF4EA] rounded-3xl p-8 pb-32 xl:pb-8 xl:min-h-[280px] relative overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
+              <h3 className="text-[#FF7700] text-[20px] font-bold mb-2">Home<br/>Cleaning</h3>
+              <p className="text-[14px] text-[#2D2422] mb-12 relative z-10 w-[70%]">Your space reset without you lifting a finger.</p>
+              <div className="absolute bottom-[-5%] right-[-15%] w-[180px] h-[180px] md:w-[220px] md:h-[220px] xl:w-[200px] xl:h-[200px]">
+                <Image src="/images/about/about_home_cleaning_sofa_1777741933846.png" fill alt="Cleaning" className="object-contain object-bottom right-0" />
+              </div>
+              <button className="w-10 h-10 rounded-full bg-[#FF7700] text-white flex items-center justify-center absolute bottom-6 left-6 transition-transform group-hover:translate-x-2 shadow-md z-10">
+                <ArrowRight size={18} />
+              </button>
+            </div>
+            {/* Card 3 */}
+            <div className="bg-[#EFF8F2] rounded-3xl p-8 pb-32 xl:pb-8 xl:min-h-[280px] relative overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
+              <h3 className="text-[#4CAF85] text-[20px] font-bold mb-2">Doorstep<br/>Car Wash</h3>
+              <p className="text-[14px] text-[#2D2422] mb-12 relative z-10 w-[70%]">Your car cleaned while you chill inside.</p>
+              <div className="absolute bottom-[0%] right-[-10%] w-[180px] h-[180px] md:w-[240px] md:h-[240px] xl:w-[200px] xl:h-[200px]">
+                <Image src="/images/about/about_car_wash_car_1777741958725.png" fill alt="Car wash" className="object-contain object-bottom right-0" />
+              </div>
+              <button className="w-10 h-10 rounded-full bg-[#4CAF85] text-white flex items-center justify-center absolute bottom-6 left-6 transition-transform group-hover:translate-x-2 shadow-md z-10">
+                <ArrowRight size={18} />
+              </button>
+            </div>
+            {/* Card 4 */}
+            <div className="bg-[#F6F0FE] rounded-3xl p-8 pb-32 xl:pb-8 xl:min-h-[280px] relative overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
+              <h3 className="text-[#9B51E0] text-[20px] font-bold mb-2">Pest<br/>Control</h3>
+              <p className="text-[14px] text-[#2D2422] mb-12 relative z-10 w-[70%]">Safe, quick and handled professionally.</p>
+              <div className="absolute bottom-[-10%] right-[-10%] w-[160px] h-[160px] md:w-[200px] md:h-[200px] xl:w-[160px] xl:h-[160px]">
+                <Image src="/images/about/about_pest_control_spray_1777741974315.png" fill alt="Pest control" className="object-contain object-bottom right-0" />
+              </div>
+              <button className="w-10 h-10 rounded-full bg-[#9B51E0] text-white flex items-center justify-center absolute bottom-6 left-6 transition-transform group-hover:translate-x-2 shadow-md z-10">
+                <ArrowRight size={18} />
+              </button>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Why We're Different Section */}
+      <section className="py-20 bg-white px-5">
+        <Container isMaxWidth>
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-[35%] w-full">
+              <p className="text-[12px] font-bold text-[#FF7700] tracking-wider uppercase mb-4">Why We're Different</p>
+              <h2 className="text-[2.8rem] lg:text-[3.2rem] font-extrabold leading-[1.1] text-[#2D2422] mb-10" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
+                We remove the friction. <span className="text-[#FF7700]">Completely.</span>
+              </h2>
+              <ul className="flex flex-col gap-5">
+                {[
+                  "Few-click booking", 
+                  "At-home everything", 
+                  "Trusted professionals", 
+                  "Pickup & delivery built-in"
+                ].map(item => (
+                  <li key={item} className="flex items-center gap-4">
+                    <div className="w-7 h-7 rounded-full bg-[#FF7700] text-white flex items-center justify-center shrink-0">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <span className="text-[1.1rem] font-bold text-[#2D2422]">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="lg:w-[65%] w-full relative h-[400px] lg:h-[500px] rounded-[40px] bg-[#FFF8F3] flex items-end justify-center pt-10 px-4 mt-10 lg:mt-0">
+              {/* Central image */}
+              <div className="relative w-full max-w-[500px] h-[90%]">
+                <Image src="/images/about/about_relaxing_woman_1777741986971.png" fill alt="Relaxing woman" className="object-contain object-bottom" priority />
+              </div>
+              {/* Floating pills */}
+              <div className="absolute top-[10%] left-[0%] lg:left-[5%] bg-white rounded-full px-4 lg:px-5 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#FFF3E5] flex items-center justify-center text-[#FF7700]"><CalendarCheck size={18}/></div>
+                <div><p className="text-[13px] lg:text-[14px] font-bold text-[#2D2422]">Easy booking</p><p className="text-[11px] lg:text-[12px] text-[#6B5E5B]">Done in seconds</p></div>
+              </div>
+              <div className="absolute bottom-[15%] left-[-5%] lg:left-[0%] bg-white rounded-full px-4 lg:px-5 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex items-center gap-3 z-10">
+                <div className="w-10 h-10 rounded-full bg-[#FFF3E5] flex items-center justify-center text-[#FF7700]"><ShieldCheck size={18}/></div>
+                <div><p className="text-[13px] lg:text-[14px] font-bold text-[#2D2422]">Verified experts</p><p className="text-[11px] lg:text-[12px] text-[#6B5E5B]">You can trust</p></div>
+              </div>
+              <div className="absolute top-[15%] right-[0%] lg:right-[5%] bg-white rounded-full px-4 lg:px-5 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#FFF3E5] flex items-center justify-center text-[#FF7700]"><Clock size={18}/></div>
+                <div><p className="text-[13px] lg:text-[14px] font-bold text-[#2D2422]">On-time service</p><p className="text-[11px] lg:text-[12px] text-[#6B5E5B]">Always</p></div>
+              </div>
+              <div className="absolute bottom-[20%] right-[-5%] lg:right-[0%] bg-white rounded-full px-4 lg:px-5 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex items-center gap-3 z-10">
+                <div className="w-10 h-10 rounded-full bg-[#FFF3E5] flex items-center justify-center text-[#FF7700]"><Home size={18}/></div>
+                <div><p className="text-[13px] lg:text-[14px] font-bold text-[#2D2422]">100% at-home</p><p className="text-[11px] lg:text-[12px] text-[#6B5E5B]">Zero hassle</p></div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Our Vision & CTA */}
+      <section className="py-24 pb-32 bg-white px-5">
+        <Container isMaxWidth>
+          <div className="flex flex-col lg:flex-row gap-16">
+            <div className="lg:w-[35%] w-full pt-10">
+              <p className="text-[12px] font-bold text-[#FF7700] tracking-wider uppercase mb-4">Our Vision</p>
+              <h2 className="text-[2.8rem] lg:text-[3.2rem] font-extrabold leading-[1.1] text-[#2D2422] mb-12" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
+                A future where<br/>clean feels <span className="text-[#FF7700]">effortless.</span>
+              </h2>
+              <div className="flex gap-6 lg:gap-8">
+                <div className="flex flex-col items-center gap-3 text-center w-24">
+                  <div className="text-[#FF7700]"><Heart size={28} strokeWidth={1.5} /></div>
+                  <p className="text-[13px] font-bold text-[#2D2422] leading-tight mt-2">Home services<br/>feel invisible</p>
+                </div>
+                <div className="flex flex-col items-center gap-3 text-center w-24">
+                  <div className="text-[#FF7700]"><Sparkles size={28} strokeWidth={1.5} /></div>
+                  <p className="text-[13px] font-bold text-[#2D2422] leading-tight mt-2">Everything<br/>just works</p>
+                </div>
+                <div className="flex flex-col items-center gap-3 text-center w-24">
+                  <div className="text-[#FF7700]"><Clock size={28} strokeWidth={1.5} /></div>
+                  <p className="text-[13px] font-bold text-[#2D2422] leading-tight mt-2">Your time<br/>stays yours</p>
                 </div>
               </div>
-              <div className="relative flex-1 min-h-[300px] lg:min-h-0">
-                <Image src="/images/about/mission-banner.png" alt="Our mission — all services" fill className="object-cover object-center" sizes="(max-width:1024px) 100vw,600px" />
-                <div className="absolute bottom-8 right-8 rounded-[18px] px-6 py-5 shadow-[0_16px_48px_rgba(0,0,0,0.18)]" style={{ background: "rgba(255,255,255,0.92)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,148,49,0.2)" }}>
-                  <div className="mb-1 h-1.5 w-6 rounded-full bg-[#FF9431]" />
-                  <p className="text-[1rem] font-bold leading-snug text-[#2C2118] sm:text-[1.1rem]" style={{ fontFamily: wix.fontFamily }}>
-                    We Clean &amp; Care<br />So You Can<br />Live More
-                  </p>
+            </div>
+            <div className="lg:w-[65%] w-full bg-[#FF7700] rounded-[40px] p-10 lg:p-16 relative flex flex-col justify-center min-h-[400px]">
+              <h2 className="text-[2.8rem] lg:text-[3.5rem] font-extrabold text-white leading-[1.1] mb-6" style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}>
+                Relax.<br/>We've got it from here.
+              </h2>
+              <p className="text-[1.1rem] text-white/90 mb-10 lg:w-[60%]">
+                Book once. Experience the difference. Never go back to the old way again.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 relative z-20">
+                <Link href="/services" className="bg-[#2D2422] text-white rounded-full px-8 py-4 font-bold text-[15px] flex items-center justify-center gap-2 hover:bg-black transition-colors">
+                  Book a Service <ArrowRight size={18} />
+                </Link>
+                <Link href="/services" className="bg-white text-[#FF7700] rounded-full px-8 py-4 font-bold text-[15px] flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors">
+                  Explore Services <ArrowRight size={18} />
+                </Link>
+              </div>
+              {/* Phone mockup on the right side */}
+              <div className="hidden lg:block absolute bottom-0 right-[5%] w-[260px] h-[90%] bg-white rounded-t-[40px] shadow-2xl border-[8px] border-b-0 border-[#2D2422] overflow-hidden translate-y-[0px]">
+                <div className="p-5 bg-white h-full flex flex-col pt-8">
+                  <div className="w-1/2 h-6 bg-[#2D2422] rounded-b-2xl absolute top-0 left-1/4 z-20"></div>
+                  <div className="mt-4 flex items-center justify-between">
+                    <div>
+                      <p className="text-[11px] text-[#6B5E5B]">Hello, Neha 👋</p>
+                      <p className="text-[14px] font-bold text-[#2D2422] leading-tight mt-1">What can we help<br/>you with today?</p>
+                    </div>
+                  </div>
+                  {/* Quick icons inside phone */}
+                  <div className="grid grid-cols-4 gap-2 mt-8">
+                    <div className="flex flex-col items-center gap-2"><div className="w-10 h-10 bg-[#FFF3E5] rounded-xl flex items-center justify-center text-[#FF7700]"><Package size={16}/></div><p className="text-[9px] font-bold text-center">Laundry</p></div>
+                    <div className="flex flex-col items-center gap-2"><div className="w-10 h-10 bg-[#FFF3E5] rounded-xl flex items-center justify-center text-[#FF7700]"><Home size={16}/></div><p className="text-[9px] font-bold text-center leading-[1.1]">Home<br/>Cleaning</p></div>
+                    <div className="flex flex-col items-center gap-2"><div className="w-10 h-10 bg-[#FFF3E5] rounded-xl flex items-center justify-center text-[#FF7700]"><Car size={16}/></div><p className="text-[9px] font-bold text-center leading-[1.1]">Car<br/>Wash</p></div>
+                    <div className="flex flex-col items-center gap-2"><div className="w-10 h-10 bg-[#FFF3E5] rounded-xl flex items-center justify-center text-[#FF7700]"><Bug size={16}/></div><p className="text-[9px] font-bold text-center leading-[1.1]">Pest<br/>Control</p></div>
+                  </div>
+                  {/* Bottom image decoration */}
+                  <div className="mt-auto relative h-32 -mx-5 mb-0 bg-white">
+                    <Image src="/images/about/about_home_cleaning_sofa_1777741933846.png" fill alt="Plant" className="object-cover object-bottom opacity-80" />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-    
       <Footer />
     </div>
   );
