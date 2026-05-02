@@ -98,7 +98,7 @@ export default function ServicesPage() {
               {/* Right Image Container */}
               <div className="relative h-[300px] sm:h-[420px] lg:h-[600px] w-full flex justify-end items-end">
                 {/* Main Worker Image */}
-                <div className="relative h-[95%] w-[95%] ml-auto right-[0%] lg:right-[-5%] bottom-[0%] z-10">
+                <div className="relative h-[95%] w-full lg:w-[95%] lg:ml-auto lg:right-[-5%] bottom-[0%] z-10">
                   <Image 
                     src="/images/services/services_hero_worker.png" 
                     alt="Wash and Wow Professional Cleaner" 
@@ -108,46 +108,62 @@ export default function ServicesPage() {
                   />
                 </div>
                 
-                {/* Floating Badges — hidden on mobile */}
-                <div className="hidden sm:flex absolute top-[10%] left-[5%] lg:-left-[10%] z-20 items-center gap-3 bg-white rounded-full pr-5 pl-2 py-2 shadow-xl border border-gray-100">
-                   <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#F5EBE1]">
-                     <Image src="/images/services/laundry.png" alt="Laundry icon" width={24} height={24} className="opacity-80" />
-                   </div>
-                   <div>
-                     <p className="text-[14px] font-bold text-[#1A1A1A] leading-none">Laundry</p>
-                     <p className="text-[12px] text-[#7A7A7A] mt-0.5">Fresh & Clean</p>
-                   </div>
-                </div>
+                {/* Floating Badges — hidden on mobile, clickable links */}
+                <Link
+                  href="/services/laundry"
+                  className="hidden sm:flex absolute top-[10%] left-[5%] lg:-left-[10%] z-20 items-center gap-3 bg-white rounded-full pr-4 pl-2 py-2 shadow-xl border border-gray-100 cursor-pointer group/badge transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#F26B21]/30 hover:bg-[#FFFBF8]"
+                >
+                  <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#F5EBE1] group-hover/badge:bg-[#FFF6F0] transition-colors duration-300">
+                    <Image src="/images/services/laundry.png" alt="Laundry icon" width={24} height={24} className="opacity-80 group-hover/badge:opacity-100 transition-opacity" />
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-bold text-[#1A1A1A] leading-none group-hover/badge:text-[#F26B21] transition-colors duration-200">Laundry</p>
+                    <p className="text-[12px] text-[#7A7A7A] mt-0.5">Fresh &amp; Clean</p>
+                  </div>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#F26B21] opacity-0 -translate-x-1 group-hover/badge:opacity-100 group-hover/badge:translate-x-0 transition-all duration-200" />
+                </Link>
 
-                <div className="hidden sm:flex absolute top-[25%] right-0 lg:-right-[5%] z-20 items-center gap-3 bg-white rounded-full pr-5 pl-2 py-2 shadow-xl border border-gray-100">
-                   <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#F5EBE1]">
-                     <Image src="/images/services/pest-control.png" alt="Pest Control icon" width={24} height={24} className="opacity-80" />
-                   </div>
-                   <div>
-                     <p className="text-[14px] font-bold text-[#1A1A1A] leading-none">Pest Control</p>
-                     <p className="text-[12px] text-[#7A7A7A] mt-0.5">Safe & Effective</p>
-                   </div>
-                </div>
+                <Link
+                  href="/services/pest-control"
+                  className="hidden sm:flex absolute top-[25%] right-0 lg:-right-[5%] z-20 items-center gap-3 bg-white rounded-full pr-4 pl-2 py-2 shadow-xl border border-gray-100 cursor-pointer group/badge2 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#F26B21]/30 hover:bg-[#FFFBF8]"
+                >
+                  <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#F5EBE1] group-hover/badge2:bg-[#FFF6F0] transition-colors duration-300">
+                    <Image src="/images/services/pest-control.png" alt="Pest Control icon" width={24} height={24} className="opacity-80 group-hover/badge2:opacity-100 transition-opacity" />
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-bold text-[#1A1A1A] leading-none group-hover/badge2:text-[#F26B21] transition-colors duration-200">Pest Control</p>
+                    <p className="text-[12px] text-[#7A7A7A] mt-0.5">Safe &amp; Effective</p>
+                  </div>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#F26B21] opacity-0 -translate-x-1 group-hover/badge2:opacity-100 group-hover/badge2:translate-x-0 transition-all duration-200" />
+                </Link>
 
-                <div className="hidden lg:flex absolute top-[50%] left-[-5%] lg:-left-[15%] z-20 items-center gap-3 bg-white rounded-full pr-5 pl-2 py-2 shadow-xl border border-gray-100">
-                   <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#F5EBE1]">
-                     <Image src="/images/services/car-wash.png" alt="Car Wash icon" width={24} height={24} className="opacity-80" />
-                   </div>
-                   <div>
-                     <p className="text-[14px] font-bold text-[#1A1A1A] leading-none">Car Wash</p>
-                     <p className="text-[12px] text-[#7A7A7A] mt-0.5">Spotless Shine</p>
-                   </div>
-                </div>
+                <Link
+                  href="/services/car-wash"
+                  className="hidden lg:flex absolute top-[50%] left-[-5%] lg:-left-[15%] z-20 items-center gap-3 bg-white rounded-full pr-4 pl-2 py-2 shadow-xl border border-gray-100 cursor-pointer group/badge3 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#F26B21]/30 hover:bg-[#FFFBF8]"
+                >
+                  <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#F5EBE1] group-hover/badge3:bg-[#FFF6F0] transition-colors duration-300">
+                    <Image src="/images/services/car-wash.png" alt="Car Wash icon" width={24} height={24} className="opacity-80 group-hover/badge3:opacity-100 transition-opacity" />
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-bold text-[#1A1A1A] leading-none group-hover/badge3:text-[#F26B21] transition-colors duration-200">Car Wash</p>
+                    <p className="text-[12px] text-[#7A7A7A] mt-0.5">Spotless Shine</p>
+                  </div>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#F26B21] opacity-0 -translate-x-1 group-hover/badge3:opacity-100 group-hover/badge3:translate-x-0 transition-all duration-200" />
+                </Link>
 
-                <div className="hidden sm:flex absolute bottom-[10%] right-[-5%] lg:-right-[10%] z-20 items-center gap-3 bg-white rounded-full pr-5 pl-2 py-2 shadow-xl border border-gray-100">
-                   <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#F5EBE1]">
-                     <Image src="/images/services/home-cleaning.png" alt="Home Cleaning icon" width={24} height={24} className="opacity-80" />
-                   </div>
-                   <div>
-                     <p className="text-[14px] font-bold text-[#1A1A1A] leading-none">Home Cleaning</p>
-                     <p className="text-[12px] text-[#7A7A7A] mt-0.5">Neat & Tidy</p>
-                   </div>
-                </div>
+                <Link
+                  href="/services/home-cleaning"
+                  className="hidden sm:flex absolute bottom-[10%] right-[-5%] lg:-right-[10%] z-20 items-center gap-3 bg-white rounded-full pr-4 pl-2 py-2 shadow-xl border border-gray-100 cursor-pointer group/badge4 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#F26B21]/30 hover:bg-[#FFFBF8]"
+                >
+                  <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#F5EBE1] group-hover/badge4:bg-[#FFF6F0] transition-colors duration-300">
+                    <Image src="/images/services/home-cleaning.png" alt="Home Cleaning icon" width={24} height={24} className="opacity-80 group-hover/badge4:opacity-100 transition-opacity" />
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-bold text-[#1A1A1A] leading-none group-hover/badge4:text-[#F26B21] transition-colors duration-200">Home Cleaning</p>
+                    <p className="text-[12px] text-[#7A7A7A] mt-0.5">Neat &amp; Tidy</p>
+                  </div>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#F26B21] opacity-0 -translate-x-1 group-hover/badge4:opacity-100 group-hover/badge4:translate-x-0 transition-all duration-200" />
+                </Link>
               </div>
             </div>
           </Container>
@@ -170,7 +186,7 @@ export default function ServicesPage() {
             </div>
 
             {/* Grid Layout */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 lg:h-[650px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 lg:h-[650px] -mx-5 sm:mx-0 px-5 sm:px-0">
               
               {/* Laundry Block - Full Height */}
               <div className="relative group rounded-2xl sm:rounded-3xl overflow-hidden sm:col-span-2 lg:col-span-1 lg:row-span-2 h-[440px] sm:h-[440px] lg:h-full">
@@ -320,7 +336,7 @@ export default function ServicesPage() {
         </section>
 
         {/* ─── CTA Download Banner ────────────────────────────────────────────────── */}
-        <section className="py-16 bg-white">
+        <section className="pt-16 bg-white">
           <Container isMaxWidth>
             <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#F26B21] via-[#F4813E] to-[#FBAB70] p-8 md:p-12 lg:p-14">
               

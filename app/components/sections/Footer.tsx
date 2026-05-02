@@ -184,7 +184,7 @@ export default function Footer() {
   return (
     <FooterAnimation>
       {/* Background Div */}
-      <div className="footer-main gsap-animate relative overflow-hidden bg-[#FBF6F2] py-[80px] sm:py-[60px] md:py-[80px] px-[20px] opacity-0 border-t border-[#DDD2C8]">
+      <div className="footer-main gsap-animate relative overflow-hidden bg-[#FBF6F2] py-[80px] mt-[80px] sm:py-[60px] md:py-[80px] px-[20px] opacity-0 border-t border-[#DDD2C8]">
         <FooterParticles variant="main" />
         <div className="relative z-1">
           {/* Container Div - Desktop Layout (900px+) */}
