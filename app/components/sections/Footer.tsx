@@ -111,6 +111,9 @@ function LegalColumn() {
         <Link href="/terms-of-use" className={footerLinkClass}>
           Terms of Use
         </Link>
+        <Link href="/delete-account" className={footerLinkClass}>
+          Delete account
+        </Link>
       </div>
     </div>
   );

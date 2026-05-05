@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/privacy-policy", changeFrequency: "yearly", priority: 0.4 },
     { path: "/terms-and-conditions", changeFrequency: "yearly", priority: 0.4 },
     { path: "/terms-of-use", changeFrequency: "yearly", priority: 0.4 },
+    { path: "/delete-account", changeFrequency: "yearly", priority: 0.45 },
   ];
 
   return entries.map(({ path, changeFrequency, priority }) => ({
