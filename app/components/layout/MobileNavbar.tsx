@@ -90,7 +90,7 @@ export default function MobileNavbar() {
                   lineHeight: "1.3",
                 }}
               >
-                Clean Homes. Happy Hearts.
+                Handled with Care, Delivered with Trust.
               </span>
             </div>
           </Link>
@@ -145,7 +145,7 @@ export default function MobileNavbar() {
                   lineHeight: "1.3",
                 }}
               >
-                Clean Homes. Happy Hearts.
+                Handled with Care, Delivered with Trust.
               </span>
             </div>
           </Link>

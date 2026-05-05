@@ -55,10 +55,8 @@ export default function DesktopNavbar() {
           />
           <div className="flex flex-col leading-none gap-[4px]">
             <span className="text-[1.4rem] font-extrabold tracking-tight">
-              <span className="text-brown">Wash</span>
-              {" "}
-              <span className="text-brown">&amp;</span>
-              {" "}
+              <span className="text-brown">Wash</span>{" "}
+              <span className="text-brown">&amp;</span>{" "}
               <span className="text-orange">Wow</span>
             </span>
             <span
@@ -73,7 +71,7 @@ export default function DesktopNavbar() {
                 lineHeight: "1.3",
               }}
             >
-              Clean Homes. Happy Hearts.
+              Handled with Care, Delivered with Trust.
             </span>
           </div>
         </Link>
