@@ -12,7 +12,7 @@ const FOOTER_PHONE_DISPLAY = "7078497263";
 const FOOTER_PHONE_TEL = "tel:+7078497263";
 const FOOTER_EMAIL = "support@washandwow.in";
 const FOOTER_EMAIL_MAILTO = `mailto:${FOOTER_EMAIL}`;
-const FOOTER_ADDRESS = "Khasra No. 1360, Shamli, Thanabhawan, Uttar Pradesh";
+const FOOTER_ADDRESS = "Khasra No. 1360, Shamli, Thanabhawan, Uttar Pradesh - 247777";
 const FOOTER_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(FOOTER_ADDRESS)}`;
 
 function ContactItem({
@@ -297,7 +297,12 @@ export default function Footer() {
       <div className="footer-copyright gsap-animate relative overflow-hidden bg-[#F3EDE8] border-t border-[#DDD2C8] text-[#5E5450] px-[20px] opacity-0">
         <FooterParticles variant="copyright" />
         <div className="relative z-1 w-full max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-[10px] py-[20px] sm:py-[30px] text-center sm:text-left text-[16px]">
-          <p>© 2026 Wash and Wow. All Rights Reserved</p>
+          <div className="flex flex-col gap-1 items-center sm:items-start">
+            <p>© 2026 Wash and Wow. All Rights Reserved</p>
+            <p className="text-[14px] opacity-80">
+              CIN: U96010UW2026PTC252117 | GST No: 09AAECW4521F1ZE
+            </p>
+          </div>
           <p>
             <Link
               href="/privacy-policy"

@@ -14,7 +14,7 @@ import {
 const SUPPORT_EMAIL = "support@washandwow.in";
 const SUPPORT_PHONE = "7078497263";
 const BUSINESS_EMAIL = "support@washandwow.in";
-const BUSINESS_ADDRESS = "123, Location Here";
+const BUSINESS_ADDRESS = "Khasra No. 1360, Shamli, Thanabhawan, Uttar Pradesh - 247777";
 const SUPPORT_HOURS = "9:00 AM – 8:00 PM, All Days";
 
 const GOOGLE_MAPS_EMBED_URL =

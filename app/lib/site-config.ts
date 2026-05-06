@@ -34,7 +34,7 @@ export const SITE_KEYWORDS: string[] = [
 export const SITE_EMAIL = "support@washandwow.in";
 export const SITE_PHONE_E164 = "+919318387705";
 export const SITE_PHONE_DISPLAY = "9318387705";
-export const SITE_ADDRESS = "123, Location Here";
+export const SITE_ADDRESS = "Khasra No. 1360, Shamli, Thanabhawan, Uttar Pradesh - 247777";
 
 export function canonicalPath(path: string): string {
   const base = getSiteUrl();

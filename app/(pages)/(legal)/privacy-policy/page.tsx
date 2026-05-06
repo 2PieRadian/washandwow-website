@@ -4,10 +4,6 @@ import Footer from "@/app/components/sections/Footer";
 import { SatoshiFont, WixMadeForDisplayFont } from "@/app/fonts";
 import type { Metadata } from "next";
 import { canonicalPath } from "@/app/lib/site-config";
-import {
-  PageHeroAnimation,
-  PageSectionsAnimation,
-} from "@/app/components/animations/PageAnimations";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { Shield, Sparkles } from "lucide-react";
@@ -144,7 +140,7 @@ export default async function PrivacyPolicyPage() {
     <div style={{ fontFamily: SatoshiFont.style.fontFamily }}>
       <Navbar />
 
-      <PageHeroAnimation variant="centeredSequential">
+
         <div className="relative overflow-hidden">
           <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-[#FFFBF6] via-[#FDF9F5] to-white" />
           <Container
@@ -152,26 +148,26 @@ export default async function PrivacyPolicyPage() {
             className="relative mt-[70px] flex min-h-[calc(40svh-70px)] items-center justify-center px-[20px] pb-8 pt-12 md:pb-12 md:pt-16"
           >
             <div className="max-w-3xl text-center">
-              <div className="page-hero-subtitle gsap-animate mb-4 inline-flex items-center gap-2 rounded-full border border-[#E8DFD6] bg-white/80 px-4 py-2 text-sm text-[#7B6F69] opacity-0">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#E8DFD6] bg-white/80 px-4 py-2 text-sm text-[#7B6F69]">
                 <Shield className="h-4 w-4" />
                 Official legal policy
               </div>
               <h1
-                className="page-hero-title gsap-animate text-3xl font-bold text-[#33302E] opacity-0 sm:text-4xl md:text-5xl"
+                className="text-3xl font-bold text-[#33302E] sm:text-4xl md:text-5xl"
                 style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
               >
                 {documentTitle}
               </h1>
-              <p className="page-hero-meta gsap-animate mx-auto mt-4 max-w-2xl text-[16px] leading-relaxed text-[#5E5450] opacity-0 sm:text-[17px]">
+              <p className="mx-auto mt-4 max-w-2xl text-[16px] leading-relaxed text-[#5E5450] sm:text-[17px]">
                 Clear categories, clean structure, and readable sections for all
                 privacy terms.
               </p>
             </div>
           </Container>
         </div>
-      </PageHeroAnimation>
 
-      <PageSectionsAnimation sequentialSections>
+
+
         <Container isMaxWidth={true} className="px-[20px] pb-16 md:pb-24">
           <div className="mx-auto max-w-5xl">
             <div className="mb-8 flex flex-wrap gap-2">
@@ -181,7 +177,7 @@ export default async function PrivacyPolicyPage() {
                   <a
                     key={section.id}
                     href={`#${section.id}`}
-                    className="page-section gsap-animate rounded-full border border-[#E2D7CD] bg-white px-3 py-1.5 text-xs font-medium text-[#6A5E58] opacity-0 transition hover:border-orange hover:text-orange sm:text-sm"
+                    className="rounded-full border border-[#E2D7CD] bg-white px-3 py-1.5 text-xs font-medium text-[#6A5E58] transition hover:border-orange hover:text-orange sm:text-sm"
                   >
                     {section.number}. {section.title}
                   </a>
@@ -193,7 +189,7 @@ export default async function PrivacyPolicyPage() {
                 <section
                   key={section.id}
                   id={section.id}
-                  className="page-section gsap-animate scroll-mt-28 rounded-[24px] border border-[#E8DFD6]/50 bg-linear-to-br from-[#FEFEFE] to-[#F8F5F2] p-6 opacity-0 shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9)] sm:rounded-[28px] sm:p-8"
+                  className="scroll-mt-28 rounded-[24px] border border-[#E8DFD6]/50 bg-linear-to-br from-[#FEFEFE] to-[#F8F5F2] p-6 shadow-[6px_6px_16px_rgba(209,199,189,0.45),-6px_-6px_16px_rgba(255,255,255,0.9)] sm:rounded-[28px] sm:p-8"
                 >
                   <div className="mb-4 flex items-center gap-3">
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br from-orange to-[#FF7700] text-white shadow-[0_6px_14px_rgba(255,119,0,0.28)]">
@@ -253,7 +249,7 @@ export default async function PrivacyPolicyPage() {
             </div>
           </div>
         </Container>
-      </PageSectionsAnimation>
+
 
       <Footer />
     </div>

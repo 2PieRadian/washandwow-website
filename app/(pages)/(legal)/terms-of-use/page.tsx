@@ -5,16 +5,12 @@ import { SatoshiFont, WixMadeForDisplayFont } from "@/app/fonts";
 import { Mail, MapPin, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  PageHeroAnimation,
-  PageSectionsAnimation,
-} from "@/app/components/animations/PageAnimations";
 import { canonicalPath } from "@/app/lib/site-config";
 
 const LAST_UPDATED = "March 22, 2026";
 const CONTACT_EMAIL = "support@washandwow.in";
 const CONTACT_PHONE = "7078497263";
-const CONTACT_ADDRESS = "123, Location Here";
+const CONTACT_ADDRESS = "Khasra No. 1360, Shamli, Thanabhawan, Uttar Pradesh - 247777";
 const JURISDICTION_CITY = "New Delhi";
 
 export const metadata: Metadata = {
@@ -51,7 +47,7 @@ function PolicySection({
   return (
     <section
       id={id}
-      className="page-section gsap-animate scroll-mt-28 border-t border-[#E8DFD6] pt-8 opacity-0 first:border-0 first:pt-0"
+      className="scroll-mt-28 border-t border-[#E8DFD6] pt-8 first:border-0 first:pt-0"
     >
       <h2
         className="mb-4 text-xl font-semibold text-[#33302E] sm:text-2xl"
@@ -121,35 +117,35 @@ export default function page() {
     <div style={{ fontFamily: SatoshiFont.style.fontFamily }}>
       <Navbar />
 
-      <PageHeroAnimation variant="centered">
+
         <Container
           isMaxWidth={true}
           className="mt-[70px] flex min-h-[calc(70svh-70px)] items-center justify-center px-[20px] pb-6 pt-10 md:pb-8 md:pt-14"
         >
           <div className="max-w-7xl text-center">
             <h1
-              className="page-hero-title gsap-animate text-3xl font-semibold text-[#33302E] opacity-0 sm:text-4xl"
+              className="text-3xl font-semibold text-[#33302E] sm:text-4xl"
               style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily }}
             >
               Terms of Use
             </h1>
 
-            <p className="page-hero-meta gsap-animate mt-2 text-[18px] font-medium text-[#91776C] opacity-0">
+            <p className="mt-2 text-[18px] font-medium text-[#91776C]">
               Last updated: {LAST_UPDATED}
             </p>
 
-            <p className="page-hero-subtitle gsap-animate mt-4 text-[18px] leading-relaxed text-dark-blue opacity-0">
+            <p className="mt-4 text-[18px] leading-relaxed text-dark-blue">
               Use our services with confidence — built on fairness, clarity, and
               mutual respect.
             </p>
           </div>
         </Container>
-      </PageHeroAnimation>
 
-      <PageSectionsAnimation>
+
+
         <Container isMaxWidth={true} className="px-[20px] pb-16 md:pb-24">
           <div className="mx-auto max-w-5xl">
-            <div className="page-section gsap-animate opacity-0">
+            <div className="">
               <p className="text-[18px] leading-relaxed text-[#5E5450]">
                 Welcome to{" "}
                 <strong className="font-semibold text-[#33302E]">
@@ -409,7 +405,7 @@ export default function page() {
             </div>
           </div>
         </Container>
-      </PageSectionsAnimation>
+
 
       <Footer />
     </div>
