@@ -68,12 +68,12 @@ const servicesData = [
 
 export default function PricingPage() {
   return (
-    <div className="overflow-x-hidden antialiased bg-[#FAFAFA] p-[20px]" style={{ fontFamily: SatoshiFont.style.fontFamily }}>
+    <div className="overflow-x-hidden antialiased bg-[#FAFAFA]" style={{ fontFamily: SatoshiFont.style.fontFamily }}>
       <Navbar />
 
       <main className="pt-[60px] lg:pt-[80px]">
         {/* ─── HERO SECTION ──────────────────────────────────────────────────────── */}
-        <section className="relative w-full pt-16 pb-16 lg:pb-20 bg-gradient-to-b from-[#FDFBF9] to-[#F5F0EA] overflow-hidden">
+        <section className="relative w-full pt-16 pb-16 lg:pb-20 bg-gradient-to-b from-[#FDFBF9] to-[#F5F0EA] overflow-hidden px-5">
           {/* Left Decorative Image */}
           <div className="absolute left-[-5%] bottom-0 w-[400px] h-[300px] hidden lg:block opacity-90 z-0">
              <Image src="/images/pricing/hero_left.png" alt="Towels in basket" fill className="object-contain object-bottom" priority />
@@ -101,56 +101,9 @@ export default function PricingPage() {
           </Container>
         </section>
 
-        {/* ─── FEATURES ROW ──────────────────────────────────────────────────────── */}
-        <section className="bg-white border-b border-gray-100 shadow-sm relative z-20">
-          <Container isMaxWidth className="py-8">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 text-center lg:text-left">
-              {/* Feature 1 */}
-              <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 max-w-[200px]">
-                <div className="text-[#F26B21]"><ClipboardList strokeWidth={1.5} size={32}/></div>
-                <div>
-                  <h4 className="font-bold text-[#1A1A1A] text-[16px]">No Hidden Charges</h4>
-                  <p className="text-[14px] text-[#7A7A7A] mt-1 leading-tight">What you see is what you pay</p>
-                </div>
-              </div>
-              {/* Feature 2 */}
-              <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 max-w-[200px]">
-                <div className="text-[#F26B21]"><UserCheck strokeWidth={1.5} size={32}/></div>
-                <div>
-                  <h4 className="font-bold text-[#1A1A1A] text-[16px]">Trained Professionals</h4>
-                  <p className="text-[14px] text-[#7A7A7A] mt-1 leading-tight">Background verified and fully trained</p>
-                </div>
-              </div>
-              {/* Feature 3 */}
-              <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 max-w-[200px]">
-                <div className="text-[#F26B21]"><Clock strokeWidth={1.5} size={32}/></div>
-                <div>
-                  <h4 className="font-bold text-[#1A1A1A] text-[16px]">On-Time Service</h4>
-                  <p className="text-[14px] text-[#7A7A7A] mt-1 leading-tight">We value your time as much as you do</p>
-                </div>
-              </div>
-              {/* Feature 4 */}
-              <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 max-w-[200px]">
-                <div className="text-[#F26B21]"><ShieldCheck strokeWidth={1.5} size={32}/></div>
-                <div>
-                  <h4 className="font-bold text-[#1A1A1A] text-[16px]">Satisfaction Guaranteed</h4>
-                  <p className="text-[14px] text-[#7A7A7A] mt-1 leading-tight">Not happy? We&apos;ll make it right</p>
-                </div>
-              </div>
-              {/* Feature 5 */}
-              <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 max-w-[200px]">
-                <div className="text-[#F26B21]"><Wallet strokeWidth={1.5} size={32}/></div>
-                <div>
-                  <h4 className="font-bold text-[#1A1A1A] text-[16px]">Easy Booking &amp; Payments</h4>
-                  <p className="text-[14px] text-[#7A7A7A] mt-1 leading-tight">Super easy booking and secure payments</p>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </section>
 
         {/* ─── PRICING CARDS ─────────────────────────────────────────────────────── */}
-        <section className="pt-20 pb-16">
+        <section className="pt-20 pb-16 px-5">
           <Container isMaxWidth>
             <div className="text-center mb-16">
               <div className="text-[16px] font-bold uppercase tracking-[0.2em] text-[#F26B21] mb-3">
@@ -208,8 +161,62 @@ export default function PricingPage() {
           </Container>
         </section>
 
+        {/* ─── WHY CHOOSE US / FEATURES (iOS STYLE) ───────────────────────────── */}
+        <section className="pb-24 px-5">
+          <Container isMaxWidth>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+              {/* Feature 1 */}
+              <div className="bg-white rounded-[2.5rem] p-9 shadow-[0_4px_25px_rgba(0,0,0,0.03)] border border-gray-50 flex flex-col items-center text-center group transition-all duration-500 hover:shadow-[0_15px_45px_rgba(0,0,0,0.06)] hover:-translate-y-1.5">
+                <div className="w-16 h-16 rounded-[1.25rem] bg-[#F2F2F7] flex items-center justify-center text-[#F26B21] mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <ClipboardList strokeWidth={1.5} size={30}/>
+                </div>
+                <h4 className="font-bold text-[#1D1D1F] text-[19px] mb-2 leading-tight tracking-tight">No Hidden Charges</h4>
+                <p className="text-[15px] text-[#86868B] leading-relaxed">What you see is what you pay</p>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="bg-white rounded-[2.5rem] p-9 shadow-[0_4px_25px_rgba(0,0,0,0.03)] border border-gray-50 flex flex-col items-center text-center group transition-all duration-500 hover:shadow-[0_15px_45px_rgba(0,0,0,0.06)] hover:-translate-y-1.5">
+                <div className="w-16 h-16 rounded-[1.25rem] bg-[#F2F2F7] flex items-center justify-center text-[#F26B21] mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <UserCheck strokeWidth={1.5} size={30}/>
+                </div>
+                <h4 className="font-bold text-[#1D1D1F] text-[19px] mb-2 leading-tight tracking-tight">Trained Professionals</h4>
+                <p className="text-[15px] text-[#86868B] leading-relaxed">Verified and fully trained</p>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="bg-white rounded-[2.5rem] p-9 shadow-[0_4px_25px_rgba(0,0,0,0.03)] border border-gray-50 flex flex-col items-center text-center group transition-all duration-500 hover:shadow-[0_15px_45px_rgba(0,0,0,0.06)] hover:-translate-y-1.5">
+                <div className="w-16 h-16 rounded-[1.25rem] bg-[#F2F2F7] flex items-center justify-center text-[#F26B21] mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <Clock strokeWidth={1.5} size={30}/>
+                </div>
+                <h4 className="font-bold text-[#1D1D1F] text-[19px] mb-2 leading-tight tracking-tight">On-Time Service</h4>
+                <p className="text-[15px] text-[#86868B] leading-relaxed">We value your time</p>
+              </div>
+
+              {/* Feature 4 */}
+              <div className="bg-white rounded-[2.5rem] p-9 shadow-[0_4px_25px_rgba(0,0,0,0.03)] border border-gray-50 flex flex-col items-center text-center group transition-all duration-500 hover:shadow-[0_15px_45px_rgba(0,0,0,0.06)] hover:-translate-y-1.5">
+                <div className="w-16 h-16 rounded-[1.25rem] bg-[#F2F2F7] flex items-center justify-center text-[#F26B21] mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <ShieldCheck strokeWidth={1.5} size={30}/>
+                </div>
+                <h4 className="font-bold text-[#1D1D1F] text-[19px] mb-2 leading-tight tracking-tight">Satisfaction Guaranteed</h4>
+                <p className="text-[15px] text-[#86868B] leading-relaxed">We&apos;ll make it right</p>
+              </div>
+
+              {/* Feature 5 */}
+              <div className="bg-white rounded-[2.5rem] p-9 shadow-[0_4px_25px_rgba(0,0,0,0.03)] border border-gray-50 flex flex-col items-center text-center group transition-all duration-500 hover:shadow-[0_15px_45px_rgba(0,0,0,0.06)] hover:-translate-y-1.5">
+                <div className="w-16 h-16 rounded-[1.25rem] bg-[#F2F2F7] flex items-center justify-center text-[#F26B21] mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <Wallet strokeWidth={1.5} size={30}/>
+                </div>
+                <h4 className="font-bold text-[#1D1D1F] text-[19px] mb-2 leading-tight tracking-tight">Secure Payments</h4>
+                <p className="text-[15px] text-[#86868B] leading-relaxed">Safe and easy booking</p>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+
+
         {/* ─── MEMBERSHIP BOX ────────────────────────────────────────────────────── */}
-        <section className="pb-16">
+        <section className="pb-16 px-5">
           <Container isMaxWidth>
             <div className="bg-[#FCF9F6] rounded-3xl p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-10 shadow-sm border border-[#F5EFEA]">
               {/* Left Side */}
@@ -255,7 +262,7 @@ export default function PricingPage() {
         </section>
 
         {/* ─── APP BANNER ────────────────────────────────────────────────────────── */}
-        <section className="pb-24">
+        <section className="pb-24 px-5">
           <Container isMaxWidth>
             <div className="bg-[#FFF6F0] rounded-[2.5rem] p-0 flex flex-col md:flex-row items-center overflow-hidden relative min-h-[350px] shadow-[0_8px_30px_rgba(0,0,0,0.09)] border border-[#f0e2db]">
               
