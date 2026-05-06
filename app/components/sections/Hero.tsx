@@ -49,23 +49,23 @@ export default function Hero() {
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-wrap items-center gap-4 mb-12">
+            <div className="flex flex-nowrap items-center gap-3 sm:gap-4 mb-12">
               <button 
                 onClick={() => setIsModalOpen(true)}
-                className="flex items-center gap-4 bg-[#FF7700] text-white px-8 py-4 rounded-full font-bold text-[1.1rem] hover:bg-[#e66a00] hover:scale-105 active:scale-95 transition-all shadow-[0_8px_20px_rgba(255,119,0,0.25)]"
+                className="flex items-center justify-center gap-2 sm:gap-4 bg-[#FF7700] text-white px-4 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-[14px] sm:text-[1.1rem] hover:bg-[#e66a00] hover:scale-105 active:scale-95 transition-all shadow-[0_8px_20px_rgba(255,119,0,0.25)] whitespace-nowrap"
               >
                 Book a Service
-                <span className="bg-white text-[#FF7700] rounded-full p-1.5 flex items-center justify-center">
-                  <ArrowRight size={18} strokeWidth={3} />
+                <span className="bg-white text-[#FF7700] rounded-full p-1 sm:p-1.5 flex items-center justify-center shrink-0">
+                  <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" strokeWidth={3} />
                 </span>
               </button>
               
               <button 
                 onClick={() => scrollToSection("#how-it-works")}
-                className="flex items-center gap-3 bg-white text-[#2D2422] px-8 py-4 rounded-full font-bold text-[1.1rem] border border-gray-200 hover:shadow-lg hover:border-transparent hover:scale-105 active:scale-95 transition-all"
+                className="flex items-center justify-center gap-2 sm:gap-3 bg-white text-[#2D2422] px-4 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-[14px] sm:text-[1.1rem] border border-gray-200 hover:shadow-lg hover:border-transparent hover:scale-105 active:scale-95 transition-all whitespace-nowrap"
               >
                 Explore Services
-                <ArrowRight size={20} className="text-[#FF7700]" strokeWidth={2.5} />
+                <ArrowRight size={18} className="text-[#FF7700] sm:w-[20px] sm:h-[20px] shrink-0" strokeWidth={2.5} />
               </button>
             </div>
 

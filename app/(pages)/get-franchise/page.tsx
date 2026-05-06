@@ -5,8 +5,8 @@ import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/sections/Footer";
 import { SatoshiFont, WixMadeForDisplayFont } from "@/app/fonts";
 import { 
-  ArrowRight, CheckCircle2, TrendingUp, Laptop, MapPin, 
-  ShieldCheck, Users, PieChart, Layers, Clock, Smile, 
+  ArrowRight, CheckCircle2, TrendingUp, MapPin, 
+  ShieldCheck, Users, PieChart, Layers, 
   Sparkles, Building2, Smartphone 
 } from "lucide-react";
 import Image from "next/image";
@@ -98,20 +98,20 @@ export default function FranchisePage() {
       title: "Starter Model", 
       tag: "Ideal for small cities",
       features: ["Low Investment", "Single Service Focus", "High ROI Potential"],
-      message: `Hi Wash & Wow 👋
+      message: `Hi Wash & Wow 👋 
 
 I’m interested in the Starter Franchise Model.
 
 Here are my details:
 
-👤 Full Name:
-📍 City:
-📞 Phone Number:
-📧 Email:
-💼 Current Profession:
-🏢 Any Previous Business Experience:
-💰 Approx Investment Budget:
-📅 Preferred Starting Timeline:
+👤  Full Name:
+📍  City:
+📞  Phone Number:
+📧  Email:
+💼  Current Profession:
+🏢  Any Previous Business Experience:
+💰  Approx Investment Budget:
+📅  Preferred Starting Timeline:
 
 I would like to know more about:
 - Initial setup process
@@ -119,28 +119,28 @@ I would like to know more about:
 - Support provided by Wash & Wow
 - Service coverage in my city
 
-Looking forward to hearing from your team. 🚀`
+Looking forward to hearing from your team. 🚀 `
     },
     { 
       title: "Growth Model", 
       tag: "Most Popular",
       features: ["Perfect for multi-service", "Multiple Services", "Higher Revenue Potential", "Scalable Operations"],
       popular: true,
-      message: `Hi Wash & Wow 👋
+      message: `Hi Wash & Wow 👋 
 
 I’m interested in the Growth Franchise Model.
 
 Please find my details below:
 
-👤 Full Name:
-📍 City:
-📞 Phone Number:
-📧 Email:
-💼 Current Profession:
-🏢 Current Business (if any):
-📈 Experience Managing Teams:
-💰 Approx Investment Budget:
-📅 Preferred Launch Timeline:
+👤  Full Name:
+📍  City:
+📞  Phone Number:
+📧  Email:
+💼  Current Profession:
+🏢  Current Business (if any):
+📈  Experience Managing Teams:
+💰  Approx Investment Budget:
+📅  Preferred Launch Timeline:
 
 I’m interested in learning more about:
 - Multi-service operations
@@ -149,28 +149,28 @@ I’m interested in learning more about:
 - Technology and app infrastructure
 - Territory availability
 
-Please share the next steps for partnership. 🚀`
+Please share the next steps for partnership. 🚀 `
     },
     { 
       title: "Premium Expansion", 
       tag: "For larger territory",
       features: ["Wide Area Coverage", "Strong Brand Presence", "Maximum Growth"],
-      message: `Hi Wash & Wow 👋
+      message: `Hi Wash & Wow 👋 
 
 I’m interested in the Premium Expansion Franchise Opportunity.
 
 My details:
 
-👤 Full Name:
-📍 City / Region:
-📞 Phone Number:
-📧 Email:
-💼 Current Profession / Business:
-🏢 Existing Business Experience:
-👥 Team Size (if applicable):
-💰 Planned Investment Capacity:
-🌆 Preferred Expansion Territory:
-📅 Expected Launch Timeline:
+👤  Full Name:
+📍  City / Region:
+📞  Phone Number:
+📧  Email:
+💼  Current Profession / Business:
+🏢  Existing Business Experience:
+👥  Team Size (if applicable):
+💰  Planned Investment Capacity:
+🌆  Preferred Expansion Territory:
+📅  Expected Launch Timeline:
 
 I would like to discuss:
 - Territory-based partnership opportunities
@@ -179,13 +179,36 @@ I would like to discuss:
 - Dedicated support structure
 - Brand collaboration opportunities
 
-Looking forward to connecting with your franchise team. 🚀`
+Looking forward to connecting with your franchise team. 🚀 `
     }
   ];
 
+  const GENERAL_ENQUIRY_MESSAGE = `Hi Wash & Wow 👋 
+
+I’m interested in becoming a franchise partner with Wash & Wow.
+
+Here are my details:
+
+👤  Full Name:
+📍  City:
+📞  Phone Number:
+💼  Current Profession:
+🏢  Any Previous Business Experience:
+💰  Approx Investment Budget:
+📅  Preferred Starting Timeline:
+
+I would like to know more about:
+• Franchise models
+• Investment requirements
+• Operational support
+• Service availability in my city
+• Next steps to get started
+
+Looking forward to connecting with your team. 🚀 `;
+
   const handleEnquiry = (message: string) => {
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/91${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+    window.open(`https://api.whatsapp.com/send?phone=91${WHATSAPP_NUMBER}&text=${encodedMessage}`, '_blank');
   };
 
   return (
@@ -208,15 +231,18 @@ Looking forward to connecting with your franchise team. 🚀`
               <p className="text-lg text-[#5E5450] leading-[1.6] mb-10 max-w-xl">
                 Partner with India&apos;s trusted cleaning brand and grow a future-ready business with multiple services and recurring customers.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <OrangeGradientButton className="px-8 py-4 rounded-full flex items-center gap-2 text-lg font-bold">
-                  Become a Partner <ArrowRight size={20} />
+              <div className="flex flex-nowrap items-center gap-3 sm:gap-4">
+                <OrangeGradientButton 
+                  className="px-4 sm:px-8 py-3.5 sm:py-4 rounded-full flex items-center justify-center gap-2 sm:gap-2 text-[14px] sm:text-lg font-bold whitespace-nowrap"
+                  onClick={() => handleEnquiry(GENERAL_ENQUIRY_MESSAGE)}
+                >
+                  Become a Partner <ArrowRight size={18} className="sm:w-[20px] sm:h-[20px]" />
                 </OrangeGradientButton>
                 <Link 
-                  href="#why-us"
-                  className="px-8 py-4 rounded-full border border-[#E8DFD6] text-[#33302E] font-bold hover:bg-[#FBF6F2] transition-colors flex items-center gap-2 text-lg"
+                  href="#investment-models"
+                  className="px-4 sm:px-8 py-3.5 sm:py-4 rounded-full border border-[#E8DFD6] text-[#33302E] font-bold hover:bg-[#FBF6F2] transition-colors flex items-center justify-center gap-2 sm:gap-2 text-[14px] sm:text-lg whitespace-nowrap"
                 >
-                  Explore Business Model <ArrowRight size={20} />
+                  Explore Business Models <ArrowRight size={18} className="sm:w-[20px] sm:h-[20px]" />
                 </Link>
               </div>
 
@@ -436,7 +462,7 @@ Looking forward to connecting with your franchise team. 🚀`
       </section>
 
       {/* Investment Models */}
-      <section className="py-20 bg-white">
+      <section id="investment-models" className="py-20 bg-white">
         <Container isMaxWidth={true} className="px-[20px]">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <p className="text-orange font-bold uppercase tracking-widest text-sm mb-4">Investment Models</p>
@@ -546,9 +572,12 @@ Looking forward to connecting with your franchise team. 🚀`
                 Join Wash & Wow and become part of India&apos;s next-generation home services ecosystem.
               </p>
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl mb-10">
-                <Image src="/images/pricing/hero.png" alt="Ready" fill className="object-cover" />
+                <Image src="/images/franchise-ready.png" alt="Ready to build something big" fill className="object-cover" />
               </div>
-              <OrangeGradientButton className="px-10 py-4 rounded-full font-bold text-lg">
+              <OrangeGradientButton 
+                className="px-10 py-4 rounded-full font-bold text-lg"
+                onClick={() => handleEnquiry(GENERAL_ENQUIRY_MESSAGE)}
+              >
                 Apply for Franchise <ArrowRight size={20} />
               </OrangeGradientButton>
             </div>
