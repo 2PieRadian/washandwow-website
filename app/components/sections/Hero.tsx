@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import Container from "../layout/Container";
 import { WixMadeForDisplayFont } from "@/app/fonts";
 import DownloadAppModal from "../ui/modals/DownloadAppModal";
@@ -60,13 +61,13 @@ export default function Hero() {
                 </span>
               </button>
               
-              <button 
-                onClick={() => scrollToSection("#how-it-works")}
+              <Link 
+                href="/services"
                 className="flex items-center justify-center gap-2 sm:gap-3 bg-white text-[#2D2422] px-4 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-[14px] sm:text-[1.1rem] border border-gray-200 hover:shadow-lg hover:border-transparent hover:scale-105 active:scale-95 transition-all whitespace-nowrap"
               >
                 Explore Services
                 <ArrowRight size={18} className="text-[#FF7700] sm:w-[20px] sm:h-[20px] shrink-0" strokeWidth={2.5} />
-              </button>
+              </Link>
             </div>
 
             {/* Info Card */}
