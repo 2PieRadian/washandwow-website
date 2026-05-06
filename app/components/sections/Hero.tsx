@@ -36,11 +36,11 @@ export default function Hero() {
           <div className="w-full lg:w-[55%] flex flex-col items-start text-left">
             {/* Headline */}
             <h1 
-              className="text-[3.2rem] md:text-[4.5rem] lg:text-[4.8rem] font-extrabold text-[#2D2422] mb-6 tracking-tight flex flex-col"
+              className="text-[2.2rem] xs:text-[2.5rem] sm:text-[3.2rem] md:text-[4.5rem] lg:text-[4.8rem] font-extrabold text-[#2D2422] mb-6 tracking-tight flex flex-col"
               style={{ fontFamily: WixMadeForDisplayFont.style.fontFamily, lineHeight: 1.15 }}
             >
-              <span>Everything Clean.</span>
-              <span className="text-[#FF7700]">Everything Wow.</span>
+              <span className="whitespace-nowrap">Everything Clean.</span>
+              <span className="text-[#FF7700] whitespace-nowrap">Everything Wow.</span>
             </h1>
 
             {/* Subtitle */}

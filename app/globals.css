@@ -59,6 +59,8 @@
   --color-yellow-seamless: var(--yellow-seamless);
 
   --color-dark-blue: var(--dark-blue);
+
+  --breakpoint-xs: 400px;
 }
 
 @media (prefers-color-scheme: dark) {

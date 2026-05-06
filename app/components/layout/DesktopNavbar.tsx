@@ -20,6 +20,7 @@ export default function DesktopNavbar() {
     { name: "Services", href: "/services" },
     { name: "Pricing", href: "/pricing" },
     { name: "About", href: "/about" },
+    { name: "Get Franchise", href: "/get-franchise" },
   ];
 
   useEffect(() => {

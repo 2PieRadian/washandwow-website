@@ -1,13 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Zap } from "lucide-react";
+import Image from "next/image";
 import { WixMadeForDisplayFont } from "@/app/fonts";
-import {
-  useClientMounted,
-  useDeviceBattery,
-  useLiveTimes,
-} from "@/app/hooks/useLiveDeviceInfo";
 import AppStoreButton from "../ui/buttons/AppStoreButton";
 import GooglePlayButton from "../ui/buttons/GooglePlayButton";
 import DownloadAppSvg from "../svg/DownloadAppSvg";
@@ -18,8 +13,7 @@ import {
   ANIMATION_CONFIG,
 } from "@/app/lib/animations";
 
-type LiveTimes = ReturnType<typeof useLiveTimes>;
-type DeviceBattery = ReturnType<typeof useDeviceBattery>;
+
 
 function LeftContent() {
   return (
@@ -45,15 +39,11 @@ function LeftContent() {
 }
 
 function Phone({
-  times,
-  battery,
   rotation,
 }: {
-  times: LiveTimes;
-  battery: DeviceBattery;
   rotation: { x: number; y: number };
 }) {
-  const clientMounted = useClientMounted();
+
   const [permissionGranted, setPermissionGranted] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [hasShownHint, setHasShownHint] = useState(false);
@@ -164,118 +154,25 @@ function Phone({
           <div className="absolute inset-0 bg-gradient-to-b from-[#FF9431]/20 to-transparent blur-3xl scale-150 opacity-0 md:group-hover:opacity-100 transition-opacity duration-700"></div>
 
           {/* Phone frame */}
-          <div className="relative bg-gradient-to-b from-[#d4ccc5] via-[#c5bdb6] to-[#a1978d] w-[310px] h-[620px] rounded-[45px] p-[4px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5),0_0_40px_rgba(0,0,0,0.3)] md:group-hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.6),0_0_60px_rgba(255,148,49,0.2)] transition-all duration-500 md:group-hover:scale-[1.03]">
+          <div className="relative bg-gradient-to-b from-[#d4ccc5] via-[#c5bdb6] to-[#a1978d] w-[310px] h-[620px] rounded-[24px] p-[4px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5),0_0_40px_rgba(0,0,0,0.3)] md:group-hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.6),0_0_60px_rgba(255,148,49,0.2)] transition-all duration-500 md:group-hover:scale-[1.03]">
             {/* Side buttons */}
             <div className="absolute -left-[3px] top-[100px] w-[3px] h-[30px] bg-gradient-to-b from-[#b5ada6] to-[#9a918a] rounded-l-sm"></div>
             <div className="absolute -left-[3px] top-[150px] w-[3px] h-[60px] bg-gradient-to-b from-[#b5ada6] to-[#9a918a] rounded-l-sm"></div>
             <div className="absolute -right-[3px] top-[130px] w-[3px] h-[50px] bg-gradient-to-b from-[#b5ada6] to-[#9a918a] rounded-r-sm"></div>
 
             {/* Screen */}
-            <div className="relative bg-gradient-to-b from-[#1a1a1a] via-[#0f0f0f] to-[#000000] overflow-hidden w-full h-full rounded-[42px]">
-              {/* Dynamic Island */}
-              <div className="absolute top-[12px] left-1/2 -translate-x-1/2 bg-black w-[100px] h-[28px] rounded-full z-20 flex items-center justify-center gap-[8px]">
-                <div className="w-[8px] h-[8px] rounded-full bg-[#1a1a1a] ring-1 ring-[#2a2a2a]"></div>
-                <div className="w-[6px] h-[6px] rounded-full bg-[#0c4a6e] opacity-60"></div>
-              </div>
+            <div className="relative bg-[#F5F2EE] overflow-hidden w-full h-full rounded-[20px]">
 
-              {/* App UI mockup */}
-              <div className="absolute inset-0 pt-[50px] px-[16px] pb-[22px]">
-                {/* Status bar — local time, en-US for capital AM/PM */}
-                <div className="flex justify-between items-center text-white/60 text-[13px] mb-[14px] px-[4px]">
-                  <span className="tabular-nums text-white/70 min-w-0 truncate pr-1">
-                    {clientMounted ? times.statusTime : "9:41 AM"}
-                  </span>
-                  <div className="flex flex-col items-end gap-[4px] shrink-0">
-                    {clientMounted && battery.supported ? (
-                      <>
-                        <div className="flex gap-[5px] items-center">
-                          <span className="tabular-nums text-white/55 text-[12px]">
-                            {Math.round(battery.level * 100)}%
-                          </span>
-                          {battery.charging ? (
-                            <Zap
-                              className="w-[14px] h-[14px] text-[#FFDAB6] shrink-0"
-                              aria-hidden
-                            />
-                          ) : null}
-                          <div className="w-[18px] h-[10px] border border-white/60 rounded-[2px] relative">
-                            <div className="absolute inset-[1px] right-[3px] rounded-[1px] overflow-hidden bg-white/10">
-                              <div
-                                className="h-full bg-white/60 rounded-[1px] transition-[width] duration-300"
-                                style={{
-                                  width: `${Math.round(battery.level * 100)}%`,
-                                }}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <span className="text-[11px] text-white/45 leading-none">
-                          {battery.charging ? "Charging" : "Not charging"}
-                        </span>
-                      </>
-                    ) : (
-                      <div className="w-[18px] h-[10px] border border-white/60 rounded-[2px] relative">
-                        <div className="absolute inset-[1px] right-[3px] bg-white/60 rounded-[1px]"></div>
-                      </div>
-                    )}
-                  </div>
-                </div>
 
-                {/* App header */}
-                <div className="bg-gradient-to-r from-[#FF9431] to-[#FF7700] rounded-[15px] p-[14px] mb-[14px] shadow-lg">
-                  <p className="text-white/80 text-[11px]">Welcome back!</p>
-                  <p className="text-white font-semibold text-[15px]">
-                    Schedule Pickup
-                  </p>
-                </div>
-
-                {/* Service cards */}
-                <div className="space-y-[10px]">
-                  <div className="bg-white/10 backdrop-blur rounded-[12px] p-[12px] flex items-center gap-[12px] group-hover:bg-white/15 transition-colors duration-300">
-                    <div className="w-[42px] h-[42px] rounded-[10px] bg-gradient-to-br from-[#FF9431]/30 to-[#FF7700]/30 flex items-center justify-center">
-                      <div className="w-[22px] h-[22px] rounded-full bg-[#FF9431]"></div>
-                    </div>
-                    <div>
-                      <p className="text-white text-[13px] font-medium">
-                        Wash & Fold
-                      </p>
-                      <p className="text-white/50 text-[11px]">₹79/kg</p>
-                    </div>
-                  </div>
-
-                  <div className="bg-white/10 backdrop-blur rounded-[12px] p-[12px] flex items-center gap-[12px] group-hover:bg-white/15 transition-colors duration-300">
-                    <div className="w-[42px] h-[42px] rounded-[10px] bg-gradient-to-br from-[#a78bfa]/30 to-[#8b5cf6]/30 flex items-center justify-center">
-                      <div className="w-[22px] h-[22px] rounded-full bg-[#a78bfa]"></div>
-                    </div>
-                    <div>
-                      <p className="text-white text-[13px] font-medium">
-                        Dry Cleaning
-                      </p>
-                      <p className="text-white/50 text-[11px]">₹199/kg</p>
-                    </div>
-                  </div>
-
-                  <div className="bg-white/10 backdrop-blur rounded-[12px] p-[12px] flex items-center gap-[12px] group-hover:bg-white/15 transition-colors duration-300">
-                    <div className="w-[42px] h-[42px] rounded-[10px] bg-gradient-to-br from-[#34d399]/30 to-[#10b981]/30 flex items-center justify-center">
-                      <div className="w-[22px] h-[22px] rounded-full bg-[#34d399]"></div>
-                    </div>
-                    <div>
-                      <p className="text-white text-[13px] font-medium">
-                        Steam Press
-                      </p>
-                      <p className="text-white/50 text-[11px]">₹15/piece</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom CTA */}
-                <div className="absolute bottom-[22px] left-[16px] right-[16px]">
-                  <div className="bg-gradient-to-r from-[#FF9431] to-[#FF7700] rounded-full py-[12px] text-center shadow-lg shadow-[#FF9431]/30">
-                    <p className="text-white text-[14px] font-semibold">
-                      Book Now
-                    </p>
-                  </div>
-                </div>
+              {/* Generated App Mockup */}
+              <div className="absolute inset-0">
+                <Image
+                  src="/images/app-screenshot.png"
+                  alt="Wash & Wow App Screenshot"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
 
               {/* Screen shine */}
@@ -286,7 +183,7 @@ function Phone({
 
               {/* Rotate Phone Hint Overlay - mobile only */}
               <div
-                className={`absolute inset-0 bg-black/70 backdrop-blur-sm rounded-[42px] flex flex-col items-center justify-center z-30 pointer-events-none transition-opacity duration-700 md:hidden ${
+                className={`absolute inset-0 bg-black/70 backdrop-blur-sm rounded-[20px] flex flex-col items-center justify-center z-30 pointer-events-none transition-opacity duration-700 md:hidden ${
                   showHint ? "opacity-100" : "opacity-0"
                 }`}
               >
@@ -329,8 +226,6 @@ function Phone({
 
 export default function DownloadApp() {
   const sectionRef = useRef<HTMLElement>(null);
-  const times = useLiveTimes();
-  const battery = useDeviceBattery();
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -451,7 +346,7 @@ export default function DownloadApp() {
             <LeftContent />
           </div>
           <div className="download-phone gsap-animate min-[900px]:block opacity-0">
-            <Phone times={times} battery={battery} rotation={rotation} />
+            <Phone rotation={rotation} />
           </div>
         </div>
       </div>

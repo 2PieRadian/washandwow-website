@@ -20,6 +20,7 @@ export default function MobileNavbar() {
     { name: "Pricing", href: "/pricing" },
     { name: "Reviews", href: "#reviews" },
     { name: "About", href: "/about" },
+    { name: "Get Franchise", href: "/get-franchise" },
   ];
 
   /** Matches Footer Help + Legal routes */
